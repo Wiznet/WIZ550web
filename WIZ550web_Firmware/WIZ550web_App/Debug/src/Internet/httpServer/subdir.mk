@@ -7,22 +7,19 @@ C_SRCS += \
 ../src/Internet/httpServer/dataflash.c \
 ../src/Internet/httpServer/httpParser.c \
 ../src/Internet/httpServer/httpServer.c \
-../src/Internet/httpServer/httpUtil.c \
-../src/Internet/httpServer/romfile.c 
+../src/Internet/httpServer/httpUtil.c 
 
 OBJS += \
 ./src/Internet/httpServer/dataflash.o \
 ./src/Internet/httpServer/httpParser.o \
 ./src/Internet/httpServer/httpServer.o \
-./src/Internet/httpServer/httpUtil.o \
-./src/Internet/httpServer/romfile.o 
+./src/Internet/httpServer/httpUtil.o 
 
 C_DEPS += \
 ./src/Internet/httpServer/dataflash.d \
 ./src/Internet/httpServer/httpParser.d \
 ./src/Internet/httpServer/httpServer.d \
-./src/Internet/httpServer/httpUtil.d \
-./src/Internet/httpServer/romfile.d 
+./src/Internet/httpServer/httpUtil.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
