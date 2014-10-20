@@ -34,6 +34,7 @@
 #define		PTYPE_JSON		12		/**< JSON (JavaScript Standard Object Notation) file.	*/
 #define		PTYPE_PL		13		/**< PL file.	*/
 #define		PTYPE_PNG		14		/**< PNG file. 	*/
+#define		PTYPE_ICO		15		/**< ICON file. 	*/
 
 /* HTTP response */
 #define		STATUS_OK			200
@@ -90,6 +91,9 @@ static const char 	ERROR_REQUEST_PAGE[] = "HTTP/1.1 400 OK\r\nContent-Type: text
 
 /* Response head for JSON */
 #define RES_JSONHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: "
+
+/* Response head for PL */
+#define RES_ICOHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/x-icon\r\nContent-Length: "
 
 /* Response head for PL */
 #define RES_PLHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: "

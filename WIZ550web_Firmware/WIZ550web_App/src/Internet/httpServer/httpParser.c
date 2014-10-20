@@ -62,6 +62,7 @@ void make_http_response_head(
 	else if (type == PTYPE_JS)		head = RES_JSHEAD_OK;
 	else if (type == PTYPE_PL)		head = RES_PLHEAD_OK;
 	else if (type == PTYPE_PNG)		head = RES_PNGHEAD_OK;
+	else if (type == PTYPE_ICO)		head = RES_ICOHEAD_OK;
 #ifdef _HTTPPARSER_DEBUG_
 	else
 	{
@@ -104,6 +105,7 @@ void find_http_uri_type(
 	else if (strstr(buf, ".xml") 	|| strstr(buf,".XML"))	*type = PTYPE_XML;
 	else if (strstr(buf, ".css") 	|| strstr(buf,".CSS"))	*type = PTYPE_CSS;
 	else if (strstr(buf, ".png") 	|| strstr(buf,".PNG"))	*type = PTYPE_PNG;
+	else if (strstr(buf, ".ico") 	|| strstr(buf,".ICO"))	*type = PTYPE_ICO;
 	else 													*type = PTYPE_ERR;
 }
 

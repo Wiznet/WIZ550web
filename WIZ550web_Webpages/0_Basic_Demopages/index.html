@@ -2,12 +2,13 @@
  <html xmlns='http://www.w3.org/1999/xhtml'> 
  <head> 
  <title>WIZ550WEB</title> 
+ <!--link rel='shortcut icon' href='img/favicon.ico'--> 
  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' /> 
  <meta http-equiv='pragma' content='no-cache' /> 
- <meta http-equiv='content-type' content='no-cache, must-revalidate' /> 
+ <meta http-equiv='content-type' content='no-cache, must-revalidate' />  
  <style> 
  body{background-color:transparent;} 
- body,h3,p,div{margin:0;padding:0;font: normal 14px "omnes-pro", Helvetica, Arial, sans-serif;} 
+ body,h3,p,div{margin:0;padding:0;font: normal 14px 'omnes-pro', Helvetica, Arial, sans-serif;} 
  #header {
 	position: relative;	
 	margin: auto;
@@ -477,7 +478,7 @@
 		 dout.doPost('pin='+p+'&val='+str); 
 		 alert('Alias for D'+p+' changed.');
 	 },300); 	 	 
-	 setTimeout("updateIOAlias()",800*1);
+	 setTimeout('updateIOAlias()',800*1);
  } 
  
  function dir_change(o){
@@ -489,12 +490,12 @@
 		 }); 
 		 dout.doPost('pin='+p+'&dir='+v); 		 
 	 },300);
-	 setTimeout("updateIOAlias()",800*1);
+	 setTimeout('updateIOAlias()',800*1);
  }
  
  function io_status_factory_reset(){ 
  	var v=1;	 
-	if(confirm("Factory Reset: IO Direction / Status / Alias?"))
+	if(confirm('Factory Reset: IO Direction / Status / Alias?'))
 	{
 		 setTimeout(function(){ 		 
 			 dout=new AJAX('set_default_io_status.pl', function(t){ 
@@ -502,7 +503,7 @@
 			 }); 
 			 dout.doPost('io_reset='+v); 			 
 		 },300); 	 	 
-		 setTimeout("updateIOAlias()",1500*1);
+		 setTimeout('updateIOAlias()',1500*1);
 	}
  }
  
@@ -621,6 +622,8 @@
  	}
  }  
  </script> 
+ 
+ <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
  </head> 
  <body onload='init();'> 
  	 <div id='header'> 	 	 
@@ -641,7 +644,7 @@
 					 <p><label>Firmware version:</label><input type='text' id='txtFwver' size='20' disabled='disabled' value='' /></p> 
 					 <p>
 					 	<label for='txtDname'>Device name:</label>
-					 	<a href="#" class="tooltip">
+					 	<a href='#' class='tooltip'>
 							<input type='text' size='20' id='txtDname' name='devicename' maxlength='25' value='' onkeyup='len_chk(this);' />
 							<span> Up to 24 bytes </span>
 						</a>
