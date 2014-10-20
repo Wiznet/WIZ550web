@@ -50,7 +50,7 @@ static int8_t http_disconnect(uint8_t sn);
 static void http_process_handler(uint8_t s, st_http_request * p_http_request);
 static void send_http_response_header(uint8_t s, uint8_t content_type, uint32_t body_len, uint16_t http_status);
 static void send_http_response_body(uint8_t s, st_http_request * p_http_request, uint8_t * buf, uint32_t start_addr, uint32_t file_len);
-static void send_http_response_pl(uint8_t s, uint8_t * buf, uint8_t * http_body, uint16_t file_len);
+static void send_http_response_cgi(uint8_t s, uint8_t * buf, uint8_t * http_body, uint16_t file_len);
 
 /*****************************************************************************
  * Public functions
@@ -450,15 +450,15 @@ static void send_http_response_body(uint8_t s, st_http_request * p_http_request,
 	}
 }
 
-static void send_http_response_pl(uint8_t s, uint8_t * buf, uint8_t * http_body, uint16_t file_len)
+static void send_http_response_cgi(uint8_t s, uint8_t * buf, uint8_t * http_body, uint16_t file_len)
 {
 	uint16_t send_len = 0;
 	//uint16_t i;
 
 #ifdef _HTTPSERVER_DEBUG_
-	printf("> HTTPSocket[%d] : HTTP Response Header + Body - PL\r\n", s);
+	printf("> HTTPSocket[%d] : HTTP Response Header + Body - CGI\r\n", s);
 #endif
-	send_len = sprintf((char *)buf, "%s%d\r\n\r\n%s", RES_PLHEAD_OK, file_len, http_body);
+	send_len = sprintf((char *)buf, "%s%d\r\n\r\n%s", RES_CGIHEAD_OK, file_len, http_body);
 #ifdef _HTTPSERVER_DEBUG_
 	printf("> HTTPSocket[%d] : HTTP Response Header + Body - send len [ %d ]byte\r\n", s, send_len);
 #endif
@@ -525,20 +525,20 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 			printf("> HTTPSocket[%d] : Request URI = %s\r\n", s, uri_name);
 #endif
 
-			if(p_http_request->TYPE == PTYPE_PL)
+			if(p_http_request->TYPE == PTYPE_CGI)
 			{
-				content_found = http_get_pl_handler(uri_name, pHTTP_TX, &file_len);
-				if(content_found && (file_len <= (2048-(strlen(RES_PLHEAD_OK)+8))))
+				content_found = http_get_cgi_handler(uri_name, pHTTP_TX, &file_len);
+				if(content_found && (file_len <= (2048-(strlen(RES_CGIHEAD_OK)+8))))
 				{
-					send_http_response_pl(s, http_response, pHTTP_TX, (uint16_t)file_len);
+					send_http_response_cgi(s, http_response, pHTTP_TX, (uint16_t)file_len);
 				}
 				else
 				{
-					send_http_response_header(s, PTYPE_PL, 0, STATUS_NOT_FOUND);
+					send_http_response_header(s, PTYPE_CGI, 0, STATUS_NOT_FOUND);
 				}
 			}
 			else
-			{	// Not PL request, Web content in 'SD card' or 'Data flash' requested
+			{	// Not CGI request, Web content in 'SD card' or 'Data flash' requested
 #ifdef _USE_SDCARD_
 				if((fr = f_open(fs[get_seqnum], (const char *)uri_name, FA_READ)) == 0)
 				{
@@ -642,22 +642,22 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 			}
 #endif
 
-			if(p_http_request->TYPE == PTYPE_PL)	// HTTP POST Method; PL Process
+			if(p_http_request->TYPE == PTYPE_CGI)	// HTTP POST Method; CGI Process
 			{
-				content_found = http_post_pl_handler(post_name, p_http_request, http_response, &file_len);
+				content_found = http_post_cgi_handler(post_name, p_http_request, http_response, &file_len);
 #ifdef _HTTPSERVER_DEBUG_
-				printf("> HTTPSocket[%d] : [PL: %s] / Response len [ %ld ]byte\r\n", s, content_found?"Content found":"Content not found", file_len);
+				printf("> HTTPSocket[%d] : [CGI: %s] / Response len [ %ld ]byte\r\n", s, content_found?"Content found":"Content not found", file_len);
 #endif
-				if(content_found && (file_len <= (2048-(strlen(RES_PLHEAD_OK)+8))))
+				if(content_found && (file_len <= (2048-(strlen(RES_CGIHEAD_OK)+8))))
 				{
-					send_http_response_pl(s, pHTTP_TX, http_response, (uint16_t)file_len);
+					send_http_response_cgi(s, pHTTP_TX, http_response, (uint16_t)file_len);
 
 					// Reset H/W for apply the changed configuration information
 					if(content_found == HTTP_RESET) HTTPServer_ReStart();
 				}
 				else
 				{
-					send_http_response_header(s, PTYPE_PL, 0, STATUS_NOT_FOUND);
+					send_http_response_header(s, PTYPE_CGI, 0, STATUS_NOT_FOUND);
 				}
 			}
 			else	// HTTP POST Method; Content not found

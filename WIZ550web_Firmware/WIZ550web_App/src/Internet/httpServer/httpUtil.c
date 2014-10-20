@@ -23,34 +23,34 @@
 #include "dataflash.h"
 #endif
 
-uint8_t http_get_pl_handler(uint8_t * uri_name, uint8_t * buf, uint32_t * file_len)
+uint8_t http_get_cgi_handler(uint8_t * uri_name, uint8_t * buf, uint32_t * file_len)
 {
 	uint8_t ret = HTTP_OK;
 	uint16_t len = 0;
 
-	if(strcmp((const char *)uri_name, "widget.pl") == 0)
+	if(strcmp((const char *)uri_name, "widget.cgi") == 0)
 	{
 		make_basic_config_setting_json_callback(buf, &len);
 	}
-	else if(strcmp((const char *)uri_name, "io.pl") == 0)
+	else if(strcmp((const char *)uri_name, "io.cgi") == 0)
 	{
 		make_json_io_status(buf, &len);
 	}
-	else if(strcmp((const char *)uri_name, "io_alias.pl") == 0)
+	else if(strcmp((const char *)uri_name, "io_alias.cgi") == 0)
 	{
 		make_json_ioalias_status(buf, &len);
 	}
-	else if(strcmp((const char *)uri_name, "get_serial_data.pl") == 0)
+	else if(strcmp((const char *)uri_name, "get_serial_data.cgi") == 0)
 	{
 		make_json_serial_data(buf, &len);
 	}
-	else if(strcmp((const char *)uri_name, "adc.pl") == 0)
+	else if(strcmp((const char *)uri_name, "adc.cgi") == 0)
 	{
 		make_json_adc_status(buf, &len);
 	}
 	else
 	{
-		// PL file not found
+		// CGI file not found
 		ret = HTTP_FAILED;
 	}
 
@@ -59,43 +59,43 @@ uint8_t http_get_pl_handler(uint8_t * uri_name, uint8_t * buf, uint32_t * file_l
 	return ret;
 }
 
-uint8_t http_post_pl_handler(uint8_t * uri_name, st_http_request * p_http_request, uint8_t * buf, uint32_t * file_len)
+uint8_t http_post_cgi_handler(uint8_t * uri_name, st_http_request * p_http_request, uint8_t * buf, uint32_t * file_len)
 {
 	uint8_t ret = HTTP_OK;
 	uint16_t len = 0;
 	uint8_t * device_ip;
 	uint8_t val;
 
-	if(strcmp((const char *)uri_name, "config.pl") == 0)
+	if(strcmp((const char *)uri_name, "config.cgi") == 0)
 	{
 		device_ip = set_basic_config_setting(p_http_request->URI);
 		make_pl_basic_config_response_page(5, device_ip, buf, &len);
 
 		ret = HTTP_RESET;
 	}
-	else if(strcmp((const char *)uri_name, "dout.pl") == 0)
+	else if(strcmp((const char *)uri_name, "dout.cgi") == 0)
 	{
 		val = set_digital_io_output(p_http_request->URI);
 		sprintf((char *)buf, "%d", val);
 		len = 1;
 	}
-	else if(strcmp((const char *)uri_name, "save_alias.pl") == 0)
+	else if(strcmp((const char *)uri_name, "save_alias.cgi") == 0)
 	{
 		val = set_digital_io_alias(p_http_request->URI);
 		sprintf((char *)buf, "%d", val);
 		len = 1;
 	}
-	else if(strcmp((const char *)uri_name, "dir_change.pl") == 0)
+	else if(strcmp((const char *)uri_name, "dir_change.cgi") == 0)
 	{
 		val = set_digital_io_direction(p_http_request->URI);
 		sprintf((char *)buf, "%d", val);
 		len = 1;
 	}
-	else if(strcmp((const char *)uri_name, "tx_serial_data.pl") == 0)
+	else if(strcmp((const char *)uri_name, "tx_serial_data.cgi") == 0)
 	{
 		get_serial_data_from_web(p_http_request->URI);
 	}
-	else if(strcmp((const char *)uri_name, "set_default_io_status.pl") == 0)
+	else if(strcmp((const char *)uri_name, "set_default_io_status.cgi") == 0)
 	{
 		set_factory_default_io_status(p_http_request->URI);
 		len = 0;
@@ -103,7 +103,7 @@ uint8_t http_post_pl_handler(uint8_t * uri_name, st_http_request * p_http_reques
 	}
 	else
 	{
-		// PL file not found
+		// CGI file not found
 		ret = HTTP_FAILED;
 	}
 

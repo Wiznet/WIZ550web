@@ -316,7 +316,7 @@
 	 if(o.className=='do-led do-on pointer'){v='1';}else{v='0';} 
 	 dout_timer=setTimeout(function(){ 
 		 if(dout && dout.abort){dout.abort();} 
-		 dout=new AJAX('dout.pl', function(t){ 
+		 dout=new AJAX('dout.cgi', function(t){ 
 		 	try{
 		 		if(t=='1'){
 		 			o.setAttribute('class','do-led do-on pointer');
@@ -394,7 +394,7 @@
  function updateIO(){ 
 	 var oUpdate; 
 	 setTimeout(function(){
-	 	oUpdate=new AJAX('io.pl',function(t){
+	 	oUpdate=new AJAX('io.cgi',function(t){
 	 		try{eval(t);}catch(e){location.href='/';}
 	 });	 
 	 /*oUpdate.doPost('');},300);*/
@@ -419,7 +419,7 @@
  function updateIOAlias(){ 	 
 	 var oUpdate; 
 	 setTimeout(function(){
-	 	oUpdate=new AJAX('io_alias.pl', function(t){ 
+	 	oUpdate=new AJAX('io_alias.cgi', function(t){ 
 		 	try{eval(t);}catch(e){alert(e);} 
 		});
 	 	oUpdate.doGet();
@@ -472,7 +472,7 @@
 	 var p=o.attributes['pin'].value; 	 
 	 var str=$('txtAlias_d'+p).value;	 
 	 setTimeout(function(){ 		 
-		 dout=new AJAX('save_alias.pl', function(t){ 
+		 dout=new AJAX('save_alias.cgi', function(t){ 
 		 	try{eval(t);}catch(e){alert(e);} 
 		 }); 
 		 dout.doPost('pin='+p+'&val='+str); 
@@ -485,7 +485,7 @@
  	 var p=o.attributes['pin'].value;
  	 var v=o.value;
  	 setTimeout(function(){ 		 
-		 dout=new AJAX('dir_change.pl', function(t){ 
+		 dout=new AJAX('dir_change.cgi', function(t){ 
 		 	try{eval(t);}catch(e){alert(e);} 
 		 }); 
 		 dout.doPost('pin='+p+'&dir='+v); 		 
@@ -498,7 +498,7 @@
 	if(confirm('Factory Reset: IO Direction / Status / Alias?'))
 	{
 		 setTimeout(function(){ 		 
-			 dout=new AJAX('set_default_io_status.pl', function(t){ 
+			 dout=new AJAX('set_default_io_status.cgi', function(t){ 
 			 	try{eval(t);}catch(e){alert(e);} 
 			 }); 
 			 dout.doPost('io_reset='+v); 			 
@@ -528,7 +528,7 @@
  function updateADC(){ 
 	 var oUpdate; 
 	 setTimeout(function(){
-	 	oUpdate=new AJAX('adc.pl',function(t){try{eval(t);
+	 	oUpdate=new AJAX('adc.cgi',function(t){try{eval(t);
 	 	}catch(e){location.href='/';}
 	 });
 	 
@@ -553,7 +553,7 @@
  function getRs232Data(){ 
 	 var oUpdate; 
 	 setTimeout(function(){
-	 	oUpdate=new AJAX('get_serial_data.pl',function(t){try{eval(t);}catch(e){location.href='/';}}); 
+	 	oUpdate=new AJAX('get_serial_data.cgi',function(t){try{eval(t);}catch(e){location.href='/';}}); 
 	 	/*oUpdate.doPost('');*/
 	 	oUpdate.doGet();
 	 },300); 
@@ -592,7 +592,7 @@
 		 var len=tx_data.length; 
 		 if(len>0){ 
 			 var post_timer=setTimeout(function(){ 
-				 post_serial_data=new AJAX('tx_serial_data.pl', function(t){ 
+				 post_serial_data=new AJAX('tx_serial_data.cgi', function(t){ 
 				 	try{eval(t);}catch(e){alert(e);} 
 				 }); 
 				 post_serial_data.doPost('data='+tx_data);  
@@ -638,7 +638,7 @@
 			 <li><a href='#Serial' tabid='#tabs5' accesskey='5'>Serial Data</a></li> 			 
 		 </ul>  
 		 <div id='tabs1' class='show'> 
-			 <form id='frmParam' method='post' action='config.pl'> 
+			 <form id='frmParam' method='post' action='config.cgi'> 
 				 <h3>Device Information</h3> 
 				 <div class='ipt'> 
 					 <p><label>Firmware version:</label><input type='text' id='txtFwver' size='20' disabled='disabled' value='' /></p> 
@@ -1088,6 +1088,6 @@
 	 	&copy;Copyright 2014 WIZnet Co., Ltd.		
 		</center>
 	 </div> 
-	 <script type='text/javascript' src='widget.pl'></script>	 	
+	 <script type='text/javascript' src='widget.cgi'></script>	 	
  </body> 
  </html>
