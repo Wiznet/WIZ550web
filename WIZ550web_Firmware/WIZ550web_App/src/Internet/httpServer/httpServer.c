@@ -667,6 +667,8 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 			break;
 
 		default :
+			http_status = STATUS_BAD_REQ;
+			send_http_response_header(s, 0, 0, http_status);
 			break;
 	}
 }
