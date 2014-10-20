@@ -13,6 +13,7 @@
 
 //#define FACTORY_FW
 //#define FACTORY_FW_ONCE
+//#define FACTORY_FW_FLASH
 
 #define DELAY_COUNT    0xEFFFF  // just for test
 
@@ -272,7 +273,12 @@ void delay_ms (const uint32_t msec);
 #if defined(FACTORY_FW)
 int check_factory_flag (void);
 void check_factory_uart1 (void);
+void check_RS422 (uint8_t * buf);
 void save_factory_flag (void);
-void factory_test (void);
+void release_factory_flag (void);
+void factory_test_1st (void);
+void factory_test_2nd (void);
+
+extern int g_factoryfw_flag;
 #endif
 #endif

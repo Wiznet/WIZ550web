@@ -62,10 +62,6 @@
 uint8_t RX_BUF[DATA_BUF_SIZE];
 uint8_t TX_BUF[DATA_BUF_SIZE];
 
-#if defined(FACTORY_FW)
-int teststep = 0;
-#endif
-
 ////////////////////////////////
 // W5500 HW Socket Definition //
 ////////////////////////////////
@@ -239,9 +235,26 @@ int main(void)
 		if(value->options.dhcp_use)	DHCP_run();	// DHCP client handler
 
 #if defined(FACTORY_FW)
-		if(check_factory_flag() == 0)
+		if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_factoryfw_flag == 0))
 		{
-			factory_test();
+			printf("\r\n########## Factory Test is started.\r\n");
+			g_factoryfw_flag = 1;
+
+#if defined(FACTORY_FW_FLASH)
+			save_factory_flag();
+
+			if (check_factory_flag() == 1)
+			{
+				factory_test_1st();
+			}
+#else
+			factory_test_1st();
+#endif
+		}
+
+		if (g_factoryfw_flag == 1)
+		{
+			check_factory_uart1();
 		}
 #endif
 

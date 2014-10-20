@@ -19,7 +19,12 @@ void EXTI15_10_IRQHandler(void)
     if(EXTI_GetITStatus(EXTI_Line12) != RESET)
     {
         EXTI_ClearITPendingBit(EXTI_Line12);
-		if(check_factory_flag() == 0)
+#if defined(FACTORY_FW)
+#if defined(FACTORY_FW_FLASH)
+		if(check_factory_flag() == 1)
+#else
+		if(g_factoryfw_flag == 1)
+#endif
 		{
 			LED_Toggle(LED1);
 			if(get_IO_Status(D8) == On)
@@ -31,6 +36,7 @@ void EXTI15_10_IRQHandler(void)
 				printf("########## SW1 Released OK.\r\n");
 			}
 		}
+#endif
     }
 }
 
@@ -39,7 +45,12 @@ void EXTI2_IRQHandler(void)
     if(EXTI_GetITStatus(EXTI_Line2) != RESET)
     {
         EXTI_ClearITPendingBit(EXTI_Line2);
-		if(check_factory_flag() == 0)
+#if defined(FACTORY_FW)
+#if defined(FACTORY_FW_FLASH)
+		if(check_factory_flag() == 1)
+#else
+		if(g_factoryfw_flag == 1)
+#endif
 		{
 			LED_Toggle(LED1);
 			if(get_IO_Status(D9) == On)
@@ -51,6 +62,7 @@ void EXTI2_IRQHandler(void)
 				printf("########## SW2 Released OK.\r\n");
 			}
 		}
+#endif
     }
 }
 
@@ -59,7 +71,12 @@ void EXTI3_IRQHandler(void)
     if(EXTI_GetITStatus(EXTI_Line3) != RESET)
     {
         EXTI_ClearITPendingBit(EXTI_Line3);
-		if(check_factory_flag() == 0)
+#if defined(FACTORY_FW)
+#if defined(FACTORY_FW_FLASH)
+		if(check_factory_flag() == 1)
+#else
+		if(g_factoryfw_flag == 1)
+#endif
 		{
 			LED_Toggle(LED2);
 			if(get_IO_Status(D10) == On)
@@ -71,6 +88,7 @@ void EXTI3_IRQHandler(void)
 				printf("########## SW3 Released OK.\r\n");
 			}
 		}
+#endif
     }
 }
 
@@ -79,7 +97,12 @@ void EXTI4_IRQHandler(void)
 	if(EXTI_GetITStatus(EXTI_Line4) != RESET)
     {
         EXTI_ClearITPendingBit(EXTI_Line4);
-		if(check_factory_flag() == 0)
+#if defined(FACTORY_FW)
+#if defined(FACTORY_FW_FLASH)
+		if(check_factory_flag() == 1)
+#else
+		if(g_factoryfw_flag == 1)
+#endif
 		{
 			LED_Toggle(LED2);
 			if(get_IO_Status(D11) == On)
@@ -89,10 +112,10 @@ void EXTI4_IRQHandler(void)
 			else
 			{
 				printf("########## SW4 Released OK.\r\n");
-				printf("########## Please confirm the test result.\r\n");
-				//save_factory_flag();
+				//printf("########## Please confirm the test result.\r\n");
 			}
 		}
+#endif
     }
 }
 

@@ -156,10 +156,7 @@ void atc_run(void)
 		switch(recv_char) {
 			case 0x0d:	// CR(\r)
 #if defined(FACTORY_FW)
-				if(check_factory_flag() == 0)
-				{
-					printf("########## RS422 RX:%s\r\n", termbuf);
-				}
+				check_RS422((uint8_t *)termbuf);
 #endif
 				break;	//		do nothing
 			case 0x0a:	// LF(\n)
