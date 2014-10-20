@@ -314,11 +314,11 @@ void check_factory_uart1 (void)
 #if defined(FACTORY_FW_FLASH)
 		release_factory_flag();
 #else
-		g_factoryfw_flag = 0;
+		//g_factoryfw_flag = 0;
 #endif
 
 		delay_ms(200);
-		NVIC_SystemReset();
+		//NVIC_SystemReset();
 	}
 }
 
