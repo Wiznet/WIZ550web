@@ -15,7 +15,7 @@
 #include "uartHandler.h"
 #endif
 
-#define _WEB_DEBUG_
+//#define _WEB_DEBUG_
 
 #ifdef __GNUC__
   /* With GCC/RAISONANCE, small printf (option LD Linker->Libraries->Small printf
@@ -125,15 +125,19 @@ void NVIC_Configuration(void)
 // IWDG: STM32 Independent Watchdog Initialization
 void IWDG_Configureation(void)
 {
-	RCC_LSICmd(ENABLE); //open LSI
-	while(RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET);
+	//RCC_LSICmd(ENABLE); //open LSI
+	//while(RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET);
+	if(RCC_GetFlagStatus(RCC_FLAG_IWDGRST) != RESET)
+	{
+		RCC_ClearFlag();
+	}
 
 	IWDG_WriteAccessCmd(IWDG_WriteAccess_Enable);
 	IWDG_SetPrescaler(IWDG_Prescaler_128); // 40Khz / 128 = 0.31KHz; 1 / 0.31KHz = 3.22ms
 	//IWDG_SetReload(1250); // 1s, max 0xfff
 	IWDG_SetReload(0xfff); // 4095 * 3.22ms = 13185.9ms = 13 seconds; it means if IWDG was not reloaded, MCU will reset!
 
-	IWDG_ReloadCounter();
+	//IWDG_ReloadCounter();
 	IWDG_Enable();
 }
 
@@ -317,7 +321,7 @@ void check_factory_uart1 (void)
 		//g_factoryfw_flag = 0;
 #endif
 
-		delay_ms(200);
+		//delay_ms(200);
 		//NVIC_SystemReset();
 	}
 }
@@ -456,7 +460,7 @@ void factory_test_2nd (void)
 	// check D0~D7(output/off) D8~15 input/off
 	if (teststep == 3)
 	{
-		delay_ms(100);
+		//delay_ms(100);
 		fail_count = 0;
 		for(i = 0; i < IOn; i++)
 		{
