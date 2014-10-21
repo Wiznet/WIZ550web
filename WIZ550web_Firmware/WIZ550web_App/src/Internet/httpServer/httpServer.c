@@ -15,7 +15,7 @@
 #include "dataflash.h"
 #endif
 
-#define DATA_BUF_SIZE		MAX_URI_SIZE
+#define DATA_BUF_SIZE		2048
 
 /*****************************************************************************
  * Private types/enumerations/variables
@@ -453,7 +453,6 @@ static void send_http_response_body(uint8_t s, st_http_request * p_http_request,
 static void send_http_response_cgi(uint8_t s, uint8_t * buf, uint8_t * http_body, uint16_t file_len)
 {
 	uint16_t send_len = 0;
-	//uint16_t i;
 
 #ifdef _HTTPSERVER_DEBUG_
 	printf("> HTTPSocket[%d] : HTTP Response Header + Body - CGI\r\n", s);
