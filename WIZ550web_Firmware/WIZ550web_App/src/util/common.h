@@ -310,6 +310,8 @@
 #define APP_BASE		0x8006000
 #define WORK_BUF_SIZE	1024
 
+#define DATA_BUF_SIZE   2048
+
 extern uint8_t op_mode;
 
 

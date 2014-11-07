@@ -38,6 +38,7 @@
 #include "atcmd.h"
 #include "dhcp.h"
 #include "dhcp_cb.h"
+#include "ftpd.h"
 
 #ifdef _USE_SDCARD_
 #include "ff.h"
@@ -65,11 +66,19 @@ uint8_t TX_BUF[DATA_BUF_SIZE];
 ////////////////////////////////
 // W5500 HW Socket Definition //
 ////////////////////////////////
+#if defined(F_APP_FTP)
+#define MAX_HTTPSOCK	4
+#else
 #define MAX_HTTPSOCK	5
+#endif
 
 #define SOCK_CONFIG		0
 #define SOCK_DHCP		1
+#if defined(F_APP_FTP)
+uint8_t socknumlist[] = {4, 5, 6, 7};
+#else
 uint8_t socknumlist[] = {3, 4, 5, 6, 7};
+#endif
 //////////////////////////////////////////
 
 /*****************************************************************************
@@ -90,6 +99,9 @@ int main(void)
 	uint8_t i;
 #if defined (_MAIN_DEBUG_) && defined (_USE_SDCARD_)
 	uint8_t ret;
+#endif
+#if defined(F_APP_FTP)
+	wiz_NetInfo gWIZNETINFO;
 #endif
 
 	S2E_Packet *value = get_S2E_Packet_pointer();
@@ -217,6 +229,11 @@ int main(void)
 #endif
 	IO_status_init();
 
+#if defined(F_APP_FTP)
+	ctlnetwork(CN_GET_NETINFO, (void*) &gWIZNETINFO);
+	ftpd_init(1, 2, gWIZNETINFO.ip);	// Added by James for FTP
+#endif
+
 #ifdef _USE_WATCHDOG_
 	// IWDG Initialization: STM32 Independent WatchDog
 	IWDG_Configureation();
@@ -260,6 +277,9 @@ int main(void)
 
 		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);
 
+#if defined(F_APP_FTP)
+		ftpd_run(RX_BUF);
+#endif
 #ifdef _USE_WATCHDOG_
 		IWDG_ReloadCounter(); // Feed IWDG
 #endif

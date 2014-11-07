@@ -12,6 +12,7 @@
 
 #include "diskio.h"
 #include "mmc_sd.h"
+#include "dataflash.h"
 
 /*-----------------------------------------------------------------------*/
 /* Correspondence between physical drive number and physical drive.      */
@@ -20,9 +21,16 @@
 
 #define SECTOR_SIZE 512U
 
+int rtc_year = 2014;
+int rtc_month = 10;
+int rtc_day = 31;
+int rtc_hour = 10;
+int rtc_min = 10;
+int rtc_sec = 30;
+
 //u32 buff2[512/4];
 /*-----------------------------------------------------------------------*/
-/* Inidialize a Drive                                                    */
+/* Initialize a Drive                                                    */
 
 DSTATUS disk_initialize (
 	BYTE drv				/* Physical drive nmuber (0..) */
@@ -225,8 +233,20 @@ DRESULT disk_ioctl (
     return res;
 }
 
-DWORD get_fattime(void){
-	return 0;
+DWORD get_fattime(void)
+{
+	DWORD tmr = 0;
+
+	//__disable_irq();
+	tmr = (((DWORD)rtc_year - 1980) << 25)
+		 | ((DWORD)rtc_month << 21)
+		 | ((DWORD)rtc_day << 16)
+		 | ((WORD)rtc_hour << 11)
+		 | ((WORD)rtc_min << 5)
+		 | ((WORD)rtc_sec << 1);
+	//__enable_irq();
+
+	return tmr;
 }
 
 

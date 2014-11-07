@@ -76,6 +76,7 @@
 									<listOptionValue builtIn="false" value="../src/Ethernet"/>
 									<listOptionValue builtIn="false" value="../src/Ethernet/W5500"/>
 									<listOptionValue builtIn="false" value="../src/Internet/DHCP"/>
+									<listOptionValue builtIn="false" value="../src/Internet/FTPServer"/>
 									<listOptionValue builtIn="false" value="../src/Internet/httpServer"/>
 									<listOptionValue builtIn="false" value="../src/netutil"/>
 									<listOptionValue builtIn="false" value="../src/PlatformHandler"/>
@@ -245,6 +246,7 @@
 									<listOptionValue builtIn="false" value="../src/Ethernet"/>
 									<listOptionValue builtIn="false" value="../src/Ethernet/W5500"/>
 									<listOptionValue builtIn="false" value="../src/Internet/DHCP"/>
+									<listOptionValue builtIn="false" value="../src/Internet/FTPServer"/>
 									<listOptionValue builtIn="false" value="../src/Internet/httpServer"/>
 									<listOptionValue builtIn="false" value="../src/netutil"/>
 									<listOptionValue builtIn="false" value="../src/PlatformHandler"/>
