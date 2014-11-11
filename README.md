@@ -14,10 +14,15 @@
   - RS-232C / RS-422 interface
 
 <!-- WIZ550web Baseboard pic -->
-![WIZ550web Baseboard](http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_baseboard_front.png "WIZ550web Baseboard")
+<p align="center">
+	<img width="70%" src="http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_baseboard_front.png" />
+</p>
 
 <!-- WIZ550web EVB pic -->
-![WIZ550web EVB](http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_evb_side.png "WIZ550web EVB")
+<p align="center">
+	<img width="70%" src="http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_evb_side.png" />
+</p>
+
 
 For more details, please refer to [WIZ550web Wiki page](http://wizwiki.net/wiki/doku.php?id=products:wiz550web:start) in [WIZnet Wiki](http://wizwiki.net).
 
