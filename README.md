@@ -51,7 +51,7 @@ These are Firmware projects (source code) based on Eclipse IDE for C/C++ Develop
   - Application
   - Boot
 - Web page examples
-  - Basic Demo pages
+  - [Basic Demo Web Pages](http://wizwiki.net/wiki/doku.php?id=products:wiz550web:wiz550webgsg_en#basic_demo_web_pages)
 - Configuration tool (Java)
   - [Download Page Link](http://wizwiki.net/wiki/doku.php?id=products:wiz550web:wiz550web_download)
 
