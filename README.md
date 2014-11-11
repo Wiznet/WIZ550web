@@ -2,30 +2,31 @@
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
 - Provided firmware / web page examples are able to customize depending on the user's objectives
 - 16-Configurable Digital I/O, 4-ADC Input, 2-UART
-- WIZ550web Module
-  - 74.4mm(W) x 30mm(L) x 24mm(H) (±0.5)
+
+##Images
+###WIZ550web Module
+- 74.4mm(W) x 30mm(L) x 24mm(H) (±0.5)
 
 <!-- WIZ550web pic -->
 ![WIZ550web](http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_front.png "WIZ550web")
 
-- WIZ550web Baseboard (Separate purchases)
-  - DC 9~24V Power Input
-  - Digital Output 8EA (Relay - HR91C-05)
-  - Digital Input 8EA (Photocouplers - TLP290-4)
-  - Analog Input 4EA
-  - RS-232C / RS-422 interface
-  - 145mm(W) x 85mm(L) x 28mm(H) (±0.5)
+###WIZ550web Baseboard (Separate purchases)
+- DC 9~24V Power Input
+- Digital Output 8EA (Relay - HR91C-05)
+- Digital Input 8EA (Photocouplers - TLP290-4)
+- Analog Input 4EA
+- RS-232C / RS-422 interface
+- 145mm(W) x 85mm(L) x 28mm(H) (±0.5)
 
 <!-- WIZ550web Baseboard pic -->
 <p align="center">
-	<img width="70%" src="http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_baseboard_front.png" />
+  <img width="70%" src="http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_baseboard_front.png" />
 </p>
 
 <!-- WIZ550web EVB pic -->
 <p align="center">
-	<img width="70%" src="http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_evb_side.png" />
+  <img width="70%" src="http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_evb_side.png" />
 </p>
-
 
 For more details, please refer to [WIZ550web Wiki page](http://wizwiki.net/wiki/doku.php?id=products:wiz550web:start) in [WIZnet Wiki](http://wizwiki.net).
 
