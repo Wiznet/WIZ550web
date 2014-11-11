@@ -19,7 +19,7 @@
 <!-- WIZ550web EVB pic -->
 ![WIZ550web EVB](http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_evb_side.png "WIZ550web EVB")
 
-For more details, please refer to [WIZ550web Wiki page](http://wizwiki.net/wiki/doku.php?id=products:w5500:wiz550web:start) in [WIZnet Wiki](http://wizwiki.net).
+For more details, please refer to [WIZ550web Wiki page](http://wizwiki.net/wiki/doku.php?id=products:wiz550web:start) in [WIZnet Wiki](http://wizwiki.net).
 
 ##Features
 - WIZnet W5500 Hardwired TCP/IP chip
