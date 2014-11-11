@@ -2,12 +2,16 @@
 - Embedded Web server module for Things based on WIZnet W5500 hardwired TCP/IP chip (Non-OS)
 - Provided firmware / web page examples are able to customize depending on the user's objectives
 - 16-Configurable Digital I/O, 4-ADC Input, 2-UART
-
 - WIZ550web Module
 <!-- WIZ550web pic -->
 ![WIZ550web](http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_front.png "WIZ550web")
 
 - WIZ550web Baseboard (Separate purchases)
+  - DC 9~24V Power Input
+  - Digital Output 8EA (Relay - HR91C-05)
+  - Digital Input 8EA (Photocouplers - TLP290-4)
+  - Analog Input 4EA
+  - RS-232C / RS-422 interface
 <!-- WIZ550web Baseboard pic -->
 ![WIZ550web Baseboard](http://wizwiki.net/wiki/lib/exe/fetch.php?media=products:wiz550web:wiz550web_baseboard_front.png "WIZ550web Baseboard")
 
