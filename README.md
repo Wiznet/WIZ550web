@@ -36,7 +36,7 @@ For more details, please refer to [WIZ550web Wiki page](http://wizwiki.net/wiki/
   - Hardwired TCP/IP embedded Ethernet controller
   - SPI (Serial Peripheral Interface) Microcontroller Interface
   - Hardwired TCP/IP stack supports TCP, UDP, IPv4, ICMP, ARP, IGMP, and PPPoE protocols
-  - Easy to implement of the other network protocols
+  - Easy to implement the other network protocols
 - ST Microelectronics STM32F103RBT6
   - ARM 32-bit Cortex™-M3 microcontroller running at up to 72MHz
   - 128kB on-chip flash / 20kB on-chip SRAM / Various peripherals
