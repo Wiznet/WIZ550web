@@ -12,6 +12,9 @@
 
 #include "diskio.h"
 #include "mmc_sd.h"
+#include "dataflash.h"
+#include "ffconf.h"
+#include "boardutil.h"
 
 /*-----------------------------------------------------------------------*/
 /* Correspondence between physical drive number and physical drive.      */
@@ -20,21 +23,30 @@
 
 #define SECTOR_SIZE 512U
 
+#if 1
+int rtc_year = 2014;
+int rtc_month = 12;
+int rtc_day = 31;
+int rtc_hour = 10;
+int rtc_min = 10;
+int rtc_sec = 30;
+
 //u32 buff2[512/4];
 /*-----------------------------------------------------------------------*/
-/* Inidialize a Drive                                                    */
+/* Initialize a Drive                                                    */
 
 DSTATUS disk_initialize (
-	BYTE drv				/* Physical drive nmuber (0..) */
+	BYTE pdrv				/* Physical drive nmuber (0..) */
 )
 {
     u8 state;
 
-    if(drv)
+    if(pdrv)
     {
         return STA_NOINIT;  // only supports the operation of the disk 0
     }
 
+#if !defined(SPI_FLASH)
     state = SD_Init();
     if(state == STA_NODISK)
     {
@@ -48,18 +60,22 @@ DSTATUS disk_initialize (
     {
         return 0;           // initialization succeeded
     }
+#else
+	return 0;
+#endif
 }
 
 
 
 /*-----------------------------------------------------------------------*/
-/* Return Disk Status                                                    */
+/* Get Disk Status                                                       */
+/*-----------------------------------------------------------------------*/
 
 DSTATUS disk_status (
-	BYTE drv		/* Physical drive nmuber (0..) */
+	BYTE pdrv		/* Physical drive nmuber (0..) */
 )
 {	
-    if(drv)
+    if(pdrv)
     {
         return STA_NOINIT;  // only supports disk-0 operation
     }
@@ -76,16 +92,17 @@ DSTATUS disk_status (
 
 /*-----------------------------------------------------------------------*/
 /* Read Sector(s)                                                        */
+/*-----------------------------------------------------------------------*/
 
 DRESULT disk_read (
-	BYTE drv,		/* Physical drive nmuber (0..) */
+	BYTE pdrv,		/* Physical drive nmuber (0..) */
 	BYTE *buff,		/* Data buffer to store read data */
 	DWORD sector,	/* Sector address (LBA) */
-	BYTE count		/* Number of sectors to read (1..255) */
+	UINT count		/* Number of sectors to read (1..128) */
 )
 {
 	u8 res=0;
-    if (drv || !count)
+    if (pdrv || !count)
     {    
         return RES_PARERR;  // only supports single disk operation, count is not equal to 0, otherwise parameter error
     }
@@ -94,8 +111,9 @@ DRESULT disk_read (
    //     return RES_NOTRDY;  // does not detect SD card, NOT READY error reported
    // }
 
-    
-	
+	//printf("-----> disk_read sector:%d count:%d buf:%s\r\n", sector, count, buff);
+
+#if !defined(SPI_FLASH)
     if(count==1) // sector reads 1
     {                                                
         res = SD_ReadSingleBlock(sector, buff);      
@@ -124,6 +142,13 @@ DRESULT disk_read (
     {
         return RES_ERROR;
     }
+#else
+
+    //memset(buff, 0xff, _MAX_SS);
+   	read_from_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
+
+   	return 0;
+#endif
 }
 
 
@@ -131,17 +156,17 @@ DRESULT disk_read (
 /*-----------------------------------------------------------------------*/
 /* Write Sector(s)                                                       */
 
-#if _READONLY == 0
+#if _USE_WRITE
 DRESULT disk_write (
-	BYTE drv,			/* Physical drive nmuber (0..) */
+	BYTE pdrv,			/* Physical drive nmuber (0..) */
 	const BYTE *buff,	/* Data to be written */
 	DWORD sector,		/* Sector address (LBA) */
-	BYTE count			/* Number of sectors to write (1..255) */
+	UINT count			/* Number of sectors to write (1..128) */
 )
 {
 	u8 res;
 
-    if (drv || !count)
+    if (pdrv || !count)
     {    
         return RES_PARERR;  // only supports single disk operation, count is not equal to 0, otherwise parameter error
     }
@@ -151,6 +176,9 @@ DRESULT disk_write (
         return RES_NOTRDY;  // does not detect SD card, NOT READY error reported
     }  */
 
+	//printf("-----> disk_write sector:%d count:%d buf:%s\r\n", sector, count, buff);
+
+#if !defined(SPI_FLASH)
     // Read and write operations
     if(count == 1)
     {
@@ -169,17 +197,25 @@ DRESULT disk_write (
     {
         return RES_ERROR;
     }
+#else
+   	if(g_mkfs_done == 1)
+   	{
+   		write_to_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
+   	}
+
+   	return 0;
+#endif
 }
 #endif /* _READONLY */
-
 
 
 /*-----------------------------------------------------------------------*/
 /* Miscellaneous Functions                                               */
 
+#if _USE_IOCTL
 DRESULT disk_ioctl (
-	BYTE drv,		/* Physical drive nmuber (0..) */
-	BYTE ctrl,		/* Control code */
+	BYTE pdrv,		/* Physical drive nmuber (0..) */
+	BYTE cmd,		/* Control code */
 	void *buff		/* Buffer to send/receive control data */
 )
 {
@@ -187,13 +223,14 @@ DRESULT disk_ioctl (
     DRESULT res;
 
 
-    if (drv)
+    if (pdrv)
     {    
         return RES_PARERR;  // only supports single disk operation, or return parameter error
     }
-    
+
+#if !defined(SPI_FLASH)
     // FATFS only deal with the current version of CTRL_SYNC, GET_SECTOR_COUNT, GET_BLOCK_SIZ three commands
-    switch(ctrl)
+    switch(cmd)
     {
     case CTRL_SYNC:
         MSD_CS_ENABLE();
@@ -221,15 +258,56 @@ DRESULT disk_ioctl (
         res = RES_PARERR;
         break;
     }
+#else
+    switch(cmd)
+    {
+    case CTRL_SYNC:
+    	Flash_WaitReady();
+        res = RES_OK;
+        break;
+
+    case GET_SECTOR_SIZE:
+        *(WORD*)buff = 512;
+        res = RES_OK;
+        break;
+
+    case GET_BLOCK_SIZE:
+        *(WORD*)buff = 1;
+        res = RES_OK;
+        break;
+
+    case GET_SECTOR_COUNT:
+        *(DWORD*)buff = 1024;//2048;
+        res = RES_OK;
+        break;
+
+    default:
+        res = RES_PARERR;
+        break;
+    }
+#endif
 
     return res;
 }
+#endif
 
-DWORD get_fattime(void){
-	return 0;
+DWORD get_fattime(void)
+{
+	DWORD tmr = 0;
+
+	//__disable_irq();
+	tmr = (((DWORD)rtc_year - 1980) << 25)
+		 | ((DWORD)rtc_month << 21)
+		 | ((DWORD)rtc_day << 16)
+		 | ((WORD)rtc_hour << 11)
+		 | ((WORD)rtc_min << 5)
+		 | ((WORD)rtc_sec << 1);
+	//__enable_irq();
+
+	return tmr;
 }
 
-
+#endif
 
 
 

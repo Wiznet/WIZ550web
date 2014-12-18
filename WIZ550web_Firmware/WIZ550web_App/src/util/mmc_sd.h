@@ -102,6 +102,7 @@ u8 SD_Read_Bytes (unsigned long address, unsigned char * buf, unsigned int offse
 u8 SD_WaitReady(void);
 
 extern void bsp_sd_gpio_init(void);
+extern int g_mkfs_done;
 
 #endif
 

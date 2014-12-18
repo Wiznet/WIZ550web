@@ -56,7 +56,8 @@ typedef enum card_type_id {
 	CARD_MMC,
 	CARD_SD,
 	CARD_SD2,
-	CARD_SDHC
+	CARD_SDHC,
+	SPI_FLASHM
 } card_type_id_t;
 
 

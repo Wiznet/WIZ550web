@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include "boardutil.h"
 #include "types.h"
+#include "userHandler.h"
 
 #if defined(FACTORY_FW)
 #include "adcHandler.h"
@@ -38,6 +39,10 @@ const uint32_t GPIO_CLK[LEDn] = {LED1_GPIO_CLK, LED2_GPIO_CLK};
 #if defined(FACTORY_FW)
 int teststep = 0;
 int g_factoryfw_flag = 0;
+#endif
+
+#if defined(SPI_FLASH)
+int g_spiflash_flag = 0;
 #endif
 
 /**
@@ -593,3 +598,39 @@ void factory_test_2nd (void)
 
 #endif
 
+#if defined(SPI_FLASH)
+extern IOStorage IOdata;
+int check_spiflash_flag(void)
+{
+	int ret = 0;
+
+	read_IOstorage(&IOdata, sizeof(IOdata));
+
+	if(IOdata.spiflash_flag[0] == 0xFF && IOdata.spiflash_flag[1] == 0xFF)
+	{
+		ret = 1;
+	}
+	else if(IOdata.spiflash_flag[0] == 0xAE && IOdata.spiflash_flag[1] == 0xAE)
+	{
+		ret = 0;
+	}
+
+	return ret;
+}
+
+void save_spiflash_flag(void)
+{
+	IOdata.spiflash_flag[0] = 0xAE;
+	IOdata.spiflash_flag[1] = 0xAE;
+
+	write_IOstorage(&IOdata, sizeof(IOdata));
+}
+
+void release_factory_flag(void)
+{
+	IOdata.spiflash_flag[0] = 0xFF;
+	IOdata.spiflash_flag[1] = 0xFF;
+
+	write_IOstorage(&IOdata, sizeof(IOdata));
+}
+#endif
