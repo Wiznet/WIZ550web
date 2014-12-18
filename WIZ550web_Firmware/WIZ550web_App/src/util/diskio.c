@@ -41,28 +41,14 @@ DSTATUS disk_initialize (
 {
     u8 state;
 
+#if 0
     if(pdrv)
     {
         return STA_NOINIT;  // only supports the operation of the disk 0
     }
-
-#if !defined(SPI_FLASH)
-    state = SD_Init();
-    if(state == STA_NODISK)
-    {
-        return STA_NODISK;
-    }
-    else if(state != 0)
-    {
-        return STA_NOINIT;  // other error: initialization failed
-    }
-    else
-    {
-        return 0;           // initialization succeeded
-    }
-#else
-	return 0;
 #endif
+
+   	return 0;
 }
 
 
@@ -75,10 +61,12 @@ DSTATUS disk_status (
 	BYTE pdrv		/* Physical drive nmuber (0..) */
 )
 {	
+#if 0
     if(pdrv)
     {
         return STA_NOINIT;  // only supports disk-0 operation
     }
+#endif
 
 	// Check whether the inserted SD card
 	//  if(!SD_DET())
@@ -102,7 +90,7 @@ DRESULT disk_read (
 )
 {
 	u8 res=0;
-    if (pdrv || !count)
+    if (!count)
     {    
         return RES_PARERR;  // only supports single disk operation, count is not equal to 0, otherwise parameter error
     }
@@ -113,42 +101,44 @@ DRESULT disk_read (
 
 	//printf("-----> disk_read sector:%d count:%d buf:%s\r\n", sector, count, buff);
 
-#if !defined(SPI_FLASH)
-    if(count==1) // sector reads 1
-    {                                                
-        res = SD_ReadSingleBlock(sector, buff);      
-    }                                                
-    else // multiple sector read operations
-    {                                                
-        res = SD_ReadMultiBlock(sector, buff, count);
-    }                                                
-	/*
-    do                           
-    {                                          
-        if(SD_ReadSingleBlock(sector, buff)!=0)
-        {                                      
-            res = 1;                           
-            break;                             
-        }                                      
-        buff+=512;                             
-    }while(--count);                                         
-    */
-    // Process the return value, the return value of the SPI_SD_driver.c the return value turned into ff.c
-    if(res == 0x00)
+    if(g_sdcard_done == 1)
     {
-        return RES_OK;
+		if(count==1) // sector reads 1
+		{
+			res = SD_ReadSingleBlock(sector, buff);
+		}
+		else // multiple sector read operations
+		{
+			res = SD_ReadMultiBlock(sector, buff, count);
+		}
+		/*
+		do
+		{
+			if(SD_ReadSingleBlock(sector, buff)!=0)
+			{
+				res = 1;
+				break;
+			}
+			buff+=512;
+		}while(--count);
+		*/
+		// Process the return value, the return value of the SPI_SD_driver.c the return value turned into ff.c
+		if(res == 0x00)
+		{
+			return RES_OK;
+		}
+		else
+		{
+			return RES_ERROR;
+		}
     }
-    else
+    else if(g_sdcard_done == 0)
     {
-        return RES_ERROR;
+		//memset(buff, 0xff, _MAX_SS);
+		read_from_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
+
+		return 0;
     }
-#else
-
-    //memset(buff, 0xff, _MAX_SS);
-   	read_from_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
-
-   	return 0;
-#endif
 }
 
 
@@ -166,7 +156,7 @@ DRESULT disk_write (
 {
 	u8 res;
 
-    if (pdrv || !count)
+    if (!count)
     {    
         return RES_PARERR;  // only supports single disk operation, count is not equal to 0, otherwise parameter error
     }
@@ -178,33 +168,36 @@ DRESULT disk_write (
 
 	//printf("-----> disk_write sector:%d count:%d buf:%s\r\n", sector, count, buff);
 
-#if !defined(SPI_FLASH)
-    // Read and write operations
-    if(count == 1)
+    if(g_sdcard_done == 1)
     {
-        res = SD_WriteSingleBlock(sector, buff);
+		// Read and write operations
+		if(count == 1)
+		{
+			res = SD_WriteSingleBlock(sector, buff);
+		}
+		else
+		{
+			res = SD_WriteMultiBlock(sector, buff, count);
+		}
+		// Return value to
+		if(res == 0)
+		{
+			return RES_OK;
+		}
+		else
+		{
+			return RES_ERROR;
+		}
     }
-    else
+    else if(g_sdcard_done == 0)
     {
-        res = SD_WriteMultiBlock(sector, buff, count);
-    }
-    // Return value to
-    if(res == 0)
-    {
-        return RES_OK;
-    }
-    else
-    {
-        return RES_ERROR;
-    }
-#else
-   	if(g_mkfs_done == 1)
-   	{
-   		write_to_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
-   	}
+		if(g_mkfs_done == 1)
+		{
+			write_to_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
+		}
 
-   	return 0;
-#endif
+		return 0;
+    }
 }
 #endif /* _READONLY */
 
@@ -222,70 +215,76 @@ DRESULT disk_ioctl (
 
     DRESULT res;
 
-
+#if 0
     if (pdrv)
     {    
         return RES_PARERR;  // only supports single disk operation, or return parameter error
     }
-
-#if !defined(SPI_FLASH)
-    // FATFS only deal with the current version of CTRL_SYNC, GET_SECTOR_COUNT, GET_BLOCK_SIZ three commands
-    switch(cmd)
-    {
-    case CTRL_SYNC:
-        MSD_CS_ENABLE();
-        if(SD_WaitReady()==0)
-        {
-            res = RES_OK;
-        }
-        else
-        {
-            res = RES_ERROR;
-        }
-        MSD_CS_DISABLE();
-        break;
-        
-    case GET_BLOCK_SIZE:
-        *(WORD*)buff = 512;
-        res = RES_OK;
-        break;
-
-    case GET_SECTOR_COUNT:
-        *(DWORD*)buff = SD_GetCapacity();
-        res = RES_OK;
-        break;
-    default:
-        res = RES_PARERR;
-        break;
-    }
-#else
-    switch(cmd)
-    {
-    case CTRL_SYNC:
-    	Flash_WaitReady();
-        res = RES_OK;
-        break;
-
-    case GET_SECTOR_SIZE:
-        *(WORD*)buff = 512;
-        res = RES_OK;
-        break;
-
-    case GET_BLOCK_SIZE:
-        *(WORD*)buff = 1;
-        res = RES_OK;
-        break;
-
-    case GET_SECTOR_COUNT:
-        *(DWORD*)buff = 1024;//2048;
-        res = RES_OK;
-        break;
-
-    default:
-        res = RES_PARERR;
-        break;
-    }
 #endif
+
+    if(g_sdcard_done == 1)
+    {
+		// FATFS only deal with the current version of CTRL_SYNC, GET_SECTOR_COUNT, GET_BLOCK_SIZ three commands
+		switch(cmd)
+		{
+		case CTRL_SYNC:
+			MSD_CS_ENABLE();
+			if(SD_WaitReady()==0)
+			{
+				res = RES_OK;
+			}
+			else
+			{
+				res = RES_ERROR;
+			}
+			MSD_CS_DISABLE();
+			break;
+
+		case GET_BLOCK_SIZE:
+			*(WORD*)buff = 512;
+			res = RES_OK;
+			break;
+
+		case GET_SECTOR_COUNT:
+			*(DWORD*)buff = SD_GetCapacity();
+			res = RES_OK;
+			break;
+		default:
+			res = RES_PARERR;
+			break;
+		}
+    }
+    else if(g_sdcard_done == 0)
+    {
+		switch(cmd)
+		{
+		case CTRL_SYNC:
+#if defined(SPI_FLASH)
+			Flash_WaitReady();
+#endif
+			res = RES_OK;
+			break;
+
+		case GET_SECTOR_SIZE:
+			*(WORD*)buff = 512;
+			res = RES_OK;
+			break;
+
+		case GET_BLOCK_SIZE:
+			*(WORD*)buff = 1;
+			res = RES_OK;
+			break;
+
+		case GET_SECTOR_COUNT:
+			*(DWORD*)buff = 1024;//2048;
+			res = RES_OK;
+			break;
+
+		default:
+			res = RES_PARERR;
+			break;
+		}
+    }
 
     return res;
 }

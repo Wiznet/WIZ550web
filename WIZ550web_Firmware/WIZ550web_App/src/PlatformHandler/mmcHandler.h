@@ -63,5 +63,7 @@ typedef enum card_type_id {
 
 
 uint8_t mmc_mount();
+uint8_t flash_mount();
 FRESULT getMountedMemorySize(uint32_t * totalSize, uint32_t * availableSize);
 void Delay_ms(uint32_t ms);
+uint8_t mmc_select();

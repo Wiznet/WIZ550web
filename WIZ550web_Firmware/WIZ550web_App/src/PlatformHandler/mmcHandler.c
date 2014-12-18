@@ -15,6 +15,7 @@ static void stm32_dma_transfer(uint8_t receive, const BYTE *buff, uint16_t btr);
 #endif
 
 FATFS ff;
+FATFS Fatfs[0];
 card_type_id_t card_type = NO_CARD;
 
 enum speed_setting { INTERFACE_SLOW, INTERFACE_FAST };
@@ -596,12 +597,10 @@ uint8_t mmc_mount()
 	}
 #else
 	FRESULT res;
+    u8 state;
 
 	bsp_sd_gpio_init();
 
-#if defined(SPI_FLASH)
-	DataFlash_Init();
-#endif
     //disk_initialize(0);
 	/*
     if( disk_initialize(0) == 0 )
@@ -609,6 +608,48 @@ uint8_t mmc_mount()
     else
     	printf("\r\nSD initialize failed.\r\n");
 	*/
+
+	g_sdcard_done = 0;
+#if !defined(SPI_FLASH_ONLY)
+	state = SD_Init();
+#endif
+    printf("SD_Init:%d\r\n", state);
+	if(state == STA_NODISK)
+	{
+		return NO_CARD;
+	}
+	else if(state != 0)
+	{
+		return NO_CARD;
+	}
+	else
+	{
+		res = f_mount(&ff,"0:",0);
+	    printf("f_mount:%d\r\n", res);
+		g_sdcard_done = 1;
+
+		return SD_Type;
+	}
+#endif
+
+	return NO_CARD;//0
+}
+
+uint8_t flash_mount()
+{
+#if 0
+	if(mmc_init())
+	{
+		f_mount(0, &ff);
+		return card_type;
+	}
+#else
+	FRESULT res;
+
+	DataFlash_Init();
+
+	//disk_initialize(1);
+
     res = f_mount(&ff,"0:",0);
     printf("f_mount:%d\r\n", res);
 
@@ -624,15 +665,8 @@ uint8_t mmc_mount()
     g_mkfs_done = 1;
 #endif
 
-#if !defined(SPI_FLASH)
-	return (SD_Type+1);
-#else
 	return SPI_FLASHM;
 #endif
-
-#endif
-
-	return NO_CARD;//0
 }
 
 //*******************************************************************************

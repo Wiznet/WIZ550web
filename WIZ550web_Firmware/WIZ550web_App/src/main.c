@@ -85,8 +85,18 @@ uint8_t socknumlist[] = {3, 4, 5, 6, 7};
 #endif
 //////////////////////////////////////////
 
+#if 0
+FIL file;
+char szbuff[200];
+FATFS fs;            // Work area (file system object) for logical drive
+DIR dirs;
+FRESULT res;
+FILINFO finfo;
+UINT br;
+#endif
 
 int g_mkfs_done = 0;
+int g_sdcard_done = 0;
 
 /*****************************************************************************
  * Private functions
@@ -211,6 +221,9 @@ int main(void)
 		printf("\r\n - Can't mount SD card: Please Reboot WIZ550WEB Board or Insert SD card\r\n");
 #endif
 		//while(!(ret = mmc_mount()));
+#if defined(SPI_FLASH)
+		ret = flash_mount();
+#endif
 	}
 
 	if(ret > 0)
@@ -220,6 +233,19 @@ int main(void)
 		display_SDcard_Info(ret);
 #endif
 	}
+
+#if 0
+    res = f_open(&file, "0:/wr_test.txt", FA_CREATE_NEW | FA_CREATE_ALWAYS | FA_WRITE);
+    printf("f_open:%d\r\n", res);
+    strncpy(szbuff, "WIZnet WiKi", 11);
+    res = f_write(&file, szbuff, 11, &br);
+
+    printf("f_write:%d\r\n", res);
+    printf("WIZnet WiKi\r\n");
+    printf("Written 11bytes.\r\n");
+
+    f_close(&file);
+#endif
 
 #else
 	// External DataFlash Initialization
@@ -306,11 +332,7 @@ static void display_SDcard_Info(uint8_t mount_ret)
 {
 	uint32_t totalSize = 0, availableSize = 0;
 
-#if !defined(SPI_FLASH)
-	printf("\r\n - SD card mount succeed\r\n");
-#else
-	printf("\r\n - sFlash mount succeed\r\n");
-#endif
+	printf("\r\n - Storage mount succeed\r\n");
 	printf(" - Type : ");
 
 	switch(mount_ret)
