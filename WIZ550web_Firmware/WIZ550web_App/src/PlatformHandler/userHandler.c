@@ -30,7 +30,7 @@
 //#define IO_PAGE_ADDR	(0x8000000+(FLASH_PAGE_SIZE*61))	// Page125
 #endif
 
-//IOStorage IOdata;
+IOStorage IOdata;
 
 uint16_t ADC_value;
 uint16_t TemperatureC;

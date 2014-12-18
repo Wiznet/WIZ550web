@@ -43,6 +43,7 @@
 #ifdef _USE_SDCARD_
 #include "ff.h"
 #include "mmcHandler.h"
+#include "ffconf.h"
 #else
 #include "dataflash.h"
 #endif
@@ -62,6 +63,9 @@
 
 uint8_t RX_BUF[DATA_BUF_SIZE];
 uint8_t TX_BUF[DATA_BUF_SIZE];
+#if defined(F_APP_FTP)
+uint8_t FTP_DBUF[_MAX_SS];
+#endif
 
 ////////////////////////////////
 // W5500 HW Socket Definition //
@@ -80,6 +84,9 @@ uint8_t socknumlist[] = {4, 5, 6, 7};
 uint8_t socknumlist[] = {3, 4, 5, 6, 7};
 #endif
 //////////////////////////////////////////
+
+
+int g_mkfs_done = 0;
 
 /*****************************************************************************
  * Private functions
@@ -274,11 +281,19 @@ int main(void)
 			check_factory_uart1();
 		}
 #endif
+#if defined(SPI_FLASH)
+		if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_spiflash_flag == 0))
+		{
+			printf("\r\n########## spiflash flag is reset.\r\n");
+			g_spiflash_flag = 1;
+			release_factory_flag();
+		}
+#endif
 
 		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);
 
 #if defined(F_APP_FTP)
-		ftpd_run(RX_BUF);
+		ftpd_run(FTP_DBUF);
 #endif
 #ifdef _USE_WATCHDOG_
 		IWDG_ReloadCounter(); // Feed IWDG
@@ -286,11 +301,16 @@ int main(void)
 	} // End of main routine
 }
 
+#ifdef _USE_SDCARD_
 static void display_SDcard_Info(uint8_t mount_ret)
 {
 	uint32_t totalSize = 0, availableSize = 0;
 
+#if !defined(SPI_FLASH)
 	printf("\r\n - SD card mount succeed\r\n");
+#else
+	printf("\r\n - sFlash mount succeed\r\n");
+#endif
 	printf(" - Type : ");
 
 	switch(mount_ret)
@@ -299,6 +319,7 @@ static void display_SDcard_Info(uint8_t mount_ret)
 		case CARD_SD: printf("SD\r\n"); 	break;
 		case CARD_SD2: printf("SD2\r\n"); 	break;
 		case CARD_SDHC: printf("SDHC\r\n"); break;
+		case SPI_FLASHM: printf("sFlash\r\n"); break;
 		default: printf("\r\n"); 	break;
 	}
 
@@ -309,3 +330,4 @@ static void display_SDcard_Info(uint8_t mount_ret)
 	}
 	printf("\r\n");
 }
+#endif

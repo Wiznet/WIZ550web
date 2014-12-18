@@ -6,6 +6,7 @@
 
 //#include "wizplatform.h"
 #include "dataflash.h"
+#include "boardutil.h"
 
 void DF_BufferToPage (unsigned char BufferNo, unsigned int PageAdr);
 unsigned char df_read_status (void);
@@ -62,6 +63,7 @@ void write_end_page(void)
 
 void write_to_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned int Size)
 {
+#if !defined(SPI_FLASH)
     unsigned int page = 0;
     unsigned int address = 0;
 
@@ -113,11 +115,74 @@ void write_to_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned in
 		DF_BufferWriteStr(1, 0, write_size, &Buffer[index]);
 		DF_BufferToPage(1, page);
 	}
+#else
+    unsigned int page = 0;
+    unsigned int address = 0;
+
+	unsigned int page_no = 0;
+	unsigned int index = 0;
+	unsigned int write_size = 0;
+	unsigned int i;
+
+	page_no = (unsigned int)Size/256;
+
+	if(Address == 0)
+	{
+		page = 0;
+		address = 0;
+	}
+	else
+	{
+		page = (unsigned int)(Address/(256));
+		address	= (unsigned int)(Address%(256));
+	}
+
+	write_size = 256-address;
+	if(write_size >= Size)
+	{
+		write_size = Size;
+	}
+
+	DF_BufferWriteStr(1, address, write_size, &Buffer[0]);
+	DF_BufferToPage(1, page);
+
+// Phase 2
+	index = write_size;
+	page++;
+
+	for(i = 0; i < page_no ; i++)
+	{
+		DF_BufferWriteStr(1, 0, 256, &Buffer[index]);
+		DF_BufferToPage(1, page++);
+		index += 256;
+		write_size += 256;
+	}
+
+// Phase 3
+	if(Size <= write_size) return;
+
+	write_size = Size - write_size;
+	if(write_size > 0)
+	{
+		DF_BufferWriteStr(1, 0, write_size, &Buffer[index]);
+		DF_BufferToPage(1, page);
+	}
+#endif
 }
 
+#if defined(SPI_FLASH)
+void Flash_WaitReady(void)
+{
+   	DF_CS_LOW();
+   	DF_SPI_RW(0xff);
+   	while(!(df_read_status() & 0x80));
+   	DF_CS_HIGH();
+}
+#endif
 
 void read_from_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned int Size)
 {
+#if !defined(SPI_FLASH)
     unsigned int page = 0;
     unsigned int address = 0;
 
@@ -163,6 +228,53 @@ void read_from_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned i
 		DF_PageToBuffer(1, page);
 		DF_BufferReadStr(1, 0, read_size, &Buffer[index]);
 	}
+#else
+    unsigned int page = 0;
+    unsigned int address = 0;
+
+	unsigned int page_no = 0;
+	unsigned int index = 0;
+	unsigned int read_size = 0;
+	unsigned int i;
+
+	page_no = (unsigned int)Size/256;
+
+	page = (unsigned int)(Address/(256));
+	address	= (unsigned int)(Address%(256));
+
+	if(Address == 0){page = 0;address=0;}
+
+	DF_PageToBuffer(1, page);
+
+	read_size = 256-address;
+	if(read_size >= Size)
+	{
+		read_size = Size;
+	}
+	else read_size = 256-address;
+
+	DF_BufferReadStr(1, address, read_size, &Buffer[0]);
+
+	index = read_size;
+	page++;
+
+	for(i=0;i<page_no;i++)
+	{
+		DF_PageToBuffer(1, page++);
+		DF_BufferReadStr(1, 0, 256, &Buffer[index]);
+		index += 256;
+		read_size += 256;
+	}
+
+	if(Size<=read_size)return;
+	read_size = Size - read_size;
+
+	if(read_size>0)
+	{
+		DF_PageToBuffer(1, page);
+		DF_BufferReadStr(1, 0, read_size, &Buffer[index]);
+	}
+#endif
 }
 
 //unsigned char search_file_rom(unsigned char *FileName, unsigned long *Address, unsigned long *Size)

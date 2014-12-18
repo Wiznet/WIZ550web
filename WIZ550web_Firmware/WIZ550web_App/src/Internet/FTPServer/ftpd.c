@@ -20,6 +20,7 @@
 #include "ftpd.h"
 #include "netutil/netutil.h"
 #include "common.h"
+#include "dataflash.h"
 
 /* Command table */
 static char *commands[] = {
@@ -101,6 +102,15 @@ uint8_t connect_state_data = 0;
 struct ftpd ftp;
 //extern uint8_t * rx_buf;
 
+extern int g_mkfs_done;
+
+int current_year = 2014;
+int current_month = 12;
+int current_day = 31;
+int current_hour = 10;
+int current_min = 10;
+int current_sec = 30;
+
 int fsprintf(uint8_t s, const char *format, ...)
 {
 	int i;
@@ -141,16 +151,16 @@ void ftpd_init(uint8_t csock, uint8_t dsock, uint8_t * src_ip)
 	socket(ftp.control, Sn_MR_TCP, IPPORT_FTP, 0x0);
 }
 
-uint8_t ftpd_run(uint8_t * buf)
+uint8_t ftpd_run(uint8_t * dbuf)
 {
 	uint16_t size = 0, i;
 	long ret = 0;
-	uint16_t blocklen, send_byte;
+	uint16_t blocklen, send_byte, recv_byte;
 	uint32_t remain_filesize;
-	FILINFO fno;
+	uint32_t remain_datasize;
+	//FILINFO fno;
 
-
-//	 memset(buf, 0, sizeof(DATA_BUF_SIZE));
+//	 memset(dbuf, 0, sizeof(_MAX_SS));
 	
    switch(getSn_SR(ftp.control))
    {
@@ -160,8 +170,8 @@ uint8_t ftpd_run(uint8_t * buf)
 		{
 			printf("%d:FTP Connected\r\n", ftp.control);
 //			fsprintf(ftp.control, banner, HOSTNAME, VERSION);
-			sprintf((char *)buf, "220 %s FTP version %s ready.\r\n", HOSTNAME, VERSION);
-			ret = send(ftp.control, (uint8_t *)buf, strlen((const char *)buf));
+			sprintf((char *)dbuf, "220 %s FTP version %s ready.\r\n", HOSTNAME, VERSION);
+			ret = send(ftp.control, (uint8_t *)dbuf, strlen((const char *)dbuf));
 			if(ret < 0)
 			{
 				printf("%d:send() error:%ld\r\n",ftp.control,ret);
@@ -177,10 +187,10 @@ uint8_t ftpd_run(uint8_t * buf)
 		{
 			printf("size: %d\r\n", size);
 
-			if(size > DATA_BUF_SIZE) size = DATA_BUF_SIZE - 1;
+			if(size > _MAX_SS) size = _MAX_SS - 1;
 
-			ret = recv(ftp.control,buf,size);
-			buf[ret] = '\0';
+			ret = recv(ftp.control,dbuf,size);
+			dbuf[ret] = '\0';
 		    if(ret != size)
 		    {
 				if(ret==SOCK_BUSY) return 0;
@@ -191,8 +201,8 @@ uint8_t ftpd_run(uint8_t * buf)
 					return ret;
 				}
 			}
-			printf("Rcvd Command: %s", buf);
-			proc_ftpd((char *)buf);
+			printf("Rcvd Command: %s", dbuf);
+			proc_ftpd((char *)dbuf);
 		}
 	   break;
    case SOCK_CLOSE_WAIT :
@@ -241,15 +251,15 @@ uint8_t ftpd_run(uint8_t * buf)
 		case LIST_CMD:
 		case MLSD_CMD:
 			printf("previous size: %d\r\n", size);
-			scan_files(ftp.workingdir, buf, (int *)&size);
+			scan_files(ftp.workingdir, dbuf, (int *)&size);
 			printf("returned size: %d\r\n", size);
-			printf("%s\r\n", buf);
+			printf("%s\r\n", dbuf);
 //			size = sprintf(buf, "drwxr-xr-x 1 ftp ftp              0 Apr 07  2014 $RECYCLE.BIN\r\n");
-			send(ftp.data, buf, size);
+			send(ftp.data, dbuf, size);
 			ftp.current_cmd = NO_CMD;
 			disconnect(ftp.data);
-			size = sprintf(buf, "226 Successfully transferred \"%s\"\r\n", ftp.workingdir);
-			send(ftp.control, buf, size);
+			size = sprintf(dbuf, "226 Successfully transferred \"%s\"\r\n", ftp.workingdir);
+			send(ftp.control, dbuf, size);
 			break;
 		case RETR_CMD:
 			printf("filename to retrieve : %s\r\n", ftp.filename);
@@ -260,17 +270,17 @@ uint8_t ftpd_run(uint8_t * buf)
 				printf("f_open return FR_OK\r\n");
 				do{
 //					printf("remained file size: %d\r\n", ftp.fil.fsize);
-					if(remain_filesize > 512)
-						send_byte = 512;
+					if(remain_filesize > _MAX_SS)
+						send_byte = _MAX_SS;
 					else
 						send_byte = remain_filesize;
 
-			       	memset(buf, 0, DATA_BUF_SIZE);
-					ftp.fr = f_read(&(ftp.fil), buf, send_byte , (void *)&blocklen);
+			       	memset(dbuf, 0, _MAX_SS);
+					ftp.fr = f_read(&(ftp.fil), dbuf, send_byte , (void *)&blocklen);
 					if(ftp.fr != FR_OK)
 						break;
 					printf("#", ftp.fr, send_byte, blocklen);
-					send(ftp.data, buf, blocklen);
+					send(ftp.data, dbuf, blocklen);
 					remain_filesize -= blocklen;
 				}while(remain_filesize != 0);
 				printf("\r\nFile read finished\r\n");
@@ -283,8 +293,8 @@ uint8_t ftpd_run(uint8_t * buf)
 
 			ftp.current_cmd = NO_CMD;
 			disconnect(ftp.data);
-			size = sprintf(buf, "226 Successfully transferred \"%s\"\r\n", ftp.filename);
-			send(ftp.control, buf, size);
+			size = sprintf(dbuf, "226 Successfully transferred \"%s\"\r\n", ftp.filename);
+			send(ftp.control, dbuf, size);
 			break;
 		case STOR_CMD:
 			printf("filename to store : %s\r\n", ftp.filename);
@@ -294,18 +304,39 @@ uint8_t ftpd_run(uint8_t * buf)
 
 				printf("f_open return FR_OK\r\n");
 				while(1){
-					if((size = getSn_RX_RSR(ftp.data)) > 0){
-				       	if(size > 512) size = 512;
+					if((remain_datasize = getSn_RX_RSR(ftp.data)) > 0){
 
-				       	memset(buf, 0, DATA_BUF_SIZE);
-				        ret = recv(ftp.data, buf, size);
+				       	while(1){
+							if(remain_datasize > _MAX_SS)
+								recv_byte = _MAX_SS;
+							else
+								recv_byte = remain_datasize;
 
-				        ftp.fr = f_write(&(ftp.fil), buf, (UINT)ret, (void *)&blocklen);
-				        if(ftp.fr != FR_OK){
-				        	printf("f_write failed\r\n");
-				        	break;
-				        }
-			        	printf("#");
+							memset(dbuf, 0, _MAX_SS);
+
+				       		ret = recv(ftp.data, dbuf, recv_byte);
+
+							//printf("----->fn:%s data:%s \r\n", ftp.filename, dbuf);
+
+							ftp.fr = f_write(&(ftp.fil), dbuf, (UINT)ret, (void *)&blocklen);
+							//printf("----->dsize:%d recv:%d len:%d \r\n", remain_datasize, ret, blocklen);
+							remain_datasize -= blocklen;
+
+				       		if(ftp.fr != FR_OK){
+				       			printf("f_write failed\r\n");
+				       			break;
+				       		}
+
+							if(remain_datasize <= 0)
+								break;
+				       	}
+
+			       		if(ftp.fr != FR_OK){
+			       			printf("f_write failed\r\n");
+			       			break;
+			       		}
+
+				       	printf("#");
 					}else{
 						if(getSn_SR(ftp.data) != SOCK_ESTABLISHED)
 							break;
@@ -317,10 +348,14 @@ uint8_t ftpd_run(uint8_t * buf)
 				printf("File Open Error: %d\r\n", ftp.fr);
 			}
 
+			//fno.fdate = (WORD)(((current_year - 1980) << 9) | (current_month << 5) | current_day);
+			//fno.ftime = (WORD)((current_hour << 11) | (current_min << 5) | (current_sec >> 1));
+			//f_utime((const char *)ftp.filename, &fno);
+
 			ftp.current_cmd = NO_CMD;
 			disconnect(ftp.data);
-			size = sprintf(buf, "226 Successfully transferred \"%s\"\r\n", ftp.filename);
-			send(ftp.control, buf, size);
+			size = sprintf(dbuf, "226 Successfully transferred \"%s\"\r\n", ftp.filename);
+			send(ftp.control, dbuf, size);
 			break;
 		case NO_CMD:
 		default:
@@ -714,7 +749,7 @@ void print_filedsc(FIL *fil)
 	printf("File System pointer : %08X\r\n", fil->fs);
 	printf("File System mount ID : %d\r\n", fil->id);
 	printf("File status flag : %08X\r\n", fil->flag);
-	printf("File System pads : %08X\r\n", fil->pad1);
+	printf("File System pads : %08X\r\n", fil->err);
 	printf("File read write pointer : %08X\r\n", fil->fptr);
 	printf("File size : %08X\r\n", fil->fsize);
 	printf("File start cluster : %08X\r\n", fil->sclust);

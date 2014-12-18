@@ -14,6 +14,8 @@
 //#define FACTORY_FW
 //#define FACTORY_FW_ONCE
 //#define FACTORY_FW_FLASH
+#define SPI_FLASH
+
 
 #define DELAY_COUNT    0xEFFFF  // just for test
 
@@ -280,5 +282,12 @@ void factory_test_1st (void);
 void factory_test_2nd (void);
 
 extern int g_factoryfw_flag;
+#endif
+
+#if defined(SPI_FLASH)
+extern int check_spiflash_flag(void);
+extern void save_spiflash_flag(void);
+extern void release_factory_flag(void);
+extern int g_spiflash_flag;
 #endif
 #endif

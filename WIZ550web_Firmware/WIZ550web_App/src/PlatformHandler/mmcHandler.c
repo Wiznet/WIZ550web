@@ -3,6 +3,8 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_spi.h"
 #include "mmc_sd.h"   // mmc_sd memory card interface
+#include "boardutil.h"
+#include "dataflash.h"
 
 #ifdef STM32_SD_USE_DMA
 // #warning "Information only: using DMA"
@@ -593,18 +595,41 @@ uint8_t mmc_mount()
 		return card_type;
 	}
 #else
-    bsp_sd_gpio_init();
+	FRESULT res;
 
-    disk_initialize(0);
-    /*
+	bsp_sd_gpio_init();
+
+#if defined(SPI_FLASH)
+	DataFlash_Init();
+#endif
+    //disk_initialize(0);
+	/*
     if( disk_initialize(0) == 0 )
         printf("\r\nSD initialize success.\r\n");
     else
     	printf("\r\nSD initialize failed.\r\n");
 	*/
-    f_mount(0,&ff);
+    res = f_mount(&ff,"0:",0);
+    printf("f_mount:%d\r\n", res);
 
+#if defined(SPI_FLASH)
+    if(check_spiflash_flag() == 1)
+        g_mkfs_done = 1;
+    else
+        g_mkfs_done = 0;
+    res = f_mkfs("0:",0,512);
+    printf("f_mkfs:%d %d\r\n", res, g_mkfs_done);
+    if(check_spiflash_flag() == 1)
+    	save_spiflash_flag();
+    g_mkfs_done = 1;
+#endif
+
+#if !defined(SPI_FLASH)
 	return (SD_Type+1);
+#else
+	return SPI_FLASHM;
+#endif
+
 #endif
 
 	return NO_CARD;//0
