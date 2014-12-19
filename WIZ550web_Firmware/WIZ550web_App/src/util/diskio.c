@@ -99,9 +99,9 @@ DRESULT disk_read (
    //     return RES_NOTRDY;  // does not detect SD card, NOT READY error reported
    // }
 
-	//printf("-----> disk_read sector:%d count:%d buf:%s\r\n", sector, count, buff);
+	//printf("-----> disk_read drv:%d sector:%d count:%d buf:%s\r\n", pdrv, sector, count, buff);
 
-    if(g_sdcard_done == 1)
+    if(pdrv == 1)
     {
 		if(count==1) // sector reads 1
 		{
@@ -132,7 +132,7 @@ DRESULT disk_read (
 			return RES_ERROR;
 		}
     }
-    else if(g_sdcard_done == 0)
+    else if(pdrv == 0)
     {
 		//memset(buff, 0xff, _MAX_SS);
 		read_from_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
@@ -166,9 +166,9 @@ DRESULT disk_write (
         return RES_NOTRDY;  // does not detect SD card, NOT READY error reported
     }  */
 
-	//printf("-----> disk_write sector:%d count:%d buf:%s\r\n", sector, count, buff);
+	//printf("-----> disk_write drv:%d sector:%d count:%d buf:%s\r\n", pdrv, sector, count, buff);
 
-    if(g_sdcard_done == 1)
+    if(pdrv == 1)
     {
 		// Read and write operations
 		if(count == 1)
@@ -189,7 +189,7 @@ DRESULT disk_write (
 			return RES_ERROR;
 		}
     }
-    else if(g_sdcard_done == 0)
+    else if(pdrv == 0)
     {
 		if(g_mkfs_done == 1)
 		{
@@ -222,7 +222,7 @@ DRESULT disk_ioctl (
     }
 #endif
 
-    if(g_sdcard_done == 1)
+    if(pdrv == 1)
     {
 		// FATFS only deal with the current version of CTRL_SYNC, GET_SECTOR_COUNT, GET_BLOCK_SIZ three commands
 		switch(cmd)
@@ -254,7 +254,7 @@ DRESULT disk_ioctl (
 			break;
 		}
     }
-    else if(g_sdcard_done == 0)
+    else if(pdrv == 0)
     {
 		switch(cmd)
 		{

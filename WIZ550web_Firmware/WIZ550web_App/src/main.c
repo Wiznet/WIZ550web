@@ -123,6 +123,8 @@ int main(void)
 
 	S2E_Packet *value = get_S2E_Packet_pointer();
 
+	g_sdcard_done = 0;
+
 	// MCU Initialization
 	RCC_Configuration();
 	NVIC_Configuration();
@@ -212,6 +214,17 @@ int main(void)
 	display_Net_Info();
 #endif
 
+#if defined(SPI_FLASH)
+	ret = flash_mount();
+#endif
+	if(ret > 0)
+	{
+		LED_On(LED2);
+#ifdef _MAIN_DEBUG_
+		display_SDcard_Info(ret);
+#endif
+	}
+
 #ifdef _USE_SDCARD_
 	// SD card Initialization
 	ret = mmc_mount();
@@ -221,9 +234,6 @@ int main(void)
 		printf("\r\n - Can't mount SD card: Please Reboot WIZ550WEB Board or Insert SD card\r\n");
 #endif
 		//while(!(ret = mmc_mount()));
-#if defined(SPI_FLASH)
-		ret = flash_mount();
-#endif
 	}
 
 	if(ret > 0)
@@ -347,7 +357,7 @@ static void display_SDcard_Info(uint8_t mount_ret)
 
 	if(_MAX_SS == 512)
 	{
-		getMountedMemorySize(&totalSize, &availableSize);
+		getMountedMemorySize(mount_ret, &totalSize, &availableSize);
 		printf(" - Available Memory Size : %ld kB / %ld kB ( %ld kB is used )\r\n", availableSize, totalSize, (totalSize - availableSize));
 	}
 	printf("\r\n");

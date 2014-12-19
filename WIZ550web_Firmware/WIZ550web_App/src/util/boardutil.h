@@ -14,7 +14,7 @@
 //#define FACTORY_FW
 //#define FACTORY_FW_ONCE
 //#define FACTORY_FW_FLASH
-//#define SPI_FLASH
+#define SPI_FLASH
 #ifdef SPI_FLASH
 	//#define SPI_FLASH_ONLY
 #endif
