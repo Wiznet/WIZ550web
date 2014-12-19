@@ -614,7 +614,6 @@ uint8_t mmc_mount()
 
 #if !defined(SPI_FLASH_ONLY)
 	state = SD_Init();
-#endif
     printf("SD_Init:%d\r\n", state);
 	if(state == STA_NODISK)
 	{
@@ -632,6 +631,7 @@ uint8_t mmc_mount()
 
 		return SD_Type;
 	}
+#endif
 #endif
 
 	return NO_CARD;//0
