@@ -238,7 +238,7 @@ int main(void)
 
 #if defined(F_APP_FTP)
 	ctlnetwork(CN_GET_NETINFO, (void*) &gWIZNETINFO);
-	ftpd_init(1, 2, gWIZNETINFO.ip);	// Added by James for FTP
+	ftpd_init(CTRL_SOCK, DATA_SOCK, gWIZNETINFO.ip);	// Added by James for FTP
 #endif
 
 #ifdef _USE_WATCHDOG_
