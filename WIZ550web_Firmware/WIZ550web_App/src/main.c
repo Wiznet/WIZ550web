@@ -123,8 +123,6 @@ int main(void)
 
 	S2E_Packet *value = get_S2E_Packet_pointer();
 
-	g_sdcard_done = 0;
-
 	// MCU Initialization
 	RCC_Configuration();
 	NVIC_Configuration();
@@ -135,6 +133,9 @@ int main(void)
 	LED_Init(LED2);
 	LED_Off(LED1);
 	LED_Off(LED2);
+
+	g_sdcard_done = 0;
+	g_spiflash_flag = 0;
 
 #if defined(MULTIFLASH_ENABLE)
 	probe_flash();
@@ -355,11 +356,13 @@ static void display_SDcard_Info(uint8_t mount_ret)
 		default: printf("\r\n"); 	break;
 	}
 
+#if 0
 	if(_MAX_SS == 512)
 	{
 		getMountedMemorySize(mount_ret, &totalSize, &availableSize);
 		printf(" - Available Memory Size : %ld kB / %ld kB ( %ld kB is used )\r\n", availableSize, totalSize, (totalSize - availableSize));
 	}
 	printf("\r\n");
+#endif
 }
 #endif
