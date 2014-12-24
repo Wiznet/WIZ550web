@@ -85,8 +85,18 @@ uint8_t socknumlist[] = {3, 4, 5, 6, 7};
 #endif
 //////////////////////////////////////////
 
+#if 0
+FIL file;
+char szbuff[200];
+FATFS fs;            // Work area (file system object) for logical drive
+DIR dirs;
+FRESULT res;
+FILINFO finfo;
+UINT br;
+#endif
 
 int g_mkfs_done = 0;
+int g_sdcard_done = 0;
 
 /*****************************************************************************
  * Private functions
@@ -123,6 +133,9 @@ int main(void)
 	LED_Init(LED2);
 	LED_Off(LED1);
 	LED_Off(LED2);
+
+	g_sdcard_done = 0;
+	g_spiflash_flag = 0;
 
 #if defined(MULTIFLASH_ENABLE)
 	probe_flash();
@@ -202,6 +215,17 @@ int main(void)
 	display_Net_Info();
 #endif
 
+#if defined(SPI_FLASH)
+	ret = flash_mount();
+#endif
+	if(ret > 0)
+	{
+		LED_On(LED2);
+#ifdef _MAIN_DEBUG_
+		display_SDcard_Info(ret);
+#endif
+	}
+
 #ifdef _USE_SDCARD_
 	// SD card Initialization
 	ret = mmc_mount();
@@ -220,6 +244,19 @@ int main(void)
 		display_SDcard_Info(ret);
 #endif
 	}
+
+#if 0
+    res = f_open(&file, "0:/wr_test.txt", FA_CREATE_NEW | FA_CREATE_ALWAYS | FA_WRITE);
+    printf("f_open:%d\r\n", res);
+    strncpy(szbuff, "WIZnet WiKi", 11);
+    res = f_write(&file, szbuff, 11, &br);
+
+    printf("f_write:%d\r\n", res);
+    printf("WIZnet WiKi\r\n");
+    printf("Written 11bytes.\r\n");
+
+    f_close(&file);
+#endif
 
 #else
 	// External DataFlash Initialization
@@ -306,11 +343,7 @@ static void display_SDcard_Info(uint8_t mount_ret)
 {
 	uint32_t totalSize = 0, availableSize = 0;
 
-#if !defined(SPI_FLASH)
-	printf("\r\n - SD card mount succeed\r\n");
-#else
-	printf("\r\n - sFlash mount succeed\r\n");
-#endif
+	printf("\r\n - Storage mount succeed\r\n");
 	printf(" - Type : ");
 
 	switch(mount_ret)
@@ -323,11 +356,13 @@ static void display_SDcard_Info(uint8_t mount_ret)
 		default: printf("\r\n"); 	break;
 	}
 
+#if 0
 	if(_MAX_SS == 512)
 	{
-		getMountedMemorySize(&totalSize, &availableSize);
+		getMountedMemorySize(mount_ret, &totalSize, &availableSize);
 		printf(" - Available Memory Size : %ld kB / %ld kB ( %ld kB is used )\r\n", availableSize, totalSize, (totalSize - availableSize));
 	}
 	printf("\r\n");
+#endif
 }
 #endif

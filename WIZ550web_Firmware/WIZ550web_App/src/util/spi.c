@@ -170,7 +170,7 @@ void bsp_set_spi2_speed_mp3(u8 SpeedSet)
 *******************************************************************************/
 u8 bsp_readwritebyte_spi2 (u8 tx_data)
 {
-	u8 retry=0;
+	u16 retry=0;
 	
 	/* Loop while DR register in not emplty */
 	while (SPI_I2S_GetFlagStatus (SPI2, SPI_I2S_FLAG_TXE) == RESET)

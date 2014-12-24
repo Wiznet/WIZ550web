@@ -15,19 +15,23 @@ static void stm32_dma_transfer(uint8_t receive, const BYTE *buff, uint16_t btr);
 #endif
 
 FATFS ff;
+FATFS Fatfs[1];
 card_type_id_t card_type = NO_CARD;
 
 enum speed_setting { INTERFACE_SLOW, INTERFACE_FAST };
 
 //#include <stdio.h> // for debugging
-FRESULT getMountedMemorySize(uint32_t * totalSize, uint32_t * availableSize)
+FRESULT getMountedMemorySize(uint8_t mount_ret, uint32_t * totalSize, uint32_t * availableSize)
 {
 	FATFS *fs;
 	DWORD fre_clust, fre_sect, tot_sect;
 	FRESULT res;
 
 	/* Get volume information and free clusters of drive 1 */
-	res = f_getfree("0:", &fre_clust, &fs);
+	if(mount_ret == SPI_FLASHM)
+		res = f_getfree("0:", &fre_clust, &fs);
+	else if((mount_ret >= CARD_MMC) && (mount_ret <= CARD_SDHC))
+		res = f_getfree("1:", &fre_clust, &fs);
 
 	if (!res)
 	{
@@ -596,12 +600,10 @@ uint8_t mmc_mount()
 	}
 #else
 	FRESULT res;
+    u8 state;
 
 	bsp_sd_gpio_init();
 
-#if defined(SPI_FLASH)
-	DataFlash_Init();
-#endif
     //disk_initialize(0);
 	/*
     if( disk_initialize(0) == 0 )
@@ -609,7 +611,48 @@ uint8_t mmc_mount()
     else
     	printf("\r\nSD initialize failed.\r\n");
 	*/
-    res = f_mount(&ff,"0:",0);
+
+#if !defined(SPI_FLASH_ONLY)
+	state = SD_Init();
+    printf("SD_Init:%d\r\n", state);
+	if(state == STA_NODISK)
+	{
+		return NO_CARD;
+	}
+	else if(state != 0)
+	{
+		return NO_CARD;
+	}
+	else
+	{
+		res = f_mount(&Fatfs[0],"1:",0);
+	    printf("f_mount:%d\r\n", res);
+		g_sdcard_done = 1;
+
+		return SD_Type;
+	}
+#endif
+#endif
+
+	return NO_CARD;//0
+}
+
+uint8_t flash_mount()
+{
+#if 0
+	if(mmc_init())
+	{
+		f_mount(0, &ff);
+		return card_type;
+	}
+#else
+	FRESULT res;
+
+	DataFlash_Init();
+
+	//disk_initialize(1);
+
+	res = f_mount(&Fatfs[0],"0:",0);
     printf("f_mount:%d\r\n", res);
 
 #if defined(SPI_FLASH)
@@ -617,22 +660,17 @@ uint8_t mmc_mount()
         g_mkfs_done = 1;
     else
         g_mkfs_done = 0;
-    res = f_mkfs("0:",0,512);
+
+	res = f_mkfs("0:",0,512);
+
     printf("f_mkfs:%d %d\r\n", res, g_mkfs_done);
     if(check_spiflash_flag() == 1)
     	save_spiflash_flag();
     g_mkfs_done = 1;
 #endif
 
-#if !defined(SPI_FLASH)
-	return (SD_Type+1);
-#else
 	return SPI_FLASHM;
 #endif
-
-#endif
-
-	return NO_CARD;//0
 }
 
 //*******************************************************************************

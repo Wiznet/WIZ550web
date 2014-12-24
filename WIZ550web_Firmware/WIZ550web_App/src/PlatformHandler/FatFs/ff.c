@@ -553,7 +553,13 @@ static const BYTE ExCvt[] = _EXCVT;	/* Upper conversion table for extended chara
    Module Private Functions
 
 ---------------------------------------------------------------------------*/
-
+#if _MULTI_PARTITION
+PARTITION VolToPart[] =
+{
+        {0, 0},
+        {1, 0}
+};
+#endif
 
 /*-----------------------------------------------------------------------*/
 /* String functions                                                      */

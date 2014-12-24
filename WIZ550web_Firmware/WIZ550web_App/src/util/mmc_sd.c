@@ -6,6 +6,7 @@
 #include "mmc_sd.h"
 #include "spi.h"
 //#include "usart.h"
+#include "mmcHandler.h"
 
 u8 SD_Type = 0; // SD card type
 
@@ -51,6 +52,7 @@ u8 SD_Init (void)
 	u8 r1; // return value of SD card storage
 	u16 retry; // used to count out
 	u8 buff[6] = {0,0,0,0,0};
+	u8 ret;
 
 	MSD_CS_DISABLE();
 
@@ -72,10 +74,9 @@ u8 SD_Init (void)
 	bsp_set_spi2_speed(SPI_SPEED_256);
 
 	// start transmission
-	bsp_readwritebyte_spi2(0xff);
+	ret = bsp_readwritebyte_spi2(0xff);
 
-
-	if (SD_Idle_Sta()) 
+	if (SD_Idle_Sta())
 		return 1; 	// 1 set out to return to the idle mode failed
 
 	//----------------- SD card is reset to the idle end of the -----------------
@@ -281,7 +282,7 @@ u8 SD_WaitDataReady (void)
 u8 SD_SendCommand (u8 cmd, u32 arg, u8 crc)
 {
 	u8 r1;
-	u8 Retry = 0;
+	u16 Retry = 0;
 
 	// Close the chip select
 	MSD_CS_DISABLE();
@@ -327,7 +328,7 @@ u8 SD_SendCommand (u8 cmd, u32 arg, u8 crc)
 // Return value: SD card, the response returned
 u8 SD_SendCommand_NoDeassert (u8 cmd, u32 arg, u8 crc)
 {
-	u8 Retry = 0;
+	u16 Retry = 0;
 	u8 r1;
 	
 	bsp_readwritebyte_spi2 (0xff); // high-speed write command delay
@@ -362,8 +363,8 @@ u8 SD_SendCommand_NoDeassert (u8 cmd, u32 arg, u8 crc)
 u8 SD_Idle_Sta (void)
 {
 	u16 i;
-	u8 r1;
-	u8 retry;
+	u8 r1=0;
+	u16 retry;
 
 	for (i = 0; i <0xf00; i++);// pure delay, waiting for complete power-SD card
 
