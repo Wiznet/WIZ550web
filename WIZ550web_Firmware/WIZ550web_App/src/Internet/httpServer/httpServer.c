@@ -20,7 +20,8 @@
 /*****************************************************************************
  * Private types/enumerations/variables
  ****************************************************************************/
-st_http_socket **HTTPSock_Status;
+st_http_socket HTTPSock_Status[_WIZCHIP_SOCK_NUM_] = { {STATE_HTTP_IDLE, }, };
+
 static uint8_t HTTPSock_Num[_WIZCHIP_SOCK_NUM_] = {0, };
 static st_http_request * http_request;				/**< Pointer to received HTTP request */
 static st_http_request * parsed_http_request;		/**< Pointer to parsed HTTP request */
@@ -35,7 +36,7 @@ uint8_t * pHTTP_RX;
 volatile uint32_t httpServer_tick_1s = 0;
 
 #ifdef	_USE_SDCARD_
-FIL **fs;	// FatFs File objects
+FIL fs[_WIZCHIP_SOCK_NUM_];
 FRESULT fr;	// FatFs function common result code
 #endif
 
@@ -64,28 +65,12 @@ void (*HTTPServer_WDT_Reset)(void) = default_wdt_reset;
 void httpServer_Sockinit(uint8_t cnt, uint8_t * socklist)
 {
 	uint8_t i;
-	// Dynamic allocation : structure for send the content (each socket)
-	HTTPSock_Status = (st_http_socket **)malloc(sizeof(st_http_socket *) * cnt);
 
 	for(i = 0; i < cnt; i++)
 	{
-		HTTPSock_Status[i] = (st_http_socket *)malloc(sizeof(st_http_socket));
-
-		// Structure initialization
-		HTTPSock_Status[i]->sock_status = STATE_HTTP_IDLE;
-		HTTPSock_Status[i]->file_start = 0;
-		HTTPSock_Status[i]->file_len = 0;
-		HTTPSock_Status[i]->file_offset = 0;
-
 		// Mapping the H/W socket numbers to the sequence numbers
 		HTTPSock_Num[i] = socklist[i];
 	}
-
-#ifdef	_USE_SDCARD_
-	// FAT File system structure 'fs' allocation for each HW sockets
-	fs = (FIL **)malloc(sizeof(FIL *) * cnt);
-	for(i = 0; i < cnt; i++) fs[i] = (FIL *)malloc(sizeof(FIL));
-#endif
 }
 
 static uint8_t getHTTPSocketNum(uint8_t seqnum)
@@ -153,7 +138,7 @@ void httpServer_run(uint8_t seqnum)
 			}
 
 			// HTTP Process states
-			switch(HTTPSock_Status[seqnum]->sock_status)
+			switch(HTTPSock_Status[seqnum].sock_status)
 			{
 
 				case STATE_HTTP_IDLE :
@@ -165,7 +150,7 @@ void httpServer_run(uint8_t seqnum)
 						*(((uint8_t *)http_request) + len) = '\0';
 
 						parse_http_request(parsed_http_request, (uint8_t *)http_request);
-//						HTTPSock_Status[seqnum]->sock_status = STATE_HTTP_REQ_DONE;	// ## State [STATE_HTTP_REQ_DONE] is contained in the [STATE_HTTP_IDLE].
+//						HTTPSock_Status[seqnum].sock_status = STATE_HTTP_REQ_DONE;	// ## State [STATE_HTTP_REQ_DONE] is contained in the [STATE_HTTP_IDLE].
 #ifdef _HTTPSERVER_DEBUG_
 						getSn_DIPR(s, destip);
 						destport = getSn_DPORT(s);
@@ -182,7 +167,7 @@ void httpServer_run(uint8_t seqnum)
 //				case STATE_HTTP_REQ_DONE :											// ## State [STATE_HTTP_REQ_DONE] is contained in the [STATE_HTTP_IDLE].
 					// Generate and send the HTTP Response created using the parsed HTTP Request
 					/*
-					 * HTTPSock_Status[seqnum]->file_len : if the HTTP response send ended, clear this value
+					 * HTTPSock_Status[seqnum].file_len : if the HTTP response send ended, clear this value
 					 *
 					 * */
 #ifdef _HTTPSERVER_DEBUG_
@@ -204,8 +189,8 @@ void httpServer_run(uint8_t seqnum)
 							}
 						}
 
-						if(HTTPSock_Status[seqnum]->file_len > 0) HTTPSock_Status[seqnum]->sock_status = STATE_HTTP_RES_INPROC;
-						else HTTPSock_Status[seqnum]->sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
+						if(HTTPSock_Status[seqnum].file_len > 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_INPROC;
+						else HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
 					}
 
 					break;
@@ -218,7 +203,7 @@ void httpServer_run(uint8_t seqnum)
 					// Repeatedly send remaining data to client
 					send_http_response_body(s, parsed_http_request, http_response, 0, 0);
 
-					if(HTTPSock_Status[seqnum]->file_len == 0) HTTPSock_Status[seqnum]->sock_status = STATE_HTTP_RES_DONE;
+					if(HTTPSock_Status[seqnum].file_len == 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE;
 					break;
 
 				case STATE_HTTP_RES_DONE :
@@ -226,13 +211,13 @@ void httpServer_run(uint8_t seqnum)
 					printf("> HTTPSocket[%d] : [State] STATE_HTTP_RES_DONE\r\n", s);
 #endif
 					// Socket file info structure re-initialize
-					HTTPSock_Status[seqnum]->file_len = 0;
-					HTTPSock_Status[seqnum]->file_offset = 0;
-					HTTPSock_Status[seqnum]->file_start = 0;
-					HTTPSock_Status[seqnum]->sock_status = STATE_HTTP_IDLE;
+					HTTPSock_Status[seqnum].file_len = 0;
+					HTTPSock_Status[seqnum].file_offset = 0;
+					HTTPSock_Status[seqnum].file_start = 0;
+					HTTPSock_Status[seqnum].sock_status = STATE_HTTP_IDLE;
 
 #ifdef _USE_SDCARD_
-					f_close(fs[seqnum]);
+					f_close(&fs[seqnum]);
 #endif
 #ifdef _USE_WATCHDOG_
 /*
@@ -358,18 +343,18 @@ static void send_http_response_body(uint8_t s, st_http_request * p_http_request,
 	if((get_seqnum = getHTTPSequenceNum(s)) == -1) return; // exception handling; invalid number
 
 	// Send the HTTP Response 'body'; requested file
-	if(!HTTPSock_Status[get_seqnum]->file_len) // first part
+	if(!HTTPSock_Status[get_seqnum].file_len) // first part
 	{
 		if (file_len > DATA_BUF_SIZE - 1)
 		{
-			HTTPSock_Status[get_seqnum]->file_start = start_addr;
-			HTTPSock_Status[get_seqnum]->file_len = file_len;
+			HTTPSock_Status[get_seqnum].file_start = start_addr;
+			HTTPSock_Status[get_seqnum].file_len = file_len;
 			send_len = DATA_BUF_SIZE - 1;
 
-			HTTPSock_Status[get_seqnum]->file_offset = send_len;
+			HTTPSock_Status[get_seqnum].file_offset = send_len;
 #ifdef _HTTPSERVER_DEBUG_
 			printf("> HTTPSocket[%d] : HTTP Response body - file len [ %ld ]byte / type [%d]\r\n", s, file_len, p_http_request->TYPE);
-			printf("> HTTPSocket[%d] : HTTP Response body - offset [ %ld ]\r\n", s, HTTPSock_Status[get_seqnum]->file_offset);
+			printf("> HTTPSocket[%d] : HTTP Response body - offset [ %ld ]\r\n", s, HTTPSock_Status[get_seqnum].file_offset);
 #endif
 		}
 		else
@@ -389,19 +374,19 @@ static void send_http_response_body(uint8_t s, st_http_request * p_http_request,
 	else // remained parts
 	{
 #ifdef _USE_FLASH_
-		addr = HTTPSock_Status[get_seqnum]->file_start + HTTPSock_Status[get_seqnum]->file_offset;
+		addr = HTTPSock_Status[get_seqnum].file_start + HTTPSock_Status[get_seqnum].file_offset;
 #endif
-		send_len = HTTPSock_Status[get_seqnum]->file_len - HTTPSock_Status[get_seqnum]->file_offset;
+		send_len = HTTPSock_Status[get_seqnum].file_len - HTTPSock_Status[get_seqnum].file_offset;
 
 		if(send_len > DATA_BUF_SIZE - 1)
 		{
 			send_len = DATA_BUF_SIZE - 1;
-			HTTPSock_Status[get_seqnum]->file_offset += send_len;
+			HTTPSock_Status[get_seqnum].file_offset += send_len;
 		}
 		else
 		{
 #ifdef _HTTPSERVER_DEBUG_
-			printf("> HTTPSocket[%d] : HTTP Response end - file len [ %ld ]byte\r\n", s, HTTPSock_Status[get_seqnum]->file_len);
+			printf("> HTTPSocket[%d] : HTTP Response end - file len [ %ld ]byte\r\n", s, HTTPSock_Status[get_seqnum].file_len);
 #endif
 			// Send process end
 			flag_datasend_end = 1;
@@ -411,13 +396,13 @@ static void send_http_response_body(uint8_t s, st_http_request * p_http_request,
 #endif
 
 #ifdef _HTTPSERVER_DEBUG_
-			printf("> HTTPSocket[%d] : HTTP Response body - offset [ %ld ]\r\n", s, HTTPSock_Status[get_seqnum]->file_offset);
+			printf("> HTTPSocket[%d] : HTTP Response body - offset [ %ld ]\r\n", s, HTTPSock_Status[get_seqnum].file_offset);
 #endif
 	}
 
 #ifdef _USE_SDCARD_
 	// Data read from SD Card
-	fr = f_read(fs[get_seqnum], &buf[0], send_len, (void *)&blocklen);
+	fr = f_read(&fs[get_seqnum], &buf[0], send_len, (void *)&blocklen);
 	if(fr != FR_OK)
 	{
 		send_len = 0;
@@ -443,9 +428,9 @@ static void send_http_response_body(uint8_t s, st_http_request * p_http_request,
 
 	if(flag_datasend_end)
 	{
-		HTTPSock_Status[get_seqnum]->file_start = 0;
-		HTTPSock_Status[get_seqnum]->file_len = 0;
-		HTTPSock_Status[get_seqnum]->file_offset = 0;
+		HTTPSock_Status[get_seqnum].file_start = 0;
+		HTTPSock_Status[get_seqnum].file_len = 0;
+		HTTPSock_Status[get_seqnum].file_offset = 0;
 		flag_datasend_end = 0;
 	}
 }
@@ -539,12 +524,13 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 			else
 			{	// Not CGI request, Web content in 'SD card' or 'Data flash' requested
 #ifdef _USE_SDCARD_
-				if((fr = f_open(fs[get_seqnum], (const char *)uri_name, FA_READ)) == 0)
+				printf("\r\n> HTTPSocket[%d] : Searching the requested content\r\n", s);
+				if((fr = f_open(&fs[get_seqnum], (const char *)uri_name, FA_READ)) == 0)
 				{
 					content_found = 1; // file open succeed
 
-					file_len = fs[get_seqnum]->fsize;
-					content_addr = fs[get_seqnum]->sclust;
+					file_len = fs[get_seqnum].fsize;
+					content_addr = fs[get_seqnum].sclust;
 				}
 				else
 				{
