@@ -86,7 +86,10 @@ int RingBuffer_InsertMult(RINGBUFF_T *RingBuff, const void *data, int num)
 
 	/* We cannot insert when queue is full */
 	if (RingBuffer_IsFull(RingBuff))
+	{
+		printf("RingBuffer_IsFull :%d \r\n", RingBuffer_IsFull(RingBuff));
 		return 0;
+	}
 
 	/* Calculate the segment lengths */
 	cnt1 = cnt2 = RingBuffer_GetFree(RingBuff);

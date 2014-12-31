@@ -356,7 +356,7 @@ static void display_SDcard_Info(uint8_t mount_ret)
 		default: printf("\r\n"); 	break;
 	}
 
-#if 0
+#if 1
 	if(_MAX_SS == 512)
 	{
 		getMountedMemorySize(mount_ret, &totalSize, &availableSize);

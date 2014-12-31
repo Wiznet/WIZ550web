@@ -481,3 +481,8 @@ int UART_TxRB_GetCount()
 	return RingBuffer_GetCount(&txring2);
 }
 
+void UART2_flush(void)
+{
+	//RingBuffer_Init(&rxring2, rxbuff2, 1, UART_RRB_SIZE);
+	RingBuffer_Init(&txring2, txbuff2, 1, UART_SRB_SIZE);
+}

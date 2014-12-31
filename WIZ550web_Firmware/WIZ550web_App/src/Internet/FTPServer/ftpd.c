@@ -170,6 +170,7 @@ uint8_t ftpd_run(uint8_t * dbuf)
 		{
 			printf("%d:FTP Connected\r\n", CTRL_SOCK);
 //			fsprintf(CTRL_SOCK, banner, HOSTNAME, VERSION);
+		    strcpy(ftp.workingdir, "/");
 			sprintf((char *)dbuf, "220 %s FTP version %s ready.\r\n", HOSTNAME, VERSION);
 			ret = send(CTRL_SOCK, (uint8_t *)dbuf, strlen((const char *)dbuf));
 			if(ret < 0)
@@ -223,7 +224,7 @@ uint8_t ftpd_run(uint8_t * dbuf)
 	   break;
    case SOCK_INIT :
        printf("%d:Opened\r\n",CTRL_SOCK);
-       strcpy(ftp.workingdir, "/");
+       //strcpy(ftp.workingdir, "/");
        if( (ret = listen(CTRL_SOCK)) != SOCK_OK)
        {
            printf("%d:Listen error\r\n",CTRL_SOCK);
