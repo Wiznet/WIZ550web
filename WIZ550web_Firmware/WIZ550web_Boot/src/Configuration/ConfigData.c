@@ -210,25 +210,24 @@ uint8_t get_hex(uint8_t b0, uint8_t b1)
 
 void check_mac_address()
 {
-	uint8_t buf[13], ret = 0;
+	uint8_t buf[12];
 	uint32_t i, j;
 
 	if(s2e_packet.network_info_common.mac[0] != 0x00 || s2e_packet.network_info_common.mac[1] != 0x08 || s2e_packet.network_info_common.mac[2] != 0xDC) {
-		do{
-			myprintf("Input MAC ? ");
+		myprintf("Input MAC ? ");
 
-
+		while(1) {
 			UART_read_blk(buf, 1);
-			if(buf[0] == 'S'){
-				myprintf("R");
-
-				for(i=0; i<12; i++){
-					UART_read_blk(buf + i, 1);
-//					myprintf("%c", buf[i]);
-				}
-				ret = 1;
+			if(buf[0] == 'S') {
+				printf("R");
+				break;
 			}
-		}while(!ret);
+		}
+
+		for(i = 0 ; i < 12 ; i++) {
+			UART_read_blk(buf + i, 1);
+			myprintf("%c", buf[i]);
+		}
 
 		for(i = 0, j = 0 ; i <= 6 ; i++, j += 2)
 			s2e_packet.network_info_common.mac[i] = get_hex(buf[j], buf[j+1]);

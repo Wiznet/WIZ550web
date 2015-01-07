@@ -28,7 +28,11 @@ uint8_t http_get_cgi_handler(uint8_t * uri_name, uint8_t * buf, uint32_t * file_
 	uint8_t ret = HTTP_OK;
 	uint16_t len = 0;
 
-	if(strcmp((const char *)uri_name, "widget.cgi") == 0)
+	if(predefined_get_cgi_processor(uri_name, buf, &len))
+	{
+		;
+	}
+	else if(strcmp((const char *)uri_name, "widget.cgi") == 0)
 	{
 		make_basic_config_setting_json_callback(buf, &len);
 	}
@@ -66,10 +70,14 @@ uint8_t http_post_cgi_handler(uint8_t * uri_name, st_http_request * p_http_reque
 	uint8_t * device_ip;
 	uint8_t val;
 
-	if(strcmp((const char *)uri_name, "config.cgi") == 0)
+	if(predefined_set_cgi_processor(uri_name, p_http_request->URI, buf, &len))
+	{
+		;
+	}
+	else if(strcmp((const char *)uri_name, "config.cgi") == 0)
 	{
 		device_ip = set_basic_config_setting(p_http_request->URI);
-		make_pl_basic_config_response_page(5, device_ip, buf, &len);
+		make_cgi_basic_config_response_page(5, device_ip, buf, &len);
 
 		ret = HTTP_RESET;
 	}

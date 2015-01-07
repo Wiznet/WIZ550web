@@ -20,7 +20,6 @@
 /*****************************************************************************
  * Includes
  ****************************************************************************/
-
 #include "stm32f10x.h"
 #include "common.h"
 #include "dataflash.h"
@@ -54,6 +53,7 @@
 #if defined (_MAIN_DEBUG_) || defined (_WEB_DEBUG_)
 #include <stdio.h>
 #endif
+
 //////////////////////////////
 // Shared Buffer Definition //
 //////////////////////////////
@@ -65,11 +65,11 @@ uint8_t TX_BUF[DATA_BUF_SIZE];
 ////////////////////////////////
 // W5500 HW Socket Definition //
 ////////////////////////////////
-#define MAX_HTTPSOCK	5
+#define MAX_HTTPSOCK	6
+uint8_t socknumlist[] = {2, 3, 4, 5, 6, 7};
 
 #define SOCK_CONFIG		0
 #define SOCK_DHCP		1
-uint8_t socknumlist[] = {3, 4, 5, 6, 7};
 //////////////////////////////////////////
 
 /*****************************************************************************
@@ -102,7 +102,7 @@ int main(void)
 	// LED Initialization
 	LED_Init(LED1);
 	LED_Init(LED2);
-	LED_Off(LED1);
+	LED_On(LED1);
 	LED_Off(LED2);
 
 #if defined(MULTIFLASH_ENABLE)
@@ -160,6 +160,9 @@ int main(void)
 			else if(ret == DHCP_FAILED)
 			{
 				dhcp_retry++;
+#ifdef _MAIN_DEBUG_
+				if(dhcp_retry <= 3) printf(" - DHCP Timeout occurred and retry [%d]\r\n", dhcp_retry);
+#endif
 			}
 
 			if(dhcp_retry > 3)
@@ -167,6 +170,7 @@ int main(void)
 #ifdef _MAIN_DEBUG_
 				printf(" - DHCP Failed\r\n\r\n");
 #endif
+				value->options.dhcp_use = 0;
 				Net_Conf();
 				break;
 			}
@@ -222,7 +226,7 @@ int main(void)
 	IWDG_Configureation();
 #endif
 
-	// Main routine
+	// Main Routine
 	while(1)
 	{
 #ifdef _USE_WATCHDOG_
@@ -258,7 +262,7 @@ int main(void)
 		}
 #endif
 
-		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);
+		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);	// HTTP server handler
 
 #ifdef _USE_WATCHDOG_
 		IWDG_ReloadCounter(); // Feed IWDG

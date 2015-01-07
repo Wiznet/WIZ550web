@@ -195,7 +195,7 @@ int8_t connect(uint8_t sn, uint8_t * addr, uint16_t port)
       taddr = ((uint32_t)addr[0] & 0x000000FF);
       taddr = (taddr << 8) + ((uint32_t)addr[1] & 0x000000FF);
       taddr = (taddr << 8) + ((uint32_t)addr[2] & 0x000000FF);
-      taddr = (taddr << 8) + ((uint32_t)addr[0] & 0x000000FF);
+      taddr = (taddr << 8) + ((uint32_t)addr[3] & 0x000000FF);
       if( taddr == 0xFFFFFFFF || taddr == 0) return SOCKERR_IPINVALID;
    }
    //
