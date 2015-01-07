@@ -18,6 +18,7 @@
 #ifdef SPI_FLASH
 	//#define SPI_FLASH_ONLY
 #endif
+#define _FS_DEBUG_
 
 
 #define DELAY_COUNT    0xEFFFF  // just for test

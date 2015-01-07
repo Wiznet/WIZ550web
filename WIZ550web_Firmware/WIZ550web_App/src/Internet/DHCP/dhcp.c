@@ -644,9 +644,9 @@ int8_t parseDHCPMSG(void)
    				dhcp_lease_time  = (dhcp_lease_time << 8) + *p++;
    				dhcp_lease_time  = (dhcp_lease_time << 8) + *p++;
    				dhcp_lease_time  = (dhcp_lease_time << 8) + *p++;
-            #ifdef _DHCP_DEBUG_  
-               dhcp_lease_time = 10;
- 				#endif
+#ifdef _DHCP_DEBUG_
+                //dhcp_lease_time = 10;
+#endif
    				break;
    			case dhcpServerIdentifier :
    				p++;
@@ -728,7 +728,7 @@ uint8_t DHCP_run(void)
 				printf("> Receive DHCP_NACK\r\n");
 #endif
 
-				reset_DHCP_timeout();
+				//reset_DHCP_timeout();
 
 				dhcp_state = STATE_DHCP_DISCOVER;
 			} else ret = check_DHCP_timeout();

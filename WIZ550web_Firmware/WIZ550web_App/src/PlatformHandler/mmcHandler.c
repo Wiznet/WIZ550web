@@ -14,7 +14,6 @@
 static void stm32_dma_transfer(uint8_t receive, const BYTE *buff, uint16_t btr);
 #endif
 
-FATFS ff;
 FATFS Fatfs[1];
 card_type_id_t card_type = NO_CARD;
 
@@ -614,7 +613,9 @@ uint8_t mmc_mount()
 
 #if !defined(SPI_FLASH_ONLY)
 	state = SD_Init();
+#if defined(_FS_DEBUG_)
     printf("SD_Init:%d\r\n", state);
+#endif
 	if(state == STA_NODISK)
 	{
 		return NO_CARD;
@@ -626,7 +627,9 @@ uint8_t mmc_mount()
 	else
 	{
 		res = f_mount(&Fatfs[0],"1:",0);
+#if defined(_FS_DEBUG_)
 	    printf("f_mount:%d\r\n", res);
+#endif
 		g_sdcard_done = 1;
 
 		return SD_Type;
@@ -653,7 +656,9 @@ uint8_t flash_mount()
 	//disk_initialize(1);
 
 	res = f_mount(&Fatfs[0],"0:",0);
+#if defined(_FS_DEBUG_)
     printf("f_mount:%d\r\n", res);
+#endif
 
 #if defined(SPI_FLASH)
     if(check_spiflash_flag() == 1)
@@ -663,7 +668,9 @@ uint8_t flash_mount()
 
 	res = f_mkfs("0:",0,512);
 
+#if defined(_FS_DEBUG_)
     printf("f_mkfs:%d %d\r\n", res, g_mkfs_done);
+#endif
     if(check_spiflash_flag() == 1)
     	save_spiflash_flag();
     g_mkfs_done = 1;

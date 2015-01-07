@@ -73,7 +73,7 @@ uint8_t FTP_DBUF[_MAX_SS];
 #if defined(F_APP_FTP)
 #define MAX_HTTPSOCK	4
 #else
-#define MAX_HTTPSOCK	5
+#define MAX_HTTPSOCK	6
 #endif
 
 #define SOCK_CONFIG		0
@@ -81,19 +81,9 @@ uint8_t FTP_DBUF[_MAX_SS];
 #if defined(F_APP_FTP)
 uint8_t socknumlist[] = {4, 5, 6, 7};
 #else
-uint8_t socknumlist[] = {3, 4, 5, 6, 7};
+uint8_t socknumlist[] = {2, 3, 4, 5, 6, 7};
 #endif
 //////////////////////////////////////////
-
-#if 0
-FIL file;
-char szbuff[200];
-FATFS fs;            // Work area (file system object) for logical drive
-DIR dirs;
-FRESULT res;
-FILINFO finfo;
-UINT br;
-#endif
 
 int g_mkfs_done = 0;
 int g_sdcard_done = 0;
@@ -192,6 +182,9 @@ int main(void)
 			else if(ret == DHCP_FAILED)
 			{
 				dhcp_retry++;
+#ifdef _MAIN_DEBUG_
+				if(dhcp_retry <= 3) printf(" - DHCP Timeout occurred and retry [%d]\r\n", dhcp_retry);
+#endif
 			}
 
 			if(dhcp_retry > 3)
@@ -199,6 +192,7 @@ int main(void)
 #ifdef _MAIN_DEBUG_
 				printf(" - DHCP Failed\r\n\r\n");
 #endif
+				value->options.dhcp_use = 0;
 				Net_Conf();
 				break;
 			}
@@ -283,7 +277,7 @@ int main(void)
 	IWDG_Configureation();
 #endif
 
-	// Main routine
+	// Main Routine
 	while(1)
 	{
 #ifdef _USE_WATCHDOG_
@@ -327,7 +321,7 @@ int main(void)
 		}
 #endif
 
-		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);
+		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);	// HTTP server handler
 
 #if defined(F_APP_FTP)
 		ftpd_run(FTP_DBUF);

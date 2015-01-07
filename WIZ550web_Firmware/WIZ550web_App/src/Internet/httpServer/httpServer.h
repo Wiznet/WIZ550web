@@ -11,6 +11,7 @@
 //#define _HTTPSERVER_DEBUG_
 
 #define INITIAL_WEBPAGE				"index.html"
+#define M_INITIAL_WEBPAGE			"m/index.html"
 #define MOBILE_INITIAL_WEBPAGE		"mobile/index.html"
 
 /* Web Server Content Storage Select */
@@ -39,13 +40,19 @@
 #define HTTP_RESET					2
 
 
+/*********************************************
+* HTTP Content NAME length
+*********************************************/
+#define MAX_CONTENT_NAME_LEN		128
+
+
 typedef struct _st_http_socket
 {
-	uint8_t		sock_status;
-	uint32_t 	file_start;
-	uint32_t 	file_len;
-	uint32_t 	file_offset; // (start addr + bufsize...)
-	uint8_t		file_type;
+	uint8_t			sock_status;
+	uint8_t			file_name[MAX_CONTENT_NAME_LEN];
+	uint32_t 		file_start;
+	uint32_t 		file_len;
+	uint32_t 		file_offset; // (start addr + sent size...)
 }st_http_socket;
 
 
