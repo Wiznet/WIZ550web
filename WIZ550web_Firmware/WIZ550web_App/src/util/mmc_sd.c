@@ -9,7 +9,7 @@
 
 u8 SD_Type = 0; // SD card type
 
-#define SD_MEMORY_RETRY_COUNT 255//400
+#define SD_MEMORY_RETRY_COUNT 400
 
 
 // 2010/5/13

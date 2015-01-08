@@ -7514,7 +7514,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x29abd
+.debug_info     0x00000000    0x29abb
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x65c ./system/src/stm32f1-stdperiph/misc.o
  .debug_info    0x0000065c     0x1462 ./system/src/stm32f1-stdperiph/stm32f10x_adc.o
@@ -7567,9 +7567,9 @@ END GROUP
  .debug_info    0x00022fa8      0xa1b ./src/ATcmd/library/sockutil.o
  .debug_info    0x000239c3      0x2b6 ./src/ATcmd/library/util.o
  .debug_info    0x00023c79     0x3e7d ./src/ATcmd/atcmd.o
- .debug_info    0x00027af6     0x119c ./src/ATcmd/cmdrun.o
- .debug_info    0x00028c92      0xce3 ./src/main.o
- .debug_info    0x00029975      0x148 ./src/stm32f10x_it.o
+ .debug_info    0x00027af6     0x119a ./src/ATcmd/cmdrun.o
+ .debug_info    0x00028c90      0xce3 ./src/main.o
+ .debug_info    0x00029973      0x148 ./src/stm32f10x_it.o
 
 .debug_abbrev   0x00000000     0x6514
  *(.debug_abbrev)
