@@ -1,0 +1,19 @@
+[33mcommit 415fcaec0c3aa860cb47ffcf3fb4a65082166185[m
+Author: Eric Jung <myst5829@gmail.com>
+Date:   Thu Jan 8 10:16:57 2015 +0900
+
+    Update README.md
+
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 4d90bde..c99b931 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -75,7 +75,7 @@[m [mVarious materials are could be found at [WIZ550web Wiki page](http://wizwiki.net[m
+ v1.0.1[m
+ - Jan. 2014[m
+ - History[m
+[31m-  - Added the 'Get/Set functions' for easy to customize user's web pages[m
+[32m+[m[32m  - Added the 'Get/Set Interface functions' for easy to customize user's web pages[m
+   - HTTP Server operation stability improvement[m
+   - Modified some comments and fixed some typos[m
+ [m
