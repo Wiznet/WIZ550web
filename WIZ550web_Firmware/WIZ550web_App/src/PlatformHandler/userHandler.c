@@ -30,7 +30,20 @@
 //#define IO_PAGE_ADDR	(0x8000000+(FLASH_PAGE_SIZE*61))	// Page125
 #endif
 
-//IOStorage IOdata;
+// Pre-defined Get CGI functions
+void make_json_devinfo(uint8_t * buf, uint16_t * len);
+void make_json_netinfo(uint8_t * buf, uint16_t * len);
+void make_json_uartinfo(uint8_t * buf, uint16_t * len, uint8_t uart_sel);
+void make_json_dio(uint8_t * buf, uint16_t * len, uint8_t pin);
+void make_json_ain(uint8_t * buf, uint16_t * len, uint8_t pin);
+
+// Pre-defined Set CGI functions
+uint8_t set_devinfo(uint8_t * uri);
+uint8_t set_netinfo(uint8_t * uri);
+uint8_t set_uartinfo(uint8_t * uri, uint8_t uart_sel);
+int8_t set_diodir(uint8_t * uri);
+int8_t set_diostate(uint8_t * uri);
+int8_t set_dioalias(uint8_t * uri);
 
 uint16_t ADC_value;
 uint16_t TemperatureC;
@@ -172,6 +185,7 @@ uint16_t get_ADC_val(uint8_t index)
 	uint16 adc_value = 0;
 
 #if 0
+	// for Test
 	switch(index)
 	{
 		case A0: // WIZ550WEB BaseBoard: Potentiometer
@@ -197,10 +211,8 @@ uint16_t get_ADC_val(uint8_t index)
 	return adc_value;
 }
 
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// HTTP GET Method PL Functions
+// HTTP GET Method CGI Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void make_basic_config_setting_json_callback(uint8_t * buf, uint16_t * len)
@@ -435,7 +447,7 @@ void make_json_serial_data(uint8_t * buf, uint16_t * len)
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// HTTP POST Method PL Functions
+// HTTP POST Method CGI Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 uint8_t * set_basic_config_setting(uint8_t * uri)
@@ -665,17 +677,454 @@ void set_factory_default_io_status(uint8_t * uri)
 	}
 }
 
-void make_pl_basic_config_response_page(uint16_t delay, uint8_t * url, uint8_t * pl_response_buf, uint16_t * len)
+void make_cgi_basic_config_response_page(uint16_t delay, uint8_t * url, uint8_t * cgi_response_buf, uint16_t * len)
 {
 	S2E_Packet *value = get_S2E_Packet_pointer();
 
 	if(value->options.dhcp_use == 1) // Static -> DHCP, DHCP -> DHCP
 	{
-		*len = sprintf((char *)pl_response_buf,"<html><head><title>WIZ550WEB - Configuration</title><body>Reboot Complete. Please try to connect to the IP address assigned by the <span style='color:red;'>DHCP server</span></body></html>");
+		*len = sprintf((char *)cgi_response_buf,"<html><head><title>WIZ550WEB - Configuration</title><body>Reboot Complete. Please try to connect to the IP address assigned by the <span style='color:red;'>DHCP server</span></body></html>");
 	}
 	else // Static -> Static, DHCP -> Static
 	{
-		*len = sprintf((char *)pl_response_buf,"<html><head><title>WIZ550WEB - Configuration</title><script language=javascript>j=%d;function func(){document.getElementById('delay').innerText=' '+j+' ';if(j>0)j--;setTimeout('func()',1000);if(j<=0)location.href='http://%d.%d.%d.%d';}</script></head><body onload='func()'>Please wait for a while, the module will boot in<span style='color:red;' id='delay'></span> seconds.</body></html>", delay, url[0], url[1], url[2], url[3]);
+		*len = sprintf((char *)cgi_response_buf,"<html><head><title>WIZ550WEB - Configuration</title><script language=javascript>j=%d;function func(){document.getElementById('delay').innerText=' '+j+' ';if(j>0)j--;setTimeout('func()',1000);if(j<=0)location.href='http://%d.%d.%d.%d';}</script></head><body onload='func()'>Please wait for a while, the module will boot in<span style='color:red;' id='delay'></span> seconds.</body></html>", delay, url[0], url[1], url[2], url[3]);
 	}
 	return;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Pre-defined Get CGI functions
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void make_json_dio(uint8_t * buf, uint16_t * len, uint8_t pin)
+{
+	*len = sprintf((char *)buf, "DioCallback({\"dio_p\":\"%d\",\
+											\"dio_s\":\"%d\",\
+											\"dio_d\":\"%d\",\
+											\"dio_a\":\"%s\"\
+											});",
+											pin,					// Digital io pin number
+											get_IO_Status(pin),		// Digital io status
+											IOdata.io[pin],			// Digital io directions
+											IOdata.io_alias[pin]	// Digital io alias
+											);
+}
+
+void make_json_ain(uint8_t * buf, uint16_t * len, uint8_t pin)
+{
+	*len = sprintf((char *)buf, "AinCallback({\"ain_p\":\"%d\",\
+											\"ain_v\":\"%d\"\
+											});",
+											pin,					// ADC input pin number
+											get_ADC_val(pin)		// ADC input value
+											);
+}
+
+void make_json_devinfo(uint8_t * buf, uint16_t * len)
+{
+	S2E_Packet *value = get_S2E_Packet_pointer();
+
+	*len = sprintf((char *)buf, "DevinfoCallback({\"fwver\":\"%d.%d.%d\",\
+											\"devname\":\"%s\",\
+											\"pcode\":\"%d-%d-%d\",\
+											\"mac\":\"%02X:%02X:%02X:%02X:%02X:%02X\"\
+											});",
+											value->fw_ver[0], value->fw_ver[1], value->fw_ver[2],
+											value->module_name,
+											value->module_type[0],value->module_type[1],value->module_type[2],
+											value->network_info_common.mac[0],value->network_info_common.mac[1],value->network_info_common.mac[2],value->network_info_common.mac[3],value->network_info_common.mac[4],value->network_info_common.mac[5]
+											);
+}
+
+void make_json_netinfo(uint8_t * buf, uint16_t * len)
+{
+	S2E_Packet *value = get_S2E_Packet_pointer();
+
+	*len = sprintf((char *)buf, "NetinfoCallback({\"ip\":\"%d.%d.%d.%d\",\
+											\"gw\":\"%d.%d.%d.%d\",\
+											\"sub\":\"%d.%d.%d.%d\",\
+											\"dns\":\"%d.%d.%d.%d\",\
+											\"dhcp\":\"%d\"\
+											});",
+											value->network_info_common.local_ip[0],value->network_info_common.local_ip[1],value->network_info_common.local_ip[2],value->network_info_common.local_ip[3],
+											value->network_info_common.gateway[0],value->network_info_common.gateway[1],value->network_info_common.gateway[2],value->network_info_common.gateway[3],
+											value->network_info_common.subnet[0],value->network_info_common.subnet[1],value->network_info_common.subnet[2],value->network_info_common.subnet[3],
+											value->options.dns_server_ip[0],value->options.dns_server_ip[1],value->options.dns_server_ip[2],value->options.dns_server_ip[3],
+											value->options.dhcp_use
+											);
+}
+
+void make_json_uartinfo(uint8_t * buf, uint16_t * len, uint8_t uart_sel)
+{
+	S2E_Packet *value = get_S2E_Packet_pointer();
+	uint8_t baudrate_index[2] = {0, };
+	uint8_t databit_index[2] = {0, };
+	uint8_t stopbit_index[2] = {0, };
+
+	// for UART0 / UART1, uart_sel = 0 or 1
+	if(uart_sel > 1) uart_sel = 0;
+
+	switch(value->serial_info[uart_sel].baud_rate)
+	{
+		case baud_230400 :
+			baudrate_index[uart_sel] = BAUD_230400_INDEX;
+			break;
+		case baud_115200 :
+			baudrate_index[uart_sel] = BAUD_115200_INDEX;
+			break;
+		case baud_57600 :
+			baudrate_index[uart_sel] = BAUD_57600_INDEX;
+			break;
+		case baud_38400 :
+			baudrate_index[uart_sel] = BAUD_38400_INDEX;
+			break;
+		case baud_19200 :
+			baudrate_index[uart_sel] = BAUD_19200_INDEX;
+			break;
+		case baud_9600 :
+			baudrate_index[uart_sel] = BAUD_9600_INDEX;
+			break;
+		case baud_4800 :
+			baudrate_index[uart_sel] = BAUD_4800_INDEX;
+			break;
+		case baud_2400 :
+			baudrate_index[uart_sel] = BAUD_2400_INDEX;
+			break;
+		case baud_1200 :
+			baudrate_index[uart_sel] = BAUD_1200_INDEX;
+			break;
+		case baud_600 :
+			baudrate_index[uart_sel] = BAUD_600_INDEX;
+			break;
+		default :
+			baudrate_index[uart_sel] = BAUD_115200_INDEX;
+			break;
+	}
+
+	if(value->serial_info[uart_sel].data_bits == word_len9) databit_index[uart_sel] = DATA_BIT9_INDEX;
+	else databit_index[uart_sel] = DATA_BIT8_INDEX;
+
+	if(value->serial_info[uart_sel].stop_bits == stop_bit2) stopbit_index[uart_sel] = STOP_BIT2_INDEX;
+	else stopbit_index[uart_sel] = STOP_BIT1_INDEX;
+
+	*len = sprintf((char *)buf, "UartinfoCallback({\"uart\":\"%d\",\
+											\"baud\":\"%d\",\
+											\"databit\":\"%d\",\
+											\"parity\":\"%d\",\
+											\"stopbit\":\"%d\",\
+											\"flow\":\"%d\"\
+											});",
+											uart_sel,
+											baudrate_index[uart_sel],
+											databit_index[uart_sel],
+											value->serial_info[uart_sel].parity,
+											stopbit_index[uart_sel],
+											value->serial_info[uart_sel].flow_control
+											);
+}
+
+// Parameters: URI, Buffer, Length
+uint8_t predefined_get_cgi_processor(uint8_t * uri_name, uint8_t * buf, uint16_t * len)
+{
+	uint8_t ret = 1;	// ret = 1 means 'uri_name' matched
+	uint8_t cgibuf[14] = {0, };
+	int8_t cgi_dio = -1;
+	int8_t cgi_ain = -1;
+
+	uint8_t i;
+
+	if(strcmp((const char *)uri_name, "get_devinfo.cgi") == 0)
+	{
+		make_json_devinfo(buf, len);
+	}
+	else if(strcmp((const char *)uri_name, "get_netinfo.cgi") == 0)
+	{
+		make_json_netinfo(buf, len);
+	}
+	else if(strcmp((const char *)uri_name, "get_uart0info.cgi") == 0)
+	{
+		make_json_uartinfo(buf, len, 0);
+	}
+	else if(strcmp((const char *)uri_name, "get_uart1info.cgi") == 0)
+	{
+		make_json_uartinfo(buf, len, 1);
+	}
+	else
+	{
+		// get_dio0.cgi ~ get_dio15.cgi
+		for(i = 0; i < 16; i++)
+		{
+			memset(cgibuf, 0x00, 14);
+			sprintf((char *)cgibuf, "get_dio%d.cgi", i);
+			if(strcmp((const char *)uri_name, (const char *)cgibuf) == 0)
+			{
+				make_json_dio(buf, len, i);
+				cgi_dio = i;
+				break;
+			}
+		}
+
+		if(cgi_dio < 0)
+		{
+			// get_ain0.cgi ~ get_ain3.cgi
+			for(i = 0; i < 4; i++)
+			{
+				memset(cgibuf, 0x00, 14);
+				sprintf((char *)cgibuf, "get_ain%d.cgi", i);
+				if(strcmp((const char *)uri_name, (const char *)cgibuf) == 0)
+				{
+					make_json_ain(buf, len, i);
+					cgi_ain = i;
+					break;
+				}
+			}
+		}
+
+		if((cgi_dio < 0) && (cgi_ain < 0)) ret = 0;
+	}
+
+	return ret;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Predefined Set CGI functions
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+uint8_t set_devinfo(uint8_t * uri)
+{
+	uint8_t ret = 0;
+	uint8_t * param;
+	uint8_t str_size;
+	S2E_Packet *value = get_S2E_Packet_pointer();
+
+	if((param = get_http_param_value((char *)uri, "devname")))
+	{
+		memset(value->module_name, 0x00, 25);
+		if((str_size = strlen((char*)param)) > 24) str_size = 24; // exception handling
+		memcpy(value->module_name, param, str_size);
+
+		ret = 1;
+	}
+
+	if(ret == 1) save_S2E_Packet_to_storage();
+	return ret;
+}
+
+uint8_t set_netinfo(uint8_t * uri)
+{
+	uint8_t ret = 0;
+	uint8_t * param;
+
+	S2E_Packet *value = get_S2E_Packet_pointer();
+
+
+	if((param = get_http_param_value((char *)uri, "dhcp")))
+	{
+		if(strstr((char const*)param, "1") != NULL) value->options.dhcp_use = 1; // DHCP mode
+		else value->options.dhcp_use = 0; // Static mode
+		ret = 1;
+	}
+
+	if(value->options.dhcp_use == 0) // Static mode
+	{
+		if((param = get_http_param_value((char *)uri, "ip")))
+		{
+			inet_addr_((u_char*)param, value->network_info_common.local_ip);
+			ret = 1;
+		}
+		if((param = get_http_param_value((char *)uri, "gw")))
+		{
+			inet_addr_((u_char*)param, value->network_info_common.gateway);
+			ret = 1;
+		}
+		if((param = get_http_param_value((char *)uri, "sub")))
+		{
+			inet_addr_((u_char*)param, value->network_info_common.subnet);
+			ret = 1;
+		}
+		if((param = get_http_param_value((char *)uri, "dns")))
+		{
+			inet_addr_((u_char*)param, value->options.dns_server_ip);
+			ret = 1;
+		}
+	}
+
+	if(ret == 1) save_S2E_Packet_to_storage();
+	return ret;
+}
+
+uint8_t set_uartinfo(uint8_t * uri, uint8_t uart_sel)
+{
+	uint8_t * param;
+	uint8_t ret = 0;
+	uint8_t baudrate_idx = 0, tmp = 0;
+	S2E_Packet *value = get_S2E_Packet_pointer();
+
+	if((param = get_http_param_value((char *)uri, "baud")))
+	{
+		baudrate_idx = ATOI(param, 10);
+		if(baudrate_idx > 9) baudrate_idx = 8; // 115200
+		value->serial_info[uart_sel].baud_rate = baudrate_table[baudrate_idx];
+		ret = 1;
+	}
+	if((param = get_http_param_value((char *)uri, "databit")))
+	{
+		tmp = ATOI(param, 10);
+		if((tmp != 8) && (tmp != 9)) tmp = 8;
+		value->serial_info[uart_sel].data_bits = tmp;
+		ret = 1;
+	}
+	if((param = get_http_param_value((char *)uri, "parity")))
+	{
+		tmp = ATOI(param, 10);
+		if(tmp > 2) tmp = 0;
+		value->serial_info[uart_sel].parity = tmp;
+		ret = 1;
+	}
+	if((param = get_http_param_value((char *)uri, "stopbit")))
+	{
+		tmp = ATOI(param, 10);
+		if((tmp != 1) && (tmp != 2)) tmp = 1;
+		value->serial_info[uart_sel].stop_bits = tmp;
+		ret = 1;
+	}
+	if((param = get_http_param_value((char *)uri, "flow")))
+	{
+		tmp = ATOI(param, 10);
+		if(tmp > 3) tmp = 0;
+		value->serial_info[uart_sel].flow_control = tmp;
+		ret = 1;
+	}
+
+	if(ret == 1) save_S2E_Packet_to_storage();
+	return ret;
+}
+
+int8_t set_diodir(uint8_t * uri)
+{
+	uint8_t * param;
+	uint8_t pin = 0, val = 0;
+
+	if((param = get_http_param_value((char *)uri, "pin"))) // GPIO; D0 ~ D15
+	{
+		pin = (uint8_t)ATOI(param, 10);
+		if(pin > 15) return -1;
+
+		if((param = get_http_param_value((char *)uri, "val")))  // Direction; NotUsed/Input/Output
+		{
+			val = (uint8_t)ATOI(param, 10);
+			if(val > Output) val = Output;
+		}
+
+		IOdata.io[pin] = val;
+		IO_Init(pin);
+		write_IOstorage(&IOdata, sizeof(IOdata));
+	}
+
+	return pin;
+}
+
+int8_t set_diostate(uint8_t * uri)
+{
+	uint8_t * param;
+	uint8_t pin = 0, val = 0;
+
+	if((param = get_http_param_value((char *)uri, "pin"))) // GPIO; D0 ~ D15
+	{
+		pin = (uint8_t)ATOI(param, 10);
+		if(pin > 15) return -1;
+
+		if((param = get_http_param_value((char *)uri, "val")))  // State; high(on)/low(off)
+		{
+			val = (uint8_t)ATOI(param, 10);
+			if(val > On) val = On;
+		}
+
+		IOdata.ios[pin] = val;
+		if(val == On) 		IO_On(pin);
+		else if(val == Off)	IO_Off(pin);
+		write_IOstorage(&IOdata, sizeof(IOdata));
+	}
+
+	return pin;
+}
+
+int8_t set_dioalias(uint8_t * uri)
+{
+	uint8_t * param;
+	uint8_t pin = 0;
+	uint8_t str_size = 0;
+
+	if((param = get_http_param_value((char *)uri, "pin"))) // GPIO (D0 ~ D15)
+	{
+		pin = (uint8_t)ATOI(param, 10);
+		if(pin > 15) return -1;
+
+		if((param = get_http_param_value((char *)uri, "val")))  // Direction (0 ~ 2)
+		{
+			memset(IOdata.io_alias[pin], 0x00, 25);
+			if((str_size = strlen((char*)param)) > 24) str_size = 24; // exception handling
+			memcpy(IOdata.io_alias[pin], param, str_size);
+		}
+
+		write_IOstorage(&IOdata, sizeof(IOdata));
+	}
+
+	return pin;
+}
+
+// Parameters: URI, Parameters, Buffer, Length
+uint8_t predefined_set_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf, uint16_t * len)
+{
+	uint8_t ret = 1;	// ret = 1 means 'uri_name' matched
+	uint8_t val = 0;
+
+	// Devinfo; devname
+	if(strcmp((const char *)uri_name, "set_devinfo.cgi") == 0)
+	{
+		val = set_devinfo(uri);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	// Netinfo; ip, gw, sub, dns, dhcp
+	else if(strcmp((const char *)uri_name, "set_netinfo.cgi") == 0)
+	{
+		val = set_netinfo(uri);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	// UART0; baud, databit, parity, stopbit, flow
+	else if(strcmp((const char *)uri_name, "set_uart0info.cgi") == 0)
+	{
+		val = set_uartinfo(uri, 0);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	// UART0; baud, databit, parity, stopbit, flow
+	else if(strcmp((const char *)uri_name, "set_uart1info.cgi") == 0)
+	{
+		val = set_uartinfo(uri, 1);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	// Digital I/O; dio_s, dio_d, dio_a
+	else if(strcmp((const char *)uri_name, "set_diodir.cgi") == 0)
+	{
+		val = set_diodir(uri);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	else if(strcmp((const char *)uri_name, "set_diostate.cgi") == 0)
+	{
+		val = set_diostate(uri);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	else if(strcmp((const char *)uri_name, "set_dioalias.cgi") == 0)
+	{
+		val = set_dioalias(uri);
+		*len = sprintf((char *)buf, "%d", val);
+	}
+	else
+	{
+		ret = 0;
+	}
+
+
+	return ret;
 }

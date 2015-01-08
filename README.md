@@ -1,4 +1,4 @@
-#WIZ550web
+#WIZ550web v1.0.1dev
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
 - Provides the firmware & web page examples for user’s customization
 - 16-Configurable Digital I/O, 4-Analog Input, 2-UART Port

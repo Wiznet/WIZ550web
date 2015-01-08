@@ -21,10 +21,10 @@
 
 typedef struct
 {
-	uint8_t io_statuscode[2];
-	uint8_t io[16];
-	uint8_t ios[16];
-	uint8_t io_alias[16][MAX_ALIAS_SIZE];
+	uint8_t io_statuscode[2];				// Flag for I/O info modification Indicator (initial / saved)
+	uint8_t io[16];							// Digital I/O directions (in/out/notused)
+	uint8_t ios[16];						// Digital I/O status (high/low)
+	uint8_t io_alias[16][MAX_ALIAS_SIZE];	// Digital I/O alias (string < 25)
 	uint8_t factory_flag[2];
 } IOStorage;
 
@@ -63,7 +63,13 @@ int write_IOstorage(void *data, uint16_t size);
 uint16_t get_ADC_val(uint8_t index);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// HTTP GET Method PL Functions
+// Pre-defined CGI Interface Functions Handler
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+uint8_t predefined_get_cgi_processor(uint8_t * uri_name, uint8_t * buf, uint16_t * len);
+uint8_t predefined_set_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t * buf, uint16_t * len);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// HTTP GET Method CGI Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void make_basic_config_setting_json_callback(uint8_t * buf, uint16_t * len);
 void make_json_io_status(uint8_t * buf, uint16_t * len);
@@ -72,9 +78,9 @@ void make_json_serial_data(uint8_t * buf, uint16_t * len);
 void make_json_ioalias_status(uint8_t * buf, uint16_t * len);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// HTTP POST Method PL Functions
+// HTTP POST Method CGI Functions
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void make_pl_basic_config_response_page(uint16 delay, uint8_t * url, uint8_t * pl_response_buf, uint16_t * len);
+void make_cgi_basic_config_response_page(uint16_t delay, uint8_t * url, uint8_t * cgi_response_buf, uint16_t * len);
 uint8_t * set_basic_config_setting(uint8_t * uri);
 uint8_t set_digital_io_output(uint8_t * uri);
 uint8_t set_digital_io_alias(uint8_t * uri);

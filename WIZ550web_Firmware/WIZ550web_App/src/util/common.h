@@ -300,9 +300,32 @@
 
 //-------------------------------------------------------------------------------------------
 
+
+/*************************************************************************
+ *
+ * WIZ550web Firmware version update history
+ *
+ * - Temporary memo
+ * - For more details, Please refer to the WIZ550web GitHub Repository
+ * >> https://github.com/Wiznet/WIZ550web
+ *
+ *************************************************************************/
+
+/* [2015. 01. 06] v1.0.0 -> v1.0.1 Version update */
+
+// 1. HTTP Server operation stability improvement. (Related to the memory allocations)
+// 2. Added the 'Get/Set functions' for easy to customize user's web pages.
+// 3. Modified some comments and fixed some typos
+
+/* [2014. 11. xx] v1.0.0 First released */
+
+// 1. First released
+
+ /*************************************************************************/
+
 #define MAJOR_VER		1
 #define MINOR_VER		0
-#define MAINTENANCE_VER	0
+#define MAINTENANCE_VER	1
 
 #define OP_COMMAND		0
 #define OP_DATA			1
