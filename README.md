@@ -75,7 +75,7 @@ Various materials are could be found at [WIZ550web Wiki page](http://wizwiki.net
 v1.0.1
 - Jan. 2014
 - History
-  - Added the 'Get/Set functions' for easy to customize user's web pages
+  - Added the 'Get/Set Interface functions' for easy to customize user's web pages
   - HTTP Server operation stability improvement
   - Modified some comments and fixed some typos
 
