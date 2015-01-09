@@ -4,7 +4,7 @@
 - 16-Configurable Digital I/O, 4-Analog Input, 2-UART Port
 - SD card, Configuration tool, Serial AT command set support
 
->> [WIZ550web GitHub Page](wiznet.github.io/WIZ550web/)
+>> [WIZ550web GitHub Page](http://wiznet.github.io/WIZ550web/)
 
 
 ##Images
