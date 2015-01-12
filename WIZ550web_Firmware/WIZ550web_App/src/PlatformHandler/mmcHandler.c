@@ -611,7 +611,7 @@ uint8_t mmc_mount()
     	printf("\r\nSD initialize failed.\r\n");
 	*/
 
-#if !defined(SPI_FLASH_ONLY)
+#if !defined(F_SPI_FLASH_ONLY)
 	state = SD_Init();
 #if defined(_FS_DEBUG_)
     printf("SD_Init:%d\r\n", state);
@@ -660,7 +660,7 @@ uint8_t flash_mount()
     printf("f_mount:%d\r\n", res);
 #endif
 
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
     if(check_spiflash_flag() == 1)
         g_mkfs_done = 1;
     else

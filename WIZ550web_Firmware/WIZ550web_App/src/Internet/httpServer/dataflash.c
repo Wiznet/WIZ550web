@@ -63,7 +63,7 @@ void write_end_page(void)
 
 void write_to_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned int Size)
 {
-#if !defined(SPI_FLASH)
+#if !defined(F_SPI_FLASH)
     unsigned int page = 0;
     unsigned int address = 0;
 
@@ -170,7 +170,7 @@ void write_to_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned in
 #endif
 }
 
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 void Flash_WaitReady(void)
 {
    	DF_CS_LOW();
@@ -182,7 +182,7 @@ void Flash_WaitReady(void)
 
 void read_from_flashbuf(unsigned long Address, unsigned char* Buffer, unsigned int Size)
 {
-#if !defined(SPI_FLASH)
+#if !defined(F_SPI_FLASH)
     unsigned int page = 0;
     unsigned int address = 0;
 

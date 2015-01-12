@@ -70,7 +70,7 @@ void DF_BufferWriteEnable (unsigned char BufferNo, unsigned int IntPageAdr);
 unsigned char df_read_status (void);
 void Cont_Flash_Read_Enable (unsigned int PageAdr, unsigned int IntPageAdr);
 
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 void Flash_WaitReady(void);
 #endif
 

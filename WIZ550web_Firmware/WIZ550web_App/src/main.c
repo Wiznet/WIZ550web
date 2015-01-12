@@ -56,6 +56,7 @@
 #if defined (_MAIN_DEBUG_) || defined (_WEB_DEBUG_)
 #include <stdio.h>
 #endif
+
 //////////////////////////////
 // Shared Buffer Definition //
 //////////////////////////////
@@ -209,7 +210,7 @@ int main(void)
 	display_Net_Info();
 #endif
 
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 	ret = flash_mount();
 #endif
 	if(ret > 0)
@@ -312,7 +313,7 @@ int main(void)
 			check_factory_uart1();
 		}
 #endif
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 		if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_spiflash_flag == 0))
 		{
 			printf("\r\n########## spiflash flag is reset.\r\n");

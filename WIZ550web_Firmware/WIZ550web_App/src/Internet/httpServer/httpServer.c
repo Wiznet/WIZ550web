@@ -530,7 +530,9 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 			else
 			{	// If No CGI request, Try to find The requested web content in storage (e.g., 'SD card' or 'Data flash')
 #ifdef _USE_SDCARD_
+#ifdef _HTTPSERVER_DEBUG_
 				printf("\r\n> HTTPSocket[%d] : Searching the requested content\r\n", s);
+#endif
 				if((fr = f_open(&fs, (const char *)uri_name, FA_READ)) == 0)
 				{
 					content_found = 1; // file open succeed

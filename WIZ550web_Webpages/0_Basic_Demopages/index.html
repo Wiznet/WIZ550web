@@ -1,8 +1,7 @@
 ﻿ <!DOCTYPE html>
  <html xmlns='http://www.w3.org/1999/xhtml'> 
  <head> 
- <title>WIZ550WEB</title> 
- <!--link rel='shortcut icon' href='img/favicon.ico'--> 
+ <title>WIZ550web</title> 
  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' /> 
  <meta http-equiv='pragma' content='no-cache' /> 
  <meta http-equiv='content-type' content='no-cache, must-revalidate' />  
@@ -53,14 +52,14 @@
 	 background:#EEF3FF;
 	 border-bottom:1px solid snow; 
 	 cursor:default; 
- } 
+ }  
  .usual div{ 
 	 padding: 10px 10px 8px 10px; 
 	 *padding-top:3px; 	 
 	 *margin-top:15px;
 	 clear:left; 	 
 	 background:#EEF3FF;	 
- } 
+ }  
  .usual div a {color:#000; font-weight:bold;} 
  .hide{display:none;} 
  .show{display:block;} 
@@ -78,10 +77,10 @@
  .do-led{margin-top:2px;margin-right:20px;margin:5px auto;border:0px dashed #ccc;height:33px;width:96px;display:block;}
  .do-on{background-image: url(img/do_on.png);} 
  .do-off{background-image: url(img/do_off.png);} 
- .io-dir{margin-top:5px;margin-bottom:5px;text-align:center;font-weight:bold;}
- .onboard-led{margin-top:2px;margin-right:10px;margin:5px auto;border:0px dashed #ccc;height:48px;width:48px;display:block;} 
- .led-on{background-image: url(img/led_on.png);} 
- .led-off{background-image: url(img/led_off.png);}
+ .io-dir{margin-top:5px;margin-bottom:5px;text-align:center;font-weight:bold;} 
+ .onboard-led{margin-top:2px;margin-right:10px;margin:5px auto;border:0px dashed #ccc;height:28px;width:28px;display:block;} 
+ .led-on{background-image: url(img/di_on.png);} 
+ .led-off{background-image: url(img/di_off.png);}
  .div-analog{margin-left:30px; padding:0px;} 
  .analog{margin-top:2px;margin-right:10px;border:1px solid #ccc;height:20px;width:500px;display:block;} 
  .io ul{margin-top:5px;margin-bottom:90px;} 
@@ -92,6 +91,11 @@
  .conf-menu label{float:left; padding-top:3px; text-align:center; vertical-align:middle; width:70px;}
  .conf-menu ul{margin-top:5px;margin-bottom:600px;} 
  .conf-menu li{padding-left:20px;padding-right:20px;list-style:none; float:left; text-align:center; font-weight:bold; clear:both} 
+  
+ .info label{float:left;text-align:left;width:100px;} 
+ .info li{text-align:center;clear:both}
+ .info span{vertical-align:middle;float:left;text-align:left;display:block;padding:0px;border:0px;margin:0px;}
+ .info div{margin:0 auto;text-align:center;display:table-cell;vertical-align:middle;padding:0px 15px 10px 0px;background:#FFE4E1;}
  
  a.tooltip {outline:none; }
  a.tooltip strong {line-height:30px;}
@@ -106,12 +110,54 @@
     border:1px solid #DCA; background:#fffAF0;}
  .callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
     
- /*CSS3 extras*/
+ /* CSS3 extras */
  a.tooltip span
  {
     border-radius:4px;
     box-shadow: 5px 5px 8px #CCC;
  }
+ 
+ /* CSS for Buttons */
+.btn {
+	background: #3498db;
+	background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+	background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+	background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+	background-image: -o-linear-gradient(top, #3498db, #2980b9);
+	background-image: linear-gradient(to bottom, #3498db, #2980b9);
+	-webkit-border-radius: 28;
+	-moz-border-radius: 28;
+	border-radius: 28px; 
+	color: #ffffff;	
+	font-size: 13px;
+	padding: 3px 10px 3px 10px;
+	text-decoration: none;
+}
+
+.btn:hover {
+	background: #3cb0fd;
+	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+	background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.width-onoff{
+    width: 60px;
+    display: inline-block;
+}
+
+.btn-on {
+	background: #3498db;
+}
+
+.btn-off {
+	background: #C0C0C0;
+}
+
  </style> 
  <script> 
  var tabLinks=new Array(); 
@@ -309,20 +355,21 @@
  
  var dout; 
  var dout_timer=false;
- 
+
  function postdata(o){ 
-	 var p=o.attributes['pin'].value; 
-	 var v; 
-	 if(o.className=='do-led do-on pointer'){v='1';}else{v='0';} 
+	 var p=o.attributes['pin'].value; 	 
+	 var v = 0;	 
+	 if(o.className=='btn btn-on width-onoff'){v='1';}else{v='0';}	 
 	 dout_timer=setTimeout(function(){ 
 		 if(dout && dout.abort){dout.abort();} 
 		 dout=new AJAX('dout.cgi', function(t){ 
 		 	try{
-		 		if(t=='1'){
-		 			o.setAttribute('class','do-led do-on pointer');
-		 		} else {
-		 			o.setAttribute('class','do-led do-off pointer');
-		 		}
+		 		eval(t);		 		
+		 		if(t=='1'){		 			
+		 			o.setAttribute('class','btn btn-on width-onoff');
+		 		} else {		 			
+		 			o.setAttribute('class','btn btn-off width-onoff');
+		 		}		 		
 		 	}catch(e){alert(e);} 
 		 }); 
 		 dout.doPost('pin='+p+'&val='+v); 
@@ -331,47 +378,52 @@
  
  function IoStatusCallback(o){ 
 	 var i; 
-	 var odout; 
+	 var odout;	 
 	 var odin; 
 	 var odir;
 	 var oled;
-	 var oledset;	 
+	 var oledset;
+	 var odoutBtn;
 	 if(typeof(window.external)!='undefined'){ 
-		 odout=$$_ie('span','dout'); 
+		 odout=$$_ie('span','dout');		  
 		 odin=$$_ie('span','din'); 	
 		 odir=$$_ie('span','iodir');
 		 oled=$$_ie('span','led');		 
-		 oledset=$$_ie('span','ledset');
+		 oledset=$$_ie('button','ledset-btn');
+		 odoutBtn=$$_ie('button','dout-btn');
 	 }else{
-		 odout=$$('dout');
+		 odout=$$('dout');		 
 		 odin=$$('din');
 		 odir=$$('iodir');
 		 oled=$$('led');
-		 oledset=$$('ledset');
+		 oledset=$$('ledset-btn');
+		 odoutBtn=$$('dout-btn');
 	 }
 	 
 	 // Configurable GPIOs
 	 for(i=0;i<odout.length;i++){ 
-		 if (o['dout'][i]['v']=='2') { 	// IO direction: Output	
-		 	if(o['din'][i]['v']=='0') {
-		 		odout[i].setAttribute('class','do-led do-off pointer');		 	
-		 	} else {
-		 		odout[i].setAttribute('class','do-led do-on pointer');
+		 if (o['dout'][i]['v']=='2') { 	// IO direction: Output
+		 	odoutBtn[i].style.visibility='visible';
+		 	if(o['din'][i]['v']=='0') {		 		
+		 		odoutBtn[i].setAttribute('class','btn btn-off width-onoff');
+		 		odoutBtn[i].textContent='ON';
+		 	} else {		 		
+		 		odoutBtn[i].setAttribute('class','btn btn-on width-onoff');
+		 		odoutBtn[i].textContent='OFF';
 		 	}		 	
 		 	odir[i].textContent='Output'; //ok		 	
-		 } else if(o['dout'][i]['v']=='1') { // IO direction: Input, IO Setting button hide 
-		 	odout[i].className='do-led';		 	
+		 } else if(o['dout'][i]['v']=='1') { // IO direction: Input, IO Setting button hide 		 	
+		 	odoutBtn[i].style.visibility='hidden';
 		 	odir[i].textContent='Input';
-		 } else { 							// IO direction: NotUsed, IO Setting button hide
-		 	odout[i].className='do-led';	
+		 } else { 							// IO direction: NotUsed, IO Setting button hide		 	
+		 	odoutBtn[i].style.visibility='hidden';
 		 	odir[i].textContent='NotUsed';
 		 } 
 		 		 
 		 if(o['din'][i]['v']=='0') 
 		 { 
 		 	odin[i].className='di-led di-off'; 		// off
-		 }else{ 
-		 	//odin[i].className='di-led di-on'; 
+		 }else{ 		 	
 		 	if (o['dout'][i]['v']=='2') {
 		 		odin[i].className='di-led dio-on'; // Dir-Output on: Blue led
 		 	} else {		 		
@@ -383,21 +435,22 @@
 	 for(i=0;i<oled.length;i++){ 
 		if (o['led'][i]['v']=='0') {
 			oled[i].className='onboard-led led-on';
-			oledset[i].setAttribute('class','do-led do-on pointer');
+			oledset[i].setAttribute('class','btn btn-on width-onoff');
+			oledset[i].textContent='OFF';
 		} else {
 			oled[i].className='onboard-led led-off';
-			oledset[i].setAttribute('class','do-led do-off pointer');
+			oledset[i].setAttribute('class','btn btn-off width-onoff');
+			oledset[i].textContent='ON';
 		}
 	 }  
  } 
- 
+  
  function updateIO(){ 
 	 var oUpdate; 
 	 setTimeout(function(){
 	 	oUpdate=new AJAX('io.cgi',function(t){
 	 		try{eval(t);}catch(e){location.href='/';}
-	 });	 
-	 /*oUpdate.doPost('');},300);*/
+	 });	 	 
 	 oUpdate.doGet();},300);
 	 t_update=setTimeout('updateIO()',800); 
  } 
@@ -520,7 +573,7 @@
 	}
 	
 	for(i=0;i<oAin.length;i++){ 
-		oAin[i].style.width=o['ain'][i]['v']*500/6205+'px'; 
+		oAin[i].style.width=o['ain'][i]['v']*500/5095+'px'; // 0~4095 + margin
 		oAinval[i].textContent = o['ain'][i]['v'];	
 	} 
  }
@@ -627,7 +680,7 @@
  </head> 
  <body onload='init();'> 
  	 <div id='header'> 	 	 
-		 <h2>WIZ550WEB Demopage</h2>			
+		 <h2>WIZ550web Demopage</h2>			
 	 </div>
 	 <div class='usual'>		
 		 <ul id='tabs'> 
@@ -657,7 +710,7 @@
 					 <input type='radio' name='dhcp' id='rdStatic' value='0' onclick='netinfo_block(this.value);' /><label for='rdStatic'>Static IP</label> 
 					 <input type='radio' name='dhcp' id='rdDhcp' value='1' onclick='netinfo_block(this.value);' /><label for='rdDhcp'>DHCP</label> 
 				 </div> 
-				 <div class='ipt'> 
+				 <div class='ipt'> 					 
 					 <p> 
 					 <label for='txtSip'>Device IP address:</label><input id='txtLip' name='lip' type='text' size='20' value='' onkeyup='ip_chk(this);'/> 
 					 </p> 
@@ -751,50 +804,62 @@
 					 <span class='red'>READ ONLY</span>
 				 </div> 
 				 <div> 
-				 	<input type='submit' value='Save Settings and Reboot'/> 
+				 	<input type='submit' class='btn' value='Save Settings and Reboot'/> 
 				 </div> 
 			 </form> 
 		 </div> 
 		 <div id='tabs2' class='hide'> 		 
-			 <h3>Digital I/O</h3>			 
+			 <h3>Digital I/O</h3>
 			 <div class='io'> 
 			 	<h3>On-board LED Status</h3> 
 			 	<div>
 					<ul> 
 						<li>LED0							
-							<span name='led' class='onboard-led led-off'></span>							
-							<span name='ledset' class='do-led' pin='90' onclick='postdata(this);'></span>
+							<span name='led' class='onboard-led led-off'></span>														
+							<span name='ledset' class='do-led' pin='90'>
+								<button name='ledset-btn' class='btn btn-on' pin='90' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li> 
 						<li>LED1							
 							<span name='led' class='onboard-led led-off'></span>							
-							<span name='ledset' class='do-led' pin='91' onclick='postdata(this);'></span>
+							<span name='ledset' class='do-led' pin='91'>
+								<button name='ledset-btn' class='btn btn-on' pin='91' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li> 						
 					</ul>
 				</div>
 			</div>
 			<div>
-			 	<h3>Digital I/O Status</h3> 
+			 	<h3>Digital I/O Status</h3> 			 	
 			 	<div class='io'>
 					<ul> 
 						<li>D0:
 							<span name='iodir' class='io-dir'></span>
-							<span name='din' class='di-led di-off'></span>							
-							<span name='dout' class='do-led' pin='0' onclick='postdata(this);'></span>
+							<span name='din' class='di-led di-off'></span>														
+							<span name='dout' class='do-led' size='10' pin='0'>
+								<button name='dout-btn' class='btn btn-on' pin='0' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li> 
 						<li>D1:
 							<span name='iodir' class='io-dir'></span>
-							<span name='din' class='di-led di-off'></span>							
-							<span name='dout' class='do-led' pin='1' onclick='postdata(this);'></span>
+							<span name='din' class='di-led di-off'></span>														
+							<span name='dout' class='do-led' size='9' pin='1'>
+								<button name='dout-btn' class='btn btn-on' pin='1' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li> 
 						<li>D2:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>							
-							<span name='dout' class='do-led' pin='2' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' size='8' pin='2'>
+								<button name='dout-btn' class='btn btn-on' pin='2' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D3:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>							
-							<span name='dout' class='do-led' pin='3' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='3'>
+								<button name='dout-btn' class='btn btn-on' pin='3' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 					</ul>
 				</div>
@@ -803,22 +868,30 @@
 						<li>D4:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='4' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='4'>
+								<button name='dout-btn' class='btn btn-on' pin='4' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D5:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='5' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='5'>
+								<button name='dout-btn' class='btn btn-on' pin='5' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D6:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='6' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='6'>
+								<button name='dout-btn' class='btn btn-on' pin='6' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D7:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='7' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='7'>
+								<button name='dout-btn' class='btn btn-on' pin='7' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 					</ul>
 				</div>
@@ -827,22 +900,30 @@
 						<li>D8:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-on'></span>
-							<span name='dout' class='do-led' pin='8' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='8'>
+								<button name='dout-btn' class='btn btn-on' pin='8' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li> 
 						<li>D9:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='9' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='9'>
+								<button name='dout-btn' class='btn btn-on' pin='9' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li> 
 						<li>D10:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='10' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='10'>
+								<button name='dout-btn' class='btn btn-on' pin='10' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D11:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='11' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='11'>
+								<button name='dout-btn' class='btn btn-on' pin='11' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 					</ul>					
 				</div> 
@@ -851,29 +932,78 @@
 						<li>D12:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='12' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='12'>
+								<button name='dout-btn' class='btn btn-on' pin='12' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D13:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='13' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='13'>
+								<button name='dout-btn' class='btn btn-on' pin='13' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D14:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='14' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='14'>
+								<button name='dout-btn' class='btn btn-on' pin='14' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 						<li>D15:
 							<span name='iodir' class='io-dir'></span>
 							<span name='din' class='di-led di-off'></span>
-							<span name='dout' class='do-led' pin='15' onclick='postdata(this);'></span>
+							<span name='dout' class='do-led' pin='15'>
+								<button name='dout-btn' class='btn btn-on' pin='15' onclick='postdata(this);'>On / Off</button>
+							</span>
 						</li>
 					</ul>
 				</div>
 			</div>	
+			<div class='info'>			 	
+			 	<div>
+				 	<ul id='diopage_info'>
+					 	<li>
+					 		<div style='width: 80px'>
+					 			<span class='di-led di-on'></span>				 			
+					 		</div>
+					 		<div>					 						 		
+						 		<b>Green LED: </b>The Green LED indicates [on-board LED] <b>'ON'</b> & Digital <b>input signal</b> status] <b>'High'</b> (On)
+					 		</div>
+					 	</li>
+					 	<li>				 		
+					 		<div style='width: 80px'>
+					 			<span class='di-led dio-on'></span>				 			
+					 		</div>
+					 		<div>					 						 		
+						 		<b>Blue LED: </b>The Blue LED indicates that the [Digital <b>output signal</b> status] is <b>'High'</b> (On)
+						 	</div>
+					 	</li>
+					 	<li>
+					 		<div style='width: 80px'>
+					 			<span class='di-led di-off'></span>				 			
+					 		</div>
+					 		<div>					 		
+						 		<b>Silver LED: </b>The Silver LED indicates that the [on-board LED] <b>'OFF'</b> & Digital <b>I/O signal</b> status] is <b>'Low'</b> (Off)
+						 	</div>
+					 	</li>
+					 	<li>
+					 		<div style='width: 80px'>				 		
+						 		<span>
+						 			<button class='btn btn-on'>OFF</button> 
+						 			<button class='btn btn-off'>ON</button>
+						 		</span>					 							 		
+					 		</div>
+					 		<div>				 		
+						 		<b>Button: </b>The clickable <b>'ON/OFF' switch</b> for control the [on-board LED & Digital <b>output signal</b> status]
+						 	</div>					 	
+					 	</li>
+					</ul>
+				</div>				
+			 </div>	
 		 </div>
 		 <div id='tabs3' class='hide'> 
-			 <h3>ADC Status</h3> 
+			 <h3>ADC Status</h3>			 
 			 <div> 
 			 	 <h3>Analog Input Signal</h3> 
 				 <div class='div-analog'> 
@@ -886,14 +1016,29 @@
 					 <label>A3</label> 
 					 <div class='analog' style='padding:0px;'><strong name='ain' class='ain' style='width:0%;'></strong><span name='ainval'></span></div> 
 				</div> 
-			 </div> 		 	
+			 </div>
+			 <div class='info'>			 	
+			 	<div>
+				 	<ul id='ainpage_info'>
+					 	<li>
+					 		<div>- <b>12-bit</b> A/D converters</div>
+					 	</li>
+					 	<li>
+					 		<div>- Conversion range: 0 to 3.6V (<b>0 to 4095</b>)</div>
+					 	</li>
+					 	<li>
+					 		<div>- 4-pin analog inputs (<b>A0 ~ A3</b>)</div>
+					 	</li>
+					</ul>
+				</div>								
+			 </div>		
 		 </div> 
 		 <div id='tabs4' class='hide'>  	 
 			<h3>I/O Configuration</h3> 
 						
 			<div class='conf-menu'>			
-				<div align='center'>				
-				<input type='button' value='IO Settings Factory Reset and Reboot' onclick='io_status_factory_reset();'>
+				<div align='left'>				
+				<input type='button' class='btn' value='IO Settings Factory Reset and Reboot' onclick='io_status_factory_reset();'>
 				</div>
 				<ul>						
 					<li>						
@@ -905,7 +1050,7 @@
 							 <option value='2'>Output</option> 							 
 						</select> 						
 						<input type='text' id='txtAlias_d0' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='0' onclick='save_alias(this);'>
+				 		<input type='button' class='btn' value='Save alias' pin='0' onclick='save_alias(this);'>
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -916,7 +1061,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d1' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>						
-				 		<input type='button' value='Save alias' pin='1' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='1' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -927,7 +1072,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d2' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>						
-				 		<input type='button' value='Save alias' pin='2' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='2' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -938,7 +1083,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d3' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>						
-				 		<input type='button' value='Save alias' pin='3' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='3' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -949,7 +1094,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d4' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>						
-				 		<input type='button' value='Save alias' pin='4' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='4' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -960,7 +1105,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d5' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>						
-				 		<input type='button' value='Save alias' pin='5' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='5' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -971,7 +1116,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d6' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='6' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='6' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -982,7 +1127,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d7' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='7' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='7' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -993,7 +1138,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d8' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='8' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='8' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1004,7 +1149,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d9' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='9' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='9' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1015,7 +1160,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d10' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>	
-				 		<input type='button' value='Save alias' pin='10' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='10' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1026,7 +1171,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d11' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='11' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='11' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1037,7 +1182,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d12' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='12' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='12' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1048,7 +1193,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d13' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='13' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='13' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1059,7 +1204,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d14' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='14' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='14' onclick='save_alias(this);'> 
 					</li>
 					<li>
 						<span name='dstate' class='di-led di-off'></span>							
@@ -1070,7 +1215,7 @@
 							 <option value='2'>Output</option> 							 
 						 </select> 
 						<input type='text' id='txtAlias_d15' name='alias' size='25' maxlength='25' value='' onkeyup='len_chk(this);'>
-				 		<input type='button' value='Save alias' pin='15' onclick='save_alias(this);'> 
+				 		<input type='button' class='btn' value='Save alias' pin='15' onclick='save_alias(this);'> 
 					</li>					
 				</ul>				
 			</div>		
@@ -1078,8 +1223,8 @@
 		 <div id='tabs5' class='hide'> 
 			 <h3>Serial Data</h3> 
 			 <div class='ipt'> 
-				 <p><label for='txtTx'>Data to send:</label><input id='txtTx' type='text' name='txdata' value='' size='32' /><input type='button' value='Send' onclick='send_to_rs232();'/></p> 
-				 <p><label for='txtRx'>Received data:</label><textarea id='txtRx' name='rxdata' cols='30' rows='5' disabled='disabled'></textarea><input type='button' value='Clear' onclick='clear_textarea();'/></p> 
+				 <p><label for='txtTx'>Data to send:</label><input id='txtTx' type='text' name='txdata' value='' size='32' /><input type='button' class='btn' value='Send' onclick='send_to_rs232();'/></p> 
+				 <p><label for='txtRx'>Received data:</label><textarea id='txtRx' name='rxdata' cols='30' rows='5' disabled='disabled'></textarea><input type='button' class='btn' value='Clear' onclick='clear_textarea();'/></p> 
 			 </div> 
 		 </div> 
 	 </div> 
@@ -1088,6 +1233,6 @@
 	 	&copy;Copyright 2014 WIZnet Co., Ltd.		
 		</center>
 	 </div> 
-	 <script type='text/javascript' src='widget.cgi'></script>	 	
+	 <script type='text/javascript' src='widget.cgi'></script>	
  </body> 
  </html>

@@ -311,7 +311,12 @@
  *
  *************************************************************************/
 
-/* [2015. 01. 06] v1.0.0 -> v1.1.0 Version update */
+/* [2015. 01. 12] v1.0.1 -> v1.1.0 Version update */
+
+// 1. Added the FTP feature. (F_APP_FTP)
+// 2. Added the Data Flash feature on FatFs. (F_SPI_FLASH)
+
+/* [2015. 01. 06] v1.0.0 -> v1.0.1 Version update */
 
 // 1. HTTP Server operation stability improvement. (Related to the memory allocations)
 // 2. Added the 'Get/Set functions' for easy to customize user's web pages.

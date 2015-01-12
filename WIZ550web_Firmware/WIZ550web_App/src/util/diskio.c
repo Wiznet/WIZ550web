@@ -259,7 +259,7 @@ DRESULT disk_ioctl (
 		switch(cmd)
 		{
 		case CTRL_SYNC:
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 			Flash_WaitReady();
 #endif
 			res = RES_OK;
@@ -276,7 +276,7 @@ DRESULT disk_ioctl (
 			break;
 
 		case GET_SECTOR_COUNT:
-			*(DWORD*)buff = 1024;//2048;
+			*(DWORD*)buff = 2048;
 			res = RES_OK;
 			break;
 

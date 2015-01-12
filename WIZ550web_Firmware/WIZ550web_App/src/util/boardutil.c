@@ -41,7 +41,7 @@ int teststep = 0;
 int g_factoryfw_flag = 0;
 #endif
 
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 int g_spiflash_flag = 0;
 #endif
 
@@ -598,7 +598,7 @@ void factory_test_2nd (void)
 
 #endif
 
-#if defined(SPI_FLASH)
+#if defined(F_SPI_FLASH)
 extern IOStorage IOdata;
 int check_spiflash_flag(void)
 {

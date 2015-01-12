@@ -2404,7 +2404,7 @@ FRESULT scan_files(char* path, char *buf, int * buf_len)
 //	printf("f_opendir res: %d\r\n", res);
 	if(res == FR_OK){
 		i = strlen(path);
-		printf("strlen of path: %s %d \r\n", path, i);
+		//printf("strlen of path: %s %d \r\n", path, i);
 		for(;;){
 			res = f_readdir(&dir, &fno);
 			if(res != FR_OK || fno.fname[0] == 0) break;
@@ -2524,13 +2524,13 @@ int get_filesize(char* path, char *filename)
 			if(!strcmp(fn, filename))
 			{
 				if(fno.fattrib & AM_DIR){
-					printf("\r\n%s/%s is a directory\r\n", path, filename);
+					//printf("\r\n%s/%s is a directory\r\n", path, filename);
 					return 0;
 				}
 				return fno.fsize;
 			}
 		}
-		printf("\r\n%s/%s was not found\r\n", path, filename);
+		//printf("\r\n%s/%s was not found\r\n", path, filename);
 		//f_closedir(&dir);
 	}
 	return -1;
