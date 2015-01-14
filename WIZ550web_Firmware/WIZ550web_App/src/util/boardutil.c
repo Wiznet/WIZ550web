@@ -606,13 +606,13 @@ int check_spiflash_flag(void)
 
 	read_IOstorage(&IOdata, sizeof(IOdata));
 
-	if(IOdata.spiflash_flag[0] == 0xFF && IOdata.spiflash_flag[1] == 0xFF)
-	{
-		ret = 1;
-	}
-	else if(IOdata.spiflash_flag[0] == 0xAE && IOdata.spiflash_flag[1] == 0xAE)
+	if(IOdata.spiflash_flag[0] == 0xAE && IOdata.spiflash_flag[1] == 0xAE)
 	{
 		ret = 0;
+	}
+	else
+	{
+		ret = 1;
 	}
 
 	return ret;
