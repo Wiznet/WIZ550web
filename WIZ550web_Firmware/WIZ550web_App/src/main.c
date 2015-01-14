@@ -314,7 +314,7 @@ int main(void)
 		}
 #endif
 #if defined(F_SPI_FLASH)
-		if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_spiflash_flag == 0))
+		if ((get_IO_Status(D8) == On) && (get_IO_Status(D9) == On) && (g_spiflash_flag == 0))
 		{
 			printf("\r\n########## spiflash flag is reset.\r\n");
 			g_spiflash_flag = 1;
