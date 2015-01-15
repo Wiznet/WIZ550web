@@ -2401,7 +2401,7 @@ FRESULT scan_files(char* path, char *buf, int * buf_len)
 #endif
 
 	res = f_opendir(&dir, path);
-//	printf("f_opendir res: %d\r\n", res);
+	//printf("f_opendir res: %d\r\n", res);
 	if(res == FR_OK){
 		i = strlen(path);
 		//printf("strlen of path: %s %d \r\n", path, i);
@@ -2414,7 +2414,6 @@ FRESULT scan_files(char* path, char *buf, int * buf_len)
 #else
 			fn = fno.fname;
 #endif
-#if 1
 			switch((fno.fdate >> 5) & 0x0f)
 			{
 			case 1:
@@ -2459,15 +2458,7 @@ FRESULT scan_files(char* path, char *buf, int * buf_len)
 			date_str_ptr += len;
 			len = sprintf(date_str + date_str_ptr, "%d", (((fno.fdate >> 9) & 0x7f) + 1980));
 			date_str_ptr = 0;
-//			printf("date str : %s \r\n", date_str);
-#else
-			len = sprintf(date_str, "DEC ");
-			date_str_ptr += len;
-			len = sprintf(date_str + date_str_ptr, "31 ");
-			date_str_ptr += len;
-			len = sprintf(date_str + date_str_ptr, "2014");
-			date_str_ptr = 0;
-#endif
+			//printf("date str : %s \r\n", date_str);
 
 			if(fno.fattrib & AM_DIR)
 			{
@@ -2481,13 +2472,12 @@ FRESULT scan_files(char* path, char *buf, int * buf_len)
 			//len = sprintf(buf + buf_ptr, "rwxr-xr-x 1 ftp ftp              %d %s %s\r\n", fno.fsize, date_str, fn);
 			len = sprintf(buf + buf_ptr, "rwxr-xr-x 1 ftp ftp %d %s %s\r\n", fno.fsize, date_str, fn);
 			buf_ptr += len;
-		//	printf("fn: %s \r\n", fn);
+			//printf("fn: %s \r\n", fn);
 
 		}
-		//*buf_len = buf_ptr;
-		*buf_len = strlen(buf);
-//		printf("%s", buf);
-//		printf("\r\nbuf_len : %d, sizeof(buf): %d\r\n", buf_len, sizeof(buf));
+		//*buf_len = strlen(buf);
+		//printf("%s", buf);
+		//printf("\r\nbuf_len : %d, sizeof(buf): %d\r\n", buf_len, sizeof(buf));
 		//f_closedir(&dir);
 	}
 	return res;
@@ -2510,7 +2500,7 @@ int get_filesize(char* path, char *filename)
 		res = f_opendir(&dir, "/");
 	else
 		res = f_opendir(&dir, path);
-//	printf("f_opendir res: %d\r\n", res);
+	//printf("f_opendir res: %d\r\n", res);
 	if(res == FR_OK){
 		for(;;){
 			res = f_readdir(&dir, &fno);

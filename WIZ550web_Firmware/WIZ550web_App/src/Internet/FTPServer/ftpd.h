@@ -22,8 +22,8 @@
 #define LINELEN		100
 //#define DATA_BUF_SIZE	100
 
-#define CTRL_SOCK	2//0
-#define DATA_SOCK	3//
+#define CTRL_SOCK	2
+#define DATA_SOCK	3
 
 #define	IPPORT_FTPD	20	/* FTP Data port */
 #define	IPPORT_FTP	21	/* FTP Control port */

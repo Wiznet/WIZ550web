@@ -29,7 +29,7 @@
 
 /* $Id: stdio_private.h,v 1.6 2003/01/07 22:17:24 joerg_wunsch Exp $ */
 
-#include <inttypes.h>
+#include <stdint.h>
 #include <stdio.h>
 
 struct __file {
