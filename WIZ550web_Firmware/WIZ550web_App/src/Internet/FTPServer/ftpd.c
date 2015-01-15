@@ -780,7 +780,7 @@ char proc_ftpd(char * buf)
 			send(CTRL_SOCK, (uint8_t *)sendbuf, slen);
 			break;
 
-	case MKD_CMD:
+		case MKD_CMD:
 #if 1
 			if (f_mkdir(arg) != 0)
 			{
@@ -797,10 +797,21 @@ char proc_ftpd(char * buf)
 			send(CTRL_SOCK, (uint8_t *)sendbuf, slen);
 			break;
 
+		case DELE_CMD:
+			if (f_unlink(arg) != 0)
+			{
+				slen = sprintf(sendbuf, "550 Could not delete. \"%s\"\r\n", arg);
+			}
+			else
+			{
+				slen = sprintf(sendbuf, "250 Deleted. %s\r\n", arg);
+			}
+			send(CTRL_SOCK, (uint8_t *)sendbuf, slen);
+			break;
+
 		case XCWD_CMD:
 		case XPWD_CMD:
 		case ACCT_CMD:
-		case DELE_CMD:
 		case XMKD_CMD:
 		case XRMD_CMD:
 		case RMD_CMD:
