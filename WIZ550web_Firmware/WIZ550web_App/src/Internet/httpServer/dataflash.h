@@ -2,6 +2,7 @@
 #define __DATAFLASH_INCLUDED
 
 #include "wizchip_conf.h"
+#include "boardutil.h"
 
 #define DF_CS_LOW() 				GPIO_ResetBits(DF_CS_PORT, DF_CS_PIN);	// SSEL(CS)
 #define DF_CS_HIGH() 				GPIO_SetBits(DF_CS_PORT, DF_CS_PIN);	// SSEL(CS)

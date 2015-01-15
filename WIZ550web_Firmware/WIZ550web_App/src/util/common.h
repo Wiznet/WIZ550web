@@ -315,8 +315,8 @@
 
 // 1. Added the FTP Server feature. (F_APP_FTP)
 // 2. Added the Data Flash feature on FatFs. (F_SPI_FLASH)
-//    - If you wish to use a SD card, you must copy the web page to a SD card and insert into a slot.
-//    - If there is no SD card after detecting for about 3 seconds, you can use a data flash.
+//    - If you wish to use a SD card, you must copy the web page to a SD card and insert a SD card into a slot.
+//    - If there is no SD card after detecting during about 3 seconds, you can use a data flash.
 //      You must have the initialization process of data flash at least once.
 //      When SW1 and SW2 is pressed at the same time, the data flash is initialized by FatFs.
 //      And you must copy the web page to a data flash by FTP client tool.(ALFTP http://www.altools.com/ALTools/ALFTP.aspx)
