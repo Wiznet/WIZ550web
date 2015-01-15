@@ -318,7 +318,7 @@
 //    - If you wish to use a SD card, you must copy the web page to a SD card and insert a SD card into a slot.
 //    - If there is no SD card after detecting during about 3 seconds, you can use a data flash.
 //      You must have the initialization process of data flash at least once.
-//      When SW1 and SW2 is pressed at the same time, the data flash is initialized by FatFs.
+//      When SW1 and SW2 are pressed at the same time, the data flash is initialized by FatFs.
 //      And you must copy the web page to a data flash by FTP client tool.(ALFTP http://www.altools.com/ALTools/ALFTP.aspx)
 
 /* [2015. 01. 06] v1.0.0 -> v1.0.1 Version update */
