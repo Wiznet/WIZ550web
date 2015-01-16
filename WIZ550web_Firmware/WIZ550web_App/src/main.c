@@ -316,8 +316,9 @@ int main(void)
 #if defined(F_SPI_FLASH)
 		if ((get_IO_Status(D8) == On) && (get_IO_Status(D9) == On) && (g_spiflash_flag == 0))
 		{
-			printf("\r\n########## SW1 and SW2 are pressed.\r\n");
-			printf("########## spiflash flag is reset.\r\n");
+			printf("\r\n########## SW1 and SW2 were pressed.\r\n");
+			printf("########## Data flash flag was cleared.\r\n");
+			printf("########## Please reset a target.\r\n");
 			g_spiflash_flag = 1;
 			release_factory_flag();
 		}

@@ -311,15 +311,15 @@
  *
  *************************************************************************/
 
-/* [2015. 01. 12] v1.0.1 -> v1.1.0 Version update */
+/* [2015. 01. 16] v1.0.1 -> v1.1.0 Version update */
 
 // 1. Added the FTP Server feature. (F_APP_FTP)
 // 2. Added the Data Flash feature on FatFs. (F_SPI_FLASH)
 //    - If you wish to use a SD card, you must copy the web page to a SD card and insert a SD card into a slot.
 //    - If there is no SD card after detecting during about 3 seconds, you can use a data flash.
 //      You must have the initialization process of data flash at least once.
-//      When SW1 and SW2 are pressed at the same time, the data flash is initialized by FatFs.
-//      And you must copy the web page to a data flash by FTP client tool.(ALFTP http://www.altools.com/ALTools/ALFTP.aspx)
+//      When SW1 and SW2 are pressed at the same time, the data flash is initialized by FatFs. And reset a target.
+//      You must copy the web page to a data flash by FTP client tool.(ALFTP http://www.altools.com/ALTools/ALFTP.aspx)
 
 /* [2015. 01. 06] v1.0.0 -> v1.0.1 Version update */
 
