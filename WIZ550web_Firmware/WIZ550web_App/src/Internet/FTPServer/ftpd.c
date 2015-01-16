@@ -781,6 +781,9 @@ char proc_ftpd(char * buf)
 			break;
 
 		case MKD_CMD:
+			slen = strlen(arg);
+			arg[slen - 1] = 0x00;
+			arg[slen - 2] = 0x00;
 #if 1
 			if (f_mkdir(arg) != 0)
 			{
@@ -798,13 +801,16 @@ char proc_ftpd(char * buf)
 			break;
 
 		case DELE_CMD:
+			slen = strlen(arg);
+			arg[slen - 1] = 0x00;
+			arg[slen - 2] = 0x00;
 			if (f_unlink(arg) != 0)
 			{
 				slen = sprintf(sendbuf, "550 Could not delete. \"%s\"\r\n", arg);
 			}
 			else
 			{
-				slen = sprintf(sendbuf, "250 Deleted. %s\r\n", arg);
+				slen = sprintf(sendbuf, "250 Deleted. \"%s\"\r\n", arg);
 			}
 			send(CTRL_SOCK, (uint8_t *)sendbuf, slen);
 			break;
