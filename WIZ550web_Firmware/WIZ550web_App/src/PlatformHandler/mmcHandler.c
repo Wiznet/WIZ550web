@@ -3,6 +3,8 @@
 #include "stm32f10x_rcc.h"
 #include "stm32f10x_spi.h"
 #include "mmc_sd.h"   // mmc_sd memory card interface
+#include "boardutil.h"
+#include "dataflash.h"
 
 #ifdef STM32_SD_USE_DMA
 // #warning "Information only: using DMA"
@@ -12,20 +14,23 @@
 static void stm32_dma_transfer(uint8_t receive, const BYTE *buff, uint16_t btr);
 #endif
 
-FATFS ff;
+FATFS Fatfs[1];
 card_type_id_t card_type = NO_CARD;
 
 enum speed_setting { INTERFACE_SLOW, INTERFACE_FAST };
 
 //#include <stdio.h> // for debugging
-FRESULT getMountedMemorySize(uint32_t * totalSize, uint32_t * availableSize)
+FRESULT getMountedMemorySize(uint8_t mount_ret, uint32_t * totalSize, uint32_t * availableSize)
 {
 	FATFS *fs;
 	DWORD fre_clust, fre_sect, tot_sect;
 	FRESULT res;
 
 	/* Get volume information and free clusters of drive 1 */
-	res = f_getfree("0:", &fre_clust, &fs);
+	if(mount_ret == SPI_FLASHM)
+		res = f_getfree("0:", &fre_clust, &fs);
+	else if((mount_ret >= CARD_MMC) && (mount_ret <= CARD_SDHC))
+		res = f_getfree("1:", &fre_clust, &fs);
 
 	if (!res)
 	{
@@ -593,21 +598,86 @@ uint8_t mmc_mount()
 		return card_type;
 	}
 #else
-    bsp_sd_gpio_init();
+	FRESULT res;
+    u8 state;
 
-    disk_initialize(0);
-    /*
+	bsp_sd_gpio_init();
+
+    //disk_initialize(0);
+	/*
     if( disk_initialize(0) == 0 )
         printf("\r\nSD initialize success.\r\n");
     else
     	printf("\r\nSD initialize failed.\r\n");
 	*/
-    f_mount(0,&ff);
 
-	return (SD_Type+1);
+#if !defined(F_SPI_FLASH_ONLY)
+	state = SD_Init();
+#if defined(_FS_DEBUG_)
+    printf("SD_Init:%d\r\n", state);
+#endif
+	if(state == STA_NODISK)
+	{
+		return NO_CARD;
+	}
+	else if(state != 0)
+	{
+		return NO_CARD;
+	}
+	else
+	{
+		res = f_mount(&Fatfs[0],"1:",0);
+#if defined(_FS_DEBUG_)
+	    printf("f_mount:%d\r\n", res);
+#endif
+		g_sdcard_done = 1;
+
+		return SD_Type;
+	}
+#endif
 #endif
 
 	return NO_CARD;//0
+}
+
+uint8_t flash_mount()
+{
+#if 0
+	if(mmc_init())
+	{
+		f_mount(0, &ff);
+		return card_type;
+	}
+#else
+	FRESULT res;
+
+	DataFlash_Init();
+
+	//disk_initialize(1);
+
+	res = f_mount(&Fatfs[0],"0:",0);
+#if defined(_FS_DEBUG_)
+    printf("f_mount:%d\r\n", res);
+#endif
+
+#if defined(F_SPI_FLASH)
+    if(check_spiflash_flag() == 1)
+        g_mkfs_done = 1;
+    else
+        g_mkfs_done = 0;
+
+	res = f_mkfs("0:",0,512);
+
+#if defined(_FS_DEBUG_)
+    printf("f_mkfs:%d %d\r\n", res, g_mkfs_done);
+#endif
+    if(check_spiflash_flag() == 1)
+    	save_spiflash_flag();
+    g_mkfs_done = 1;
+#endif
+
+	return SPI_FLASHM;
+#endif
 }
 
 //*******************************************************************************

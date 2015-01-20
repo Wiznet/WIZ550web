@@ -161,8 +161,11 @@ void atc_run(void)
 				break;	//		do nothing
 			case 0x0a:	// LF(\n)
 				//printf("<ENT>");
-				if(atci.echo) 
+				if(atci.echo)
+				{
+					UART_write(termbuf, buflen);
 					UART_write("\r\n", 2);
+				}
 				termbuf[buflen] = 0;
 				break;
 			case 0x08:	// BS
@@ -184,8 +187,9 @@ void atc_run(void)
 	}
 	else if(buflen < ATCMD_BUF_SIZE-1)		// -1 �씠��? : 0 �씠 �븯�굹 �븘�슂�븯誘�濡�
 	{
+		if(buflen == 0)	UART2_flush();
 		termbuf[buflen++] = (uint8_t)recv_char;	//termbuf[buflen] = 0;
-		if(atci.echo) UART_write(&recv_char, 1);
+		//if(atci.echo) UART_write(&recv_char, 1);
 		//printf(" termbuf(%c, %s)\r\n", recv_char, termbuf);
 	}
 	//else { printf("input buffer stuffed\r\n"); }

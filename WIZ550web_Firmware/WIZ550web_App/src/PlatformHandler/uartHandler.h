@@ -28,6 +28,7 @@ int UART_read(void *data, int bytes);
 uint32_t UART_write(void *data, int bytes);
 int UART_RxRB_GetCount();
 int UART_TxRB_GetCount();
+void UART2_flush(void);
 
 uint8_t * getUSART1buf(void);
 void USART1_flush(void);

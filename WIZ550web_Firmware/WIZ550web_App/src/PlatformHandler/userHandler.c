@@ -30,6 +30,8 @@
 //#define IO_PAGE_ADDR	(0x8000000+(FLASH_PAGE_SIZE*61))	// Page125
 #endif
 
+IOStorage IOdata;
+
 // Pre-defined Get CGI functions
 void make_json_devinfo(uint8_t * buf, uint16_t * len);
 void make_json_netinfo(uint8_t * buf, uint16_t * len);

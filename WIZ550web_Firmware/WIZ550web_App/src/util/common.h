@@ -311,6 +311,17 @@
  *
  *************************************************************************/
 
+/* [2015. 01. 20] v1.0.1 -> v1.1.0 Beta Version update */
+
+// 1. Added the FTP Server feature. (F_APP_FTP)
+// 2. Added the Data Flash feature on FatFs. (F_SPI_FLASH)
+//    - You can use one of a SD card and a data flash. The mount priority of a SD card is higher than a data flash.
+//    - If you wish to use a SD card, you must copy the web page to a SD card and insert a SD card into a slot.
+//    - If there is no SD card after detecting during about 3 seconds, you can use a data flash.
+//      You must have the initialization process of data flash at least once.
+//      When SW1 and SW2 are pressed at the same time, the data flash is initialized by FatFs. And reset a target.
+//      You must copy the web page to a data flash by FTP client tool.(ALFTP http://www.altools.com/ALTools/ALFTP.aspx)
+
 /* [2015. 01. 06] v1.0.0 -> v1.0.1 Version update */
 
 // 1. HTTP Server operation stability improvement. (Related to the memory allocations)
@@ -324,14 +335,16 @@
  /*************************************************************************/
 
 #define MAJOR_VER		1
-#define MINOR_VER		0
-#define MAINTENANCE_VER	1
+#define MINOR_VER		1
+#define MAINTENANCE_VER	0
 
 #define OP_COMMAND		0
 #define OP_DATA			1
 
 #define APP_BASE		0x8006000
 #define WORK_BUF_SIZE	1024
+
+#define DATA_BUF_SIZE   2048
 
 extern uint8_t op_mode;
 

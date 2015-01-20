@@ -26,9 +26,10 @@ typedef struct
 	uint8_t ios[16];						// Digital I/O status (high/low)
 	uint8_t io_alias[16][MAX_ALIAS_SIZE];	// Digital I/O alias (string < 25)
 	uint8_t factory_flag[2];
+	uint8_t spiflash_flag[2];
 } IOStorage;
 
-IOStorage IOdata;
+extern IOStorage IOdata;
 
 /* Serial configuration index for web page */
 // Baudrate

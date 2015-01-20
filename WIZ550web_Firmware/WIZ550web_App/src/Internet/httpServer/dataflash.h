@@ -2,6 +2,7 @@
 #define __DATAFLASH_INCLUDED
 
 #include "wizchip_conf.h"
+#include "boardutil.h"
 
 #define DF_CS_LOW() 				GPIO_ResetBits(DF_CS_PORT, DF_CS_PIN);	// SSEL(CS)
 #define DF_CS_HIGH() 				GPIO_SetBits(DF_CS_PORT, DF_CS_PIN);	// SSEL(CS)
@@ -70,6 +71,9 @@ void DF_BufferWriteEnable (unsigned char BufferNo, unsigned int IntPageAdr);
 unsigned char df_read_status (void);
 void Cont_Flash_Read_Enable (unsigned int PageAdr, unsigned int IntPageAdr);
 
+#if defined(F_SPI_FLASH)
+void Flash_WaitReady(void);
+#endif
 
 // *****************************[ End Of DATAFLASH.H ]*****************************
 #endif

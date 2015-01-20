@@ -20,6 +20,7 @@
 /*****************************************************************************
  * Includes
  ****************************************************************************/
+
 #include "stm32f10x.h"
 #include "common.h"
 #include "dataflash.h"
@@ -37,10 +38,12 @@
 #include "atcmd.h"
 #include "dhcp.h"
 #include "dhcp_cb.h"
+#include "ftpd.h"
 
 #ifdef _USE_SDCARD_
 #include "ff.h"
 #include "mmcHandler.h"
+#include "ffconf.h"
 #else
 #include "dataflash.h"
 #endif
@@ -61,16 +64,30 @@
 
 uint8_t RX_BUF[DATA_BUF_SIZE];
 uint8_t TX_BUF[DATA_BUF_SIZE];
+#if defined(F_APP_FTP)
+uint8_t FTP_DBUF[_MAX_SS];
+#endif
 
 ////////////////////////////////
 // W5500 HW Socket Definition //
 ////////////////////////////////
+#if defined(F_APP_FTP)
+#define MAX_HTTPSOCK	4
+#else
 #define MAX_HTTPSOCK	6
-uint8_t socknumlist[] = {2, 3, 4, 5, 6, 7};
+#endif
 
 #define SOCK_CONFIG		0
 #define SOCK_DHCP		1
+#if defined(F_APP_FTP)
+uint8_t socknumlist[] = {4, 5, 6, 7};
+#else
+uint8_t socknumlist[] = {2, 3, 4, 5, 6, 7};
+#endif
 //////////////////////////////////////////
+
+int g_mkfs_done = 0;
+int g_sdcard_done = 0;
 
 /*****************************************************************************
  * Private functions
@@ -91,6 +108,9 @@ int main(void)
 #if defined (_MAIN_DEBUG_) && defined (_USE_SDCARD_)
 	uint8_t ret;
 #endif
+#if defined(F_APP_FTP)
+	wiz_NetInfo gWIZNETINFO;
+#endif
 
 	S2E_Packet *value = get_S2E_Packet_pointer();
 
@@ -102,8 +122,11 @@ int main(void)
 	// LED Initialization
 	LED_Init(LED1);
 	LED_Init(LED2);
-	LED_On(LED1);
+	LED_Off(LED1);
 	LED_Off(LED2);
+
+	g_sdcard_done = 0;
+	g_spiflash_flag = 0;
 
 #if defined(MULTIFLASH_ENABLE)
 	probe_flash();
@@ -187,6 +210,17 @@ int main(void)
 	display_Net_Info();
 #endif
 
+#if defined(F_SPI_FLASH)
+	ret = flash_mount();
+#endif
+	if(ret > 0)
+	{
+		LED_On(LED2);
+#ifdef _MAIN_DEBUG_
+		display_SDcard_Info(ret);
+#endif
+	}
+
 #ifdef _USE_SDCARD_
 	// SD card Initialization
 	ret = mmc_mount();
@@ -206,6 +240,19 @@ int main(void)
 #endif
 	}
 
+#if 0
+    res = f_open(&file, "0:/wr_test.txt", FA_CREATE_NEW | FA_CREATE_ALWAYS | FA_WRITE);
+    printf("f_open:%d\r\n", res);
+    strncpy(szbuff, "WIZnet WiKi", 11);
+    res = f_write(&file, szbuff, 11, &br);
+
+    printf("f_write:%d\r\n", res);
+    printf("WIZnet WiKi\r\n");
+    printf("Written 11bytes.\r\n");
+
+    f_close(&file);
+#endif
+
 #else
 	// External DataFlash Initialization
 	DataFlash_Init(); // DF CS Init
@@ -220,6 +267,11 @@ int main(void)
 	reg_httpServer_cbfunc(NVIC_SystemReset, NULL); // Callback: STM32 MCU Reset
 #endif
 	IO_status_init();
+
+#if defined(F_APP_FTP)
+	ctlnetwork(CN_GET_NETINFO, (void*) &gWIZNETINFO);
+	ftpd_init(CTRL_SOCK, DATA_SOCK, gWIZNETINFO.ip);	// Added by James for FTP
+#endif
 
 #ifdef _USE_WATCHDOG_
 	// IWDG Initialization: STM32 Independent WatchDog
@@ -239,42 +291,33 @@ int main(void)
 		if(value->options.dhcp_use)	DHCP_run();	// DHCP client handler
 
 #if defined(FACTORY_FW)
-		if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_factoryfw_flag == 0))
-		{
-			printf("\r\n########## Factory Test is started.\r\n");
-			g_factoryfw_flag = 1;
-
-#if defined(FACTORY_FW_FLASH)
-			save_factory_flag();
-
-			if (check_factory_flag() == 1)
-			{
-				factory_test_1st();
-			}
-#else
-			factory_test_1st();
-#endif
-		}
-
+		factory_run();
 		if (g_factoryfw_flag == 1)
 		{
 			check_factory_uart1();
 		}
 #endif
+#if defined(F_SPI_FLASH)
+		sflash_run();
+#endif
 
 		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);	// HTTP server handler
 
+#if defined(F_APP_FTP)
+		ftpd_run(FTP_DBUF);
+#endif
 #ifdef _USE_WATCHDOG_
 		IWDG_ReloadCounter(); // Feed IWDG
 #endif
 	} // End of main routine
 }
 
+#ifdef _USE_SDCARD_
 static void display_SDcard_Info(uint8_t mount_ret)
 {
 	uint32_t totalSize = 0, availableSize = 0;
 
-	printf("\r\n - SD card mount succeed\r\n");
+	printf("\r\n - Storage mount succeed\r\n");
 	printf(" - Type : ");
 
 	switch(mount_ret)
@@ -283,13 +326,17 @@ static void display_SDcard_Info(uint8_t mount_ret)
 		case CARD_SD: printf("SD\r\n"); 	break;
 		case CARD_SD2: printf("SD2\r\n"); 	break;
 		case CARD_SDHC: printf("SDHC\r\n"); break;
+		case SPI_FLASHM: printf("sFlash\r\n"); break;
 		default: printf("\r\n"); 	break;
 	}
 
+#if 1
 	if(_MAX_SS == 512)
 	{
-		getMountedMemorySize(&totalSize, &availableSize);
+		getMountedMemorySize(mount_ret, &totalSize, &availableSize);
 		printf(" - Available Memory Size : %ld kB / %ld kB ( %ld kB is used )\r\n", availableSize, totalSize, (totalSize - availableSize));
 	}
 	printf("\r\n");
+#endif
 }
+#endif

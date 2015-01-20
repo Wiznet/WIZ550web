@@ -12,6 +12,9 @@
 
 #include "diskio.h"
 #include "mmc_sd.h"
+#include "dataflash.h"
+#include "ffconf.h"
+#include "boardutil.h"
 
 /*-----------------------------------------------------------------------*/
 /* Correspondence between physical drive number and physical drive.      */
@@ -20,49 +23,50 @@
 
 #define SECTOR_SIZE 512U
 
+#if 1
+int rtc_year = 2014;
+int rtc_month = 12;
+int rtc_day = 31;
+int rtc_hour = 10;
+int rtc_min = 10;
+int rtc_sec = 30;
+
 //u32 buff2[512/4];
 /*-----------------------------------------------------------------------*/
-/* Inidialize a Drive                                                    */
+/* Initialize a Drive                                                    */
 
 DSTATUS disk_initialize (
-	BYTE drv				/* Physical drive nmuber (0..) */
+	BYTE pdrv				/* Physical drive nmuber (0..) */
 )
 {
     u8 state;
 
-    if(drv)
+#if 0
+    if(pdrv)
     {
         return STA_NOINIT;  // only supports the operation of the disk 0
     }
+#endif
 
-    state = SD_Init();
-    if(state == STA_NODISK)
-    {
-        return STA_NODISK;
-    }
-    else if(state != 0)
-    {
-        return STA_NOINIT;  // other error: initialization failed
-    }
-    else
-    {
-        return 0;           // initialization succeeded
-    }
+   	return 0;
 }
 
 
 
 /*-----------------------------------------------------------------------*/
-/* Return Disk Status                                                    */
+/* Get Disk Status                                                       */
+/*-----------------------------------------------------------------------*/
 
 DSTATUS disk_status (
-	BYTE drv		/* Physical drive nmuber (0..) */
+	BYTE pdrv		/* Physical drive nmuber (0..) */
 )
 {	
-    if(drv)
+#if 0
+    if(pdrv)
     {
         return STA_NOINIT;  // only supports disk-0 operation
     }
+#endif
 
 	// Check whether the inserted SD card
 	//  if(!SD_DET())
@@ -76,16 +80,17 @@ DSTATUS disk_status (
 
 /*-----------------------------------------------------------------------*/
 /* Read Sector(s)                                                        */
+/*-----------------------------------------------------------------------*/
 
 DRESULT disk_read (
-	BYTE drv,		/* Physical drive nmuber (0..) */
+	BYTE pdrv,		/* Physical drive nmuber (0..) */
 	BYTE *buff,		/* Data buffer to store read data */
 	DWORD sector,	/* Sector address (LBA) */
-	BYTE count		/* Number of sectors to read (1..255) */
+	UINT count		/* Number of sectors to read (1..128) */
 )
 {
 	u8 res=0;
-    if (drv || !count)
+    if (!count)
     {    
         return RES_PARERR;  // only supports single disk operation, count is not equal to 0, otherwise parameter error
     }
@@ -94,35 +99,45 @@ DRESULT disk_read (
    //     return RES_NOTRDY;  // does not detect SD card, NOT READY error reported
    // }
 
-    
-	
-    if(count==1) // sector reads 1
-    {                                                
-        res = SD_ReadSingleBlock(sector, buff);      
-    }                                                
-    else // multiple sector read operations
-    {                                                
-        res = SD_ReadMultiBlock(sector, buff, count);
-    }                                                
-	/*
-    do                           
-    {                                          
-        if(SD_ReadSingleBlock(sector, buff)!=0)
-        {                                      
-            res = 1;                           
-            break;                             
-        }                                      
-        buff+=512;                             
-    }while(--count);                                         
-    */
-    // Process the return value, the return value of the SPI_SD_driver.c the return value turned into ff.c
-    if(res == 0x00)
+	//printf("-----> disk_read drv:%d sector:%d count:%d buf:%s\r\n", pdrv, sector, count, buff);
+
+    if(pdrv == 1)
     {
-        return RES_OK;
+		if(count==1) // sector reads 1
+		{
+			res = SD_ReadSingleBlock(sector, buff);
+		}
+		else // multiple sector read operations
+		{
+			res = SD_ReadMultiBlock(sector, buff, count);
+		}
+		/*
+		do
+		{
+			if(SD_ReadSingleBlock(sector, buff)!=0)
+			{
+				res = 1;
+				break;
+			}
+			buff+=512;
+		}while(--count);
+		*/
+		// Process the return value, the return value of the SPI_SD_driver.c the return value turned into ff.c
+		if(res == 0x00)
+		{
+			return RES_OK;
+		}
+		else
+		{
+			return RES_ERROR;
+		}
     }
-    else
+    else if(pdrv == 0)
     {
-        return RES_ERROR;
+		//memset(buff, 0xff, _MAX_SS);
+		read_from_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
+
+		return 0;
     }
 }
 
@@ -131,17 +146,17 @@ DRESULT disk_read (
 /*-----------------------------------------------------------------------*/
 /* Write Sector(s)                                                       */
 
-#if _READONLY == 0
+#if _USE_WRITE
 DRESULT disk_write (
-	BYTE drv,			/* Physical drive nmuber (0..) */
+	BYTE pdrv,			/* Physical drive nmuber (0..) */
 	const BYTE *buff,	/* Data to be written */
 	DWORD sector,		/* Sector address (LBA) */
-	BYTE count			/* Number of sectors to write (1..255) */
+	UINT count			/* Number of sectors to write (1..128) */
 )
 {
 	u8 res;
 
-    if (drv || !count)
+    if (!count)
     {    
         return RES_PARERR;  // only supports single disk operation, count is not equal to 0, otherwise parameter error
     }
@@ -151,85 +166,147 @@ DRESULT disk_write (
         return RES_NOTRDY;  // does not detect SD card, NOT READY error reported
     }  */
 
-    // Read and write operations
-    if(count == 1)
+	//printf("-----> disk_write drv:%d sector:%d count:%d buf:%s\r\n", pdrv, sector, count, buff);
+
+    if(pdrv == 1)
     {
-        res = SD_WriteSingleBlock(sector, buff);
+		// Read and write operations
+		if(count == 1)
+		{
+			res = SD_WriteSingleBlock(sector, buff);
+		}
+		else
+		{
+			res = SD_WriteMultiBlock(sector, buff, count);
+		}
+		// Return value to
+		if(res == 0)
+		{
+			return RES_OK;
+		}
+		else
+		{
+			return RES_ERROR;
+		}
     }
-    else
+    else if(pdrv == 0)
     {
-        res = SD_WriteMultiBlock(sector, buff, count);
-    }
-    // Return value to
-    if(res == 0)
-    {
-        return RES_OK;
-    }
-    else
-    {
-        return RES_ERROR;
+		if(g_mkfs_done == 1)
+		{
+			write_to_flashbuf(sector*_MAX_SS, (char*)buff, count*_MAX_SS);
+		}
+
+		return 0;
     }
 }
 #endif /* _READONLY */
 
 
-
 /*-----------------------------------------------------------------------*/
 /* Miscellaneous Functions                                               */
 
+#if _USE_IOCTL
 DRESULT disk_ioctl (
-	BYTE drv,		/* Physical drive nmuber (0..) */
-	BYTE ctrl,		/* Control code */
+	BYTE pdrv,		/* Physical drive nmuber (0..) */
+	BYTE cmd,		/* Control code */
 	void *buff		/* Buffer to send/receive control data */
 )
 {
 
     DRESULT res;
 
-
-    if (drv)
+#if 0
+    if (pdrv)
     {    
         return RES_PARERR;  // only supports single disk operation, or return parameter error
     }
-    
-    // FATFS only deal with the current version of CTRL_SYNC, GET_SECTOR_COUNT, GET_BLOCK_SIZ three commands
-    switch(ctrl)
-    {
-    case CTRL_SYNC:
-        MSD_CS_ENABLE();
-        if(SD_WaitReady()==0)
-        {
-            res = RES_OK;
-        }
-        else
-        {
-            res = RES_ERROR;
-        }
-        MSD_CS_DISABLE();
-        break;
-        
-    case GET_BLOCK_SIZE:
-        *(WORD*)buff = 512;
-        res = RES_OK;
-        break;
+#endif
 
-    case GET_SECTOR_COUNT:
-        *(DWORD*)buff = SD_GetCapacity();
-        res = RES_OK;
-        break;
-    default:
-        res = RES_PARERR;
-        break;
+    if(pdrv == 1)
+    {
+		// FATFS only deal with the current version of CTRL_SYNC, GET_SECTOR_COUNT, GET_BLOCK_SIZ three commands
+		switch(cmd)
+		{
+		case CTRL_SYNC:
+			MSD_CS_ENABLE();
+			if(SD_WaitReady()==0)
+			{
+				res = RES_OK;
+			}
+			else
+			{
+				res = RES_ERROR;
+			}
+			MSD_CS_DISABLE();
+			break;
+
+		case GET_BLOCK_SIZE:
+			*(WORD*)buff = 512;
+			res = RES_OK;
+			break;
+
+		case GET_SECTOR_COUNT:
+			*(DWORD*)buff = SD_GetCapacity();
+			res = RES_OK;
+			break;
+		default:
+			res = RES_PARERR;
+			break;
+		}
+    }
+    else if(pdrv == 0)
+    {
+		switch(cmd)
+		{
+		case CTRL_SYNC:
+#if defined(F_SPI_FLASH)
+			Flash_WaitReady();
+#endif
+			res = RES_OK;
+			break;
+
+		case GET_SECTOR_SIZE:
+			*(WORD*)buff = 512;
+			res = RES_OK;
+			break;
+
+		case GET_BLOCK_SIZE:
+			*(WORD*)buff = 1;
+			res = RES_OK;
+			break;
+
+		case GET_SECTOR_COUNT:
+			*(DWORD*)buff = 2048;
+			res = RES_OK;
+			break;
+
+		default:
+			res = RES_PARERR;
+			break;
+		}
     }
 
     return res;
 }
+#endif
 
-DWORD get_fattime(void){
-	return 0;
+DWORD get_fattime(void)
+{
+	DWORD tmr = 0;
+
+	//__disable_irq();
+	tmr = (((DWORD)rtc_year - 1980) << 25)
+		 | ((DWORD)rtc_month << 21)
+		 | ((DWORD)rtc_day << 16)
+		 | ((WORD)rtc_hour << 11)
+		 | ((WORD)rtc_min << 5)
+		 | ((WORD)rtc_sec << 1);
+	//__enable_irq();
+
+	return tmr;
 }
 
-
+#endif
 
 
 
