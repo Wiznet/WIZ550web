@@ -284,14 +284,16 @@ void save_factory_flag (void);
 void release_factory_flag (void);
 void factory_test_1st (void);
 void factory_test_2nd (void);
+void factory_run(void);
 
 extern int g_factoryfw_flag;
 #endif
 
 #if defined(F_SPI_FLASH)
-extern int check_spiflash_flag(void);
-extern void save_spiflash_flag(void);
-extern void release_factory_flag(void);
-extern int g_spiflash_flag;
+int check_spiflash_flag(void);
+void save_spiflash_flag(void);
+void release_spiflash_flag(void);
+void sflash_run(void);
+int g_spiflash_flag;
 #endif
 #endif

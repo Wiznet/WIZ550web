@@ -311,10 +311,11 @@
  *
  *************************************************************************/
 
-/* [2015. 01. 16] v1.0.1 -> v1.1.0 Version update */
+/* [2015. 01. 20] v1.0.1 -> v1.1.0 Beta Version update */
 
 // 1. Added the FTP Server feature. (F_APP_FTP)
 // 2. Added the Data Flash feature on FatFs. (F_SPI_FLASH)
+//    - You can use one of a SD card and a data flash. The mount priority of a SD card is higher than a data flash.
 //    - If you wish to use a SD card, you must copy the web page to a SD card and insert a SD card into a slot.
 //    - If there is no SD card after detecting during about 3 seconds, you can use a data flash.
 //      You must have the initialization process of data flash at least once.

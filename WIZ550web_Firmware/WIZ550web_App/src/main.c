@@ -291,37 +291,14 @@ int main(void)
 		if(value->options.dhcp_use)	DHCP_run();	// DHCP client handler
 
 #if defined(FACTORY_FW)
-		if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_factoryfw_flag == 0))
-		{
-			printf("\r\n########## Factory Test is started.\r\n");
-			g_factoryfw_flag = 1;
-
-#if defined(FACTORY_FW_FLASH)
-			save_factory_flag();
-
-			if (check_factory_flag() == 1)
-			{
-				factory_test_1st();
-			}
-#else
-			factory_test_1st();
-#endif
-		}
-
+		factory_run();
 		if (g_factoryfw_flag == 1)
 		{
 			check_factory_uart1();
 		}
 #endif
 #if defined(F_SPI_FLASH)
-		if ((get_IO_Status(D8) == On) && (get_IO_Status(D9) == On) && (g_spiflash_flag == 0))
-		{
-			printf("\r\n########## SW1 and SW2 were pressed.\r\n");
-			printf("########## Data flash flag was cleared.\r\n");
-			printf("########## Please reset a target.\r\n");
-			g_spiflash_flag = 1;
-			release_factory_flag();
-		}
+		sflash_run();
 #endif
 
 		for(i = 0; i < MAX_HTTPSOCK; i++)	httpServer_run(i);	// HTTP server handler

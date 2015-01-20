@@ -412,6 +412,7 @@ void factory_test_1st (void)
 	if (teststep == 1)
 	{
 		printf("########## RS422 TX:TEST\r\n");
+		UART2_flush();
 		UART_write(FACTORY_TEST_STR, sizeof(FACTORY_TEST_STR));
 		UART_write("\r", 1);
 		teststep = 2;
@@ -596,6 +597,27 @@ void factory_test_2nd (void)
 	//check_factory_uart1();
 }
 
+void factory_run(void)
+{
+	if ((get_IO_Status(D10) == On) && (get_IO_Status(D11) == On) && (g_factoryfw_flag == 0))
+	{
+		printf("\r\n########## Factory Test is started.\r\n");
+		g_factoryfw_flag = 1;
+
+#if defined(FACTORY_FW_FLASH)
+		save_factory_flag();
+
+		if (check_factory_flag() == 1)
+		{
+			factory_test_1st();
+		}
+#else
+		factory_test_1st();
+#endif
+	}
+
+}
+
 #endif
 
 #if defined(F_SPI_FLASH)
@@ -626,11 +648,24 @@ void save_spiflash_flag(void)
 	write_IOstorage(&IOdata, sizeof(IOdata));
 }
 
-void release_factory_flag(void)
+void release_spiflash_flag(void)
 {
 	IOdata.spiflash_flag[0] = 0xFF;
 	IOdata.spiflash_flag[1] = 0xFF;
 
 	write_IOstorage(&IOdata, sizeof(IOdata));
 }
+
+void sflash_run(void)
+{
+	if ((get_IO_Status(D8) == On) && (get_IO_Status(D9) == On) && (g_spiflash_flag == 0))
+	{
+		printf("\r\n########## SW1 and SW2 were pressed.\r\n");
+		printf("########## Data flash flag was cleared.\r\n");
+		printf("########## Please reset a target.\r\n");
+		g_spiflash_flag = 1;
+		release_spiflash_flag();
+	}
+}
+
 #endif
