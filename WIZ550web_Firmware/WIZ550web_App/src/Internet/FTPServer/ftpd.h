@@ -1,9 +1,6 @@
 #ifndef _FTPD_H_
 #define _FTPD_H_
 
-#include <stdint.h>
-#include "ff.h"
-
 /*
 * Wiznet.
 * (c) Copyright 2002, Wiznet.
@@ -15,12 +12,23 @@
 * Description   : Header file of FTP daemon. (AVR-GCC Compiler)
 */
 
+#include <stdint.h>
+
+#define F_FILESYSTEM // If your target support a file system, you have to activate this feature and implement.
+
+#if defined(F_FILESYSTEM)
+#include "ff.h"
+#endif
+
 #define F_APP_FTP
 //#define _FTP_DEBUG_
 
 
 #define LINELEN		100
 //#define DATA_BUF_SIZE	100
+#if !defined(F_FILESYSTEM)
+#define _MAX_SS		512
+#endif
 
 #define CTRL_SOCK	2
 #define DATA_SOCK	3
@@ -105,8 +113,10 @@ struct ftpd {
 	char workingdir[LINELEN];
 	char filename[LINELEN];
 
+#if defined(F_FILESYSTEM)
 	FIL fil;	// FatFs File objects
 	FRESULT fr;	// FatFs function common result code
+#endif
 
 };
 
@@ -129,5 +139,7 @@ int recvit(char * command);
 long sendfile(uint8_t s, char * command);
 long recvfile(uint8_t s);
 
+#if defined(F_FILESYSTEM)
 void print_filedsc(FIL *fil);
+#endif
 #endif // _FTPD_H_
