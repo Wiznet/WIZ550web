@@ -669,3 +669,9 @@ void sflash_run(void)
 }
 
 #endif
+
+void kick_watchdog (void)
+{
+	// Depend on system.
+	IWDG_ReloadCounter(); // Feed IWDG
+}

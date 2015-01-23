@@ -18,7 +18,6 @@
 #include "stdio_private.h"
 #include "socket.h"
 #include "ftpd.h"
-#include "httpServer.h"
 
 /* Command table */
 static char *commands[] = {
@@ -99,14 +98,14 @@ uint8_t connect_state_data = 0;
 
 struct ftpd ftp;
 
-extern int g_mkfs_done;
-
 int current_year = 2014;
 int current_month = 12;
 int current_day = 31;
 int current_hour = 10;
 int current_min = 10;
 int current_sec = 30;
+
+extern void kick_watchdog (void);
 
 int fsprintf(uint8_t s, const char *format, ...)
 {
@@ -293,7 +292,8 @@ uint8_t ftpd_run(uint8_t * dbuf)
     				printf("%s\r\n", dbuf);
 #endif
 #if !defined(F_FILESYSTEM)
-    				size = sprintf(dbuf, "drwxr-xr-x 1 ftp ftp 0 Dec 31 2014 $Recycle.Bin\r\n-rwxr-xr-x 1 ftp ftp 512 Dec 31 2014 test.txt\r\n");
+    				if (strncmp(ftp.workingdir, "/$Recycle.Bin", sizeof("/$Recycle.Bin")) != 0)
+    					size = sprintf(dbuf, "drwxr-xr-x 1 ftp ftp 0 Dec 31 2014 $Recycle.Bin\r\n-rwxr-xr-x 1 ftp ftp 512 Dec 31 2014 test.txt\r\n");
 #endif
     				size = strlen(dbuf);
     				send(DATA_SOCK, dbuf, size);
@@ -319,9 +319,7 @@ uint8_t ftpd_run(uint8_t * dbuf)
 #if defined(_FTP_DEBUG_)
     						//printf("remained file size: %d\r\n", ftp.fil.fsize);
 #endif
-#ifdef _USE_WATCHDOG_
-    						IWDG_ReloadCounter(); // Feed IWDG
-#endif
+    						kick_watchdog();
 
     						memset(dbuf, 0, _MAX_SS);
 
@@ -354,9 +352,7 @@ uint8_t ftpd_run(uint8_t * dbuf)
 					remain_filesize = strlen(ftp.filename);
 
 					do{
-#ifdef _USE_WATCHDOG_
-						IWDG_ReloadCounter(); // Feed IWDG
-#endif
+						kick_watchdog();
 
 						memset(dbuf, 0, _MAX_SS);
 
@@ -389,9 +385,7 @@ uint8_t ftpd_run(uint8_t * dbuf)
     					while(1){
     						if((remain_datasize = getSn_RX_RSR(DATA_SOCK)) > 0){
     							while(1){
-#ifdef _USE_WATCHDOG_
-    								IWDG_ReloadCounter(); // Feed IWDG
-#endif
+    	    						kick_watchdog();
 
     	    						memset(dbuf, 0, _MAX_SS);
 
@@ -454,9 +448,7 @@ uint8_t ftpd_run(uint8_t * dbuf)
 					while(1){
 						if((remain_datasize = getSn_RX_RSR(DATA_SOCK)) > 0){
 							while(1){
-#ifdef _USE_WATCHDOG_
-								IWDG_ReloadCounter(); // Feed IWDG
-#endif
+	    						kick_watchdog();
 
 	    						memset(dbuf, 0, _MAX_SS);
 
