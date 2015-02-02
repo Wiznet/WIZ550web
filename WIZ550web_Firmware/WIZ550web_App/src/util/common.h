@@ -311,7 +311,7 @@
  *
  *************************************************************************/
 
-/* [2015. 01. 20] v1.0.1 -> v1.1.0 Beta Version update */
+/* [2015. 01. 20] v1.0.1 -> v1.1.0 Develop Version update */
 
 // 1. Added the FTP Server feature. (F_APP_FTP)
 // 2. Added the Data Flash feature on FatFs. (F_SPI_FLASH)
