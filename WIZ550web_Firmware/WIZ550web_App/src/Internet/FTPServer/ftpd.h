@@ -127,7 +127,7 @@ typedef union _un_l2cval {
 }un_l2cval;
 #endif
 
-void ftpd_init(uint8_t csock, uint8_t dsock, uint8_t * src_ip);
+void ftpd_init(uint8_t * src_ip);
 uint8_t ftpd_run(uint8_t * dbuf);
 char proc_ftpd(char * buf);
 char ftplogin(char * pass);

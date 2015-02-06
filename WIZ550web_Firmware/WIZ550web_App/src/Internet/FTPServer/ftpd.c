@@ -128,10 +128,8 @@ int fsprintf(uint8_t s, const char *format, ...)
 	return i;
 }
 
-void ftpd_init(uint8_t csock, uint8_t dsock, uint8_t * src_ip)
+void ftpd_init(uint8_t * src_ip)
 {
-	ftp.control = csock;
-	ftp.data = dsock;
 	ftp.state = FTPS_NOT_LOGIN;
 	ftp.current_cmd = NO_CMD;
 	ftp.dsock_mode = ACTIVE_MODE;
