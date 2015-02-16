@@ -776,6 +776,7 @@ char proc_ftpd(char * buf)
 			break;
 
 		case PWD_CMD:
+		case XPWD_CMD:
 			slen = sprintf(sendbuf, "257 \"%s\" is current directory.\r\n", ftp.workingdir);
 			send(CTRL_SOCK, (uint8_t *)sendbuf, slen);
 			break;
@@ -850,6 +851,7 @@ char proc_ftpd(char * buf)
 			break;
 
 		case MKD_CMD:
+		case XMKD_CMD:
 			slen = strlen(arg);
 			arg[slen - 1] = 0x00;
 			arg[slen - 2] = 0x00;
@@ -889,9 +891,7 @@ char proc_ftpd(char * buf)
 			break;
 
 		case XCWD_CMD:
-		case XPWD_CMD:
 		case ACCT_CMD:
-		case XMKD_CMD:
 		case XRMD_CMD:
 		case RMD_CMD:
 		case STRU_CMD:
