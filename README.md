@@ -92,7 +92,7 @@ v1.1.0 Develop
       - Refer to WIZ550web+LinuxFTP Tutorial. http://youtu.be/6qsPZA5QKEI
 
 v1.0.1
-- Jan. 2014
+- Jan. 2015
 - History
   - Added the 'Get/Set Interface functions' for easy to customize user's web pages
   - HTTP Server operation stability improvement
