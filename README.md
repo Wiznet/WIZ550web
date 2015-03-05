@@ -75,7 +75,7 @@ Various materials are could be found at [WIZ550web Wiki page](http://wizwiki.net
 
 
 ## Revision History
-v1.1.0 Beta
+v1.1.0 Develop
 - Jan. 2015
 - History
   - Added the FTP Server feature. (F_APP_FTP)
@@ -88,6 +88,8 @@ v1.1.0 Beta
       - When SW1 and SW2 are pressed at the same time, the data flash is initialized by FatFs. And reset a target.
       - You must copy the web page to a data flash by FTP client tool.([ALFTP](http://www.altools.com/ALTools/ALFTP.aspx))
       - Refer to WIZ550web+FatFS+FTPServer Project Tutorial. http://youtu.be/XtnT2_CNgaY
+      - Refer to WIZ550web+WindowsFTP Tutorial. Need to apply a commit [cfce843](https://github.com/Wiznet/WIZ550web/commit/cfce843031bf4657fc9530e5c505a9a3d555fc91). http://youtu.be/kelGSGj3kOQ
+      - Refer to WIZ550web+LinuxFTP Tutorial. http://youtu.be/6qsPZA5QKEI
 
 v1.0.1
 - Jan. 2014
