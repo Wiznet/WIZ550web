@@ -15,7 +15,11 @@
 #include "dataflash.h"
 #endif
 
+#include "common.h" // ## 20130212 Eric added
+
+#ifndef DATA_BUF_SIZE
 #define DATA_BUF_SIZE		2048
+#endif
 
 /*****************************************************************************
  * Private types/enumerations/variables
@@ -518,7 +522,7 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 			if(p_http_request->TYPE == PTYPE_CGI)
 			{
 				content_found = http_get_cgi_handler(uri_name, pHTTP_TX, &file_len);
-				if(content_found && (file_len <= (2048-(strlen(RES_CGIHEAD_OK)+8))))
+				if(content_found && (file_len <= (DATA_BUF_SIZE-(strlen(RES_CGIHEAD_OK)+8))))
 				{
 					send_http_response_cgi(s, http_response, pHTTP_TX, (uint16_t)file_len);
 				}
@@ -597,7 +601,7 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 #ifdef _HTTPSERVER_DEBUG_
 				printf("> HTTPSocket[%d] : [CGI: %s] / Response len [ %ld ]byte\r\n", s, content_found?"Content found":"Content not found", file_len);
 #endif
-				if(content_found && (file_len <= (2048-(strlen(RES_CGIHEAD_OK)+8))))
+				if(content_found && (file_len <= (DATA_BUF_SIZE-(strlen(RES_CGIHEAD_OK)+8))))
 				{
 					send_http_response_cgi(s, pHTTP_TX, http_response, (uint16_t)file_len);
 

@@ -11,7 +11,8 @@
 /*****************************************************************************
  * Public types/enumerations/variables
  ****************************************************************************/
-uint8_t BUFPUB[2048];
+//uint8_t BUFPUB[2048];
+uint8_t BUFPUB[MAX_URI_SIZE];	// ## 20150212, Eric modified, Buffer size adjustment for ensuring available RAM size
 
 /*****************************************************************************
  * Private functions

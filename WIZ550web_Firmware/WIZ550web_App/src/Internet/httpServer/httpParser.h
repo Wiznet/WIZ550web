@@ -101,7 +101,8 @@ static const char 	ERROR_REQUEST_PAGE[] = "HTTP/1.1 400 OK\r\nContent-Type: text
  @brief 	Structure of HTTP REQUEST 
  */
 
-#define MAX_URI_SIZE	1460 + 1
+//#define MAX_URI_SIZE	1460 + 1
+#define MAX_URI_SIZE	512		// ## 20150212, Eric modified, Buffer size adjustment for ensuring available RAM size
 
 typedef struct _st_http_request
 {

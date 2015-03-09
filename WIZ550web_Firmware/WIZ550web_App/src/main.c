@@ -60,8 +60,11 @@
 //////////////////////////////
 // Shared Buffer Definition //
 //////////////////////////////
-#define DATA_BUF_SIZE   2048
+#ifndef DATA_BUF_SIZE
+	#define DATA_BUF_SIZE   2048
+#endif
 
+// HTTP Server buffer size must be at least 1700kB or more.
 uint8_t RX_BUF[DATA_BUF_SIZE];
 uint8_t TX_BUF[DATA_BUF_SIZE];
 #if defined(F_APP_FTP)
