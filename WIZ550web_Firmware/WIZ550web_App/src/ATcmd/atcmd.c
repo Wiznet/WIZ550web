@@ -20,7 +20,7 @@
 #include "library/util.h"
 
 #include "ConfigData.h"
-#include "uarthandler.h"
+#include "uartHandler.h"
 #include "boardutil.h"
 
 #define CMD_CLEAR() { \
@@ -143,7 +143,7 @@ void atc_run(void)
 	if(atci.sendsock != VAL_NONE)
 	{
 		atci.sendbuf[atci.worklen++] = recv_char;
-		if(atci.worklen >= atci.sendlen) { // �엯�젰�씠 �셿?�뚮릺硫�?
+		if(atci.worklen >= atci.sendlen) { // �엯�젰�씠 �셿?�뚮릺硫�?
 			act_nsend(atci.sendsock, (int8_t *)atci.sendbuf, atci.worklen, atci.sendip, &atci.sendport);
 			atci.sendsock = VAL_NONE;
 		}
@@ -151,7 +151,7 @@ void atc_run(void)
 	}
 #endif
 
-	if(isgraph(recv_char) == 0)	// �젣�뼱 ?�몄??泥섎??
+	if(isgraph(recv_char) == 0)	// �젣�뼱 ?�몄??泥섎??
 	{	//printf("ctrl\r\n");
 		switch(recv_char) {
 			case 0x0d:	// CR(\r)
@@ -185,7 +185,7 @@ void atc_run(void)
 		}
 
 	}
-	else if(buflen < ATCMD_BUF_SIZE-1)		// -1 �씠��? : 0 �씠 �븯�굹 �븘�슂�븯誘�濡�
+	else if(buflen < ATCMD_BUF_SIZE-1)		// -1 �씠��? : 0 �씠 �븯�굹 �븘�슂�븯誘�濡�
 	{
 		if(buflen == 0)	UART2_flush();
 		termbuf[buflen++] = (uint8_t)recv_char;	//termbuf[buflen] = 0;
@@ -237,7 +237,7 @@ static void cmd_set_prev(uint8_t buflen)
 		} else CRITICAL_ERR("ring buf 2");
 	}
 
-	if(prevbuf[previdx] == NULL) CRITICAL_ERR("malloc fail");	//  留뚯�?�떎�뙣�빐�룄 嫄� �븯?�� �떢�쑝硫� �닔�젙
+	if(prevbuf[previdx] == NULL) CRITICAL_ERR("malloc fail");	//  留뚯�?�떎�뙣�빐�룄 嫄� �븯?�� �떢�쑝硫� �닔�젙
 	else {
 		strcpy((char*)prevbuf[previdx], (char*)termbuf);	//printf("$$%s## was set\r\n", prevbuf[previdx]);
 		if(previdx == PREVBUF_LAST) previdx = 0;
@@ -312,7 +312,7 @@ static int8_t cmd_divide(int8_t *buf)
 		CMD_CLEAR();
 		goto FAIL_END;
 	}
-	DBGA("Debug: (%s)", tmpptr);	//理쒕�?arg�꽆寃� �뱾�뼱�삩 寃� �솗�씤�슜 - Strict Param �젙�?��
+	DBGA("Debug: (%s)", tmpptr);	//理쒕�?arg�꽆寃� �뱾�뼱�삩 寃� �솗�씤�슜 - Strict Param �젙�?��
 
 OK_END:
 	ret = RET_OK;
@@ -630,7 +630,7 @@ static void hdl_musart1(void)
 				else value->serial_info[0].flow_control = num;
 				CMD_CLEAR();
 				act_uart_a(USART1, &(value->serial_info[0]));
-			} else RESP_CDR(RET_NOT_ALLOWED, 2);	// ?��媛� �꽕�젙 �븘吏� ?�ы쁽�븞�븿
+			} else RESP_CDR(RET_NOT_ALLOWED, 2);	// ?��媛� �꽕�젙 �븘吏� ?�ы쁽�븞�븿
 		} else RESP_CDR(RET_WRONG_ARG, 1);
 	}
 	else if(atci.tcmd.sign == CMD_SIGN_EQUAL)
@@ -746,7 +746,7 @@ static void hdl_musart2(void)
 				else value->serial_info[1].flow_control = num;
 				CMD_CLEAR();
 				act_uart_a(USART2, &(value->serial_info[1]));
-			} else RESP_CDR(RET_NOT_ALLOWED, 2);	// ?��媛� �꽕�젙 �븘吏� ?�ы쁽�븞�븿
+			} else RESP_CDR(RET_NOT_ALLOWED, 2);	// ?��媛� �꽕�젙 �븘吏� ?�ы쁽�븞�븿
 		} else RESP_CDR(RET_WRONG_ARG, 1);
 	}
 	else if(atci.tcmd.sign == CMD_SIGN_EQUAL)
