@@ -1,7 +1,7 @@
 
 #include "stm32f10x.h"
 #include "gpioHandler.h"
-#include "uarthandler.h"
+#include "uartHandler.h"
 #include "timerHandler.h"
 #include "tftp.h"
 
