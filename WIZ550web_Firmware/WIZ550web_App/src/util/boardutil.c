@@ -14,6 +14,8 @@
 #include "userHandler.h"
 #include "gpioHandler.h"
 #include "uartHandler.h"
+#else
+#include "gpioHandler.h"
 #endif
 
 //#define _WEB_DEBUG_

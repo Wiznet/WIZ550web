@@ -19,6 +19,7 @@ RM := rm -rf
 -include src/PlatformHandler/FatFs/subdir.mk
 -include src/PlatformHandler/subdir.mk
 -include src/Internet/httpServer/subdir.mk
+-include src/Internet/FTPServer/subdir.mk
 -include src/Internet/DHCP/subdir.mk
 -include src/Ethernet/W5500/subdir.mk
 -include src/Ethernet/subdir.mk

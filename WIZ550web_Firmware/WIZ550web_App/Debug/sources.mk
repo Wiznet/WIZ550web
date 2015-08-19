@@ -39,6 +39,7 @@ src/callback \
 src/PlatformHandler \
 src/PlatformHandler/FatFs \
 src/Internet/httpServer \
+src/Internet/FTPServer \
 src/Internet/DHCP \
 src/Ethernet \
 src/Ethernet/W5500 \

@@ -9,6 +9,8 @@
 #include "httpParser.h"
 #include "httpUtil.h"
 
+#include "userHandler.h"
+
 #ifdef	_USE_SDCARD_
 #include "ff.h"
 #else
@@ -115,6 +117,8 @@ void httpServer_run(uint8_t seqnum)
 	uint16_t len;
 	uint32_t gettime = 0;
 
+	uint8_t ret = 0;
+
 #ifdef _HTTPSERVER_DEBUG_
 	uint8_t destip[4] = {0, };
 	uint16_t destport = 0;
@@ -145,39 +149,54 @@ void httpServer_run(uint8_t seqnum)
 					{
 						if (len > DATA_BUF_SIZE) len = DATA_BUF_SIZE;
 						len = recv(s, (uint8_t *)http_request, len);
+						//printf("socket = %d, recv_len = %d\r\n", s, len);
 
-						*(((uint8_t *)http_request) + len) = '\0';	// End of string (EOS) marker
+						// ## 20150819, Eric added: Custom command handler
+						////////////////////////////////////////////////////////////////////////////////
+						ret = custom_command_handler((uint8_t *)http_request);
+						////////////////////////////////////////////////////////////////////////////////
 
-						parse_http_request(parsed_http_request, (uint8_t *)http_request);
-#ifdef _HTTPSERVER_DEBUG_
-						getSn_DIPR(s, destip);
-						destport = getSn_DPORT(s);
-						printf("\r\n");
-						printf("> HTTPSocket[%d] : HTTP Request received ", s);
-						printf("from %d.%d.%d.%d : %d\r\n", destip[0], destip[1], destip[2], destip[3], destport);
-#endif
-
-#ifdef _HTTPSERVER_DEBUG_
-						printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE\r\n", s);
-#endif
-						// HTTP 'response' handler; includes send_http_response_header / body function
-						http_process_handler(s, parsed_http_request);
-
-						gettime = get_httpServer_timecount();
-						// Check the TX socket buffer for End of HTTP response sends
-						while(getSn_TX_FSR(s) != (getSn_TXBUF_SIZE(s)*1024))
+						if(ret > 0) // Custom command handler
 						{
-							if((get_httpServer_timecount() - gettime) > 3)
-							{
-#ifdef _HTTPSERVER_DEBUG_
-								printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE: TX Buffer clear timeout\r\n", s);
-#endif
-								break;
-							}
-						}
+							if(ret == 1)		send(s, (uint8_t *)"DWOK", 4);
+							else if(ret == 2)	send(s, (uint8_t *)"DWERROR", 7);
 
-						if(HTTPSock_Status[seqnum].file_len > 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_INPROC;
-						else HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
+							HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE;
+						}
+						else // HTTP process handler
+						{
+							*(((uint8_t *)http_request) + len) = '\0';	// End of string (EOS) marker
+							parse_http_request(parsed_http_request, (uint8_t *)http_request);
+#ifdef _HTTPSERVER_DEBUG_
+							getSn_DIPR(s, destip);
+							destport = getSn_DPORT(s);
+							printf("\r\n");
+							printf("> HTTPSocket[%d] : HTTP Request received ", s);
+							printf("from %d.%d.%d.%d : %d\r\n", destip[0], destip[1], destip[2], destip[3], destport);
+#endif
+
+#ifdef _HTTPSERVER_DEBUG_
+							printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE\r\n", s);
+#endif
+							// HTTP 'response' handler; includes send_http_response_header / body function
+							http_process_handler(s, parsed_http_request);
+
+							gettime = get_httpServer_timecount();
+							// Check the TX socket buffer for End of HTTP response sends
+							while(getSn_TX_FSR(s) != (getSn_TXBUF_SIZE(s)*1024))
+							{
+								if((get_httpServer_timecount() - gettime) > 3)
+								{
+#ifdef _HTTPSERVER_DEBUG_
+									printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE: TX Buffer clear timeout\r\n", s);
+#endif
+									break;
+								}
+							}
+
+							if(HTTPSock_Status[seqnum].file_len > 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_INPROC;
+							else HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
+						}
 					}
 					break;
 

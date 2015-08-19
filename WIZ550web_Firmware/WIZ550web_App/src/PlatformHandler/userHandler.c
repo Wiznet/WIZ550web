@@ -1127,6 +1127,75 @@ uint8_t predefined_set_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t 
 		ret = 0;
 	}
 
+	return ret;
+}
 
+
+// return value - 	0: Failed (no I/O control command)
+//					1: Success
+//					2: Failed (I/O control command ok, but pin direction or pin number error)
+uint8_t custom_command_handler(
+	uint8_t * buf				/**< custom command: pointer to be parsed */
+	)
+{
+	uint8_t ret = NO_CUSTOM_COMMAND;
+	uint8_t pin = 0, val = 0;
+	uint8_t pinnum[3] ={0, };
+
+	// Digital I/O
+	if((buf[0] == 'd') || (buf[0] == 'D'))
+	{
+		if((buf[1] == 'w') || (buf[1] == 'W'))	// Digital I/O Write command
+		{
+#ifdef _CUSTOM_COMMAND_DEBUG_
+			printf("[DW] ");
+#endif
+
+			// Digital pin number
+			pinnum[0] = buf[2];
+			pinnum[1] = buf[3];
+			pin = (uint8_t)ATOI(pinnum, 10); // variable 'pinnum[2]' must be NULL
+
+#ifdef _CUSTOM_COMMAND_DEBUG_
+			printf("pin = %d ", pin);
+#endif
+			// Digital pin value (HIGH or LOW)
+			if(buf[4] == '1') 		val = 1;
+			else if(buf[4] == '0')	val = 0;
+			else
+			{
+				ret = COMMAND_ERROR;
+				return ret;
+			}
+
+#ifdef _CUSTOM_COMMAND_DEBUG_
+			printf("val = %d ", val);
+#endif
+			if((IOdata.io[pin] == Output) && (pin < IOn))	// GPIOs (D0 ~ D15)
+			{
+				IOdata.ios[pin] = val;
+
+				if(val == On) 		IO_On(pin);
+				else if(val == Off)	IO_Off(pin);
+
+				write_IOstorage(&IOdata, sizeof(IOdata));
+
+				// digital I/O write success
+				ret = COMMAND_SUCCESS;
+#ifdef _CUSTOM_COMMAND_DEBUG_
+				printf("write success\r\n");
+#endif
+			}
+			else
+			{
+				// digital I/O write failed
+				ret = COMMAND_ERROR;
+#ifdef _CUSTOM_COMMAND_DEBUG_
+				printf("write failed: PIN [%d] is not output port\r\n", pin);
+#endif
+			}
+
+		}
+	}
 	return ret;
 }
