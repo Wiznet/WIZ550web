@@ -79,6 +79,7 @@ v1.1.1 Stable
 - Sep. 2015
 - History
   - Bug fixed: Socket and data length handling problems in some web browsers (e.g., ie11)
+  - Modified the TCP socket state transition handler of the HTTP server routine for clarity
   - Added the custom command handler in userHandler.c/h
     - Users can add custom command to using this function form
   - Changed some uppercase letters to lowercase letter in code
