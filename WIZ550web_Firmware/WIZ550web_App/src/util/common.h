@@ -336,7 +336,7 @@
 
 #define MAJOR_VER		1
 #define MINOR_VER		1
-#define MAINTENANCE_VER	0
+#define MAINTENANCE_VER	1
 
 #define OP_COMMAND		0
 #define OP_DATA			1

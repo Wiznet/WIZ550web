@@ -9,6 +9,8 @@
 #include "httpParser.h"
 #include "httpUtil.h"
 
+#include "userHandler.h"
+
 #ifdef	_USE_SDCARD_
 #include "ff.h"
 #else
@@ -112,8 +114,10 @@ void reg_httpServer_cbfunc(void(*mcu_reset)(void), void(*wdt_reset)(void))
 void httpServer_run(uint8_t seqnum)
 {
 	uint8_t s;	// socket number
-	uint16_t len;
-	uint32_t gettime = 0;
+	int16_t len;
+	//uint32_t gettime = 0;	// 20150828 ## Eric removed
+
+	uint8_t ret = 0;
 
 #ifdef _HTTPSERVER_DEBUG_
 	uint8_t destip[4] = {0, };
@@ -144,42 +148,63 @@ void httpServer_run(uint8_t seqnum)
 					if ((len = getSn_RX_RSR(s)) > 0)
 					{
 						if (len > DATA_BUF_SIZE) len = DATA_BUF_SIZE;
-						len = recv(s, (uint8_t *)http_request, len);
 
-						*(((uint8_t *)http_request) + len) = '\0';	// End of string (EOS) marker
+						// ## 20150828, Eric / Bongjun Hur added
+						if ((len = recv(s, (uint8_t *)http_request, len)) < 0) break;	// Exception handler
 
-						parse_http_request(parsed_http_request, (uint8_t *)http_request);
-#ifdef _HTTPSERVER_DEBUG_
-						getSn_DIPR(s, destip);
-						destport = getSn_DPORT(s);
-						printf("\r\n");
-						printf("> HTTPSocket[%d] : HTTP Request received ", s);
-						printf("from %d.%d.%d.%d : %d\r\n", destip[0], destip[1], destip[2], destip[3], destport);
-#endif
+						////////////////////////////////////////////////////////////////////////////////
+						// Todo; User defined custom command handler (userHandler.c)
+						ret = custom_command_handler((uint8_t *)http_request);
+						////////////////////////////////////////////////////////////////////////////////
 
-#ifdef _HTTPSERVER_DEBUG_
-						printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE\r\n", s);
-#endif
-						// HTTP 'response' handler; includes send_http_response_header / body function
-						http_process_handler(s, parsed_http_request);
-
-						gettime = get_httpServer_timecount();
-						// Check the TX socket buffer for End of HTTP response sends
-						while(getSn_TX_FSR(s) != (getSn_TXBUF_SIZE(s)*1024))
+						if(ret > 0) // Custom command handler
 						{
-							if((get_httpServer_timecount() - gettime) > 3)
-							{
-#ifdef _HTTPSERVER_DEBUG_
-								printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE: TX Buffer clear timeout\r\n", s);
-#endif
-								break;
-							}
-						}
+							// Todo: Users can change this parts for custom function added
+							//if(ret == COMMAND_SUCCESS)		send(s, (uint8_t *)"CMDOK", 5);
+							//else if(ret == COMMAND_ERROR)	send(s, (uint8_t *)"CMDERROR", 8);
 
-						if(HTTPSock_Status[seqnum].file_len > 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_INPROC;
-						else HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
+							HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE;
+						}
+						else // HTTP process handler
+						{
+							*(((uint8_t *)http_request) + len) = '\0';	// End of string (EOS) marker
+							parse_http_request(parsed_http_request, (uint8_t *)http_request);
+#ifdef _HTTPSERVER_DEBUG_
+							getSn_DIPR(s, destip);
+							destport = getSn_DPORT(s);
+							printf("\r\n");
+							printf("> HTTPSocket[%d] : HTTP Request received ", s);
+							printf("from %d.%d.%d.%d : %d\r\n", destip[0], destip[1], destip[2], destip[3], destport);
+#endif
+
+#ifdef _HTTPSERVER_DEBUG_
+							printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE\r\n", s);
+#endif
+							// HTTP 'response' handler; includes send_http_response_header / body function
+							http_process_handler(s, parsed_http_request);
+
+/*
+							// 20150828 ## Eric removed
+							gettime = get_httpServer_timecount();
+							// Check the TX socket buffer for End of HTTP response sends
+							while(getSn_TX_FSR(s) != (getSn_TXBUF_SIZE(s)*1024))
+							{
+								if((get_httpServer_timecount() - gettime) > 3)
+								{
+#ifdef _HTTPSERVER_DEBUG_
+									printf("> HTTPSocket[%d] : [State] STATE_HTTP_REQ_DONE: TX Buffer clear timeout\r\n", s);
+#endif
+									break;
+								}
+							}
+*/
+
+							if(HTTPSock_Status[seqnum].file_len > 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_INPROC;
+							else HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
+						}
 					}
 					break;
+
 
 				case STATE_HTTP_RES_INPROC :
 					/* Repeat: Send the remain parts of HTTP responses */

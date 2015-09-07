@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include "boardutil.h"
 #include "types.h"
+#include "gpioHandler.h"
 #include "userHandler.h"
 
 #if defined(FACTORY_FW)
