@@ -184,7 +184,7 @@ void httpServer_run(uint8_t seqnum)
 							http_process_handler(s, parsed_http_request);
 
 /*
-							// 20150828 ## Eric removed
+							// ## 20150828 Eric removed
 							gettime = get_httpServer_timecount();
 							// Check the TX socket buffer for End of HTTP response sends
 							while(getSn_TX_FSR(s) != (getSn_TXBUF_SIZE(s)*1024))
@@ -245,10 +245,25 @@ void httpServer_run(uint8_t seqnum)
 #ifdef _HTTPSERVER_DEBUG_
 		printf("> HTTPSocket[%d] : ClOSE_WAIT\r\n", s);	// if a peer requests to close the current connection
 #endif
-			disconnect(s);
+			//disconnect(s);
+			http_disconnect(s);
+			break;
+
+		case SOCK_INIT:
+			listen(s);
+			break;
+
+		case SOCK_LISTEN:
+			break;
+
+		case SOCK_SYNSENT:
+		//case SOCK_SYNSENT_M:
+		case SOCK_SYNRECV:
+		//case SOCK_SYNRECV_M:
 			break;
 
 		case SOCK_CLOSED:
+		default :
 #ifdef _HTTPSERVER_DEBUG_
 			printf("> HTTPSocket[%d] : CLOSED\r\n", s);
 #endif
@@ -259,17 +274,6 @@ void httpServer_run(uint8_t seqnum)
 #endif
 			}
 			break;
-
-		case SOCK_INIT:
-			listen(s);
-			break;
-
-		case SOCK_LISTEN:
-			break;
-
-		default :
-			break;
-
 	} // end of switch
 
 #ifdef _USE_WATCHDOG_
