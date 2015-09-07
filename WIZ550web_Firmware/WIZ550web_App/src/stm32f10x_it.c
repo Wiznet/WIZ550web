@@ -22,6 +22,8 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
+//#include "stdio.h"
+
 void TimingDelay_Decrement(void)
 {
 }
@@ -60,6 +62,7 @@ void HardFault_Handler(void)
   /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
   {
+	  //printf("H");
   }
 }
 

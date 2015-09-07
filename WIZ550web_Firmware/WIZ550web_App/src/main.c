@@ -297,7 +297,9 @@ int main(void)
 			check_factory_uart1();
 		}
 #endif
-#if defined(F_SPI_FLASH)
+
+//#if defined(F_SPI_FLASH)
+#if defined(F_SPI_FLASH) && defined(F_APP_FTP)
 		sflash_run();
 #endif
 

@@ -25,6 +25,8 @@
 #include "httpParser.h"
 #include "uartHandler.h"
 
+//#define _CUSTOM_COMMAND_DEBUG_
+
 #if !defined(MULTIFLASH_ENABLE)
 //#define IO_PAGE_ADDR	0x801F400	// Page125
 //#define IO_PAGE_ADDR	(0x8000000+(FLASH_PAGE_SIZE*61))	// Page125
@@ -1139,8 +1141,19 @@ uint8_t custom_command_handler(
 	)
 {
 	uint8_t ret = NO_CUSTOM_COMMAND;
-	uint8_t pin = 0, val = 0;
-	uint8_t pinnum[3] ={0, };
+	uint8_t val = 0;
+	//Deleted by Peter 2015.09.02
+	//uint8_t pin = 0, val = 0;
+	//uint8_t pinnum[3] ={0, };
+	//Peter
+	uint8_t i = 0;
+
+	/*Written by Peter 2015.09.02
+	/Size of buffer must be 20 bytes. D(1) + W(1) + Port Status(16) + 0x0d(1) + 0x0a(1)
+	/ -> buf[18] != 0x0d && buf[19] != 0x0a*/
+//	if((buf[18] != '0x0d') || (buf[19] != '0x0a'))//고객이 CR LF를 모름.
+//		return ret;
+	//Peter
 
 	// Digital I/O
 	if((buf[0] == 'd') || (buf[0] == 'D'))
@@ -1151,50 +1164,95 @@ uint8_t custom_command_handler(
 			printf("[DW] ");
 #endif
 
-			// Digital pin number
-			pinnum[0] = buf[2];
-			pinnum[1] = buf[3];
-			pin = (uint8_t)ATOI(pinnum, 10); // variable 'pinnum[2]' must be NULL
+			//Deleted by Peter 2015.09.02
+//			// Digital pin number
+//			pinnum[0] = buf[2];
+//			pinnum[1] = buf[3];
+//			pin = (uint8_t)ATOI(pinnum, 10); // variable 'pinnum[2]' must be NULL
+			//Peter
 
-#ifdef _CUSTOM_COMMAND_DEBUG_
-			printf("pin = %d ", pin);
-#endif
+			//Modified by Peter 2015.09.02
 			// Digital pin value (HIGH or LOW)
-			if(buf[4] == '1') 		val = 1;
-			else if(buf[4] == '0')	val = 0;
-			else
+			for(i = 0 ; i < 16 ; i++)
 			{
-				ret = COMMAND_ERROR;
-				return ret;
-			}
-
+				if(IOdata.io[i] == Output)
+				{
+					if(buf[i+2] == '1')//buf[2] to buf[17]
+					{
+						val = 1;
+						IOdata.ios[i] = val;
+						IO_On(i);
 #ifdef _CUSTOM_COMMAND_DEBUG_
-			printf("val = %d ", val);
+			printf("Valid pin data : PIN [%d] - %c\r\n", i,buf[i+2]);
 #endif
-			if((IOdata.io[pin] == Output) && (pin < IOn))	// GPIOs (D0 ~ D15)
-			{
-				IOdata.ios[pin] = val;
-
-				if(val == On) 		IO_On(pin);
-				else if(val == Off)	IO_Off(pin);
-
-				write_IOstorage(&IOdata, sizeof(IOdata));
-
-				// digital I/O write success
-				ret = COMMAND_SUCCESS;
+					}
+					else if(buf[i+2] == '0')
+					{
+						val = 0;
+						IOdata.ios[i] = val;
+						IO_Off(i);
+#ifdef _CUSTOM_COMMAND_DEBUG_
+			printf("Valid pin data : PIN [%d] - %c\r\n", i,buf[i+2]);
+#endif
+					}
+					else
+					{
+						/*Do not anything.*/
+#ifdef _CUSTOM_COMMAND_DEBUG_
+			printf("Invalid pin data : PIN [%d] - %c\r\n", i,buf[i+2]);
+#endif
+					}
+				}
+				else
+				{
+					/*Do not anything.*/
+#ifdef _CUSTOM_COMMAND_DEBUG_
+				printf("PIN [%d] is not output port\r\n", i);
+#endif
+				}
+			}
+			write_IOstorage(&IOdata, sizeof(IOdata));
+			ret = COMMAND_SUCCESS;
 #ifdef _CUSTOM_COMMAND_DEBUG_
 				printf("write success\r\n");
 #endif
-			}
-			else
-			{
-				// digital I/O write failed
-				ret = COMMAND_ERROR;
-#ifdef _CUSTOM_COMMAND_DEBUG_
-				printf("write failed: PIN [%d] is not output port\r\n", pin);
-#endif
-			}
+			//Peter
 
+			//Deleted by Peter 2015.09.02
+//#ifdef _CUSTOM_COMMAND_DEBUG_
+//			printf("val = %d ", val);
+//#endif
+//			if((IOdata.io[pin] == Output) && (pin < IOn))	// GPIOs (D0 ~ D15)
+//			{
+//				IOdata.ios[pin] = val;
+//
+//				if(val == On) 		IO_On(pin);
+//				else if(val == Off)	IO_Off(pin);
+//
+//				write_IOstorage(&IOdata, sizeof(IOdata));
+//
+//				// digital I/O write success
+//				ret = COMMAND_SUCCESS;
+//#ifdef _CUSTOM_COMMAND_DEBUG_
+//				printf("write success\r\n");
+//#endif
+//			}
+//			else
+//			{
+//				// digital I/O write failed
+//				ret = COMMAND_ERROR;
+//#ifdef _CUSTOM_COMMAND_DEBUG_
+//				printf("write failed: PIN [%d] is not output port\r\n", pin);
+//#endif
+//			}
+			//Peter
+		}
+		else
+		{
+				ret = NO_CUSTOM_COMMAND;
+#ifdef _CUSTOM_COMMAND_DEBUG_
+				printf("Not custom command!\r\n", pin);
+#endif
 		}
 	}
 	return ret;

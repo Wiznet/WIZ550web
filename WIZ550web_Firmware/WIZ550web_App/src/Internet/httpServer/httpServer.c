@@ -114,7 +114,7 @@ void reg_httpServer_cbfunc(void(*mcu_reset)(void), void(*wdt_reset)(void))
 void httpServer_run(uint8_t seqnum)
 {
 	uint8_t s;	// socket number
-	uint16_t len;
+	int16_t len;
 	uint32_t gettime = 0;
 
 	uint8_t ret = 0;
@@ -130,6 +130,9 @@ void httpServer_run(uint8_t seqnum)
 	// Get the H/W socket number
 	s = getHTTPSocketNum(seqnum);
 
+#ifdef _HTTPSERVER_DEBUG_
+	//printf("Run[%d] ", s);
+#endif
 	/* HTTP Service Start */
 	switch(getSn_SR(s))
 	{
@@ -148,10 +151,12 @@ void httpServer_run(uint8_t seqnum)
 					if ((len = getSn_RX_RSR(s)) > 0)
 					{
 						if (len > DATA_BUF_SIZE) len = DATA_BUF_SIZE;
-						len = recv(s, (uint8_t *)http_request, len);
-						//printf("socket = %d, recv_len = %d\r\n", s, len);
 
-						// ## 20150819, Eric added: Custom command handler
+						//len = recv(s, (uint8_t *)http_request;
+
+						// ## 20150827, Bongjun Hur added
+						if ((len = recv(s, (uint8_t *)http_request, len)) < 0) break;	// Exception handler
+
 						////////////////////////////////////////////////////////////////////////////////
 						ret = custom_command_handler((uint8_t *)http_request);
 						////////////////////////////////////////////////////////////////////////////////
@@ -181,6 +186,8 @@ void httpServer_run(uint8_t seqnum)
 							// HTTP 'response' handler; includes send_http_response_header / body function
 							http_process_handler(s, parsed_http_request);
 
+/*
+							// 20150828 ## Eric
 							gettime = get_httpServer_timecount();
 							// Check the TX socket buffer for End of HTTP response sends
 							while(getSn_TX_FSR(s) != (getSn_TXBUF_SIZE(s)*1024))
@@ -193,6 +200,7 @@ void httpServer_run(uint8_t seqnum)
 									break;
 								}
 							}
+*/
 
 							if(HTTPSock_Status[seqnum].file_len > 0) HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_INPROC;
 							else HTTPSock_Status[seqnum].sock_status = STATE_HTTP_RES_DONE; // Send the 'HTTP response' end
@@ -239,10 +247,25 @@ void httpServer_run(uint8_t seqnum)
 #ifdef _HTTPSERVER_DEBUG_
 		printf("> HTTPSocket[%d] : ClOSE_WAIT\r\n", s);	// if a peer requests to close the current connection
 #endif
-			disconnect(s);
+			//disconnect(s);
+			http_disconnect(s);
+			break;
+
+		case SOCK_INIT:
+			listen(s);
+			break;
+
+		case SOCK_LISTEN:
+			break;
+
+		case SOCK_SYNSENT:
+		//case SOCK_SYNSENT_M:
+		case SOCK_SYNRECV:
+		//case SOCK_SYNRECV_M:
 			break;
 
 		case SOCK_CLOSED:
+		default :
 #ifdef _HTTPSERVER_DEBUG_
 			printf("> HTTPSocket[%d] : CLOSED\r\n", s);
 #endif
@@ -253,17 +276,6 @@ void httpServer_run(uint8_t seqnum)
 #endif
 			}
 			break;
-
-		case SOCK_INIT:
-			listen(s);
-			break;
-
-		case SOCK_LISTEN:
-			break;
-
-		default :
-			break;
-
 	} // end of switch
 
 #ifdef _USE_WATCHDOG_
