@@ -79,7 +79,8 @@ v1.1.1 Stable
 - Sep. 2015
 - History
   - Bug fixed: Socket and data length handling problems in some web browsers (e.g., ie11)
-  - Added the custom command handler in userHandler.c/h (Users can add custom command to using this function form)
+  - Added the custom command handler in userHandler.c/h
+    - Users can add custom command to using this function form
   - Changed some uppercase letters to lowercase letter in code (e.g., WIZ550WEB -> WIZ550web)
 
 v1.1.0 Develop
