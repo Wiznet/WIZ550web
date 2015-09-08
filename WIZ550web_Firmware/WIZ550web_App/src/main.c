@@ -9,7 +9,7 @@
 */
 
 /*
- * @brief WIZ550WEB Firmware
+ * @brief WIZ550web Firmware
  *
  * @note
  * Copyright(C) WIZnet Co., Ltd. 2014
@@ -99,7 +99,7 @@ static void display_SDcard_Info(uint8_t mount_ret);
  ****************************************************************************/
 
 /**
- * @brief    Main routine for WIZ550WEB firmware
+ * @brief    Main routine for WIZ550web firmware
  * @return   Function should not exit.
  */
 int main(void)
@@ -148,7 +148,7 @@ int main(void)
 
 #ifdef _MAIN_DEBUG_
     printf("\r\n=======================================\r\n");
-	printf(" WIZnet WIZ550WEB Revision 1.0\r\n");
+	printf(" WIZnet WIZ550web Revision 1.0\r\n");
 	printf(" Embedded Web Server Module\r\n");
 	printf(" Firmware Version %d.%d.%d\r\n", MAJOR_VER, MINOR_VER, MAINTENANCE_VER);
 	printf("=======================================\r\n");
@@ -227,7 +227,7 @@ int main(void)
 	if(ret <= 0)
 	{
 #ifdef _MAIN_DEBUG_
-		printf("\r\n - Can't mount SD card: Please Reboot WIZ550WEB Board or Insert SD card\r\n");
+		printf("\r\n - Can't mount SD card: Please Reboot WIZ550web Board or Insert SD card\r\n");
 #endif
 		//while(!(ret = mmc_mount()));
 	}
@@ -297,7 +297,7 @@ int main(void)
 			check_factory_uart1();
 		}
 #endif
-#if defined(F_SPI_FLASH)
+#if defined(F_SPI_FLASH) && defined(F_APP_FTP)
 		sflash_run();
 #endif
 

@@ -101,7 +101,7 @@ void IO_status_init(void)
 	read_IOstorage(&IOdata, sizeof(IOdata));
 
 	// IO Status & Alias Initialization
-	// Initialize for WIZ550WEB Baseboard Configuration
+	// Initialize for WIZ550web Baseboard Configuration
 	if(!((IOdata.io_statuscode[0] == 0xAA) && (IOdata.io_statuscode[1] == 0x01)))
 	{
 #ifdef _WEB_DEBUG_
@@ -190,10 +190,10 @@ uint16_t get_ADC_val(uint8_t index)
 	// for Test
 	switch(index)
 	{
-		case A0: // WIZ550WEB BaseBoard: Potentiometer
+		case A0: // WIZ550web BaseBoard: Potentiometer
 			if(ADC_GetFlagStatus(ADC2, ADC_FLAG_EOC) == SET) adc_value = ADC_GetConversionValue(ADC2);
 			break;
-		case A1: // WIZ550WEB BaseBoard: Temperature Sensor
+		case A1: // WIZ550web BaseBoard: Temperature Sensor
 			adc_value = ADC1ConvertedValue; // TemperatureC = (((ADC_value * 3300) / 1023) - 500) / 10;
 			break;
 		case A2:
@@ -685,11 +685,11 @@ void make_cgi_basic_config_response_page(uint16_t delay, uint8_t * url, uint8_t 
 
 	if(value->options.dhcp_use == 1) // Static -> DHCP, DHCP -> DHCP
 	{
-		*len = sprintf((char *)cgi_response_buf,"<html><head><title>WIZ550WEB - Configuration</title><body>Reboot Complete. Please try to connect to the IP address assigned by the <span style='color:red;'>DHCP server</span></body></html>");
+		*len = sprintf((char *)cgi_response_buf,"<html><head><title>WIZ550web - Configuration</title><body>Reboot Complete. Please try to connect to the IP address assigned by the <span style='color:red;'>DHCP server</span></body></html>");
 	}
 	else // Static -> Static, DHCP -> Static
 	{
-		*len = sprintf((char *)cgi_response_buf,"<html><head><title>WIZ550WEB - Configuration</title><script language=javascript>j=%d;function func(){document.getElementById('delay').innerText=' '+j+' ';if(j>0)j--;setTimeout('func()',1000);if(j<=0)location.href='http://%d.%d.%d.%d';}</script></head><body onload='func()'>Please wait for a while, the module will boot in<span style='color:red;' id='delay'></span> seconds.</body></html>", delay, url[0], url[1], url[2], url[3]);
+		*len = sprintf((char *)cgi_response_buf,"<html><head><title>WIZ550web - Configuration</title><script language=javascript>j=%d;function func(){document.getElementById('delay').innerText=' '+j+' ';if(j>0)j--;setTimeout('func()',1000);if(j<=0)location.href='http://%d.%d.%d.%d';}</script></head><body onload='func()'>Please wait for a while, the module will boot in<span style='color:red;' id='delay'></span> seconds.</body></html>", delay, url[0], url[1], url[2], url[3]);
 	}
 	return;
 }
@@ -1127,6 +1127,26 @@ uint8_t predefined_set_cgi_processor(uint8_t * uri_name, uint8_t * uri, uint8_t 
 		ret = 0;
 	}
 
+
+	return ret;
+}
+
+// return value - 	0: Failed (no custom command)
+//					1: Success
+//					2: Failed (custom command ok, but process error - e.g., I/O control failed)
+uint8_t custom_command_handler(
+	uint8_t * buf				/**< custom command: pointer to be parsed */
+	)
+{
+	uint8_t ret = NO_CUSTOM_COMMAND;
+
+#ifdef _CUSTOM_COMMAND_DEBUG_
+			//printf("[CWD] ");
+#endif
+
+	// if the command process succeed, ret = COMMAND_SUCCESS;
+	// if the command received but process failed, ret = COMMAND_ERROR;
+	// if the http request is not custom command, ret = NO_CUSTOM_COMMAND;
 
 	return ret;
 }

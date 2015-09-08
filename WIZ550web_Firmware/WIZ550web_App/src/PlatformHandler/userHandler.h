@@ -89,5 +89,17 @@ uint8_t set_digital_io_direction(uint8_t * uri);
 void set_factory_default_io_status(uint8_t * uri);
 void get_serial_data_from_web(uint8_t * uri);
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Custom Command Handler Functions
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//#define _CUSTOM_COMMAND_DEBUG_
+
+#define NO_CUSTOM_COMMAND		0
+#define COMMAND_SUCCESS			1
+#define COMMAND_ERROR			2
+
+uint8_t custom_command_handler(uint8_t * buf);
+
 #endif
 
