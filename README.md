@@ -6,8 +6,8 @@
  - SWD pin(JTAG) 추가
  - EEPROM(24AA64I-T/OT)추가
  - Artwork
- 	- Rev1.1은 Artwork을 새로 진행.
- 	- 추가적으로 나사 홀을 Open형식으로 변경 (외부 노이즈가 들어오지 않게 하기 위해) 
+ 	- Rev1.1은 Artwork 새로 진행.
+ 	- 나사 홀 Open으로 변경 (외부 노이즈 방지) 
  - Coretex-M4 pin to pin 가능하게 설계
  - GPIO pin 변경 (Digital & SPI CS pin)
 	 - Rev 1.0
