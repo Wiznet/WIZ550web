@@ -1,3 +1,40 @@
+##  H/W Revision 1.1 #
+
+ - EMI Issue로 인해 33R 저항 추가.
+ - Boot SW 추가(Slide SW)
+ - App_Boot SW 추가(Slide SW)
+ - SWD pin(JTAG) 추가
+ - EEPROM(24AA64I-T/OT)추가
+ - Rev1.0은 GND copper가 적어서 EMI 및 특성이 떨어짐
+ -  -> 그래서 Rev1.1은 Artwork을 새로 진행. GND 및 EMI 특성을 좋게 하기 위해
+ - Coretex-M4 호환할 수 있게 설계
+ - GPIO pin 변경 (Digital & SPI CS pin)
+	 - Rev 1.0
+		 - D0 - PC06
+		 - D1 - PC07
+		 - D2 - PC08
+		 - D3 - PC09
+		 - D4 - PA08
+		 - D8 - PC12
+		 - Flash memory CS - PB11
+		 - Debug LED 0 - PC04 
+		 - Debug LED 1 - PC05
+	 - Rev 1.1
+	 	 - D0 - PC00
+		 - D1 - PC01
+		 - D2 - PC02
+		 - D3 - PC03
+		 - D4 - PC04
+		 - D8 - PC05
+		 - Flash memory CS - PB09
+		 - Debug LED 0 - PA08 
+		 - Debug LED 1 - PC12
+
+## F/W 수정사항 ##
+
+ - GPIO pin 변경
+ - EEPROM 코드 추가
+
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
 - Provides the firmware & web page examples for user’s customization
