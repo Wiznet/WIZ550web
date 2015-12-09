@@ -3,13 +3,14 @@
  - EMI Issue로 인해 33R Damping 저항 추가
  - Boot SW 추가(Slide SW)
  - App_Boot SW 추가(Slide SW)
- - SWD pin(JTAG) 추가
+ - SWD pin(JTAG) 추가 - 1.27pitch 10pin
  - EEPROM(24AA64I-T/OT)추가
  - Artwork
  	- Rev1.1은 Artwork 새로 진행.
  	- 나사 홀 Open으로 변경 (외부 노이즈 방지) 
  - Coretex-M4 pin to pin 가능하게 설계
- - GPIO pin 변경 (Digital & SPI CS pin)
+ - Test point 추가 (3V3D, GND)
+ - GPIO pin 변경 (Digital & SPI CS pin) 
 	 - Rev 1.0
 		 - D0 - PC06
 		 - D1 - PC07
