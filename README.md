@@ -6,8 +6,8 @@
  - SWD pin(JTAG) 추가
  - EEPROM(24AA64I-T/OT)추가
  - Rev1.0은 GND copper가 적은 이유 때문에 EMI 및 특성이 떨어짐
-    -> 그래서 Rev1.1은 Artwork을 새로 진행. GND 및 EMI 특성을 좋게 하기 위해
-    -> 추가적으로 나사 홀을 Open형식으로 변경 (외부 노이즈가 들어오지 않게 하기 위해) 
+ -   -> 그래서 Rev1.1은 Artwork을 새로 진행. GND 및 EMI 특성을 좋게 하기 위해
+ -   -> 추가적으로 나사 홀을 Open형식으로 변경 (외부 노이즈가 들어오지 않게 하기 위해) 
  - Coretex-M4 pin to pin 가능하게 설계
  - GPIO pin 변경 (Digital & SPI CS pin)
 	 - Rev 1.0
