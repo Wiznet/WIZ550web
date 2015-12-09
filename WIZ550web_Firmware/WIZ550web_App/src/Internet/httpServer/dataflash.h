@@ -35,7 +35,7 @@
 #define DF_SPI                       SPI2
 #define DF_SPI_CLK                   RCC_APB2Periph_SPI2
 
-#define DF_CS_PIN           		GPIO_Pin_11                  	/* PB.11 */
+#define DF_CS_PIN           		GPIO_Pin_9                  	/* PB.9 */
 #define DF_CS_PORT          		GPIOB                       	/* GPIOB */
 #define DF_CS_GPIO_CLK     			RCC_APB2Periph_GPIOB
 

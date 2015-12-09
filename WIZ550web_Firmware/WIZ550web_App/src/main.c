@@ -148,7 +148,7 @@ int main(void)
 
 #ifdef _MAIN_DEBUG_
     printf("\r\n=======================================\r\n");
-	printf(" WIZnet WIZ550web Revision 1.0\r\n");
+	printf(" WIZnet WIZ550web Revision %d.%d\r\n", HW_MAJOR_VER, HW_MINOR_VER);
 	printf(" Embedded Web Server Module\r\n");
 	printf(" Firmware Version %d.%d.%d\r\n", MAJOR_VER, MINOR_VER, MAINTENANCE_VER);
 	printf("=======================================\r\n");

@@ -20,7 +20,7 @@
 #include "ff.h"
 #endif
 
-#define F_APP_FTP
+//#define F_APP_FTP
 //#define _FTP_DEBUG_
 
 

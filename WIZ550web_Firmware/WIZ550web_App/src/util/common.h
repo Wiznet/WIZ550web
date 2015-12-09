@@ -346,6 +346,14 @@
 
 #define DATA_BUF_SIZE   2048
 
+#if !defined  HW_MAJOR_VER
+  #define HW_MAJOR_VER	1	/*!< Major version number of WIZ550web hardware revision */
+#endif /* HW_MAJOR_VER */
+
+#if !defined  HW_MINOR_VER
+  #define HW_MINOR_VER	0	/*!< Minor version number of WIZ550web hardware revision */
+#endif /* HW_MINOR_VER */
+
 extern uint8_t op_mode;
 
 

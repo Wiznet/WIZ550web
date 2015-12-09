@@ -45,18 +45,18 @@
 //#define RESET_W5500		GPIO_Pin_0	//out
 #define INT_W5500		GPIO_Pin_1	//in
 
-#define CS_EX_Flash		GPIO_Pin_11	//out
+#define CS_EX_Flash		GPIO_Pin_9	//out
 
 // Digital I/O
-#define DATA_0			GPIO_Pin_6	// inout
-#define DATA_1			GPIO_Pin_7	// inout
-#define DATA_2			GPIO_Pin_8	// inout
-#define DATA_3			GPIO_Pin_9	// inout
-#define DATA_4			GPIO_Pin_8	// inout
+#define DATA_0			GPIO_Pin_0	// inout
+#define DATA_1			GPIO_Pin_1	// inout
+#define DATA_2			GPIO_Pin_2	// inout
+#define DATA_3			GPIO_Pin_3	// inout
+#define DATA_4			GPIO_Pin_4	// inout
 #define DATA_5			GPIO_Pin_15	// inout
 #define DATA_6			GPIO_Pin_10	// inout
 #define DATA_7			GPIO_Pin_11	// inout
-#define DATA_8			GPIO_Pin_12	// inout
+#define DATA_8			GPIO_Pin_5	// inout
 #define DATA_9			GPIO_Pin_2	// inout
 #define DATA_10			GPIO_Pin_3	// inout
 #define DATA_11			GPIO_Pin_4	// inout
@@ -153,32 +153,32 @@ typedef enum
 //#define LED2_GPIO_PORT                   GPIOA
 //#define LED2_GPIO_CLK                    RCC_APB2Periph_GPIOC
 
-#define LED1_PIN						GPIO_Pin_4
-#define LED1_GPIO_PORT					GPIOC
+#define LED1_PIN						GPIO_Pin_8
+#define LED1_GPIO_PORT					GPIOA
 #define LED1_GPIO_CLK					RCC_APB2Periph_GPIOC
 
-#define LED2_PIN						GPIO_Pin_5
+#define LED2_PIN						GPIO_Pin_12
 #define LED2_GPIO_PORT					GPIOC
 #define LED2_GPIO_CLK					RCC_APB2Periph_GPIOC
 
-#define D0_PIN							GPIO_Pin_6
+#define D0_PIN							GPIO_Pin_0
 #define D0_GPIO_PORT					GPIOC
 #define D0_GPIO_CLK						RCC_APB2Periph_GPIOC
 
-#define D1_PIN							GPIO_Pin_7
+#define D1_PIN							GPIO_Pin_1
 #define D1_GPIO_PORT					GPIOC
 #define D1_GPIO_CLK 					RCC_APB2Periph_GPIOC
 
-#define D2_PIN							GPIO_Pin_8
+#define D2_PIN							GPIO_Pin_2
 #define D2_GPIO_PORT					GPIOC
 #define D2_GPIO_CLK 					RCC_APB2Periph_GPIOC
 
-#define D3_PIN							GPIO_Pin_9
+#define D3_PIN							GPIO_Pin_3
 #define D3_GPIO_PORT					GPIOC
 #define D3_GPIO_CLK 					RCC_APB2Periph_GPIOC
 
-#define D4_PIN							GPIO_Pin_8
-#define D4_GPIO_PORT					GPIOA
+#define D4_PIN							GPIO_Pin_4
+#define D4_GPIO_PORT					GPIOC
 #define D4_GPIO_CLK 					RCC_APB2Periph_GPIOA
 
 #define D5_PIN							GPIO_Pin_15
@@ -193,7 +193,7 @@ typedef enum
 #define D7_GPIO_PORT					GPIOC
 #define D7_GPIO_CLK 					RCC_APB2Periph_GPIOC
 
-#define D8_PIN							GPIO_Pin_12
+#define D8_PIN							GPIO_Pin_5
 #define D8_GPIO_PORT					GPIOC
 #define D8_GPIO_CLK 					RCC_APB2Periph_GPIOC
 
