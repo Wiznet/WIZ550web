@@ -5,6 +5,9 @@
  - App_Boot SW 추가(Slide SW)
  - SWD pin(JTAG) 추가 - 1.27pitch 10pin
  - EEPROM(24AA64I-T/OT)추가
+ 	- I2C 전용 Peripheral에 연결
+ 		- PB6 - I2C_SCL
+ 		- PB7 - I2C_SDA
  - Artwork
  	- Rev1.1은 Artwork 새로 진행.
  	- 나사 홀 Open으로 변경 (외부 노이즈 방지) 
@@ -18,6 +21,8 @@
 		 - D3 - PC09
 		 - D4 - PA08
 		 - D8 - PC12
+		 - D13 - PB6
+		 - D14 - PB7
 		 - Flash memory CS - PB11
 		 - Debug LED 0 - PC04 
 		 - Debug LED 1 - PC05
@@ -28,6 +33,8 @@
 		 - D3 - PC03
 		 - D4 - PC04
 		 - D8 - PC05
+		 - D13 - PC6
+		 - D14 - PC7
 		 - Flash memory CS - PB09
 		 - Debug LED 0 - PA08 
 		 - Debug LED 1 - PC12
@@ -35,7 +42,7 @@
 ## F/W 수정사항 ##
 
  - GPIO pin 변경
- - EEPROM 코드 추가
+ - EEPROM 코드 추가 (Peri & GPIO 2개 코드로 나뉘어져 있음)
 
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
