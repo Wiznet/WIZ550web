@@ -62,3 +62,39 @@ void Timer_Configuration(void)
 	/* TIM IT enable */
 	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 }
+
+void Delay(volatile uint32_t nCount)
+{
+  for(; nCount!= 0;nCount--);
+}
+
+void delay_us (const uint32_t usec)
+{
+	RCC_ClocksTypeDef  RCC_Clocks;
+
+	/* Configure HCLK clock as SysTick clock source */
+	SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK);
+
+	RCC_GetClocksFreq(&RCC_Clocks);
+
+	// Set SysTick Reload(1us) register and Enable
+	// usec * (RCC_Clocks.HCLK_Frequency / 1000000) < 0xFFFFFFUL  -- because of 24bit timer
+	SysTick_Config(usec * (RCC_Clocks.HCLK_Frequency / 1000000));
+	// 72/72000000 --> 1usec
+	// 0.001msec = 1usec
+	// 1Hz = 1sec, 10Hz = 100msec, 100Hz = 10msec, 1KHz = 1msec,
+	// 10KHz = 0.1msec, 100Khz = 0.01msec, 1MHz = 1usec(0.001msec)
+	// 1usec = 1MHz
+
+
+	// SysTick Interrupt Disable
+	SysTick->CTRL  &= ~SysTick_CTRL_TICKINT_Msk ;
+
+	// Until Tick count is 0
+	while (!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk));
+}
+
+void delay_ms (const uint32_t msec)
+{
+	delay_us(1000 * msec);
+}

@@ -77,6 +77,7 @@ WIZ550web_App.elf: $(OBJS) $(USER_OBJS)
 	arm-none-eabi-g++ -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall -Wextra  -g3 -T mem_128kb.ld -T libs.ld -T sections.ld -nostartfiles -Xlinker --gc-sections -L"../ldscripts" -Wl,-Map,"WIZ550web_App.map" --specs=nano.specs -o "WIZ550web_App.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
+	$(MAKE) --no-print-directory post-build
 
 WIZ550web_App.bin: WIZ550web_App.elf
 	@echo 'Invoking: Cross ARM GNU Create Flash Image'
@@ -95,9 +96,13 @@ clean:
 	-$(RM) $(CC_DEPS)$(C++_DEPS)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(SECONDARY_FLASH)$(SECONDARY_SIZE)$(ASM_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(CPP_DEPS) WIZ550web_App.elf
 	-@echo ' '
 
+post-build:
+	-arm-none-eabi-objcopy -O ihex "WIZ550web_App.elf" "WIZ550web_App.hex"
+	-@echo ' '
+
 secondary-outputs: $(SECONDARY_FLASH) $(SECONDARY_SIZE)
 
 .PHONY: all clean dependents
-.SECONDARY:
+.SECONDARY: post-build
 
 -include ../makefile.targets

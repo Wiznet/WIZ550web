@@ -39,6 +39,7 @@
 #include "dhcp.h"
 #include "dhcp_cb.h"
 #include "ftpd.h"
+#include "eepromHandler.h"
 
 #ifdef _USE_SDCARD_
 #include "ff.h"
@@ -128,8 +129,18 @@ int main(void)
 	g_sdcard_done = 0;
 	g_spiflash_flag = 0;
 
+
 #if defined(MULTIFLASH_ENABLE)
 	probe_flash();
+#endif
+
+	/* Initialize the I2C EEPROM driver ----------------------------------------*/
+#if defined(EEPROM_ENABLE)
+#if defined(EEPROM_ENABLE_BYI2CPERI)
+	I2C1Initialize();
+#elif defined(EEPROM_ENABLE_BYGPIO)
+	EE24AAXX_Init();
+#endif
 #endif
 
 	// Load the Configuration data

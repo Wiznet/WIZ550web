@@ -5,9 +5,11 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../src/PlatformHandler/adcHandler.c \
+../src/PlatformHandler/eepromHandler.c \
 ../src/PlatformHandler/extiHandler.c \
 ../src/PlatformHandler/flashHandler.c \
 ../src/PlatformHandler/gpioHandler.c \
+../src/PlatformHandler/i2cHandler.c \
 ../src/PlatformHandler/mmcHandler.c \
 ../src/PlatformHandler/rccHandler.c \
 ../src/PlatformHandler/ring_buffer.c \
@@ -19,9 +21,11 @@ C_SRCS += \
 
 OBJS += \
 ./src/PlatformHandler/adcHandler.o \
+./src/PlatformHandler/eepromHandler.o \
 ./src/PlatformHandler/extiHandler.o \
 ./src/PlatformHandler/flashHandler.o \
 ./src/PlatformHandler/gpioHandler.o \
+./src/PlatformHandler/i2cHandler.o \
 ./src/PlatformHandler/mmcHandler.o \
 ./src/PlatformHandler/rccHandler.o \
 ./src/PlatformHandler/ring_buffer.o \
@@ -33,9 +37,11 @@ OBJS += \
 
 C_DEPS += \
 ./src/PlatformHandler/adcHandler.d \
+./src/PlatformHandler/eepromHandler.d \
 ./src/PlatformHandler/extiHandler.d \
 ./src/PlatformHandler/flashHandler.d \
 ./src/PlatformHandler/gpioHandler.d \
+./src/PlatformHandler/i2cHandler.d \
 ./src/PlatformHandler/mmcHandler.d \
 ./src/PlatformHandler/rccHandler.d \
 ./src/PlatformHandler/ring_buffer.d \

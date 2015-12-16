@@ -4,7 +4,7 @@
 
 #include <stdint.h>
 
-#define LEDn                             4
+#define LEDn                             2
 
 #define LED1_PIN						GPIO_Pin_8
 #define LED1_GPIO_PORT					GPIOA

@@ -30,7 +30,7 @@ src/PlatformHandler/timerHandler.o: ../src/PlatformHandler/timerHandler.c \
  ../src/PlatformHandler/uartHandler.h \
  ../src/PlatformHandler/ring_buffer.h \
  ../src/PlatformHandler/timerHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Internet\TFTP/tftp.h
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Internet\TFTP/tftp.h
 
 ../system/include/cmsis/stm32f10x.h:
 
@@ -98,4 +98,4 @@ src/PlatformHandler/timerHandler.o: ../src/PlatformHandler/timerHandler.c \
 
 ../src/PlatformHandler/timerHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Internet\TFTP/tftp.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Internet\TFTP/tftp.h:

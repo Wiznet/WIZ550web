@@ -26,20 +26,21 @@ src/main.o: ../src/main.c ../system/include/diag/Trace.h \
  ../system/include/stm32f1-stdperiph/stm32f10x_usart.h \
  ../system/include/stm32f1-stdperiph/stm32f10x_wwdg.h \
  ../system/include/stm32f1-stdperiph/misc.h ../src/common.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/rccHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/spiHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/uartHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/ring_buffer.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/flashHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/storageHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/gpioHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/timerHandler.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Internet\TFTP/tftp.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Configuration/ConfigData.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/wizchip_conf.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/W5500/w5500.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src/Ethernet/wizchip_conf.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Configuration/ConfigMessage.h
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/rccHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/spiHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/uartHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/ring_buffer.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/flashHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/storageHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/gpioHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/timerHandler.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Internet\TFTP/tftp.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Configuration/ConfigData.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/wizchip_conf.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/W5500/w5500.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src/Ethernet/wizchip_conf.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Configuration/ConfigMessage.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/eepromHandler.h
 
 ../system/include/diag/Trace.h:
 
@@ -103,30 +104,32 @@ src/main.o: ../src/main.c ../system/include/diag/Trace.h \
 
 ../src/common.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/rccHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/rccHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/spiHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/spiHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/uartHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/uartHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/ring_buffer.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/ring_buffer.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/flashHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/flashHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/storageHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/storageHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/gpioHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/gpioHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler/timerHandler.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/timerHandler.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Internet\TFTP/tftp.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Internet\TFTP/tftp.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Configuration/ConfigData.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Configuration/ConfigData.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/wizchip_conf.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/wizchip_conf.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/W5500/w5500.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/W5500/w5500.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src/Ethernet/wizchip_conf.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src/Ethernet/wizchip_conf.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Configuration/ConfigMessage.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Configuration/ConfigMessage.h:
+
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler/eepromHandler.h:

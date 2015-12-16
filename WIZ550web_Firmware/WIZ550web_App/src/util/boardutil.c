@@ -123,7 +123,7 @@ void NVIC_Configuration(void)
 
   /* Set the Vector Table base location at 0x08002000 -> USE AIP*/
 //  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x2000);
-  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x6000);
+  NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x7000);
 	__enable_irq();
 #endif
 }

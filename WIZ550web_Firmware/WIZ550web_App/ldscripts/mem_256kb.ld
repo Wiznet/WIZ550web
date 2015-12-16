@@ -15,7 +15,7 @@ MEMORY
 {
   RAM (xrw) : ORIGIN = 0x20000000, LENGTH = 48K
   CCMRAM (xrw) : ORIGIN = 0x00000000, LENGTH = 0  
-  FLASH (rx) : ORIGIN = 0x08006000, LENGTH = 226K	/* 226kB = 232kB - 6kB (configuration data)*/
+  FLASH (rx) : ORIGIN = 0x08007000, LENGTH = 222K	/* 222kB = 228kB - 6kB (configuration data)*/
   FLASHB1 (rx) : ORIGIN = 0x00000000, LENGTH = 0
   EXTMEMB0 (rx) : ORIGIN = 0x00000000, LENGTH = 0
   EXTMEMB1 (rx) : ORIGIN = 0x00000000, LENGTH = 0

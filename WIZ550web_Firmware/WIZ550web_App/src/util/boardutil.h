@@ -74,7 +74,7 @@ typedef enum
   LED4 = 3
 } Led_TypeDef;
 
-#define LEDn                             4
+#define LEDn                             2
 
 // ADC
 typedef enum

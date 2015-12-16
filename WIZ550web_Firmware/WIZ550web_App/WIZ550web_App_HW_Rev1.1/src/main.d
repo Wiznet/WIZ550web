@@ -44,6 +44,7 @@ src/main.o: ../src/main.c ../system/include/cmsis/stm32f10x.h \
  ../src/callback/dhcp_cb.h ../src/Internet/FTPServer/ftpd.h \
  ../src/PlatformHandler/FatFs/ff.h ../src/PlatformHandler/FatFs/integer.h \
  ../src/PlatformHandler/FatFs/ffconf.h \
+ ../src/PlatformHandler/eepromHandler.h \
  ../src/PlatformHandler/mmcHandler.h \
  ../src/PlatformHandler/FatFs/diskio.h \
  ../src/PlatformHandler/FatFs/ffconf.h
@@ -171,6 +172,8 @@ src/main.o: ../src/main.c ../system/include/cmsis/stm32f10x.h \
 ../src/PlatformHandler/FatFs/integer.h:
 
 ../src/PlatformHandler/FatFs/ffconf.h:
+
+../src/PlatformHandler/eepromHandler.h:
 
 ../src/PlatformHandler/mmcHandler.h:
 

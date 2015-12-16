@@ -341,7 +341,7 @@
 #define OP_COMMAND		0
 #define OP_DATA			1
 
-#define APP_BASE		0x8006000
+#define APP_BASE		0x8007000
 #define WORK_BUF_SIZE	1024
 
 #define DATA_BUF_SIZE   2048

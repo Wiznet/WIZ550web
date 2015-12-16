@@ -28,9 +28,10 @@ src/PlatformHandler/spiHandler.o: ../src/PlatformHandler/spiHandler.c \
  ../system/include/stm32f1-stdperiph/misc.h \
  ../src/PlatformHandler/spiHandler.h ../src/PlatformHandler/uartHandler.h \
  ../src/PlatformHandler/ring_buffer.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/wizchip_conf.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/W5500/w5500.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src/Ethernet/wizchip_conf.h
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/wizchip_conf.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/W5500/w5500.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src/Ethernet/wizchip_conf.h \
+ ../src/PlatformHandler/timerHandler.h
 
 ../system/include/cmsis/stm32f10x.h:
 
@@ -96,8 +97,10 @@ src/PlatformHandler/spiHandler.o: ../src/PlatformHandler/spiHandler.c \
 
 ../src/PlatformHandler/ring_buffer.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/wizchip_conf.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/wizchip_conf.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet/W5500/w5500.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet/W5500/w5500.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src/Ethernet/wizchip_conf.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src/Ethernet/wizchip_conf.h:
+
+../src/PlatformHandler/timerHandler.h:

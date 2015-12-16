@@ -21,6 +21,7 @@
 #include "tftp.h"
 #include "ConfigData.h"
 #include "ConfigMessage.h"
+#include "eepromHandler.h"
 
 // ----------------------------------------------------------------------------
 //
@@ -50,12 +51,12 @@ void application_jump(void)
 	__disable_irq();
 
 	/* Set Stack Pointer */
-	asm volatile("ldr r0, =0x08006000");
+	asm volatile("ldr r0, =0x08007000");
 	asm volatile("ldr r0, [r0]");
 	asm volatile("mov sp, r0");
 
 	/* Jump to Application ResetISR */
-	asm volatile("ldr r0, =0x08006004");
+	asm volatile("ldr r0, =0x08007004");
 	asm volatile("ldr r0, [r0]");
 	asm volatile("mov pc, r0");
 }
@@ -118,6 +119,14 @@ int main(int argc, char* argv[])
 
 #if defined(MULTIFLASH_ENABLE)
 	probe_flash();
+#endif
+
+#if defined(EEPROM_ENABLE)
+#if defined(EEPROM_ENABLE_BYI2CPERI)
+	I2C1Initialize();
+#elif defined(EEPROM_ENABLE_BYGPIO)
+	EE24AAXX_Init();
+#endif
 #endif
 
 	/* Load Configure Infomation */

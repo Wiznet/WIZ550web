@@ -4,8 +4,10 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/PlatformHandler/eepromHandler.c \
 ../src/PlatformHandler/flashHandler.c \
 ../src/PlatformHandler/gpioHandler.c \
+../src/PlatformHandler/i2cHandler.c \
 ../src/PlatformHandler/rccHandler.c \
 ../src/PlatformHandler/ring_buffer.c \
 ../src/PlatformHandler/spiHandler.c \
@@ -14,8 +16,10 @@ C_SRCS += \
 ../src/PlatformHandler/uartHandler.c 
 
 OBJS += \
+./src/PlatformHandler/eepromHandler.o \
 ./src/PlatformHandler/flashHandler.o \
 ./src/PlatformHandler/gpioHandler.o \
+./src/PlatformHandler/i2cHandler.o \
 ./src/PlatformHandler/rccHandler.o \
 ./src/PlatformHandler/ring_buffer.o \
 ./src/PlatformHandler/spiHandler.o \
@@ -24,8 +28,10 @@ OBJS += \
 ./src/PlatformHandler/uartHandler.o 
 
 C_DEPS += \
+./src/PlatformHandler/eepromHandler.d \
 ./src/PlatformHandler/flashHandler.d \
 ./src/PlatformHandler/gpioHandler.d \
+./src/PlatformHandler/i2cHandler.d \
 ./src/PlatformHandler/rccHandler.d \
 ./src/PlatformHandler/ring_buffer.d \
 ./src/PlatformHandler/spiHandler.d \
@@ -38,7 +44,7 @@ C_DEPS += \
 src/PlatformHandler/%.o: ../src/PlatformHandler/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: Cross ARM C Compiler'
-	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -DDEBUG -DUSE_FULL_ASSERT -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=12000000 -I"../include" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Configuration" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\netutil" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Internet\TFTP" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\Ethernet" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151209\WIZ550web_Boot\src\PlatformHandler" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -std=gnu11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -Og -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -DDEBUG -DUSE_FULL_ASSERT -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DHSE_VALUE=12000000 -I"../include" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Configuration" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\netutil" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Internet\TFTP" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\Ethernet" -I"D:\Wiznet\Firmware\WIZ550web_workspace_20151210\WIZ550web_Boot\src\PlatformHandler" -I"../system/include" -I"../system/include/cmsis" -I"../system/include/stm32f1-stdperiph" -std=gnu11 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

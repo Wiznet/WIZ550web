@@ -134,8 +134,6 @@ Discarded input sections
                 0x00000000       0x44 ./system/src/stm32f1-stdperiph/misc.o
  .text.NVIC_SystemLPConfig
                 0x00000000       0x48 ./system/src/stm32f1-stdperiph/misc.o
- .text.SysTick_CLKSourceConfig
-                0x00000000       0x3c ./system/src/stm32f1-stdperiph/misc.o
  .group         0x00000000        0x8 ./system/src/stm32f1-stdperiph/stm32f10x_adc.o
  .group         0x00000000        0x8 ./system/src/stm32f1-stdperiph/stm32f10x_adc.o
  .group         0x00000000        0x8 ./system/src/stm32f1-stdperiph/stm32f10x_adc.o
@@ -1416,8 +1414,6 @@ Discarded input sections
                 0x00000000       0xb8 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .text.GPIO_ReadOutputData
                 0x00000000       0x54 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
- .text.GPIO_WriteBit
-                0x00000000       0xc4 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .text.GPIO_Write
                 0x00000000       0x54 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
  .text.GPIO_PinLockConfig
@@ -3400,6 +3396,87 @@ Discarded input sections
  .debug_macro   0x00000000       0x29 ./src/netutil/netutil.o
  .debug_macro   0x00000000       0x1c ./src/netutil/netutil.o
  .debug_macro   0x00000000      0x1f7 ./src/netutil/netutil.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/eepromHandler.o
+ .text          0x00000000        0x0 ./src/PlatformHandler/eepromHandler.o
+ .data          0x00000000        0x0 ./src/PlatformHandler/eepromHandler.o
+ .bss           0x00000000        0x0 ./src/PlatformHandler/eepromHandler.o
+ .text.EE24AAXX_Write_Delay
+                0x00000000       0x14 ./src/PlatformHandler/eepromHandler.o
+ .text.EE24AAXX_WriteOneByte
+                0x00000000       0x38 ./src/PlatformHandler/eepromHandler.o
+ .text.EE24AAXX_WriteLenByte
+                0x00000000       0x28 ./src/PlatformHandler/eepromHandler.o
+ .text.EE24AAXX_ReadLenByte
+                0x00000000       0x28 ./src/PlatformHandler/eepromHandler.o
+ .text.EE24AAXX_Write
+                0x00000000       0x24 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x880 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x50 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x3a ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x22 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x44 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x1c ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x1f7 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x2d ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0xa8b ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000     0x7dbe ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x2e4 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x144 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x3cf ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0xc8 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x17a ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0xac ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x3ad ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x9d ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x2cf ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x279 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x2ac ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x2b4 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x64 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x82 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x3e2 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x58 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x344 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x2c4 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x711 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000      0x222 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x34 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x8b ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00000000       0x35 ./src/PlatformHandler/eepromHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/flashHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/flashHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/flashHandler.o
@@ -3453,6 +3530,8 @@ Discarded input sections
  .data          0x00000000        0x0 ./src/PlatformHandler/flashHandler.o
  .bss           0x00000000        0x0 ./src/PlatformHandler/flashHandler.o
  .text.addr_to_page
+                0x00000000       0x18 ./src/PlatformHandler/flashHandler.o
+ .text.read_flash
                 0x00000000       0x18 ./src/PlatformHandler/flashHandler.o
  .debug_macro   0x00000000      0x880 ./src/PlatformHandler/flashHandler.o
  .debug_macro   0x00000000       0x58 ./src/PlatformHandler/flashHandler.o
@@ -3569,6 +3648,84 @@ Discarded input sections
  .debug_macro   0x00000000       0x34 ./src/PlatformHandler/gpioHandler.o
  .debug_macro   0x00000000       0x8b ./src/PlatformHandler/gpioHandler.o
  .debug_macro   0x00000000       0x35 ./src/PlatformHandler/gpioHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/i2cHandler.o
+ .text          0x00000000        0x0 ./src/PlatformHandler/i2cHandler.o
+ .data          0x00000000        0x0 ./src/PlatformHandler/i2cHandler.o
+ .bss           0x00000000        0x0 ./src/PlatformHandler/i2cHandler.o
+ .text.I2C1Initialize
+                0x00000000       0x74 ./src/PlatformHandler/i2cHandler.o
+ .text.EEP_Read
+                0x00000000       0xe8 ./src/PlatformHandler/i2cHandler.o
+ .text.EEP_Write
+                0x00000000       0xa4 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x880 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x50 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x3a ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x22 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x44 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x1c ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x1f7 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x2d ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0xa8b ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000     0x7dbe ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x2e4 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x144 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x3cf ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0xc8 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x17a ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0xac ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x3ad ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x9d ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x2cf ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x279 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x2ac ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x2b4 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x64 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x82 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x3e2 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x58 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x344 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x2c4 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x711 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000      0x222 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x34 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x8b ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x35 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00000000       0x5e ./src/PlatformHandler/i2cHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/rccHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/rccHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/rccHandler.o
@@ -3796,6 +3953,8 @@ Discarded input sections
  .group         0x00000000        0x8 ./src/PlatformHandler/storageHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/storageHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/storageHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/storageHandler.o
+ .group         0x00000000        0x8 ./src/PlatformHandler/storageHandler.o
  .text          0x00000000        0x0 ./src/PlatformHandler/storageHandler.o
  .data          0x00000000        0x0 ./src/PlatformHandler/storageHandler.o
  .bss           0x00000000        0x0 ./src/PlatformHandler/storageHandler.o
@@ -3813,10 +3972,11 @@ Discarded input sections
  .debug_macro   0x00000000      0x27a ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000       0x10 ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000       0x35 ./src/PlatformHandler/storageHandler.o
- .debug_macro   0x00000000       0x50 ./src/PlatformHandler/storageHandler.o
- .debug_macro   0x00000000       0x3a ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000       0x1c ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000      0x1f7 ./src/PlatformHandler/storageHandler.o
+ .debug_macro   0x00000000       0x1c ./src/PlatformHandler/storageHandler.o
+ .debug_macro   0x00000000       0x50 ./src/PlatformHandler/storageHandler.o
+ .debug_macro   0x00000000       0x3a ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000       0x2d ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000      0xa8b ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000     0x7dbe ./src/PlatformHandler/storageHandler.o
@@ -3843,7 +4003,8 @@ Discarded input sections
  .debug_macro   0x00000000       0x34 ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000       0x8b ./src/PlatformHandler/storageHandler.o
  .debug_macro   0x00000000       0x35 ./src/PlatformHandler/storageHandler.o
- .debug_macro   0x00000000       0x1c ./src/PlatformHandler/storageHandler.o
+ .debug_macro   0x00000000       0x6a ./src/PlatformHandler/storageHandler.o
+ .debug_macro   0x00000000       0x5e ./src/PlatformHandler/storageHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/timerHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/timerHandler.o
  .group         0x00000000        0x8 ./src/PlatformHandler/timerHandler.o
@@ -4412,6 +4573,7 @@ Discarded input sections
  .group         0x00000000        0x8 ./src/main.o
  .group         0x00000000        0x8 ./src/main.o
  .group         0x00000000        0x8 ./src/main.o
+ .group         0x00000000        0x8 ./src/main.o
  .text          0x00000000        0x0 ./src/main.o
  .data          0x00000000        0x0 ./src/main.o
  .bss           0x00000000        0x0 ./src/main.o
@@ -4481,6 +4643,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x66 ./src/main.o
  .debug_macro   0x00000000       0x1c ./src/main.o
  .debug_macro   0x00000000       0x70 ./src/main.o
+ .debug_macro   0x00000000       0x5e ./src/main.o
  .text          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .data          0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .bss           0x00000000        0x0 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
@@ -4674,9 +4837,9 @@ Discarded input sections
 Memory Configuration
 
 Name             Origin             Length             Attributes
-RAM              0x20000000         0x00005000         xrw
+RAM              0x20000000         0x0000c000         xrw
 CCMRAM           0x00000000         0x00000000         xrw
-FLASH            0x08000000         0x00006000         xr
+FLASH            0x08000000         0x00007000         xr
 FLASHB1          0x00000000         0x00000000         xr
 EXTMEMB0         0x00000000         0x00000000         xr
 EXTMEMB1         0x00000000         0x00000000         xr
@@ -4725,8 +4888,10 @@ LOAD ./system/src/cortexm/exception_handlers.o
 LOAD ./system/src/cmsis/system_stm32f10x.o
 LOAD ./system/src/cmsis/vectors_stm32f10x.o
 LOAD ./src/netutil/netutil.o
+LOAD ./src/PlatformHandler/eepromHandler.o
 LOAD ./src/PlatformHandler/flashHandler.o
 LOAD ./src/PlatformHandler/gpioHandler.o
+LOAD ./src/PlatformHandler/i2cHandler.o
 LOAD ./src/PlatformHandler/rccHandler.o
 LOAD ./src/PlatformHandler/ring_buffer.o
 LOAD ./src/PlatformHandler/spiHandler.o
@@ -4751,15 +4916,15 @@ START GROUP
 LOAD c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/armv7-m\libgcc.a
 LOAD c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libc_nano.a
 END GROUP
-                0x20005000                __stack = (ORIGIN (RAM) + 0x5000)
-                0x20005000                _estack = __stack
+                0x2000c000                __stack = (ORIGIN (RAM) + 0xc000)
+                0x2000c000                _estack = __stack
                 0x00000400                __Main_Stack_Size = 0x400
                 0x00000400                PROVIDE (_Main_Stack_Size, __Main_Stack_Size)
-                0x20004c00                __Main_Stack_Limit = (__stack - __Main_Stack_Size)
-                0x20004c00                PROVIDE (_Main_Stack_Limit, __Main_Stack_Limit)
+                0x2000bc00                __Main_Stack_Limit = (__stack - __Main_Stack_Size)
+                0x2000bc00                PROVIDE (_Main_Stack_Limit, __Main_Stack_Limit)
                 0x00000100                _Minimum_Stack_Size = 0x100
-                0x2000120c                PROVIDE (_Heap_Begin, _end_noinit)
-                0x20004c00                PROVIDE (_Heap_Limit, (__stack - __Main_Stack_Size))
+                0x20001204                PROVIDE (_Heap_Begin, _end_noinit)
+                0x2000bc00                PROVIDE (_Heap_Limit, (__stack - __Main_Stack_Size))
 
 .isr_vector     0x08000000      0x248
                 0x08000000                . = ALIGN (0x4)
@@ -4899,746 +5064,794 @@ END GROUP
  *(.flashtext .flashtext.*)
                 0x08000248                . = ALIGN (0x4)
 
-.text           0x08000248     0x58ec
+.text           0x08000248     0x5e0c
                 0x08000248                . = ALIGN (0x4)
  *(.text .text.*)
  .text.NVIC_Init
                 0x08000248       0x98 ./system/src/stm32f1-stdperiph/misc.o
                 0x08000248                NVIC_Init
+ .text.SysTick_CLKSourceConfig
+                0x080002e0       0x3c ./system/src/stm32f1-stdperiph/misc.o
+                0x080002e0                SysTick_CLKSourceConfig
  .text.FLASH_SetLatency
-                0x080002e0       0x28 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x080002e0                FLASH_SetLatency
+                0x0800031c       0x28 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x0800031c                FLASH_SetLatency
  .text.FLASH_PrefetchBufferCmd
-                0x08000308       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x08000308                FLASH_PrefetchBufferCmd
+                0x08000344       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x08000344                FLASH_PrefetchBufferCmd
  .text.FLASH_Unlock
-                0x08000338       0x18 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x08000338                FLASH_Unlock
+                0x08000374       0x18 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x08000374                FLASH_Unlock
  .text.FLASH_Lock
-                0x08000350       0x10 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x08000350                FLASH_Lock
+                0x0800038c       0x10 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x0800038c                FLASH_Lock
  .text.FLASH_ClearFlag
-                0x08000360       0x24 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x08000360                FLASH_ClearFlag
+                0x0800039c       0x24 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x0800039c                FLASH_ClearFlag
  .text.FLASH_GetBank1Status
-                0x08000384       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x08000384                FLASH_GetBank1Status
+                0x080003c0       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x080003c0                FLASH_GetBank1Status
  .text.FLASH_WaitForLastOperation
-                0x080003b8       0x20 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x080003b8                FLASH_WaitForLastOperation
+                0x080003f4       0x20 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x080003f4                FLASH_WaitForLastOperation
  .text.FLASH_ErasePage
-                0x080003d8       0x5c ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x080003d8                FLASH_ErasePage
+                0x08000414       0x5c ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x08000414                FLASH_ErasePage
  .text.FLASH_ProgramWord
-                0x08000434       0x88 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
-                0x08000434                FLASH_ProgramWord
+                0x08000470       0x88 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x08000470                FLASH_ProgramWord
  .text.GPIO_Init
-                0x080004bc      0x12c ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
-                0x080004bc                GPIO_Init
+                0x080004f8      0x12c ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+                0x080004f8                GPIO_Init
  .text.GPIO_ReadInputDataBit
-                0x080005e8       0xb8 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
-                0x080005e8                GPIO_ReadInputDataBit
+                0x08000624       0xb8 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+                0x08000624                GPIO_ReadInputDataBit
  .text.GPIO_SetBits
-                0x080006a0       0x60 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
-                0x080006a0                GPIO_SetBits
+                0x080006dc       0x60 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+                0x080006dc                GPIO_SetBits
  .text.GPIO_ResetBits
-                0x08000700       0x60 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
-                0x08000700                GPIO_ResetBits
+                0x0800073c       0x60 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+                0x0800073c                GPIO_ResetBits
+ .text.GPIO_WriteBit
+                0x0800079c       0xc4 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+                0x0800079c                GPIO_WriteBit
  .text.RCC_DeInit
-                0x08000760       0x40 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000760                RCC_DeInit
+                0x08000860       0x40 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000860                RCC_DeInit
  .text.RCC_HSEConfig
-                0x080007a0       0x5c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x080007a0                RCC_HSEConfig
+                0x080008a0       0x5c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x080008a0                RCC_HSEConfig
  .text.RCC_PLLConfig
-                0x080007fc       0x98 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x080007fc                RCC_PLLConfig
+                0x080008fc       0x98 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x080008fc                RCC_PLLConfig
  .text.RCC_PLLCmd
-                0x08000894       0x20 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000894                RCC_PLLCmd
+                0x08000994       0x20 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000994                RCC_PLLCmd
  .text.RCC_SYSCLKConfig
-                0x080008b4       0x28 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x080008b4                RCC_SYSCLKConfig
+                0x080009b4       0x28 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x080009b4                RCC_SYSCLKConfig
  .text.RCC_GetSYSCLKSource
-                0x080008dc       0x10 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x080008dc                RCC_GetSYSCLKSource
+                0x080009dc       0x10 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x080009dc                RCC_GetSYSCLKSource
  .text.RCC_HCLKConfig
-                0x080008ec       0x48 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x080008ec                RCC_HCLKConfig
+                0x080009ec       0x48 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x080009ec                RCC_HCLKConfig
  .text.RCC_PCLK1Config
-                0x08000934       0x40 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000934                RCC_PCLK1Config
+                0x08000a34       0x40 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000a34                RCC_PCLK1Config
  .text.RCC_PCLK2Config
-                0x08000974       0x40 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000974                RCC_PCLK2Config
+                0x08000a74       0x40 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000a74                RCC_PCLK2Config
  .text.RCC_GetClocksFreq
-                0x080009b4       0xc4 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x080009b4                RCC_GetClocksFreq
+                0x08000ab4       0xc4 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000ab4                RCC_GetClocksFreq
  .text.RCC_APB2PeriphClockCmd
-                0x08000a78       0x4c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000a78                RCC_APB2PeriphClockCmd
+                0x08000b78       0x4c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000b78                RCC_APB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x08000ac4       0x4c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000ac4                RCC_APB1PeriphClockCmd
+                0x08000bc4       0x4c ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000bc4                RCC_APB1PeriphClockCmd
  .text.RCC_GetFlagStatus
-                0x08000b10       0x70 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000b10                RCC_GetFlagStatus
+                0x08000c10       0x70 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000c10                RCC_GetFlagStatus
  .text.RCC_WaitForHSEStartUp
-                0x08000b80       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
-                0x08000b80                RCC_WaitForHSEStartUp
+                0x08000c80       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08000c80                RCC_WaitForHSEStartUp
  .text.SPI_Init
-                0x08000bb4      0x12c ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
-                0x08000bb4                SPI_Init
- .text.SPI_Cmd  0x08000ce0       0x58 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
-                0x08000ce0                SPI_Cmd
+                0x08000cb4      0x12c ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
+                0x08000cb4                SPI_Init
+ .text.SPI_Cmd  0x08000de0       0x58 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
+                0x08000de0                SPI_Cmd
  .text.SPI_I2S_SendData
-                0x08000d38       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
-                0x08000d38                SPI_I2S_SendData
+                0x08000e38       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
+                0x08000e38                SPI_I2S_SendData
  .text.SPI_I2S_ReceiveData
-                0x08000d6c       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
-                0x08000d6c                SPI_I2S_ReceiveData
+                0x08000e6c       0x34 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
+                0x08000e6c                SPI_I2S_ReceiveData
  .text.SPI_I2S_GetFlagStatus
-                0x08000da0       0x68 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
-                0x08000da0                SPI_I2S_GetFlagStatus
+                0x08000ea0       0x68 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
+                0x08000ea0                SPI_I2S_GetFlagStatus
  .text.TIM_TimeBaseInit
-                0x08000e08      0x15c ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
-                0x08000e08                TIM_TimeBaseInit
- .text.TIM_Cmd  0x08000f64       0xc8 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
-                0x08000f64                TIM_Cmd
+                0x08000f08      0x15c ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x08000f08                TIM_TimeBaseInit
+ .text.TIM_Cmd  0x08001064       0xc8 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x08001064                TIM_Cmd
  .text.TIM_ITConfig
-                0x0800102c       0xd8 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
-                0x0800102c                TIM_ITConfig
+                0x0800112c       0xd8 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x0800112c                TIM_ITConfig
  .text.TIM_PrescalerConfig
-                0x08001104       0xb4 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
-                0x08001104                TIM_PrescalerConfig
+                0x08001204       0xb4 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x08001204                TIM_PrescalerConfig
  .text.TIM_GetITStatus
-                0x080011b8       0xe0 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
-                0x080011b8                TIM_GetITStatus
+                0x080012b8       0xe0 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x080012b8                TIM_GetITStatus
  .text.TIM_ClearITPendingBit
-                0x08001298       0xb8 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
-                0x08001298                TIM_ClearITPendingBit
+                0x08001398       0xb8 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x08001398                TIM_ClearITPendingBit
  .text.USART_Init
-                0x08001350      0x1b0 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x08001350                USART_Init
+                0x08001450      0x1b0 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x08001450                USART_Init
  .text.USART_ClockInit
-                0x08001500       0x9c ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x08001500                USART_ClockInit
+                0x08001600       0x9c ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x08001600                USART_ClockInit
  .text.USART_Cmd
-                0x0800159c       0x68 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x0800159c                USART_Cmd
+                0x0800169c       0x68 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x0800169c                USART_Cmd
  .text.USART_ITConfig
-                0x08001604       0xec ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x08001604                USART_ITConfig
+                0x08001704       0xec ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x08001704                USART_ITConfig
  .text.USART_SendData
-                0x080016f0       0x58 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x080016f0                USART_SendData
+                0x080017f0       0x58 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x080017f0                USART_SendData
  .text.USART_ReceiveData
-                0x08001748       0x44 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x08001748                USART_ReceiveData
+                0x08001848       0x44 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x08001848                USART_ReceiveData
  .text.USART_GetITStatus
-                0x0800178c       0xfc ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
-                0x0800178c                USART_GetITStatus
- .text._exit    0x08001888        0x4 ./system/src/newlib/_exit.o
-                0x08001888                _exit
- .text.abort    0x0800188c        0x8 ./system/src/newlib/_exit.o
-                0x0800188c                abort
- .text._sbrk    0x08001894       0x44 ./system/src/newlib/_sbrk.o
-                0x08001894                _sbrk
+                0x0800188c       0xfc ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x0800188c                USART_GetITStatus
+ .text._exit    0x08001988        0x4 ./system/src/newlib/_exit.o
+                0x08001988                _exit
+ .text.abort    0x0800198c        0x8 ./system/src/newlib/_exit.o
+                0x0800198c                abort
+ .text._sbrk    0x08001994       0x44 ./system/src/newlib/_sbrk.o
+                0x08001994                _sbrk
  .text.__initialize_args
-                0x080018d8       0x10 ./system/src/newlib/_syscalls.o
-                0x080018d8                __initialize_args
- .text._close   0x080018e8       0x10 ./system/src/newlib/_syscalls.o
-                0x080018e8                _close
- .text._fstat   0x080018f8       0x10 ./system/src/newlib/_syscalls.o
-                0x080018f8                _fstat
- .text._isatty  0x08001908       0x10 ./system/src/newlib/_syscalls.o
-                0x08001908                _isatty
- .text._lseek   0x08001918       0x10 ./system/src/newlib/_syscalls.o
-                0x08001918                _lseek
- .text._read    0x08001928       0x10 ./system/src/newlib/_syscalls.o
-                0x08001928                _read
- .text._write   0x08001938       0x10 ./system/src/newlib/_write.o
-                0x08001938                _write
+                0x080019d8       0x10 ./system/src/newlib/_syscalls.o
+                0x080019d8                __initialize_args
+ .text._close   0x080019e8       0x10 ./system/src/newlib/_syscalls.o
+                0x080019e8                _close
+ .text._fstat   0x080019f8       0x10 ./system/src/newlib/_syscalls.o
+                0x080019f8                _fstat
+ .text._isatty  0x08001a08       0x10 ./system/src/newlib/_syscalls.o
+                0x08001a08                _isatty
+ .text._lseek   0x08001a18       0x10 ./system/src/newlib/_syscalls.o
+                0x08001a18                _lseek
+ .text._read    0x08001a28       0x10 ./system/src/newlib/_syscalls.o
+                0x08001a28                _read
+ .text._write   0x08001a38       0x10 ./system/src/newlib/_write.o
+                0x08001a38                _write
  .text.assert_failed
-                0x08001948        0x8 ./system/src/newlib/assert.o
-                0x08001948                assert_failed
+                0x08001a48        0x8 ./system/src/newlib/assert.o
+                0x08001a48                assert_failed
  .text.__initialize_hardware
-                0x08001950        0x8 ./system/src/cortexm/_initialize_hardware.o
-                0x08001950                __initialize_hardware
+                0x08001a50        0x8 ./system/src/cortexm/_initialize_hardware.o
+                0x08001a50                __initialize_hardware
  .text.SetSysClockTo72
-                0x08001958       0xc4 ./system/src/cmsis/system_stm32f10x.o
+                0x08001a58       0xc4 ./system/src/cmsis/system_stm32f10x.o
  .text.SetSysClock
-                0x08001a1c        0x8 ./system/src/cmsis/system_stm32f10x.o
+                0x08001b1c        0x8 ./system/src/cmsis/system_stm32f10x.o
  .text.SystemInit
-                0x08001a24       0x50 ./system/src/cmsis/system_stm32f10x.o
-                0x08001a24                SystemInit
- .text.swaps    0x08001a74        0xc ./src/netutil/netutil.o
-                0x08001a74                swaps
- .text.swapl    0x08001a80       0x18 ./src/netutil/netutil.o
-                0x08001a80                swapl
- .text.htons    0x08001a98        0x8 ./src/netutil/netutil.o
-                0x08001a98                htons
- .text.htonl    0x08001aa0        0x8 ./src/netutil/netutil.o
-                0x08001aa0                htonl
- .text.ntohs    0x08001aa8        0x8 ./src/netutil/netutil.o
-                0x08001aa8                ntohs
- .text.ntohl    0x08001ab0        0x8 ./src/netutil/netutil.o
-                0x08001ab0                ntohl
+                0x08001b24       0x50 ./system/src/cmsis/system_stm32f10x.o
+                0x08001b24                SystemInit
+ .text.swaps    0x08001b74        0xc ./src/netutil/netutil.o
+                0x08001b74                swaps
+ .text.swapl    0x08001b80       0x18 ./src/netutil/netutil.o
+                0x08001b80                swapl
+ .text.htons    0x08001b98        0x8 ./src/netutil/netutil.o
+                0x08001b98                htons
+ .text.htonl    0x08001ba0        0x8 ./src/netutil/netutil.o
+                0x08001ba0                htonl
+ .text.ntohs    0x08001ba8        0x8 ./src/netutil/netutil.o
+                0x08001ba8                ntohs
+ .text.ntohl    0x08001bb0        0x8 ./src/netutil/netutil.o
+                0x08001bb0                ntohl
+ .text.bsp_24aaxx_gpio_init
+                0x08001bb8       0x40 ./src/PlatformHandler/eepromHandler.o
+                0x08001bb8                bsp_24aaxx_gpio_init
+ .text.EE24AAXX_Init
+                0x08001bf8        0x8 ./src/PlatformHandler/eepromHandler.o
+                0x08001bf8                EE24AAXX_Init
+ .text.EE24AAXX_ReadOneByte
+                0x08001c00       0x44 ./src/PlatformHandler/eepromHandler.o
+                0x08001c00                EE24AAXX_ReadOneByte
+ .text.EE24AAXX_Read
+                0x08001c44       0x24 ./src/PlatformHandler/eepromHandler.o
+                0x08001c44                EE24AAXX_Read
+ .text.EE24AAXX_WritePage
+                0x08001c68       0x4c ./src/PlatformHandler/eepromHandler.o
+                0x08001c68                EE24AAXX_WritePage
  .text.erase_flash_page
-                0x08001ab8       0x2c ./src/PlatformHandler/flashHandler.o
-                0x08001ab8                erase_flash_page
+                0x08001cb4       0x2c ./src/PlatformHandler/flashHandler.o
+                0x08001cb4                erase_flash_page
  .text.write_flash
-                0x08001ae4       0x58 ./src/PlatformHandler/flashHandler.o
-                0x08001ae4                write_flash
- .text.read_flash
-                0x08001b3c       0x18 ./src/PlatformHandler/flashHandler.o
-                0x08001b3c                read_flash
+                0x08001ce0       0x58 ./src/PlatformHandler/flashHandler.o
+                0x08001ce0                write_flash
  .text.save_data
-                0x08001b54       0x80 ./src/PlatformHandler/flashHandler.o
-                0x08001b54                save_data
+                0x08001d38       0x80 ./src/PlatformHandler/flashHandler.o
+                0x08001d38                save_data
  .text.probe_flash
-                0x08001bd4       0xac ./src/PlatformHandler/flashHandler.o
-                0x08001bd4                probe_flash
+                0x08001db8       0xac ./src/PlatformHandler/flashHandler.o
+                0x08001db8                probe_flash
  .text.LED_Init
-                0x08001c80       0x44 ./src/PlatformHandler/gpioHandler.o
-                0x08001c80                LED_Init
- .text.LED_On   0x08001cc4       0x20 ./src/PlatformHandler/gpioHandler.o
-                0x08001cc4                LED_On
- .text.LED_Off  0x08001ce4       0x20 ./src/PlatformHandler/gpioHandler.o
-                0x08001ce4                LED_Off
+                0x08001e64       0x44 ./src/PlatformHandler/gpioHandler.o
+                0x08001e64                LED_Init
+ .text.LED_On   0x08001ea8       0x20 ./src/PlatformHandler/gpioHandler.o
+                0x08001ea8                LED_On
+ .text.LED_Off  0x08001ec8       0x20 ./src/PlatformHandler/gpioHandler.o
+                0x08001ec8                LED_Off
  .text.LED_Toggle
-                0x08001d04       0x1c ./src/PlatformHandler/gpioHandler.o
-                0x08001d04                LED_Toggle
+                0x08001ee8       0x1c ./src/PlatformHandler/gpioHandler.o
+                0x08001ee8                LED_Toggle
  .text.BOOT_Pin_Init
-                0x08001d20       0x28 ./src/PlatformHandler/gpioHandler.o
-                0x08001d20                BOOT_Pin_Init
+                0x08001f04       0x28 ./src/PlatformHandler/gpioHandler.o
+                0x08001f04                BOOT_Pin_Init
  .text.get_bootpin_Status
-                0x08001d48       0x10 ./src/PlatformHandler/gpioHandler.o
-                0x08001d48                get_bootpin_Status
+                0x08001f2c       0x10 ./src/PlatformHandler/gpioHandler.o
+                0x08001f2c                get_bootpin_Status
+ .text.IIC_delay_us
+                0x08001f3c       0x1c ./src/PlatformHandler/i2cHandler.o
+                0x08001f3c                IIC_delay_us
+ .text.IIC1_Start
+                0x08001f58       0x40 ./src/PlatformHandler/i2cHandler.o
+                0x08001f58                IIC1_Start
+ .text.IIC1_Stop
+                0x08001f98       0x40 ./src/PlatformHandler/i2cHandler.o
+                0x08001f98                IIC1_Stop
+ .text.IIC1_Wait_Ack
+                0x08001fd8       0x64 ./src/PlatformHandler/i2cHandler.o
+                0x08001fd8                IIC1_Wait_Ack
+ .text.IIC1_Ack
+                0x0800203c       0x40 ./src/PlatformHandler/i2cHandler.o
+                0x0800203c                IIC1_Ack
+ .text.IIC1_NAck
+                0x0800207c       0x40 ./src/PlatformHandler/i2cHandler.o
+                0x0800207c                IIC1_NAck
+ .text.IIC1_Send_Byte
+                0x080020bc       0x68 ./src/PlatformHandler/i2cHandler.o
+                0x080020bc                IIC1_Send_Byte
+ .text.IIC1_Read_Byte
+                0x08002124       0x5c ./src/PlatformHandler/i2cHandler.o
+                0x08002124                IIC1_Read_Byte
  .text.RCC_Configuration
-                0x08001d58       0x80 ./src/PlatformHandler/rccHandler.o
-                0x08001d58                RCC_Configuration
+                0x08002180       0x80 ./src/PlatformHandler/rccHandler.o
+                0x08002180                RCC_Configuration
  .text.RingBuffer_Init
-                0x08001dd8       0x10 ./src/PlatformHandler/ring_buffer.o
-                0x08001dd8                RingBuffer_Init
+                0x08002200       0x10 ./src/PlatformHandler/ring_buffer.o
+                0x08002200                RingBuffer_Init
  .text.RingBuffer_Insert
-                0x08001de8       0x30 ./src/PlatformHandler/ring_buffer.o
-                0x08001de8                RingBuffer_Insert
+                0x08002210       0x30 ./src/PlatformHandler/ring_buffer.o
+                0x08002210                RingBuffer_Insert
  .text.RingBuffer_InsertMult
-                0x08001e18       0x90 ./src/PlatformHandler/ring_buffer.o
-                0x08001e18                RingBuffer_InsertMult
+                0x08002240       0x90 ./src/PlatformHandler/ring_buffer.o
+                0x08002240                RingBuffer_InsertMult
  .text.RingBuffer_Pop
-                0x08001ea8       0x30 ./src/PlatformHandler/ring_buffer.o
-                0x08001ea8                RingBuffer_Pop
+                0x080022d0       0x30 ./src/PlatformHandler/ring_buffer.o
+                0x080022d0                RingBuffer_Pop
  .text.RingBuffer_PopMult
-                0x08001ed8       0x84 ./src/PlatformHandler/ring_buffer.o
-                0x08001ed8                RingBuffer_PopMult
+                0x08002300       0x84 ./src/PlatformHandler/ring_buffer.o
+                0x08002300                RingBuffer_PopMult
  .text.wizchip_select
-                0x08001f5c       0x14 ./src/PlatformHandler/spiHandler.o
+                0x08002384       0x14 ./src/PlatformHandler/spiHandler.o
  .text.wizchip_deselect
-                0x08001f70       0x14 ./src/PlatformHandler/spiHandler.o
+                0x08002398       0x14 ./src/PlatformHandler/spiHandler.o
  .text.wizchip_rw
-                0x08001f84       0x34 ./src/PlatformHandler/spiHandler.o
+                0x080023ac       0x34 ./src/PlatformHandler/spiHandler.o
  .text.wizchip_write
-                0x08001fb8        0x8 ./src/PlatformHandler/spiHandler.o
+                0x080023e0        0x8 ./src/PlatformHandler/spiHandler.o
  .text.wizchip_read
-                0x08001fc0        0xc ./src/PlatformHandler/spiHandler.o
- .text.Delay    0x08001fcc       0x18 ./src/PlatformHandler/spiHandler.o
-                0x08001fcc                Delay
+                0x080023e8        0xc ./src/PlatformHandler/spiHandler.o
  .text.W5500_SPI_Init
-                0x08001fe4       0xb0 ./src/PlatformHandler/spiHandler.o
-                0x08001fe4                W5500_SPI_Init
+                0x080023f4       0xb0 ./src/PlatformHandler/spiHandler.o
+                0x080023f4                W5500_SPI_Init
  .text.W5500_Init
-                0x08002094       0x84 ./src/PlatformHandler/spiHandler.o
-                0x08002094                W5500_Init
+                0x080024a4       0x84 ./src/PlatformHandler/spiHandler.o
+                0x080024a4                W5500_Init
  .text.read_storage
-                0x08002118       0x20 ./src/PlatformHandler/storageHandler.o
-                0x08002118                read_storage
+                0x08002528       0x48 ./src/PlatformHandler/storageHandler.o
+                0x08002528                read_storage
  .text.write_storage
-                0x08002138       0x30 ./src/PlatformHandler/storageHandler.o
-                0x08002138                write_storage
+                0x08002570       0x98 ./src/PlatformHandler/storageHandler.o
+                0x08002570                write_storage
  .text.TIM2_IRQHandler
-                0x08002168       0x6c ./src/PlatformHandler/timerHandler.o
-                0x08002168                TIM2_IRQHandler
+                0x08002608       0x6c ./src/PlatformHandler/timerHandler.o
+                0x08002608                TIM2_IRQHandler
  .text.Timer_Configuration
-                0x080021d4       0x64 ./src/PlatformHandler/timerHandler.o
-                0x080021d4                Timer_Configuration
+                0x08002674       0x64 ./src/PlatformHandler/timerHandler.o
+                0x08002674                Timer_Configuration
+ .text.Delay    0x080026d8       0x18 ./src/PlatformHandler/timerHandler.o
+                0x080026d8                Delay
+ .text.delay_us
+                0x080026f0       0x60 ./src/PlatformHandler/timerHandler.o
+                0x080026f0                delay_us
+ .text.delay_ms
+                0x08002750       0x10 ./src/PlatformHandler/timerHandler.o
+                0x08002750                delay_ms
  .text.Chip_UART_SendRB
-                0x08002238       0x30 ./src/PlatformHandler/uartHandler.o
+                0x08002760       0x30 ./src/PlatformHandler/uartHandler.o
  .text.Chip_UART_ReadRB_BLK
-                0x08002268       0x3c ./src/PlatformHandler/uartHandler.o
-                0x08002268                Chip_UART_ReadRB_BLK
+                0x08002790       0x3c ./src/PlatformHandler/uartHandler.o
+                0x08002790                Chip_UART_ReadRB_BLK
  .text.Chip_UART_IRQRBHandler
-                0x080022a4       0x68 ./src/PlatformHandler/uartHandler.o
-                0x080022a4                Chip_UART_IRQRBHandler
+                0x080027cc       0x68 ./src/PlatformHandler/uartHandler.o
+                0x080027cc                Chip_UART_IRQRBHandler
  .text.USART1_IRQHandler
-                0x0800230c       0x1c ./src/PlatformHandler/uartHandler.o
-                0x0800230c                USART1_IRQHandler
+                0x08002834       0x1c ./src/PlatformHandler/uartHandler.o
+                0x08002834                USART1_IRQHandler
  .text.USART1_Configuration
-                0x08002328       0xe4 ./src/PlatformHandler/uartHandler.o
-                0x08002328                USART1_Configuration
+                0x08002850       0xe4 ./src/PlatformHandler/uartHandler.o
+                0x08002850                USART1_Configuration
  .text.UART_write
-                0x0800240c       0x18 ./src/PlatformHandler/uartHandler.o
-                0x0800240c                UART_write
+                0x08002934       0x18 ./src/PlatformHandler/uartHandler.o
+                0x08002934                UART_write
  .text.UART_read_blk
-                0x08002424       0x18 ./src/PlatformHandler/uartHandler.o
-                0x08002424                UART_read_blk
+                0x0800294c       0x18 ./src/PlatformHandler/uartHandler.o
+                0x0800294c                UART_read_blk
  .text.myprintf
-                0x0800243c       0x2c ./src/PlatformHandler/uartHandler.o
-                0x0800243c                myprintf
+                0x08002964       0x2c ./src/PlatformHandler/uartHandler.o
+                0x08002964                myprintf
  .text.init_tftp
-                0x08002468       0x54 ./src/Internet/TFTP/tftp.o
+                0x08002990       0x54 ./src/Internet/TFTP/tftp.o
  .text.tftp_cancel_timeout
-                0x080024bc       0x24 ./src/Internet/TFTP/tftp.o
+                0x080029e4       0x24 ./src/Internet/TFTP/tftp.o
  .text.tftp_reg_timeout
-                0x080024e0       0x24 ./src/Internet/TFTP/tftp.o
+                0x08002a08       0x24 ./src/Internet/TFTP/tftp.o
  .text.open_tftp_socket
-                0x08002504       0x38 ./src/Internet/TFTP/tftp.o
+                0x08002a2c       0x38 ./src/Internet/TFTP/tftp.o
  .text.send_udp_packet
-                0x0800253c       0x34 ./src/Internet/TFTP/tftp.o
+                0x08002a64       0x34 ./src/Internet/TFTP/tftp.o
  .text.send_tftp_ack
-                0x08002570       0x44 ./src/Internet/TFTP/tftp.o
+                0x08002a98       0x44 ./src/Internet/TFTP/tftp.o
  .text.recv_tftp_oack
-                0x080025b4       0x34 ./src/Internet/TFTP/tftp.o
+                0x08002adc       0x34 ./src/Internet/TFTP/tftp.o
  .text.set_filename
-                0x080025e8       0x14 ./src/Internet/TFTP/tftp.o
+                0x08002b10       0x14 ./src/Internet/TFTP/tftp.o
  .text.send_tftp_rrq
-                0x080025fc       0xbc ./src/Internet/TFTP/tftp.o
+                0x08002b24       0xbc ./src/Internet/TFTP/tftp.o
  .text.recv_udp_packet
-                0x080026b8       0x74 ./src/Internet/TFTP/tftp.o
+                0x08002be0       0x74 ./src/Internet/TFTP/tftp.o
  .text.recv_tftp_error
-                0x0800272c       0x24 ./src/Internet/TFTP/tftp.o
+                0x08002c54       0x24 ./src/Internet/TFTP/tftp.o
  .text.recv_tftp_data
-                0x08002750       0x8c ./src/Internet/TFTP/tftp.o
+                0x08002c78       0x8c ./src/Internet/TFTP/tftp.o
  .text.recv_tftp_packet
-                0x080027dc       0x60 ./src/Internet/TFTP/tftp.o
+                0x08002d04       0x60 ./src/Internet/TFTP/tftp.o
  .text.TFTP_init
-                0x0800283c       0x24 ./src/Internet/TFTP/tftp.o
-                0x0800283c                TFTP_init
+                0x08002d64       0x24 ./src/Internet/TFTP/tftp.o
+                0x08002d64                TFTP_init
  .text.TFTP_run
-                0x08002860       0xac ./src/Internet/TFTP/tftp.o
-                0x08002860                TFTP_run
+                0x08002d88       0xac ./src/Internet/TFTP/tftp.o
+                0x08002d88                TFTP_run
  .text.TFTP_read_request
-                0x0800290c       0x2c ./src/Internet/TFTP/tftp.o
-                0x0800290c                TFTP_read_request
+                0x08002e34       0x2c ./src/Internet/TFTP/tftp.o
+                0x08002e34                TFTP_read_request
  .text.tftp_timeout_handler
-                0x08002938       0x18 ./src/Internet/TFTP/tftp.o
-                0x08002938                tftp_timeout_handler
+                0x08002e60       0x18 ./src/Internet/TFTP/tftp.o
+                0x08002e60                tftp_timeout_handler
  .text.WIZCHIP_READ
-                0x08002950       0x3c ./src/Ethernet/W5500/w5500.o
-                0x08002950                WIZCHIP_READ
+                0x08002e78       0x3c ./src/Ethernet/W5500/w5500.o
+                0x08002e78                WIZCHIP_READ
  .text.WIZCHIP_WRITE
-                0x0800298c       0x40 ./src/Ethernet/W5500/w5500.o
-                0x0800298c                WIZCHIP_WRITE
+                0x08002eb4       0x40 ./src/Ethernet/W5500/w5500.o
+                0x08002eb4                WIZCHIP_WRITE
  .text.WIZCHIP_READ_BUF
-                0x080029cc       0x4c ./src/Ethernet/W5500/w5500.o
-                0x080029cc                WIZCHIP_READ_BUF
+                0x08002ef4       0x4c ./src/Ethernet/W5500/w5500.o
+                0x08002ef4                WIZCHIP_READ_BUF
  .text.WIZCHIP_WRITE_BUF
-                0x08002a18       0x58 ./src/Ethernet/W5500/w5500.o
-                0x08002a18                WIZCHIP_WRITE_BUF
+                0x08002f40       0x58 ./src/Ethernet/W5500/w5500.o
+                0x08002f40                WIZCHIP_WRITE_BUF
  .text.getSn_TX_FSR
-                0x08002a70       0x50 ./src/Ethernet/W5500/w5500.o
-                0x08002a70                getSn_TX_FSR
+                0x08002f98       0x50 ./src/Ethernet/W5500/w5500.o
+                0x08002f98                getSn_TX_FSR
  .text.getSn_RX_RSR
-                0x08002ac0       0x50 ./src/Ethernet/W5500/w5500.o
-                0x08002ac0                getSn_RX_RSR
+                0x08002fe8       0x50 ./src/Ethernet/W5500/w5500.o
+                0x08002fe8                getSn_RX_RSR
  .text.wiz_send_data
-                0x08002b10       0x5c ./src/Ethernet/W5500/w5500.o
-                0x08002b10                wiz_send_data
+                0x08003038       0x5c ./src/Ethernet/W5500/w5500.o
+                0x08003038                wiz_send_data
  .text.wiz_recv_data
-                0x08002b6c       0x5c ./src/Ethernet/W5500/w5500.o
-                0x08002b6c                wiz_recv_data
+                0x08003094       0x5c ./src/Ethernet/W5500/w5500.o
+                0x08003094                wiz_recv_data
  .text.wiz_recv_ignore
-                0x08002bc8       0x3c ./src/Ethernet/W5500/w5500.o
-                0x08002bc8                wiz_recv_ignore
- .text.close    0x08002c04       0x6c ./src/Ethernet/socket.o
-                0x08002c04                close
- .text.socket   0x08002c70      0x120 ./src/Ethernet/socket.o
-                0x08002c70                socket
- .text.sendto   0x08002d90      0x148 ./src/Ethernet/socket.o
-                0x08002d90                sendto
+                0x080030f0       0x3c ./src/Ethernet/W5500/w5500.o
+                0x080030f0                wiz_recv_ignore
+ .text.close    0x0800312c       0x6c ./src/Ethernet/socket.o
+                0x0800312c                close
+ .text.socket   0x08003198      0x120 ./src/Ethernet/socket.o
+                0x08003198                socket
+ .text.sendto   0x080032b8      0x148 ./src/Ethernet/socket.o
+                0x080032b8                sendto
  .text.recvfrom
-                0x08002ed8      0x1ec ./src/Ethernet/socket.o
-                0x08002ed8                recvfrom
+                0x08003400      0x1ec ./src/Ethernet/socket.o
+                0x08003400                recvfrom
  .text.getsockopt
-                0x080030c4      0x13c ./src/Ethernet/socket.o
-                0x080030c4                getsockopt
+                0x080035ec      0x13c ./src/Ethernet/socket.o
+                0x080035ec                getsockopt
  .text.wizchip_cris_enter
-                0x08003200        0x4 ./src/Ethernet/wizchip_conf.o
-                0x08003200                wizchip_cris_enter
+                0x08003728        0x4 ./src/Ethernet/wizchip_conf.o
+                0x08003728                wizchip_cris_enter
  .text.wizchip_cris_exit
-                0x08003204        0x4 ./src/Ethernet/wizchip_conf.o
-                0x08003204                wizchip_cris_exit
+                0x0800372c        0x4 ./src/Ethernet/wizchip_conf.o
+                0x0800372c                wizchip_cris_exit
  .text.wizchip_cs_select
-                0x08003208        0x4 ./src/Ethernet/wizchip_conf.o
-                0x08003208                wizchip_cs_select
+                0x08003730        0x4 ./src/Ethernet/wizchip_conf.o
+                0x08003730                wizchip_cs_select
  .text.wizchip_cs_deselect
-                0x0800320c        0x4 ./src/Ethernet/wizchip_conf.o
-                0x0800320c                wizchip_cs_deselect
+                0x08003734        0x4 ./src/Ethernet/wizchip_conf.o
+                0x08003734                wizchip_cs_deselect
  .text.wizchip_bus_readbyte
-                0x08003210        0x4 ./src/Ethernet/wizchip_conf.o
-                0x08003210                wizchip_bus_readbyte
+                0x08003738        0x4 ./src/Ethernet/wizchip_conf.o
+                0x08003738                wizchip_bus_readbyte
  .text.wizchip_bus_writebyte
-                0x08003214        0x4 ./src/Ethernet/wizchip_conf.o
-                0x08003214                wizchip_bus_writebyte
+                0x0800373c        0x4 ./src/Ethernet/wizchip_conf.o
+                0x0800373c                wizchip_bus_writebyte
  .text.wizchip_spi_readbyte
-                0x08003218        0x4 ./src/Ethernet/wizchip_conf.o
-                0x08003218                wizchip_spi_readbyte
+                0x08003740        0x4 ./src/Ethernet/wizchip_conf.o
+                0x08003740                wizchip_spi_readbyte
  .text.wizchip_spi_writebyte
-                0x0800321c        0x4 ./src/Ethernet/wizchip_conf.o
-                0x0800321c                wizchip_spi_writebyte
+                0x08003744        0x4 ./src/Ethernet/wizchip_conf.o
+                0x08003744                wizchip_spi_writebyte
  .text.reg_wizchip_cs_cbfunc
-                0x08003220       0x24 ./src/Ethernet/wizchip_conf.o
-                0x08003220                reg_wizchip_cs_cbfunc
+                0x08003748       0x24 ./src/Ethernet/wizchip_conf.o
+                0x08003748                reg_wizchip_cs_cbfunc
  .text.reg_wizchip_spi_cbfunc
-                0x08003244       0x34 ./src/Ethernet/wizchip_conf.o
-                0x08003244                reg_wizchip_spi_cbfunc
+                0x0800376c       0x34 ./src/Ethernet/wizchip_conf.o
+                0x0800376c                reg_wizchip_spi_cbfunc
  .text.wizchip_sw_reset
-                0x08003278       0x78 ./src/Ethernet/wizchip_conf.o
-                0x08003278                wizchip_sw_reset
+                0x080037a0       0x78 ./src/Ethernet/wizchip_conf.o
+                0x080037a0                wizchip_sw_reset
  .text.wizchip_init
-                0x080032f0       0x9c ./src/Ethernet/wizchip_conf.o
-                0x080032f0                wizchip_init
+                0x08003818       0x9c ./src/Ethernet/wizchip_conf.o
+                0x08003818                wizchip_init
  .text.wizchip_clrinterrupt
-                0x0800338c       0x20 ./src/Ethernet/wizchip_conf.o
-                0x0800338c                wizchip_clrinterrupt
+                0x080038b4       0x20 ./src/Ethernet/wizchip_conf.o
+                0x080038b4                wizchip_clrinterrupt
  .text.wizchip_getinterrupt
-                0x080033ac       0x24 ./src/Ethernet/wizchip_conf.o
-                0x080033ac                wizchip_getinterrupt
+                0x080038d4       0x24 ./src/Ethernet/wizchip_conf.o
+                0x080038d4                wizchip_getinterrupt
  .text.wizchip_setinterruptmask
-                0x080033d0       0x1c ./src/Ethernet/wizchip_conf.o
-                0x080033d0                wizchip_setinterruptmask
+                0x080038f8       0x1c ./src/Ethernet/wizchip_conf.o
+                0x080038f8                wizchip_setinterruptmask
  .text.wizchip_getinterruptmask
-                0x080033ec       0x1c ./src/Ethernet/wizchip_conf.o
-                0x080033ec                wizchip_getinterruptmask
+                0x08003914       0x1c ./src/Ethernet/wizchip_conf.o
+                0x08003914                wizchip_getinterruptmask
  .text.wizphy_getphylink
-                0x08003408       0x18 ./src/Ethernet/wizchip_conf.o
-                0x08003408                wizphy_getphylink
+                0x08003930       0x18 ./src/Ethernet/wizchip_conf.o
+                0x08003930                wizphy_getphylink
  .text.wizphy_getphypmode
-                0x08003420       0x18 ./src/Ethernet/wizchip_conf.o
-                0x08003420                wizphy_getphypmode
+                0x08003948       0x18 ./src/Ethernet/wizchip_conf.o
+                0x08003948                wizphy_getphypmode
  .text.wizphy_reset
-                0x08003438       0x30 ./src/Ethernet/wizchip_conf.o
-                0x08003438                wizphy_reset
+                0x08003960       0x30 ./src/Ethernet/wizchip_conf.o
+                0x08003960                wizphy_reset
  .text.wizphy_setphyconf
-                0x08003468       0x4c ./src/Ethernet/wizchip_conf.o
-                0x08003468                wizphy_setphyconf
+                0x08003990       0x4c ./src/Ethernet/wizchip_conf.o
+                0x08003990                wizphy_setphyconf
  .text.wizphy_getphyconf
-                0x080034b4       0x58 ./src/Ethernet/wizchip_conf.o
-                0x080034b4                wizphy_getphyconf
+                0x080039dc       0x58 ./src/Ethernet/wizchip_conf.o
+                0x080039dc                wizphy_getphyconf
  .text.wizphy_setphypmode
-                0x0800350c       0x60 ./src/Ethernet/wizchip_conf.o
-                0x0800350c                wizphy_setphypmode
+                0x08003a34       0x60 ./src/Ethernet/wizchip_conf.o
+                0x08003a34                wizphy_setphypmode
  .text.ctlwizchip
-                0x0800356c      0x114 ./src/Ethernet/wizchip_conf.o
-                0x0800356c                ctlwizchip
+                0x08003a94      0x114 ./src/Ethernet/wizchip_conf.o
+                0x08003a94                ctlwizchip
  .text.wizchip_setnetinfo
-                0x08003680       0x5c ./src/Ethernet/wizchip_conf.o
-                0x08003680                wizchip_setnetinfo
+                0x08003ba8       0x5c ./src/Ethernet/wizchip_conf.o
+                0x08003ba8                wizchip_setnetinfo
  .text.wizchip_getnetinfo
-                0x080036dc       0x5c ./src/Ethernet/wizchip_conf.o
-                0x080036dc                wizchip_getnetinfo
+                0x08003c04       0x5c ./src/Ethernet/wizchip_conf.o
+                0x08003c04                wizchip_getnetinfo
  .text.wizchip_setnetmode
-                0x08003738       0x2c ./src/Ethernet/wizchip_conf.o
-                0x08003738                wizchip_setnetmode
+                0x08003c60       0x2c ./src/Ethernet/wizchip_conf.o
+                0x08003c60                wizchip_setnetmode
  .text.wizchip_getnetmode
-                0x08003764        0xc ./src/Ethernet/wizchip_conf.o
-                0x08003764                wizchip_getnetmode
+                0x08003c8c        0xc ./src/Ethernet/wizchip_conf.o
+                0x08003c8c                wizchip_getnetmode
  .text.wizchip_settimeout
-                0x08003770       0x28 ./src/Ethernet/wizchip_conf.o
-                0x08003770                wizchip_settimeout
+                0x08003c98       0x28 ./src/Ethernet/wizchip_conf.o
+                0x08003c98                wizchip_settimeout
  .text.wizchip_gettimeout
-                0x08003798       0x28 ./src/Ethernet/wizchip_conf.o
-                0x08003798                wizchip_gettimeout
+                0x08003cc0       0x28 ./src/Ethernet/wizchip_conf.o
+                0x08003cc0                wizchip_gettimeout
  .text.ctlnetwork
-                0x080037c0       0x54 ./src/Ethernet/wizchip_conf.o
-                0x080037c0                ctlnetwork
+                0x08003ce8       0x54 ./src/Ethernet/wizchip_conf.o
+                0x08003ce8                ctlnetwork
  .text.get_S2E_Packet_pointer
-                0x08003814        0x8 ./src/Configuration/ConfigData.o
-                0x08003814                get_S2E_Packet_pointer
+                0x08003d3c        0x8 ./src/Configuration/ConfigData.o
+                0x08003d3c                get_S2E_Packet_pointer
  .text.set_S2E_Packet_to_factory_value
-                0x0800381c      0x108 ./src/Configuration/ConfigData.o
-                0x0800381c                set_S2E_Packet_to_factory_value
+                0x08003d44      0x108 ./src/Configuration/ConfigData.o
+                0x08003d44                set_S2E_Packet_to_factory_value
  .text.load_S2E_Packet_from_storage
-                0x08003924       0x40 ./src/Configuration/ConfigData.o
-                0x08003924                load_S2E_Packet_from_storage
+                0x08003e4c       0x40 ./src/Configuration/ConfigData.o
+                0x08003e4c                load_S2E_Packet_from_storage
  .text.save_S2E_Packet_to_storage
-                0x08003964       0x14 ./src/Configuration/ConfigData.o
-                0x08003964                save_S2E_Packet_to_storage
+                0x08003e8c       0x14 ./src/Configuration/ConfigData.o
+                0x08003e8c                save_S2E_Packet_to_storage
  .text.get_S2E_Packet_value
-                0x08003978        0x8 ./src/Configuration/ConfigData.o
-                0x08003978                get_S2E_Packet_value
+                0x08003ea0        0x8 ./src/Configuration/ConfigData.o
+                0x08003ea0                get_S2E_Packet_value
  .text.set_S2E_Packet_value
-                0x08003980        0x8 ./src/Configuration/ConfigData.o
-                0x08003980                set_S2E_Packet_value
+                0x08003ea8        0x8 ./src/Configuration/ConfigData.o
+                0x08003ea8                set_S2E_Packet_value
  .text.display_Net_Info
-                0x08003988       0xa8 ./src/Configuration/ConfigData.o
-                0x08003988                display_Net_Info
+                0x08003eb0       0xa8 ./src/Configuration/ConfigData.o
+                0x08003eb0                display_Net_Info
  .text.Net_Conf
-                0x08003a30       0x74 ./src/Configuration/ConfigData.o
-                0x08003a30                Net_Conf
- .text.atonum   0x08003aa4       0x18 ./src/Configuration/ConfigData.o
-                0x08003aa4                atonum
- .text.get_hex  0x08003abc       0x1c ./src/Configuration/ConfigData.o
-                0x08003abc                get_hex
+                0x08003f58       0x74 ./src/Configuration/ConfigData.o
+                0x08003f58                Net_Conf
+ .text.atonum   0x08003fcc       0x18 ./src/Configuration/ConfigData.o
+                0x08003fcc                atonum
+ .text.get_hex  0x08003fe4       0x1c ./src/Configuration/ConfigData.o
+                0x08003fe4                get_hex
  .text.check_mac_address
-                0x08003ad8       0xa8 ./src/Configuration/ConfigData.o
-                0x08003ad8                check_mac_address
+                0x08004000       0xa8 ./src/Configuration/ConfigData.o
+                0x08004000                check_mac_address
  .text.NVIC_SystemReset
-                0x08003b80       0x20 ./src/Configuration/ConfigMessage.o
- .text.encrypt  0x08003ba0       0x1c ./src/Configuration/ConfigMessage.o
- .text.decrypt  0x08003bbc       0x1c ./src/Configuration/ConfigMessage.o
+                0x080040a8       0x20 ./src/Configuration/ConfigMessage.o
+ .text.encrypt  0x080040c8       0x1c ./src/Configuration/ConfigMessage.o
+ .text.decrypt  0x080040e4       0x1c ./src/Configuration/ConfigMessage.o
  .text.process_get_info
-                0x08003bd8       0xdc ./src/Configuration/ConfigMessage.o
+                0x08004100       0xdc ./src/Configuration/ConfigMessage.o
  .text.process_discovery
-                0x08003cb4      0x22c ./src/Configuration/ConfigMessage.o
+                0x080041dc      0x22c ./src/Configuration/ConfigMessage.o
  .text.process_remote_reset
-                0x08003ee0       0xe0 ./src/Configuration/ConfigMessage.o
+                0x08004408       0xe0 ./src/Configuration/ConfigMessage.o
  .text.process_set_info
-                0x08003fc0      0x114 ./src/Configuration/ConfigMessage.o
+                0x080044e8      0x114 ./src/Configuration/ConfigMessage.o
  .text.process_firmware_upload_init
-                0x080040d4      0x1b0 ./src/Configuration/ConfigMessage.o
+                0x080045fc      0x1b0 ./src/Configuration/ConfigMessage.o
  .text.process_factory_reset
-                0x08004284       0xec ./src/Configuration/ConfigMessage.o
+                0x080047ac       0xec ./src/Configuration/ConfigMessage.o
  .text.reply_firmware_upload_done
-                0x08004370       0xc0 ./src/Configuration/ConfigMessage.o
-                0x08004370                reply_firmware_upload_done
+                0x08004898       0xc0 ./src/Configuration/ConfigMessage.o
+                0x08004898                reply_firmware_upload_done
  .text.do_udp_config
-                0x08004430       0xd0 ./src/Configuration/ConfigMessage.o
-                0x08004430                do_udp_config
+                0x08004958       0xd0 ./src/Configuration/ConfigMessage.o
+                0x08004958                do_udp_config
  .text.application_jump
-                0x08004500       0x18 ./src/main.o
-                0x08004500                application_jump
+                0x08004a28       0x18 ./src/main.o
+                0x08004a28                application_jump
  .text.application_update
-                0x08004518       0x78 ./src/main.o
-                0x08004518                application_update
- .text.main     0x08004590       0x7c ./src/main.o
-                0x08004590                main
- .text.__errno  0x0800460c        0xc c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
-                0x0800460c                __errno
- .text.memcmp   0x08004618       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcmp.o)
-                0x08004618                memcmp
- .text.memcpy   0x08004638       0x16 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
-                0x08004638                memcpy
- .text.memset   0x0800464e       0x10 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
-                0x0800464e                memset
- *fill*         0x0800465e        0x2 
- .text.printf   0x08004660       0x30 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-printf.o)
-                0x08004660                iprintf
-                0x08004660                printf
- .text          0x08004690       0x14 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
-                0x08004690                strcmp
- .text.strcpy   0x080046a4       0x10 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcpy.o)
-                0x080046a4                strcpy
- .text.strlen   0x080046b4       0x10 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
-                0x080046b4                strlen
+                0x08004a40       0x78 ./src/main.o
+                0x08004a40                application_update
+ .text.main     0x08004ab8       0x80 ./src/main.o
+                0x08004ab8                main
+ .text.__errno  0x08004b38        0xc c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x08004b38                __errno
+ .text.memcmp   0x08004b44       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcmp.o)
+                0x08004b44                memcmp
+ .text.memcpy   0x08004b64       0x16 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x08004b64                memcpy
+ .text.memset   0x08004b7a       0x10 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x08004b7a                memset
+ *fill*         0x08004b8a        0x2 
+ .text.printf   0x08004b8c       0x30 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-printf.o)
+                0x08004b8c                iprintf
+                0x08004b8c                printf
+ .text          0x08004bbc       0x14 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
+                0x08004bbc                strcmp
+ .text.strcpy   0x08004bd0       0x10 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcpy.o)
+                0x08004bd0                strcpy
+ .text.strlen   0x08004be0       0x10 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+                0x08004be0                strlen
  .text._vsprintf_r
-                0x080046c4       0x30 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
-                0x080046c4                _vsprintf_r
-                0x080046c4                _vsiprintf_r
+                0x08004bf0       0x30 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
+                0x08004bf0                _vsprintf_r
+                0x08004bf0                _vsiprintf_r
  .text.vsprintf
-                0x080046f4       0x1c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
-                0x080046f4                vsiprintf
-                0x080046f4                vsprintf
+                0x08004c20       0x1c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
+                0x08004c20                vsiprintf
+                0x08004c20                vsprintf
  .text._cleanup_r
-                0x08004710        0xc c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x08004710                _cleanup_r
+                0x08004c3c        0xc c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08004c3c                _cleanup_r
  .text.std.isra.0
-                0x0800471c       0x48 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08004c48       0x48 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
  .text.__sfmoreglue
-                0x08004764       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x08004764                __sfmoreglue
- .text.__sinit  0x08004790       0x60 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x08004790                __sinit
- .text.__sfp    0x080047f0       0x74 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x080047f0                __sfp
+                0x08004c90       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08004c90                __sfmoreglue
+ .text.__sinit  0x08004cbc       0x60 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08004cbc                __sinit
+ .text.__sfp    0x08004d1c       0x74 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08004d1c                __sfp
  .text._fwalk_reent
-                0x08004864       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fwalk.o)
-                0x08004864                _fwalk_reent
- .text._free_r  0x080048a0       0x88 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
-                0x080048a0                _free_r
+                0x08004d90       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fwalk.o)
+                0x08004d90                _fwalk_reent
+ .text._free_r  0x08004dcc       0x88 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x08004dcc                _free_r
  .text._malloc_r
-                0x08004928       0xac c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x08004928                _malloc_r
+                0x08004e54       0xac c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x08004e54                _malloc_r
  .text.__ssputs_r
-                0x080049d4       0xb2 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x080049d4                __ssputs_r
- *fill*         0x08004a86        0x2 
+                0x08004f00       0xb2 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08004f00                __ssputs_r
+ *fill*         0x08004fb2        0x2 
  .text._svfprintf_r
-                0x08004a88      0x1e4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
-                0x08004a88                _svfiprintf_r
-                0x08004a88                _svfprintf_r
+                0x08004fb4      0x1e4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08004fb4                _svfiprintf_r
+                0x08004fb4                _svfprintf_r
  .text.__sfputc_r
-                0x08004c6c       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
+                0x08005198       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
  .text.__sfputs_r
-                0x08004c98       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
-                0x08004c98                __sfputs_r
+                0x080051c4       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
+                0x080051c4                __sfputs_r
  .text._vfprintf_r
-                0x08004cbc      0x210 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
-                0x08004cbc                _vfprintf_r
-                0x08004cbc                _vfiprintf_r
+                0x080051e8      0x210 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
+                0x080051e8                _vfprintf_r
+                0x080051e8                _vfiprintf_r
  .text._printf_common
-                0x08004ecc       0xea c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08004ecc                _printf_common
- *fill*         0x08004fb6        0x2 
+                0x080053f8       0xea c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x080053f8                _printf_common
+ *fill*         0x080054e2        0x2 
  .text._printf_i
-                0x08004fb8      0x240 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
-                0x08004fb8                _printf_i
- .text._sbrk_r  0x080051f8       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
-                0x080051f8                _sbrk_r
- .text.__sread  0x08005218       0x22 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
-                0x08005218                __sread
+                0x080054e4      0x240 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x080054e4                _printf_i
+ .text._sbrk_r  0x08005724       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x08005724                _sbrk_r
+ .text.__sread  0x08005744       0x22 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
+                0x08005744                __sread
  .text.__swrite
-                0x0800523a       0x38 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
-                0x0800523a                __swrite
- .text.__sseek  0x08005272       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
-                0x08005272                __sseek
+                0x08005766       0x38 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
+                0x08005766                __swrite
+ .text.__sseek  0x0800579e       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
+                0x0800579e                __sseek
  .text.__sclose
-                0x08005296        0x8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
-                0x08005296                __sclose
- *fill*         0x0800529e        0x2 
+                0x080057c2        0x8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
+                0x080057c2                __sclose
+ *fill*         0x080057ca        0x2 
  .text.__swbuf_r
-                0x080052a0       0xa8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wbuf.o)
-                0x080052a0                __swbuf_r
+                0x080057cc       0xa8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wbuf.o)
+                0x080057cc                __swbuf_r
  .text._write_r
-                0x08005348       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-writer.o)
-                0x08005348                _write_r
+                0x08005874       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-writer.o)
+                0x08005874                _write_r
  .text.__swsetup_r
-                0x0800536c       0xd8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wsetup.o)
-                0x0800536c                __swsetup_r
+                0x08005898       0xd8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wsetup.o)
+                0x08005898                __swsetup_r
  .text._close_r
-                0x08005444       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-closer.o)
-                0x08005444                _close_r
+                0x08005970       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-closer.o)
+                0x08005970                _close_r
  .text.__sflush_r
-                0x08005464      0x106 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
-                0x08005464                __sflush_r
- *fill*         0x0800556a        0x2 
+                0x08005990      0x106 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
+                0x08005990                __sflush_r
+ *fill*         0x08005a96        0x2 
  .text._fflush_r
-                0x0800556c       0x54 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
-                0x0800556c                _fflush_r
+                0x08005a98       0x54 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
+                0x08005a98                _fflush_r
  .text._lseek_r
-                0x080055c0       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-lseekr.o)
-                0x080055c0                _lseek_r
+                0x08005aec       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-lseekr.o)
+                0x08005aec                _lseek_r
  .text.__smakebuf_r
-                0x080055e4       0x98 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-makebuf.o)
-                0x080055e4                __smakebuf_r
- .text.memchr   0x0800567c       0x1c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
-                0x0800567c                memchr
- .text.memmove  0x08005698       0x36 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
-                0x08005698                memmove
+                0x08005b10       0x98 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-makebuf.o)
+                0x08005b10                __smakebuf_r
+ .text.memchr   0x08005ba8       0x1c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
+                0x08005ba8                memchr
+ .text.memmove  0x08005bc4       0x36 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x08005bc4                memmove
  .text._realloc_r
-                0x080056ce       0x4c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
-                0x080056ce                _realloc_r
- *fill*         0x0800571a        0x2 
- .text._read_r  0x0800571c       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-readr.o)
-                0x0800571c                _read_r
+                0x08005bfa       0x4c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x08005bfa                _realloc_r
+ *fill*         0x08005c46        0x2 
+ .text._read_r  0x08005c48       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-readr.o)
+                0x08005c48                _read_r
  .text._fstat_r
-                0x08005740       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fstatr.o)
-                0x08005740                _fstat_r
+                0x08005c6c       0x24 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fstatr.o)
+                0x08005c6c                _fstat_r
  .text._isatty_r
-                0x08005764       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-isattyr.o)
-                0x08005764                _isatty_r
+                0x08005c90       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-isattyr.o)
+                0x08005c90                _isatty_r
  .text._malloc_usable_size_r
-                0x08005784       0x14 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
-                0x08005784                _malloc_usable_size_r
+                0x08005cb0       0x14 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x08005cb0                _malloc_usable_size_r
  *(.rodata .rodata.*)
  .rodata.str1.4
-                0x08005798       0x27 ./system/src/stm32f1-stdperiph/misc.o
+                0x08005cc4       0x27 ./system/src/stm32f1-stdperiph/misc.o
                                  0x28 (size before relaxing)
- *fill*         0x080057bf        0x1 
+ *fill*         0x08005ceb        0x1 
  .rodata.str1.4
-                0x080057c0       0x32 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
+                0x08005cec       0x32 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
                                  0x34 (size before relaxing)
- *fill*         0x080057f2        0x2 
+ *fill*         0x08005d1e        0x2 
  .rodata.str1.4
-                0x080057f4       0x31 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
+                0x08005d20       0x31 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
                                  0x34 (size before relaxing)
- *fill*         0x08005825        0x3 
+ *fill*         0x08005d51        0x3 
  .rodata.str1.4
-                0x08005828       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
+                0x08005d54       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_rcc.o
  .rodata.str1.4
-                0x08005858       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
+                0x08005d84       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_spi.o
  .rodata.str1.4
-                0x08005888       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
+                0x08005db4       0x30 ./system/src/stm32f1-stdperiph/stm32f10x_tim.o
  .rodata.str1.4
-                0x080058b8       0x32 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
+                0x08005de4       0x32 ./system/src/stm32f1-stdperiph/stm32f10x_usart.o
                                  0x34 (size before relaxing)
- *fill*         0x080058ea        0x2 
+ *fill*         0x08005e16        0x2 
  .rodata.str1.4
-                0x080058ec       0x6e ./src/PlatformHandler/flashHandler.o
+                0x08005e18       0x6e ./src/PlatformHandler/flashHandler.o
                                  0x70 (size before relaxing)
- *fill*         0x0800595a        0x2 
+ *fill*         0x08005e86        0x2 
  .rodata.GPIO_CLK
-                0x0800595c       0x10 ./src/PlatformHandler/gpioHandler.o
-                0x0800595c                GPIO_CLK
+                0x08005e88        0x8 ./src/PlatformHandler/gpioHandler.o
+                0x08005e88                GPIO_CLK
  .rodata.GPIO_PIN
-                0x0800596c        0x8 ./src/PlatformHandler/gpioHandler.o
-                0x0800596c                GPIO_PIN
- .rodata        0x08005974       0x10 ./src/PlatformHandler/spiHandler.o
+                0x08005e90        0x4 ./src/PlatformHandler/gpioHandler.o
+                0x08005e90                GPIO_PIN
+ .rodata        0x08005e94       0x10 ./src/PlatformHandler/spiHandler.o
  .rodata.str1.4
-                0x08005984       0x1c ./src/PlatformHandler/spiHandler.o
+                0x08005ea4       0x1c ./src/PlatformHandler/spiHandler.o
  .rodata.str1.4
-                0x080059a0       0x12 ./src/Internet/TFTP/tftp.o
+                0x08005ec0       0x12 ./src/Internet/TFTP/tftp.o
                                  0x14 (size before relaxing)
- *fill*         0x080059b2        0x2 
- .rodata        0x080059b4       0x28 ./src/Configuration/ConfigData.o
+ *fill*         0x08005ed2        0x2 
+ .rodata        0x08005ed4       0x28 ./src/Configuration/ConfigData.o
  .rodata.str1.4
-                0x080059dc       0x94 ./src/Configuration/ConfigData.o
+                0x08005efc       0x94 ./src/Configuration/ConfigData.o
  .rodata.str1.1
-                0x08005a70        0x2 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
- *fill*         0x08005a72        0x2 
+                0x08005f90        0x2 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+ *fill*         0x08005f92        0x2 
  .rodata._global_impure_ptr
-                0x08005a74        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x08005a74                _global_impure_ptr
+                0x08005f94        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x08005f94                _global_impure_ptr
  .rodata.__sf_fake_stdin
-                0x08005a78       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x08005a78                __sf_fake_stdin
+                0x08005f98       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08005f98                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x08005a98       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x08005a98                __sf_fake_stdout
+                0x08005fb8       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08005fb8                __sf_fake_stdout
  .rodata.__sf_fake_stderr
-                0x08005ab8       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
-                0x08005ab8                __sf_fake_stderr
+                0x08005fd8       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x08005fd8                __sf_fake_stderr
  .rodata.str1.1
-                0x08005ad8       0x11 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x08005ff8       0x11 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .rodata.str1.1
                 0x00000000       0x11 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
  .rodata.str1.1
-                0x08005ae9       0x22 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x08006009       0x22 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  *(vtable)
  *(.eh_frame*)
- *fill*         0x08005b0b        0x1 
- .eh_frame      0x08005b0c       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
+ *fill*         0x0800602b        0x1 
+ .eh_frame      0x0800602c       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x08005b34        0x0
+.vfp11_veneer   0x08006054        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08005b34        0x0
+.v4_bx          0x08006054        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x08005b34        0x0
+.iplt           0x08006054        0x0
  .iplt          0x00000000        0x0 ./system/src/stm32f1-stdperiph/misc.o
 
-.rel.dyn        0x08005b34        0x0
+.rel.dyn        0x08006054        0x0
  .rel.iplt      0x00000000        0x0 ./system/src/stm32f1-stdperiph/misc.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08005b34                __exidx_start = .
+                0x08006054                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08005b34                __exidx_end = .
-                0x08005b34                . = ALIGN (0x4)
-                0x08005b34                _etext = .
-                0x08005b34                __etext = .
-                0x08005b34                _sidata = _etext
+                0x08006054                __exidx_end = .
+                0x08006054                . = ALIGN (0x4)
+                0x08006054                _etext = .
+                0x08006054                __etext = .
+                0x08006054                _sidata = _etext
 
-.data           0x20000000       0xcc load address 0x08005b34
+.data           0x20000000       0xc4 load address 0x08006054
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _sdata = .
                 0x20000000                __data_start__ = .
@@ -5654,121 +5867,121 @@ END GROUP
  .data.g_write_point
                 0x20000020        0x4 ./src/PlatformHandler/flashHandler.o
  .data.GPIO_PORT
-                0x20000024       0x10 ./src/PlatformHandler/gpioHandler.o
+                0x20000024        0x8 ./src/PlatformHandler/gpioHandler.o
                 0x20000024                GPIO_PORT
  .data.g_tftp_socket
-                0x20000034        0x4 ./src/Internet/TFTP/tftp.o
+                0x2000002c        0x4 ./src/Internet/TFTP/tftp.o
  .data.default_tftp_opt
-                0x20000038        0x8 ./src/Internet/TFTP/tftp.o
+                0x20000030        0x8 ./src/Internet/TFTP/tftp.o
  .data.sock_any_port
-                0x20000040        0x2 ./src/Ethernet/socket.o
- *fill*         0x20000042        0x2 
- .data.WIZCHIP  0x20000044       0x20 ./src/Ethernet/wizchip_conf.o
-                0x20000044                WIZCHIP
+                0x20000038        0x2 ./src/Ethernet/socket.o
+ *fill*         0x2000003a        0x2 
+ .data.WIZCHIP  0x2000003c       0x20 ./src/Ethernet/wizchip_conf.o
+                0x2000003c                WIZCHIP
  .data.impure_data
-                0x20000064       0x60 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x2000005c       0x60 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .data._impure_ptr
-                0x200000c4        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
-                0x200000c4                _impure_ptr
+                0x200000bc        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x200000bc                _impure_ptr
  *(.data_end .data_end.*)
- .data_end      0x200000c8        0x4 ./system/src/newlib/_startup.o
-                0x200000cc                . = ALIGN (0x4)
-                0x200000cc                _edata = .
-                0x200000cc                __data_end__ = .
+ .data_end      0x200000c0        0x4 ./system/src/newlib/_startup.o
+                0x200000c4                . = ALIGN (0x4)
+                0x200000c4                _edata = .
+                0x200000c4                __data_end__ = .
 
-.igot.plt       0x200000cc        0x0 load address 0x08005c00
+.igot.plt       0x200000c4        0x0 load address 0x08006118
  .igot.plt      0x00000000        0x0 ./system/src/stm32f1-stdperiph/misc.o
 
-.bss            0x200000cc     0x1140 load address 0x08005c00
-                0x200000cc                . = ALIGN (0x4)
-                0x200000cc                __bss_start__ = .
-                0x200000cc                _sbss = .
+.bss            0x200000c4     0x1140 load address 0x08006118
+                0x200000c4                . = ALIGN (0x4)
+                0x200000c4                __bss_start__ = .
+                0x200000c4                _sbss = .
  *(.bss_begin .bss_begin.*)
- .bss_begin     0x200000cc        0x4 ./system/src/newlib/_startup.o
+ .bss_begin     0x200000c4        0x4 ./system/src/newlib/_startup.o
  *(.bss .bss.*)
  .bss.current_heap_end.4304
-                0x200000d0        0x4 ./system/src/newlib/_sbrk.o
+                0x200000c8        0x4 ./system/src/newlib/_sbrk.o
  .bss.name.4509
-                0x200000d4        0x4 ./system/src/newlib/_syscalls.o
- .bss.cnt.7079  0x200000d8        0x4 ./src/PlatformHandler/flashHandler.o
- .bss.mill_sec  0x200000dc        0x4 ./src/PlatformHandler/timerHandler.o
- .bss.txbuff    0x200000e0      0x400 ./src/PlatformHandler/uartHandler.o
- .bss.rxbuff    0x200004e0      0x400 ./src/PlatformHandler/uartHandler.o
+                0x200000cc        0x4 ./system/src/newlib/_syscalls.o
+ .bss.cnt.7079  0x200000d0        0x4 ./src/PlatformHandler/flashHandler.o
+ .bss.mill_sec  0x200000d4        0x4 ./src/PlatformHandler/timerHandler.o
+ .bss.txbuff    0x200000d8      0x400 ./src/PlatformHandler/uartHandler.o
+ .bss.rxbuff    0x200004d8      0x400 ./src/PlatformHandler/uartHandler.o
  .bss.g_server_ip
-                0x200008e0        0x4 ./src/Internet/TFTP/tftp.o
+                0x200008d8        0x4 ./src/Internet/TFTP/tftp.o
  .bss.g_filename
-                0x200008e4       0x14 ./src/Internet/TFTP/tftp.o
+                0x200008dc       0x14 ./src/Internet/TFTP/tftp.o
  .bss.g_tftp_rcv_buf
-                0x200008f8        0x4 ./src/Internet/TFTP/tftp.o
+                0x200008f0        0x4 ./src/Internet/TFTP/tftp.o
  .bss.g_block_num
-                0x200008fc        0x2 ./src/Internet/TFTP/tftp.o
+                0x200008f4        0x2 ./src/Internet/TFTP/tftp.o
  .bss.g_progress_state
-                0x200008fe        0x1 ./src/Internet/TFTP/tftp.o
-                0x200008fe                g_progress_state
- *fill*         0x200008ff        0x1 
+                0x200008f6        0x1 ./src/Internet/TFTP/tftp.o
+                0x200008f6                g_progress_state
+ *fill*         0x200008f7        0x1 
  .bss.tftp_time_cnt
-                0x20000900        0x4 ./src/Internet/TFTP/tftp.o
+                0x200008f8        0x4 ./src/Internet/TFTP/tftp.o
  .bss.g_server_port
-                0x20000904        0x2 ./src/Internet/TFTP/tftp.o
+                0x200008fc        0x2 ./src/Internet/TFTP/tftp.o
  .bss.g_local_port
-                0x20000906        0x2 ./src/Internet/TFTP/tftp.o
+                0x200008fe        0x2 ./src/Internet/TFTP/tftp.o
  .bss.g_tftp_state
-                0x20000908        0x4 ./src/Internet/TFTP/tftp.o
+                0x20000900        0x4 ./src/Internet/TFTP/tftp.o
  .bss.tftp_retry_cnt
-                0x2000090c        0x4 ./src/Internet/TFTP/tftp.o
+                0x20000904        0x4 ./src/Internet/TFTP/tftp.o
  .bss.g_resend_flag
-                0x20000910        0x4 ./src/Internet/TFTP/tftp.o
+                0x20000908        0x4 ./src/Internet/TFTP/tftp.o
  .bss.sock_io_mode
-                0x20000914        0x2 ./src/Ethernet/socket.o
+                0x2000090c        0x2 ./src/Ethernet/socket.o
  .bss.sock_is_sending
-                0x20000916        0x2 ./src/Ethernet/socket.o
+                0x2000090e        0x2 ./src/Ethernet/socket.o
  .bss.sock_pack_info
-                0x20000918        0x8 ./src/Ethernet/socket.o
+                0x20000910        0x8 ./src/Ethernet/socket.o
  .bss.sock_remained_size
-                0x20000920       0x10 ./src/Ethernet/socket.o
- .bss._DHCP_    0x20000930        0x1 ./src/Ethernet/wizchip_conf.o
- *fill*         0x20000931        0x3 
- .bss._DNS_     0x20000934        0x4 ./src/Ethernet/wizchip_conf.o
+                0x20000918       0x10 ./src/Ethernet/socket.o
+ .bss._DHCP_    0x20000928        0x1 ./src/Ethernet/wizchip_conf.o
+ *fill*         0x20000929        0x3 
+ .bss._DNS_     0x2000092c        0x4 ./src/Ethernet/wizchip_conf.o
  .bss.s2e_packet
-                0x20000938       0x88 ./src/Configuration/ConfigData.o
+                0x20000930       0x88 ./src/Configuration/ConfigData.o
  .bss.__malloc_sbrk_start
-                0x200009c0        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x200009c0                __malloc_sbrk_start
+                0x200009b8        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x200009b8                __malloc_sbrk_start
  .bss.__malloc_free_list
-                0x200009c4        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
-                0x200009c4                __malloc_free_list
+                0x200009bc        0x4 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x200009bc                __malloc_free_list
  *(COMMON)
- COMMON         0x200009c8        0x4 ./system/src/newlib/_syscalls.o
-                0x200009c8                errno
- COMMON         0x200009cc       0x14 ./src/PlatformHandler/flashHandler.o
-                0x200009cc                flash
- COMMON         0x200009e0       0x28 ./src/PlatformHandler/uartHandler.o
-                0x200009e0                txring1
-                0x200009f4                rxring1
- COMMON         0x20000a08      0x800 ./src/main.o
-                0x20000a08                socket_buf
+ COMMON         0x200009c0        0x4 ./system/src/newlib/_syscalls.o
+                0x200009c0                errno
+ COMMON         0x200009c4       0x14 ./src/PlatformHandler/flashHandler.o
+                0x200009c4                flash
+ COMMON         0x200009d8       0x28 ./src/PlatformHandler/uartHandler.o
+                0x200009d8                txring1
+                0x200009ec                rxring1
+ COMMON         0x20000a00      0x800 ./src/main.o
+                0x20000a00                socket_buf
  *(.bss_end .bss_end.*)
- .bss_end       0x20001208        0x4 ./system/src/newlib/_startup.o
-                0x2000120c                . = ALIGN (0x4)
-                0x2000120c                __bss_end__ = .
-                0x2000120c                _ebss = .
+ .bss_end       0x20001200        0x4 ./system/src/newlib/_startup.o
+                0x20001204                . = ALIGN (0x4)
+                0x20001204                __bss_end__ = .
+                0x20001204                _ebss = .
 
-.noinit         0x2000120c        0x0
-                0x2000120c                . = ALIGN (0x4)
-                0x2000120c                _noinit = .
+.noinit         0x20001204        0x0
+                0x20001204                . = ALIGN (0x4)
+                0x20001204                _noinit = .
  *(.noinit .noinit.*)
-                0x2000120c                . = ALIGN (0x4)
-                0x2000120c                _end_noinit = .
-                0x2000120c                PROVIDE (end, _end_noinit)
-                0x2000120c                PROVIDE (_end, _end_noinit)
-                0x2000120c                PROVIDE (__end, _end_noinit)
-                0x2000120c                PROVIDE (__end__, _end_noinit)
+                0x20001204                . = ALIGN (0x4)
+                0x20001204                _end_noinit = .
+                0x20001204                PROVIDE (end, _end_noinit)
+                0x20001204                PROVIDE (_end, _end_noinit)
+                0x20001204                PROVIDE (__end, _end_noinit)
+                0x20001204                PROVIDE (__end__, _end_noinit)
 
-._check_stack   0x2000120c      0x100 load address 0x08006d40
-                0x2000120c                . = ALIGN (0x4)
-                0x2000130c                . = (. + _Minimum_Stack_Size)
- *fill*         0x2000120c      0x100 
-                0x2000130c                . = ALIGN (0x4)
+._check_stack   0x20001204      0x100 load address 0x08007258
+                0x20001204                . = ALIGN (0x4)
+                0x20001304                . = (. + _Minimum_Stack_Size)
+ *fill*         0x20001204      0x100 
+                0x20001304                . = ALIGN (0x4)
 
 .bss_CCMRAM
  *(.bss.CCMRAM .bss.CCMRAM.*)
@@ -5837,8 +6050,10 @@ END GROUP
  .comment       0x00000000       0x71 ./system/src/cmsis/system_stm32f10x.o
  .comment       0x00000000       0x71 ./system/src/cmsis/vectors_stm32f10x.o
  .comment       0x00000000       0x71 ./src/netutil/netutil.o
+ .comment       0x00000000       0x71 ./src/PlatformHandler/eepromHandler.o
  .comment       0x00000000       0x71 ./src/PlatformHandler/flashHandler.o
  .comment       0x00000000       0x71 ./src/PlatformHandler/gpioHandler.o
+ .comment       0x00000000       0x71 ./src/PlatformHandler/i2cHandler.o
  .comment       0x00000000       0x71 ./src/PlatformHandler/rccHandler.o
  .comment       0x00000000       0x71 ./src/PlatformHandler/ring_buffer.o
  .comment       0x00000000       0x71 ./src/PlatformHandler/spiHandler.o
@@ -5892,101 +6107,105 @@ END GROUP
  .ARM.attributes
                 0x00000363       0x33 ./src/netutil/netutil.o
  .ARM.attributes
-                0x00000396       0x33 ./src/PlatformHandler/flashHandler.o
+                0x00000396       0x33 ./src/PlatformHandler/eepromHandler.o
  .ARM.attributes
-                0x000003c9       0x33 ./src/PlatformHandler/gpioHandler.o
+                0x000003c9       0x33 ./src/PlatformHandler/flashHandler.o
  .ARM.attributes
-                0x000003fc       0x33 ./src/PlatformHandler/rccHandler.o
+                0x000003fc       0x33 ./src/PlatformHandler/gpioHandler.o
  .ARM.attributes
-                0x0000042f       0x33 ./src/PlatformHandler/ring_buffer.o
+                0x0000042f       0x33 ./src/PlatformHandler/i2cHandler.o
  .ARM.attributes
-                0x00000462       0x33 ./src/PlatformHandler/spiHandler.o
+                0x00000462       0x33 ./src/PlatformHandler/rccHandler.o
  .ARM.attributes
-                0x00000495       0x33 ./src/PlatformHandler/storageHandler.o
+                0x00000495       0x33 ./src/PlatformHandler/ring_buffer.o
  .ARM.attributes
-                0x000004c8       0x33 ./src/PlatformHandler/timerHandler.o
+                0x000004c8       0x33 ./src/PlatformHandler/spiHandler.o
  .ARM.attributes
-                0x000004fb       0x33 ./src/PlatformHandler/uartHandler.o
+                0x000004fb       0x33 ./src/PlatformHandler/storageHandler.o
  .ARM.attributes
-                0x0000052e       0x33 ./src/Internet/TFTP/tftp.o
+                0x0000052e       0x33 ./src/PlatformHandler/timerHandler.o
  .ARM.attributes
-                0x00000561       0x33 ./src/Ethernet/W5500/w5500.o
+                0x00000561       0x33 ./src/PlatformHandler/uartHandler.o
  .ARM.attributes
-                0x00000594       0x33 ./src/Ethernet/socket.o
+                0x00000594       0x33 ./src/Internet/TFTP/tftp.o
  .ARM.attributes
-                0x000005c7       0x33 ./src/Ethernet/wizchip_conf.o
+                0x000005c7       0x33 ./src/Ethernet/W5500/w5500.o
  .ARM.attributes
-                0x000005fa       0x33 ./src/Configuration/ConfigData.o
+                0x000005fa       0x33 ./src/Ethernet/socket.o
  .ARM.attributes
-                0x0000062d       0x33 ./src/Configuration/ConfigMessage.o
+                0x0000062d       0x33 ./src/Ethernet/wizchip_conf.o
  .ARM.attributes
-                0x00000660       0x33 ./src/main.o
+                0x00000660       0x33 ./src/Configuration/ConfigData.o
  .ARM.attributes
-                0x00000693       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+                0x00000693       0x33 ./src/Configuration/ConfigMessage.o
  .ARM.attributes
-                0x000006c0       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
+                0x000006c6       0x33 ./src/main.o
  .ARM.attributes
-                0x000006ed       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcmp.o)
+                0x000006f9       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
  .ARM.attributes
-                0x0000071a       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+                0x00000726       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x00000747       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+                0x00000753       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcmp.o)
  .ARM.attributes
-                0x00000774       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-printf.o)
+                0x00000780       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
  .ARM.attributes
-                0x000007a1       0x1b c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
+                0x000007ad       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x000007bc       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcpy.o)
+                0x000007da       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-printf.o)
  .ARM.attributes
-                0x000007e9       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+                0x00000807       0x1b c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcmp.o)
  .ARM.attributes
-                0x00000816       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
+                0x00000822       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcpy.o)
  .ARM.attributes
-                0x00000843       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+                0x0000084f       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
  .ARM.attributes
-                0x00000870       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fwalk.o)
+                0x0000087c       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
  .ARM.attributes
-                0x0000089d       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+                0x000008a9       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
  .ARM.attributes
-                0x000008ca       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+                0x000008d6       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fwalk.o)
  .ARM.attributes
-                0x000008f7       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+                0x00000903       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
  .ARM.attributes
-                0x00000924       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
+                0x00000930       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
  .ARM.attributes
-                0x00000951       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000095d       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
  .ARM.attributes
-                0x0000097e       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+                0x0000098a       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
  .ARM.attributes
-                0x000009ab       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
+                0x000009b7       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
  .ARM.attributes
-                0x000009d8       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wbuf.o)
+                0x000009e4       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
  .ARM.attributes
-                0x00000a05       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-writer.o)
+                0x00000a11       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
  .ARM.attributes
-                0x00000a32       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wsetup.o)
+                0x00000a3e       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wbuf.o)
  .ARM.attributes
-                0x00000a5f       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-closer.o)
+                0x00000a6b       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-writer.o)
  .ARM.attributes
-                0x00000a8c       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
+                0x00000a98       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wsetup.o)
  .ARM.attributes
-                0x00000ab9       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-lseekr.o)
+                0x00000ac5       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-closer.o)
  .ARM.attributes
-                0x00000ae6       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-makebuf.o)
+                0x00000af2       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
  .ARM.attributes
-                0x00000b13       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
+                0x00000b1f       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-lseekr.o)
  .ARM.attributes
-                0x00000b40       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+                0x00000b4c       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-makebuf.o)
  .ARM.attributes
-                0x00000b6d       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+                0x00000b79       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
  .ARM.attributes
-                0x00000b9a       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-readr.o)
+                0x00000ba6       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
  .ARM.attributes
-                0x00000bc7       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fstatr.o)
+                0x00000bd3       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
  .ARM.attributes
-                0x00000bf4       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-isattyr.o)
+                0x00000c00       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-readr.o)
  .ARM.attributes
-                0x00000c21       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+                0x00000c2d       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fstatr.o)
+ .ARM.attributes
+                0x00000c5a       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-isattyr.o)
+ .ARM.attributes
+                0x00000c87       0x2d c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
 
 .debug
  *(.debug)
@@ -6000,7 +6219,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000     0x1088
+.debug_aranges  0x00000000     0x1170
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x40 ./system/src/stm32f1-stdperiph/misc.o
@@ -6039,40 +6258,44 @@ END GROUP
  .debug_aranges
                 0x00000a38       0x60 ./src/netutil/netutil.o
  .debug_aranges
-                0x00000a98       0x48 ./src/PlatformHandler/flashHandler.o
+                0x00000a98       0x68 ./src/PlatformHandler/eepromHandler.o
  .debug_aranges
-                0x00000ae0       0x50 ./src/PlatformHandler/gpioHandler.o
+                0x00000b00       0x48 ./src/PlatformHandler/flashHandler.o
  .debug_aranges
-                0x00000b30       0x20 ./src/PlatformHandler/rccHandler.o
+                0x00000b48       0x50 ./src/PlatformHandler/gpioHandler.o
  .debug_aranges
-                0x00000b50       0x40 ./src/PlatformHandler/ring_buffer.o
+                0x00000b98       0x70 ./src/PlatformHandler/i2cHandler.o
  .debug_aranges
-                0x00000b90       0x58 ./src/PlatformHandler/spiHandler.o
+                0x00000c08       0x20 ./src/PlatformHandler/rccHandler.o
  .debug_aranges
-                0x00000be8       0x28 ./src/PlatformHandler/storageHandler.o
+                0x00000c28       0x40 ./src/PlatformHandler/ring_buffer.o
  .debug_aranges
-                0x00000c10       0x28 ./src/PlatformHandler/timerHandler.o
+                0x00000c68       0x50 ./src/PlatformHandler/spiHandler.o
  .debug_aranges
-                0x00000c38       0x68 ./src/PlatformHandler/uartHandler.o
+                0x00000cb8       0x28 ./src/PlatformHandler/storageHandler.o
  .debug_aranges
-                0x00000ca0       0xb0 ./src/Internet/TFTP/tftp.o
+                0x00000ce0       0x40 ./src/PlatformHandler/timerHandler.o
  .debug_aranges
-                0x00000d50       0x60 ./src/Ethernet/W5500/w5500.o
+                0x00000d20       0x68 ./src/PlatformHandler/uartHandler.o
  .debug_aranges
-                0x00000db0       0x78 ./src/Ethernet/socket.o
+                0x00000d88       0xb0 ./src/Internet/TFTP/tftp.o
  .debug_aranges
-                0x00000e28      0x120 ./src/Ethernet/wizchip_conf.o
+                0x00000e38       0x60 ./src/Ethernet/W5500/w5500.o
  .debug_aranges
-                0x00000f48       0xa0 ./src/Configuration/ConfigData.o
+                0x00000e98       0x78 ./src/Ethernet/socket.o
  .debug_aranges
-                0x00000fe8       0x70 ./src/Configuration/ConfigMessage.o
+                0x00000f10      0x120 ./src/Ethernet/wizchip_conf.o
  .debug_aranges
-                0x00001058       0x30 ./src/main.o
+                0x00001030       0xa0 ./src/Configuration/ConfigData.o
+ .debug_aranges
+                0x000010d0       0x70 ./src/Configuration/ConfigMessage.o
+ .debug_aranges
+                0x00001140       0x30 ./src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x14352
+.debug_info     0x00000000    0x160b3
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x65c ./system/src/stm32f1-stdperiph/misc.o
  .debug_info    0x0000065c      0xbf0 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
@@ -6092,23 +6315,25 @@ END GROUP
  .debug_info    0x00009ac9      0x4a0 ./system/src/cmsis/system_stm32f10x.o
  .debug_info    0x00009f69       0x92 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_info    0x00009ffb      0x4bb ./src/netutil/netutil.o
- .debug_info    0x0000a4b6      0x591 ./src/PlatformHandler/flashHandler.o
- .debug_info    0x0000aa47      0x4d4 ./src/PlatformHandler/gpioHandler.o
- .debug_info    0x0000af1b      0x38b ./src/PlatformHandler/rccHandler.o
- .debug_info    0x0000b2a6      0x4bc ./src/PlatformHandler/ring_buffer.o
- .debug_info    0x0000b762      0x8f3 ./src/PlatformHandler/spiHandler.o
- .debug_info    0x0000c055      0x2a9 ./src/PlatformHandler/storageHandler.o
- .debug_info    0x0000c2fe      0x758 ./src/PlatformHandler/timerHandler.o
- .debug_info    0x0000ca56      0xf66 ./src/PlatformHandler/uartHandler.o
- .debug_info    0x0000d9bc     0x106d ./src/Internet/TFTP/tftp.o
- .debug_info    0x0000ea29      0x7d1 ./src/Ethernet/W5500/w5500.o
- .debug_info    0x0000f1fa     0x1189 ./src/Ethernet/socket.o
- .debug_info    0x00010383     0x1180 ./src/Ethernet/wizchip_conf.o
- .debug_info    0x00011503      0xb95 ./src/Configuration/ConfigData.o
- .debug_info    0x00012098     0x1c23 ./src/Configuration/ConfigMessage.o
- .debug_info    0x00013cbb      0x697 ./src/main.o
+ .debug_info    0x0000a4b6      0x6f7 ./src/PlatformHandler/eepromHandler.o
+ .debug_info    0x0000abad      0x591 ./src/PlatformHandler/flashHandler.o
+ .debug_info    0x0000b13e      0x4d4 ./src/PlatformHandler/gpioHandler.o
+ .debug_info    0x0000b612      0xfc9 ./src/PlatformHandler/i2cHandler.o
+ .debug_info    0x0000c5db      0x38b ./src/PlatformHandler/rccHandler.o
+ .debug_info    0x0000c966      0x4bc ./src/PlatformHandler/ring_buffer.o
+ .debug_info    0x0000ce22      0x8dc ./src/PlatformHandler/spiHandler.o
+ .debug_info    0x0000d6fe      0x477 ./src/PlatformHandler/storageHandler.o
+ .debug_info    0x0000db75      0xc32 ./src/PlatformHandler/timerHandler.o
+ .debug_info    0x0000e7a7      0xf66 ./src/PlatformHandler/uartHandler.o
+ .debug_info    0x0000f70d     0x106d ./src/Internet/TFTP/tftp.o
+ .debug_info    0x0001077a      0x7d1 ./src/Ethernet/W5500/w5500.o
+ .debug_info    0x00010f4b     0x1189 ./src/Ethernet/socket.o
+ .debug_info    0x000120d4     0x1180 ./src/Ethernet/wizchip_conf.o
+ .debug_info    0x00013254      0xb95 ./src/Configuration/ConfigData.o
+ .debug_info    0x00013de9     0x1c23 ./src/Configuration/ConfigMessage.o
+ .debug_info    0x00015a0c      0x6a7 ./src/main.o
 
-.debug_abbrev   0x00000000     0x370d
+.debug_abbrev   0x00000000     0x3c0d
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x188 ./system/src/stm32f1-stdperiph/misc.o
  .debug_abbrev  0x00000188      0x1c6 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
@@ -6128,23 +6353,25 @@ END GROUP
  .debug_abbrev  0x000013ef      0x157 ./system/src/cmsis/system_stm32f10x.o
  .debug_abbrev  0x00001546       0x92 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_abbrev  0x000015d8      0x113 ./src/netutil/netutil.o
- .debug_abbrev  0x000016eb      0x1ef ./src/PlatformHandler/flashHandler.o
- .debug_abbrev  0x000018da      0x202 ./src/PlatformHandler/gpioHandler.o
- .debug_abbrev  0x00001adc      0x13a ./src/PlatformHandler/rccHandler.o
- .debug_abbrev  0x00001c16      0x162 ./src/PlatformHandler/ring_buffer.o
- .debug_abbrev  0x00001d78      0x20b ./src/PlatformHandler/spiHandler.o
- .debug_abbrev  0x00001f83      0x13c ./src/PlatformHandler/storageHandler.o
- .debug_abbrev  0x000020bf      0x1a6 ./src/PlatformHandler/timerHandler.o
- .debug_abbrev  0x00002265      0x2cb ./src/PlatformHandler/uartHandler.o
- .debug_abbrev  0x00002530      0x352 ./src/Internet/TFTP/tftp.o
- .debug_abbrev  0x00002882      0x212 ./src/Ethernet/W5500/w5500.o
- .debug_abbrev  0x00002a94      0x1c5 ./src/Ethernet/socket.o
- .debug_abbrev  0x00002c59      0x314 ./src/Ethernet/wizchip_conf.o
- .debug_abbrev  0x00002f6d      0x270 ./src/Configuration/ConfigData.o
- .debug_abbrev  0x000031dd      0x2e4 ./src/Configuration/ConfigMessage.o
- .debug_abbrev  0x000034c1      0x24c ./src/main.o
+ .debug_abbrev  0x000016eb      0x1e8 ./src/PlatformHandler/eepromHandler.o
+ .debug_abbrev  0x000018d3      0x1ef ./src/PlatformHandler/flashHandler.o
+ .debug_abbrev  0x00001ac2      0x202 ./src/PlatformHandler/gpioHandler.o
+ .debug_abbrev  0x00001cc4      0x23d ./src/PlatformHandler/i2cHandler.o
+ .debug_abbrev  0x00001f01      0x13a ./src/PlatformHandler/rccHandler.o
+ .debug_abbrev  0x0000203b      0x162 ./src/PlatformHandler/ring_buffer.o
+ .debug_abbrev  0x0000219d      0x1fc ./src/PlatformHandler/spiHandler.o
+ .debug_abbrev  0x00002399      0x172 ./src/PlatformHandler/storageHandler.o
+ .debug_abbrev  0x0000250b      0x25a ./src/PlatformHandler/timerHandler.o
+ .debug_abbrev  0x00002765      0x2cb ./src/PlatformHandler/uartHandler.o
+ .debug_abbrev  0x00002a30      0x352 ./src/Internet/TFTP/tftp.o
+ .debug_abbrev  0x00002d82      0x212 ./src/Ethernet/W5500/w5500.o
+ .debug_abbrev  0x00002f94      0x1c5 ./src/Ethernet/socket.o
+ .debug_abbrev  0x00003159      0x314 ./src/Ethernet/wizchip_conf.o
+ .debug_abbrev  0x0000346d      0x270 ./src/Configuration/ConfigData.o
+ .debug_abbrev  0x000036dd      0x2e4 ./src/Configuration/ConfigMessage.o
+ .debug_abbrev  0x000039c1      0x24c ./src/main.o
 
-.debug_line     0x00000000     0xd410
+.debug_line     0x00000000     0xe0a2
  *(.debug_line)
  .debug_line    0x00000000      0x524 ./system/src/stm32f1-stdperiph/misc.o
  .debug_line    0x00000524      0x7e8 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
@@ -6164,23 +6391,25 @@ END GROUP
  .debug_line    0x00007427      0x4e8 ./system/src/cmsis/system_stm32f10x.o
  .debug_line    0x0000790f       0x8e ./system/src/cmsis/vectors_stm32f10x.o
  .debug_line    0x0000799d      0x39a ./src/netutil/netutil.o
- .debug_line    0x00007d37      0x6a6 ./src/PlatformHandler/flashHandler.o
- .debug_line    0x000083dd      0x4dc ./src/PlatformHandler/gpioHandler.o
- .debug_line    0x000088b9      0x483 ./src/PlatformHandler/rccHandler.o
- .debug_line    0x00008d3c      0x34d ./src/PlatformHandler/ring_buffer.o
- .debug_line    0x00009089      0x603 ./src/PlatformHandler/spiHandler.o
- .debug_line    0x0000968c      0x529 ./src/PlatformHandler/storageHandler.o
- .debug_line    0x00009bb5      0x522 ./src/PlatformHandler/timerHandler.o
- .debug_line    0x0000a0d7      0x639 ./src/PlatformHandler/uartHandler.o
- .debug_line    0x0000a710      0x659 ./src/Internet/TFTP/tftp.o
- .debug_line    0x0000ad69      0x3a2 ./src/Ethernet/W5500/w5500.o
- .debug_line    0x0000b10b      0x63c ./src/Ethernet/socket.o
- .debug_line    0x0000b747      0x62a ./src/Ethernet/wizchip_conf.o
- .debug_line    0x0000bd71      0x615 ./src/Configuration/ConfigData.o
- .debug_line    0x0000c386      0x85e ./src/Configuration/ConfigMessage.o
- .debug_line    0x0000cbe4      0x82c ./src/main.o
+ .debug_line    0x00007d37      0x5aa ./src/PlatformHandler/eepromHandler.o
+ .debug_line    0x000082e1      0x6a6 ./src/PlatformHandler/flashHandler.o
+ .debug_line    0x00008987      0x4dc ./src/PlatformHandler/gpioHandler.o
+ .debug_line    0x00008e63      0x629 ./src/PlatformHandler/i2cHandler.o
+ .debug_line    0x0000948c      0x483 ./src/PlatformHandler/rccHandler.o
+ .debug_line    0x0000990f      0x34d ./src/PlatformHandler/ring_buffer.o
+ .debug_line    0x00009c5c      0x5f8 ./src/PlatformHandler/spiHandler.o
+ .debug_line    0x0000a254      0x580 ./src/PlatformHandler/storageHandler.o
+ .debug_line    0x0000a7d4      0x580 ./src/PlatformHandler/timerHandler.o
+ .debug_line    0x0000ad54      0x639 ./src/PlatformHandler/uartHandler.o
+ .debug_line    0x0000b38d      0x659 ./src/Internet/TFTP/tftp.o
+ .debug_line    0x0000b9e6      0x3a2 ./src/Ethernet/W5500/w5500.o
+ .debug_line    0x0000bd88      0x63c ./src/Ethernet/socket.o
+ .debug_line    0x0000c3c4      0x62a ./src/Ethernet/wizchip_conf.o
+ .debug_line    0x0000c9ee      0x615 ./src/Configuration/ConfigData.o
+ .debug_line    0x0000d003      0x85e ./src/Configuration/ConfigMessage.o
+ .debug_line    0x0000d861      0x841 ./src/main.o
 
-.debug_frame    0x00000000     0x36e8
+.debug_frame    0x00000000     0x398c
  *(.debug_frame)
  .debug_frame   0x00000000       0x90 ./system/src/stm32f1-stdperiph/misc.o
  .debug_frame   0x00000090      0x284 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
@@ -6200,54 +6429,56 @@ END GROUP
  .debug_frame   0x00001bec       0x68 ./system/src/cmsis/system_stm32f10x.o
  .debug_frame   0x00001c54       0x20 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_frame   0x00001c74       0xf0 ./src/netutil/netutil.o
- .debug_frame   0x00001d64       0xa8 ./src/PlatformHandler/flashHandler.o
- .debug_frame   0x00001e0c       0xbc ./src/PlatformHandler/gpioHandler.o
- .debug_frame   0x00001ec8       0x28 ./src/PlatformHandler/rccHandler.o
- .debug_frame   0x00001ef0       0x98 ./src/PlatformHandler/ring_buffer.o
- .debug_frame   0x00001f88       0xe0 ./src/PlatformHandler/spiHandler.o
- .debug_frame   0x00002068       0x44 ./src/PlatformHandler/storageHandler.o
- .debug_frame   0x000020ac       0x48 ./src/PlatformHandler/timerHandler.o
- .debug_frame   0x000020f4      0x14c ./src/PlatformHandler/uartHandler.o
- .debug_frame   0x00002240      0x208 ./src/Internet/TFTP/tftp.o
- .debug_frame   0x00002448      0x14c ./src/Ethernet/W5500/w5500.o
- .debug_frame   0x00002594      0x264 ./src/Ethernet/socket.o
- .debug_frame   0x000027f8      0x2e8 ./src/Ethernet/wizchip_conf.o
- .debug_frame   0x00002ae0      0x1c4 ./src/Configuration/ConfigData.o
- .debug_frame   0x00002ca4      0x188 ./src/Configuration/ConfigMessage.o
- .debug_frame   0x00002e2c       0x58 ./src/main.o
- .debug_frame   0x00002e84       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
- .debug_frame   0x00002ea4       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcmp.o)
- .debug_frame   0x00002ecc       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
- .debug_frame   0x00002ef4       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
- .debug_frame   0x00002f14       0x74 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-printf.o)
- .debug_frame   0x00002f88       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcpy.o)
- .debug_frame   0x00002fa8       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
- .debug_frame   0x00002fc8       0x50 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
- .debug_frame   0x00003018      0x11c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
- .debug_frame   0x00003134       0x54 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fwalk.o)
- .debug_frame   0x00003188       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
- .debug_frame   0x000031b4       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
- .debug_frame   0x000031e0       0x8c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
- .debug_frame   0x0000326c       0xb8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
- .debug_frame   0x00003324       0x58 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
- .debug_frame   0x0000337c       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
- .debug_frame   0x000033a8       0x88 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
- .debug_frame   0x00003430       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wbuf.o)
- .debug_frame   0x0000346c       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-writer.o)
- .debug_frame   0x00003498       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wsetup.o)
- .debug_frame   0x000034c4       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-closer.o)
- .debug_frame   0x000034f0       0x68 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
- .debug_frame   0x00003558       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-lseekr.o)
- .debug_frame   0x00003584       0x34 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-makebuf.o)
- .debug_frame   0x000035b8       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
- .debug_frame   0x000035e0       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
- .debug_frame   0x00003608       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
- .debug_frame   0x00003644       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-readr.o)
- .debug_frame   0x00003670       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fstatr.o)
- .debug_frame   0x0000369c       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-isattyr.o)
- .debug_frame   0x000036c8       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
+ .debug_frame   0x00001d64      0x124 ./src/PlatformHandler/eepromHandler.o
+ .debug_frame   0x00001e88       0xa8 ./src/PlatformHandler/flashHandler.o
+ .debug_frame   0x00001f30       0xbc ./src/PlatformHandler/gpioHandler.o
+ .debug_frame   0x00001fec      0x130 ./src/PlatformHandler/i2cHandler.o
+ .debug_frame   0x0000211c       0x28 ./src/PlatformHandler/rccHandler.o
+ .debug_frame   0x00002144       0x98 ./src/PlatformHandler/ring_buffer.o
+ .debug_frame   0x000021dc       0xc8 ./src/PlatformHandler/spiHandler.o
+ .debug_frame   0x000022a4       0x5c ./src/PlatformHandler/storageHandler.o
+ .debug_frame   0x00002300       0x98 ./src/PlatformHandler/timerHandler.o
+ .debug_frame   0x00002398      0x14c ./src/PlatformHandler/uartHandler.o
+ .debug_frame   0x000024e4      0x208 ./src/Internet/TFTP/tftp.o
+ .debug_frame   0x000026ec      0x14c ./src/Ethernet/W5500/w5500.o
+ .debug_frame   0x00002838      0x264 ./src/Ethernet/socket.o
+ .debug_frame   0x00002a9c      0x2e8 ./src/Ethernet/wizchip_conf.o
+ .debug_frame   0x00002d84      0x1c4 ./src/Configuration/ConfigData.o
+ .debug_frame   0x00002f48      0x188 ./src/Configuration/ConfigMessage.o
+ .debug_frame   0x000030d0       0x58 ./src/main.o
+ .debug_frame   0x00003128       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x00003148       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcmp.o)
+ .debug_frame   0x00003170       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memcpy.o)
+ .debug_frame   0x00003198       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x000031b8       0x74 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-printf.o)
+ .debug_frame   0x0000322c       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strcpy.o)
+ .debug_frame   0x0000324c       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-strlen.o)
+ .debug_frame   0x0000326c       0x50 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-vsprintf.o)
+ .debug_frame   0x000032bc      0x11c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-findfp.o)
+ .debug_frame   0x000033d8       0x54 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fwalk.o)
+ .debug_frame   0x0000342c       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-freer.o)
+ .debug_frame   0x00003458       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-mallocr.o)
+ .debug_frame   0x00003484       0x8c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-svfprintf.o)
+ .debug_frame   0x00003510       0xb8 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf.o)
+ .debug_frame   0x000035c8       0x58 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-vfprintf_i.o)
+ .debug_frame   0x00003620       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-sbrkr.o)
+ .debug_frame   0x0000364c       0x88 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-stdio.o)
+ .debug_frame   0x000036d4       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wbuf.o)
+ .debug_frame   0x00003710       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-writer.o)
+ .debug_frame   0x0000373c       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-wsetup.o)
+ .debug_frame   0x00003768       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-closer.o)
+ .debug_frame   0x00003794       0x68 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fflush.o)
+ .debug_frame   0x000037fc       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-lseekr.o)
+ .debug_frame   0x00003828       0x34 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-makebuf.o)
+ .debug_frame   0x0000385c       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memchr.o)
+ .debug_frame   0x00003884       0x28 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-memmove.o)
+ .debug_frame   0x000038ac       0x3c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-reallocr.o)
+ .debug_frame   0x000038e8       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-readr.o)
+ .debug_frame   0x00003914       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-fstatr.o)
+ .debug_frame   0x00003940       0x2c c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-isattyr.o)
+ .debug_frame   0x0000396c       0x20 c:/program files (x86)/gnu tools arm embedded/4.9 2015q1/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m\libg_nano.a(lib_a-nano-msizer.o)
 
-.debug_str      0x00000000    0x5bfbc
+.debug_str      0x00000000    0x5c6a2
  *(.debug_str)
  .debug_str     0x00000000    0x4e02b ./system/src/stm32f1-stdperiph/misc.o
                               0x4e189 (size before relaxing)
@@ -6285,38 +6516,42 @@ END GROUP
                                0x253c (size before relaxing)
  .debug_str     0x000561c1      0x914 ./src/netutil/netutil.o
                                0x6204 (size before relaxing)
- .debug_str     0x00056ad5      0x4a8 ./src/PlatformHandler/flashHandler.o
+ .debug_str     0x00056ad5      0x4e9 ./src/PlatformHandler/eepromHandler.o
+                              0x4e50e (size before relaxing)
+ .debug_str     0x00056fbe      0x4a8 ./src/PlatformHandler/flashHandler.o
                               0x508a0 (size before relaxing)
- .debug_str     0x00056f7d      0x1c6 ./src/PlatformHandler/gpioHandler.o
+ .debug_str     0x00057466      0x1b3 ./src/PlatformHandler/gpioHandler.o
                               0x4e26a (size before relaxing)
- .debug_str     0x00057143       0x59 ./src/PlatformHandler/rccHandler.o
+ .debug_str     0x00057619      0x1c5 ./src/PlatformHandler/i2cHandler.o
+                              0x4e6af (size before relaxing)
+ .debug_str     0x000577de       0x59 ./src/PlatformHandler/rccHandler.o
                               0x4e092 (size before relaxing)
- .debug_str     0x0005719c      0x16b ./src/PlatformHandler/ring_buffer.o
+ .debug_str     0x00057837      0x16b ./src/PlatformHandler/ring_buffer.o
                                0x5639 (size before relaxing)
- .debug_str     0x00057307     0x2e0c ./src/PlatformHandler/spiHandler.o
-                              0x51158 (size before relaxing)
- .debug_str     0x0005a113       0x5f ./src/PlatformHandler/storageHandler.o
-                              0x5049d (size before relaxing)
- .debug_str     0x0005a172      0x36a ./src/PlatformHandler/timerHandler.o
-                              0x4e8c1 (size before relaxing)
- .debug_str     0x0005a4dc      0x214 ./src/PlatformHandler/uartHandler.o
+ .debug_str     0x000579a2     0x2dff ./src/PlatformHandler/spiHandler.o
+                              0x51165 (size before relaxing)
+ .debug_str     0x0005a7a1       0x8f ./src/PlatformHandler/storageHandler.o
+                              0x50780 (size before relaxing)
+ .debug_str     0x0005a830      0x392 ./src/PlatformHandler/timerHandler.o
+                              0x4ea5d (size before relaxing)
+ .debug_str     0x0005abc2      0x214 ./src/PlatformHandler/uartHandler.o
                               0x519df (size before relaxing)
- .debug_str     0x0005a6f0      0x744 ./src/Internet/TFTP/tftp.o
+ .debug_str     0x0005add6      0x744 ./src/Internet/TFTP/tftp.o
                                0x892e (size before relaxing)
- .debug_str     0x0005ae34      0x162 ./src/Ethernet/W5500/w5500.o
+ .debug_str     0x0005b51a      0x162 ./src/Ethernet/W5500/w5500.o
                                0x5bb2 (size before relaxing)
- .debug_str     0x0005af96      0x305 ./src/Ethernet/socket.o
+ .debug_str     0x0005b67c      0x305 ./src/Ethernet/socket.o
                                0x6221 (size before relaxing)
- .debug_str     0x0005b29b      0x4b4 ./src/Ethernet/wizchip_conf.o
+ .debug_str     0x0005b981      0x4b4 ./src/Ethernet/wizchip_conf.o
                                0x640e (size before relaxing)
- .debug_str     0x0005b74f      0x29b ./src/Configuration/ConfigData.o
+ .debug_str     0x0005be35      0x29b ./src/Configuration/ConfigData.o
                                0x8fed (size before relaxing)
- .debug_str     0x0005b9ea      0x57d ./src/Configuration/ConfigMessage.o
+ .debug_str     0x0005c0d0      0x57d ./src/Configuration/ConfigMessage.o
                               0x53c21 (size before relaxing)
- .debug_str     0x0005bf67       0x55 ./src/main.o
-                              0x5528d (size before relaxing)
+ .debug_str     0x0005c64d       0x55 ./src/main.o
+                              0x5538f (size before relaxing)
 
-.debug_loc      0x00000000     0xa6f1
+.debug_loc      0x00000000     0xadca
  *(.debug_loc)
  .debug_loc     0x00000000      0x1cc ./system/src/stm32f1-stdperiph/misc.o
  .debug_loc     0x000001cc      0x77f ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
@@ -6332,20 +6567,23 @@ END GROUP
  .debug_loc     0x000062a8       0xc6 ./system/src/newlib/assert.o
  .debug_loc     0x0000636e       0xe4 ./system/src/cmsis/system_stm32f10x.o
  .debug_loc     0x00006452      0x29a ./src/netutil/netutil.o
- .debug_loc     0x000066ec      0x2c2 ./src/PlatformHandler/flashHandler.o
- .debug_loc     0x000069ae       0x84 ./src/PlatformHandler/gpioHandler.o
- .debug_loc     0x00006a32       0x13 ./src/PlatformHandler/rccHandler.o
- .debug_loc     0x00006a45      0x5d9 ./src/PlatformHandler/ring_buffer.o
- .debug_loc     0x0000701e       0x42 ./src/PlatformHandler/spiHandler.o
- .debug_loc     0x00007060      0x126 ./src/PlatformHandler/storageHandler.o
- .debug_loc     0x00007186      0x3ab ./src/PlatformHandler/uartHandler.o
- .debug_loc     0x00007531      0x769 ./src/Internet/TFTP/tftp.o
- .debug_loc     0x00007c9a      0x568 ./src/Ethernet/W5500/w5500.o
- .debug_loc     0x00008202     0x120d ./src/Ethernet/socket.o
- .debug_loc     0x0000940f      0xa0e ./src/Ethernet/wizchip_conf.o
- .debug_loc     0x00009e1d      0x270 ./src/Configuration/ConfigData.o
- .debug_loc     0x0000a08d      0x557 ./src/Configuration/ConfigMessage.o
- .debug_loc     0x0000a5e4      0x10d ./src/main.o
+ .debug_loc     0x000066ec      0x36c ./src/PlatformHandler/eepromHandler.o
+ .debug_loc     0x00006a58      0x2c2 ./src/PlatformHandler/flashHandler.o
+ .debug_loc     0x00006d1a       0x84 ./src/PlatformHandler/gpioHandler.o
+ .debug_loc     0x00006d9e      0x27a ./src/PlatformHandler/i2cHandler.o
+ .debug_loc     0x00007018       0x13 ./src/PlatformHandler/rccHandler.o
+ .debug_loc     0x0000702b      0x5d9 ./src/PlatformHandler/ring_buffer.o
+ .debug_loc     0x00007604       0x42 ./src/PlatformHandler/spiHandler.o
+ .debug_loc     0x00007646      0x183 ./src/PlatformHandler/storageHandler.o
+ .debug_loc     0x000077c9       0x96 ./src/PlatformHandler/timerHandler.o
+ .debug_loc     0x0000785f      0x3ab ./src/PlatformHandler/uartHandler.o
+ .debug_loc     0x00007c0a      0x769 ./src/Internet/TFTP/tftp.o
+ .debug_loc     0x00008373      0x568 ./src/Ethernet/W5500/w5500.o
+ .debug_loc     0x000088db     0x120d ./src/Ethernet/socket.o
+ .debug_loc     0x00009ae8      0xa0e ./src/Ethernet/wizchip_conf.o
+ .debug_loc     0x0000a4f6      0x270 ./src/Configuration/ConfigData.o
+ .debug_loc     0x0000a766      0x557 ./src/Configuration/ConfigMessage.o
+ .debug_loc     0x0000acbd      0x10d ./src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -6363,7 +6601,7 @@ END GROUP
  *(.debug_varnames)
 OUTPUT(WIZ550web_Boot.elf elf32-littlearm)
 
-.debug_ranges   0x00000000      0xea8
+.debug_ranges   0x00000000      0xf70
  .debug_ranges  0x00000000       0x30 ./system/src/stm32f1-stdperiph/misc.o
  .debug_ranges  0x00000030       0xe8 ./system/src/stm32f1-stdperiph/stm32f10x_flash.o
  .debug_ranges  0x00000118       0x98 ./system/src/stm32f1-stdperiph/stm32f10x_gpio.o
@@ -6382,23 +6620,25 @@ OUTPUT(WIZ550web_Boot.elf elf32-littlearm)
  .debug_ranges  0x00000908       0x28 ./system/src/cmsis/system_stm32f10x.o
  .debug_ranges  0x00000930       0x10 ./system/src/cmsis/vectors_stm32f10x.o
  .debug_ranges  0x00000940       0x50 ./src/netutil/netutil.o
- .debug_ranges  0x00000990       0x38 ./src/PlatformHandler/flashHandler.o
- .debug_ranges  0x000009c8       0x40 ./src/PlatformHandler/gpioHandler.o
- .debug_ranges  0x00000a08       0x10 ./src/PlatformHandler/rccHandler.o
- .debug_ranges  0x00000a18       0x30 ./src/PlatformHandler/ring_buffer.o
- .debug_ranges  0x00000a48       0x48 ./src/PlatformHandler/spiHandler.o
- .debug_ranges  0x00000a90       0x18 ./src/PlatformHandler/storageHandler.o
- .debug_ranges  0x00000aa8       0x18 ./src/PlatformHandler/timerHandler.o
- .debug_ranges  0x00000ac0       0x58 ./src/PlatformHandler/uartHandler.o
- .debug_ranges  0x00000b18       0xa0 ./src/Internet/TFTP/tftp.o
- .debug_ranges  0x00000bb8       0x50 ./src/Ethernet/W5500/w5500.o
- .debug_ranges  0x00000c08       0x80 ./src/Ethernet/socket.o
- .debug_ranges  0x00000c88      0x110 ./src/Ethernet/wizchip_conf.o
- .debug_ranges  0x00000d98       0x90 ./src/Configuration/ConfigData.o
- .debug_ranges  0x00000e28       0x60 ./src/Configuration/ConfigMessage.o
- .debug_ranges  0x00000e88       0x20 ./src/main.o
+ .debug_ranges  0x00000990       0x58 ./src/PlatformHandler/eepromHandler.o
+ .debug_ranges  0x000009e8       0x38 ./src/PlatformHandler/flashHandler.o
+ .debug_ranges  0x00000a20       0x40 ./src/PlatformHandler/gpioHandler.o
+ .debug_ranges  0x00000a60       0x60 ./src/PlatformHandler/i2cHandler.o
+ .debug_ranges  0x00000ac0       0x10 ./src/PlatformHandler/rccHandler.o
+ .debug_ranges  0x00000ad0       0x30 ./src/PlatformHandler/ring_buffer.o
+ .debug_ranges  0x00000b00       0x40 ./src/PlatformHandler/spiHandler.o
+ .debug_ranges  0x00000b40       0x18 ./src/PlatformHandler/storageHandler.o
+ .debug_ranges  0x00000b58       0x30 ./src/PlatformHandler/timerHandler.o
+ .debug_ranges  0x00000b88       0x58 ./src/PlatformHandler/uartHandler.o
+ .debug_ranges  0x00000be0       0xa0 ./src/Internet/TFTP/tftp.o
+ .debug_ranges  0x00000c80       0x50 ./src/Ethernet/W5500/w5500.o
+ .debug_ranges  0x00000cd0       0x80 ./src/Ethernet/socket.o
+ .debug_ranges  0x00000d50      0x110 ./src/Ethernet/wizchip_conf.o
+ .debug_ranges  0x00000e60       0x90 ./src/Configuration/ConfigData.o
+ .debug_ranges  0x00000ef0       0x60 ./src/Configuration/ConfigMessage.o
+ .debug_ranges  0x00000f50       0x20 ./src/main.o
 
-.debug_macro    0x00000000    0x12623
+.debug_macro    0x00000000    0x12aab
  .debug_macro   0x00000000      0x189 ./system/src/stm32f1-stdperiph/misc.o
  .debug_macro   0x00000189      0x880 ./system/src/stm32f1-stdperiph/misc.o
  .debug_macro   0x00000a09       0x50 ./system/src/stm32f1-stdperiph/misc.o
@@ -6485,37 +6725,42 @@ OUTPUT(WIZ550web_Boot.elf elf32-littlearm)
  .debug_macro   0x000100bf       0x16 ./src/netutil/netutil.o
  .debug_macro   0x000100d5      0x196 ./src/netutil/netutil.o
  .debug_macro   0x0001026b       0x16 ./src/netutil/netutil.o
- .debug_macro   0x00010281      0x24e ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x000104cf       0x10 ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x000104df       0x2e ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x0001050d       0x1c ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x00010529       0x22 ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x0001054b       0x28 ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x00010573       0x8e ./src/PlatformHandler/flashHandler.o
- .debug_macro   0x00010601      0x182 ./src/PlatformHandler/gpioHandler.o
- .debug_macro   0x00010783       0x46 ./src/PlatformHandler/gpioHandler.o
- .debug_macro   0x000107c9      0x183 ./src/PlatformHandler/rccHandler.o
- .debug_macro   0x0001094c      0x108 ./src/PlatformHandler/ring_buffer.o
- .debug_macro   0x00010a54       0x1c ./src/PlatformHandler/ring_buffer.o
- .debug_macro   0x00010a70      0x1bb ./src/PlatformHandler/spiHandler.o
- .debug_macro   0x00010c2b       0x6a ./src/PlatformHandler/spiHandler.o
- .debug_macro   0x00010c95       0x46 ./src/PlatformHandler/spiHandler.o
- .debug_macro   0x00010cdb      0x5d9 ./src/PlatformHandler/spiHandler.o
- .debug_macro   0x000112b4       0x66 ./src/PlatformHandler/spiHandler.o
- .debug_macro   0x0001131a      0x22e ./src/PlatformHandler/storageHandler.o
- .debug_macro   0x00011548      0x1ad ./src/PlatformHandler/timerHandler.o
- .debug_macro   0x000116f5      0x286 ./src/PlatformHandler/uartHandler.o
- .debug_macro   0x0001197b       0x52 ./src/PlatformHandler/uartHandler.o
- .debug_macro   0x000119cd      0x14d ./src/Internet/TFTP/tftp.o
- .debug_macro   0x00011b1a       0x88 ./src/Internet/TFTP/tftp.o
- .debug_macro   0x00011ba2       0xcf ./src/Internet/TFTP/tftp.o
- .debug_macro   0x00011c71       0x10 ./src/Internet/TFTP/tftp.o
- .debug_macro   0x00011c81       0x84 ./src/Ethernet/W5500/w5500.o
- .debug_macro   0x00011d05       0x9f ./src/Ethernet/socket.o
- .debug_macro   0x00011da4       0x40 ./src/Ethernet/socket.o
- .debug_macro   0x00011de4       0x7b ./src/Ethernet/wizchip_conf.o
- .debug_macro   0x00011e5f      0x192 ./src/Configuration/ConfigData.o
- .debug_macro   0x00011ff1       0x1c ./src/Configuration/ConfigData.o
- .debug_macro   0x0001200d      0x27a ./src/Configuration/ConfigMessage.o
- .debug_macro   0x00012287       0x70 ./src/Configuration/ConfigMessage.o
- .debug_macro   0x000122f7      0x32c ./src/main.o
+ .debug_macro   0x00010281      0x195 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00010416       0x5e ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x00010474       0x70 ./src/PlatformHandler/eepromHandler.o
+ .debug_macro   0x000104e4      0x24e ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x00010732       0x10 ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x00010742       0x2e ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x00010770       0x1c ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x0001078c       0x22 ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x000107ae       0x28 ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x000107d6       0x8e ./src/PlatformHandler/flashHandler.o
+ .debug_macro   0x00010864      0x182 ./src/PlatformHandler/gpioHandler.o
+ .debug_macro   0x000109e6       0x46 ./src/PlatformHandler/gpioHandler.o
+ .debug_macro   0x00010a2c      0x191 ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00010bbd       0x6a ./src/PlatformHandler/i2cHandler.o
+ .debug_macro   0x00010c27      0x183 ./src/PlatformHandler/rccHandler.o
+ .debug_macro   0x00010daa      0x108 ./src/PlatformHandler/ring_buffer.o
+ .debug_macro   0x00010eb2       0x1c ./src/PlatformHandler/ring_buffer.o
+ .debug_macro   0x00010ece      0x1c5 ./src/PlatformHandler/spiHandler.o
+ .debug_macro   0x00011093       0x6a ./src/PlatformHandler/spiHandler.o
+ .debug_macro   0x000110fd       0x46 ./src/PlatformHandler/spiHandler.o
+ .debug_macro   0x00011143      0x5d9 ./src/PlatformHandler/spiHandler.o
+ .debug_macro   0x0001171c       0x66 ./src/PlatformHandler/spiHandler.o
+ .debug_macro   0x00011782      0x245 ./src/PlatformHandler/storageHandler.o
+ .debug_macro   0x000119c7      0x1ad ./src/PlatformHandler/timerHandler.o
+ .debug_macro   0x00011b74      0x286 ./src/PlatformHandler/uartHandler.o
+ .debug_macro   0x00011dfa       0x52 ./src/PlatformHandler/uartHandler.o
+ .debug_macro   0x00011e4c      0x14d ./src/Internet/TFTP/tftp.o
+ .debug_macro   0x00011f99       0x88 ./src/Internet/TFTP/tftp.o
+ .debug_macro   0x00012021       0xcf ./src/Internet/TFTP/tftp.o
+ .debug_macro   0x000120f0       0x10 ./src/Internet/TFTP/tftp.o
+ .debug_macro   0x00012100       0x84 ./src/Ethernet/W5500/w5500.o
+ .debug_macro   0x00012184       0x9f ./src/Ethernet/socket.o
+ .debug_macro   0x00012223       0x40 ./src/Ethernet/socket.o
+ .debug_macro   0x00012263       0x7b ./src/Ethernet/wizchip_conf.o
+ .debug_macro   0x000122de      0x192 ./src/Configuration/ConfigData.o
+ .debug_macro   0x00012470       0x1c ./src/Configuration/ConfigData.o
+ .debug_macro   0x0001248c      0x27a ./src/Configuration/ConfigMessage.o
+ .debug_macro   0x00012706       0x70 ./src/Configuration/ConfigMessage.o
+ .debug_macro   0x00012776      0x335 ./src/main.o

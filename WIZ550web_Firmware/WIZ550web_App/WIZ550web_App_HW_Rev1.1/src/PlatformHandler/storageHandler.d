@@ -1,6 +1,9 @@
 src/PlatformHandler/storageHandler.o: \
  ../src/PlatformHandler/storageHandler.c \
- ../system/include/cmsis/stm32f10x.h ../system/include/cmsis/core_cm3.h \
+ ../src/PlatformHandler/storageHandler.h \
+ ../src/PlatformHandler/flashHandler.h \
+ ../src/PlatformHandler/i2cHandler.h ../system/include/cmsis/stm32f10x.h \
+ ../system/include/cmsis/core_cm3.h \
  ../system/include/cmsis/core_cmInstr.h \
  ../system/include/cmsis/core_cmFunc.h \
  ../system/include/cmsis/system_stm32f10x.h ../include/stm32f10x_conf.h \
@@ -27,8 +30,13 @@ src/PlatformHandler/storageHandler.o: \
  ../system/include/stm32f1-stdperiph/stm32f10x_usart.h \
  ../system/include/stm32f1-stdperiph/stm32f10x_wwdg.h \
  ../system/include/stm32f1-stdperiph/misc.h \
- ../src/PlatformHandler/storageHandler.h \
- ../src/PlatformHandler/flashHandler.h
+ ../src/PlatformHandler/eepromHandler.h
+
+../src/PlatformHandler/storageHandler.h:
+
+../src/PlatformHandler/flashHandler.h:
+
+../src/PlatformHandler/i2cHandler.h:
 
 ../system/include/cmsis/stm32f10x.h:
 
@@ -88,6 +96,4 @@ src/PlatformHandler/storageHandler.o: \
 
 ../system/include/stm32f1-stdperiph/misc.h:
 
-../src/PlatformHandler/storageHandler.h:
-
-../src/PlatformHandler/flashHandler.h:
+../src/PlatformHandler/eepromHandler.h:

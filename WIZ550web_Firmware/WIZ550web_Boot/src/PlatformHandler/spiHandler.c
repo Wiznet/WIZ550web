@@ -3,11 +3,7 @@
 #include "spiHandler.h"
 #include "uartHandler.h"
 #include "wizchip_conf.h"
-
-void Delay(volatile unsigned int nCount)
-{
-	for(; nCount!= 0;nCount--);
-}
+#include "timerHandler.h"
 
 static uint8_t wizchip_rw(uint8_t byte)
 {
