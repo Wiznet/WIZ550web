@@ -5,6 +5,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
 
+// I2C EERPOM Peri function Section
 #define EPP_I2C				I2C1
 #define EEP_Address			0xA0
 #define EEP_MacAddresss		0xFA
@@ -21,7 +22,7 @@ void EEP_Write(uint8_t* pBuffer, uint16_t WriteAddr, uint16_t NumByteToWrite);
 void I2C_EE_WaitEepromStandbyState(void);
 
 
-
+// I2C EERPOM GPIO function Section
 #define IIC1_SCL_PORT  	GPIOC
 #define IIC1_SCL_PIN  	GPIO_Pin_6
 
