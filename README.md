@@ -8,6 +8,9 @@
  	- I2C 전용 Peripheral에 연결
  		- PB6 - I2C_SCL
  		- PB7 - I2C_SDA
+ 	- CS pin 변경
+ 		- Rev 1.0 - PB11
+ 		- Rev 1.1 - PB09
  - Artwork
  	- Rev1.1은 Artwork 새로 진행.
  	- 나사 홀 Open으로 변경 (외부 노이즈 방지) 
