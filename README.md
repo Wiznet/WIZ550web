@@ -21,8 +21,8 @@
 		 - D3 - PC09
 		 - D4 - PA08
 		 - D8 - PC12
-		 - D13 - PB6
-		 - D14 - PB7
+		 - D13 - PB06
+		 - D14 - PB07
 		 - Flash memory CS - PB11
 		 - Debug LED 0 - PC04 
 		 - Debug LED 1 - PC05
@@ -33,11 +33,13 @@
 		 - D3 - PC03
 		 - D4 - PC04
 		 - D8 - PC05
-		 - D13 - PC6
-		 - D14 - PC7
+		 - D13 - PC06
+		 - D14 - PC07
 		 - Flash memory CS - PB09
 		 - Debug LED 0 - PA08 
 		 - Debug LED 1 - PC12
+		 - I2C_EEPROM_SCL - PB06
+		 - I2C_EEPROM_SDA - PB07
 
 ## F/W 수정사항 ##
 
