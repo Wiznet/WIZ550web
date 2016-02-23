@@ -8,11 +8,6 @@
  	- I2C 전용 Peripheral에 연결
  		- PB6 - I2C_SCL
  		- PB7 - I2C_SDA
- 	- CS pin 변경
- 		- Rev 1.0 
- 			- PB11
- 		- Rev 1.1 
- 			- PB09
  - Artwork
  	- Rev1.1은 Artwork 새로 진행.
  	- 나사 홀 Open으로 변경 (외부 노이즈 방지) 
@@ -28,7 +23,7 @@
 		 - D8 - PC12
 		 - D13 - PB06
 		 - D14 - PB07
-		 - Flash memory CS - PB11
+		 - Flash memory CS (External memory) - PB11
 		 - Debug LED 0 - PC04 
 		 - Debug LED 1 - PC05
 	 - Rev 1.1
@@ -40,7 +35,7 @@
 		 - D8 - PC05
 		 - D13 - PC06
 		 - D14 - PC07
-		 - Flash memory CS - PB09
+		 - Flash memory CS (External memory) - PB09
 		 - Debug LED 0 - PA08 
 		 - Debug LED 1 - PC12
 		 - I2C_EEPROM_SCL - PB06
