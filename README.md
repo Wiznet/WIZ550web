@@ -1,18 +1,29 @@
 ##  H/W Revision 1.1 #
 
  - EMI Issue로 인해 33R Damping 저항 추가
+ 	- Ethernet TX/RX Signal 
  - Boot SW 추가(Slide SW)
+ 	- 기존 GPIO(D8)로 사용되었던 Boot pin을 별도로 Slide SW를 이용하여 구성
+ 	- Rev1.1은 GPIO(D8) 추가 사용 가능.
  - App_Boot SW 추가(Slide SW)
+ 	- H/W Trigger pin
  - SWD pin(JTAG) 추가 - 1.27pitch 10pin
  - EEPROM(24AA64I-T/OT)추가
  	- I2C 전용 Peripheral에 연결
- 		- PB6 - I2C_SCL
- 		- PB7 - I2C_SDA
+ 		- Rev 1.0
+			- PB06 - D13
+			- PB07 - D14
+		- Rev 1.1
+			- PB06 - I2C_SCL
+			- PB07 - I2C_SDA
  - Artwork
  	- Rev1.1은 Artwork 새로 진행.
- 	- 나사 홀 Open으로 변경 (외부 노이즈 방지) 
- - Coretex-M4 pin to pin 가능하게 설계
+ 	- 나사 홀 Open으로 변경 (외부 노이즈 방지용)
+ 	- Base board에서 noise가 550web으로 영향 줄 가능성이 있어 나사홀 open
+ - Cortex-M4 pin to pin 가능하게 설계
+ 	- Cortex-M4로 변경 가능 (더 높은 성능 요구 시) 
  - Test point 추가 (3V3D, GND)
+ 	- DMM이나 오실로스코프 사용 시 사용 될 Test Point 추가
  - GPIO pin 변경 (Digital & SPI CS pin) 
 	 - Rev 1.0
 		 - D0 - PC06
