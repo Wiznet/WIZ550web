@@ -56,6 +56,9 @@
 
 ## F/W 수정사항(github에 2.0.0으로 새로 업데이트 예정) ##
 
+ - MCU Memory size 변경
+ 	- ldscripts -> mem.ld 에서 Memory Size 변경
+ 	- RAM, FLASH 사이즈 변경
  - GPIO pin 변경 (H/W Rev 1.1 Pinout list 확인)
  - App_Boot pin 변경
  	- 기존 D8(GPIO)로 사용했던 App boot 핀을 변경.
