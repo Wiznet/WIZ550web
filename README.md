@@ -56,6 +56,11 @@
 
  - GPIO pin 변경
  - EEPROM 코드 추가 (Peri & GPIO 2개 코드로 나뉘어져 있음)
+ 	- 기존 Serial flash memory로 동작되었던 Config Tool + userhandler 부분을 전부 EEPROM에서 동작하도록 변경.
+ - BOOT code size 24KB -> 28KB 변경.
+ 	- 추가 코드로 인한 코드 사이즈 변경
+ - TFTP 코드 변경
+ 	- Flash memory를 전부 사용하기 위해 코드 수정
 
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
