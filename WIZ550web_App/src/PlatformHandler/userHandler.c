@@ -24,6 +24,8 @@
 
 #include "httpParser.h"
 #include "uartHandler.h"
+#include "i2cHandler.h"
+#include "eepromHandler.h"
 
 #if !defined(MULTIFLASH_ENABLE)
 //#define IO_PAGE_ADDR	0x801F400	// Page125
@@ -65,6 +67,7 @@ uint32_t baudrate_table[10] = {
 
 int read_IOstorage(void *data, uint16_t size)
 {
+#if !defined(EEPROM_ENABLE)
 	uint32_t address;
 
 #if !defined(MULTIFLASH_ENABLE)
@@ -74,10 +77,34 @@ int read_IOstorage(void *data, uint16_t size)
 #endif
 
 	return read_flash(address, data, size);
+#else
+	uint8_t Receive_Data1[EEPROM_BLOCK_SIZE];
+	uint16_t addr;
+	uint16_t offset;
+
+	addr = 0;
+
+	memset(&Receive_Data1[0], 0x00, EEPROM_BLOCK_SIZE);
+
+	offset = 0x00+EEPROM_BLOCK_SIZE*2;
+
+#if defined(EEPROM_ENABLE_BYI2CPERI)
+	EEP_Read(&Receive_Data1[0], addr+offset, size);
+#elif defined(EEPROM_ENABLE_BYGPIO)
+	EE24AAXX_Read(addr+offset, &Receive_Data[0], size);
+#endif
+
+	memcpy(data, &Receive_Data1[0], size);
+
+	delay_ms(50);
+
+	return 0;
+#endif
 }
 
 int write_IOstorage(void *data, uint16_t size)
 {
+#if !defined(EEPROM_ENABLE)
 	uint32_t address;
 
 #if !defined(MULTIFLASH_ENABLE)
@@ -88,6 +115,63 @@ int write_IOstorage(void *data, uint16_t size)
 
 	erase_flash_page(address);
 	return write_flash(address, data, size);
+#else
+	uint8_t Transmit_Data1[EEPROM_BLOCK_SIZE];
+	uint16_t addr;
+	uint16_t offset;
+	uint8_t page, rest, i;
+
+	memset(&Transmit_Data1[0], 0x00, EEPROM_BLOCK_SIZE);
+	memcpy(&Transmit_Data1[0], data, size);
+
+	if(size > EEPROM_BLOCK_SIZE)
+		size = EEPROM_BLOCK_SIZE;
+
+	page = size/EEPROM_PAGE_SIZE;
+	rest = size%EEPROM_PAGE_SIZE;
+
+	addr = 0;
+
+	offset = 0x00+EEPROM_BLOCK_SIZE*2;
+
+	if(size < EEPROM_PAGE_SIZE)
+	{
+#if defined(EEPROM_ENABLE_BYI2CPERI)
+		EEP_Write(&Transmit_Data1[0], addr+offset, size);
+#elif defined(EEPROM_ENABLE_BYGPIO)
+		EE24AAXX_WritePage(addr+offset, &Transmit_Data[0], size);
+#endif
+		delay_ms(10);
+	}
+	else
+	{
+		for(i=0; i<page; i++)
+		{
+			addr = i*EEPROM_PAGE_SIZE;
+#if defined(EEPROM_ENABLE_BYI2CPERI)
+			EEP_Write(&Transmit_Data1[addr], addr+offset, EEPROM_PAGE_SIZE);
+#elif defined(EEPROM_ENABLE_BYGPIO)
+			EE24AAXX_WritePage(addr+offset, &Transmit_Data[addr], EEPROM_PAGE_SIZE);
+#endif
+			delay_ms(10);
+		}
+
+		if(rest != 0)
+		{
+			addr = page*EEPROM_PAGE_SIZE;
+#if defined(EEPROM_ENABLE_BYI2CPERI)
+			EEP_Write(&Transmit_Data1[addr], addr+offset, rest);
+#elif defined(EEPROM_ENABLE_BYGPIO)
+			EE24AAXX_WritePage(addr+offset, &Transmit_Data[addr], rest);
+#endif
+			delay_ms(10);
+		}
+	}
+
+	delay_ms(50);
+
+	return 0;
+#endif
 }
 
 /**

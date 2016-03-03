@@ -134,6 +134,7 @@ void EEP_Write(uint8_t* pBuffer, uint16_t WriteAddr, uint16_t NumByteToWrite)
 	/* Test on EV5 and clear it */
 	while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_MODE_SELECT));
 
+	// Control Byte (Slave Select bit)
 	if(EE_TYPE>EE24AA16)
 	{
 		/* Send EEPROM address for write */
@@ -148,6 +149,7 @@ void EEP_Write(uint8_t* pBuffer, uint16_t WriteAddr, uint16_t NumByteToWrite)
 	/* Test on EV6 and clear it */
 	while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
 
+	// Address High byte
 	if(EE_TYPE>EE24AA16)
 	{
 		/* Send the EEPROM's internal address to write from: MSB of the address first */
@@ -157,12 +159,13 @@ void EEP_Write(uint8_t* pBuffer, uint16_t WriteAddr, uint16_t NumByteToWrite)
 		while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 	}
 
+	// Address Low Byte
 	/* Send the EEPROM's internal address to write from: LSB of the address */
 	I2C_SendData(EPP_I2C, (uint8_t)(WriteAddr & 0x00FF));
 
 	/* Test on EV8 and clear it */
 	while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
+	//Data Trans !
 	while(NumByteToWrite--)
 	{
 		/* Send the current byte */

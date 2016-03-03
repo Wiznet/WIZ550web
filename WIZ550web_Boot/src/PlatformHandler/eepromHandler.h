@@ -23,7 +23,7 @@
 #define EE_TYPE  EE24AA64
 
 #if (EE_TYPE > EE24AA16)
-#define EEPROM_BLOCK_SIZE       	256
+#define EEPROM_BLOCK_SIZE       	512
 #define EEPROM_PAGE_SIZE       		32
 #else
 #define EEPROM_BLOCK_SIZE       	256

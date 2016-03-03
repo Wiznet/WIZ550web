@@ -32,7 +32,8 @@ src/PlatformHandler/userHandler.o: ../src/PlatformHandler/userHandler.c \
  ../src/Configuration/ConfigData.h ../src/PlatformHandler/flashHandler.h \
  ../src/PlatformHandler/gpioHandler.h \
  ../src/Internet/httpServer/httpParser.h \
- ../src/PlatformHandler/uartHandler.h
+ ../src/PlatformHandler/uartHandler.h ../src/PlatformHandler/i2cHandler.h \
+ ../src/PlatformHandler/eepromHandler.h
 
 ../src/PlatformHandler/userHandler.h:
 
@@ -117,3 +118,7 @@ src/PlatformHandler/userHandler.o: ../src/PlatformHandler/userHandler.c \
 ../src/Internet/httpServer/httpParser.h:
 
 ../src/PlatformHandler/uartHandler.h:
+
+../src/PlatformHandler/i2cHandler.h:
+
+../src/PlatformHandler/eepromHandler.h:

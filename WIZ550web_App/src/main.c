@@ -273,8 +273,10 @@ int main(void)
 	atc_init();
 
 	httpServer_init(TX_BUF, RX_BUF, MAX_HTTPSOCK, socknumlist);
+
 #ifdef _USE_WATCHDOG_
 	reg_httpServer_cbfunc(NVIC_SystemReset, IWDG_ReloadCounter); // Callback: STM32 MCU Reset / WDT Reset (IWDG)
+
 #else
 	reg_httpServer_cbfunc(NVIC_SystemReset, NULL); // Callback: STM32 MCU Reset
 #endif

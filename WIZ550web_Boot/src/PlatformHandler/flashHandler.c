@@ -142,11 +142,12 @@ void probe_flash(void)
     	flash.flash_page0_base = FLASH_PAGE0_BASE;
     	flash.flash_app_base = APP_BASE;
     	flash.flash_page_size = 0x800;
-    	flash.flash_page = 64;
-    	flash.flash_boot_page = 12;
+    	flash.flash_page = 128;//64;
+    	flash.flash_boot_page = 14;//12;
     	flash.flash_config_page = FLASH_CONFIG_PAGE;
     	flash.flash_app_page = flash.flash_page - flash.flash_boot_page - flash.flash_config_page;
-    	flash.config_page_addr = flash.flash_page0_base + (flash.flash_page_size*62);
+    	//flash.config_page_addr = flash.flash_page0_base + (flash.flash_page_size*62);
+    	flash.config_page_addr = flash.flash_page0_base + (flash.flash_page_size*126);
     }
     else
     {
@@ -156,7 +157,7 @@ void probe_flash(void)
     	flash.flash_app_base = APP_BASE;
     	flash.flash_page_size = 0x400;
     	flash.flash_page = 128;
-    	flash.flash_boot_page = 24;
+    	flash.flash_boot_page = 28;//24;
     	flash.flash_config_page = FLASH_CONFIG_PAGE;
     	flash.flash_app_page = flash.flash_page - flash.flash_boot_page - flash.flash_config_page;
     	flash.config_page_addr = flash.flash_page0_base + (flash.flash_page_size*126);
