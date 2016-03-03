@@ -2,6 +2,8 @@
 
  - EMI Issue로 인해 33R Damping 저항 추가
  	- Ethernet TX/RX Signal 
+ - MCU 변경
+ 	- STM32F103RBT6(128KB Flash, 20KB SRAM) -> STM32F103RCT6(256KB Flash, 48KB SRAM)
  - Boot SW 추가(Slide SW) 
  - App_Boot SW 추가(Slide SW)
  	- H/W Trigger pin
