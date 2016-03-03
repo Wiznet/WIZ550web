@@ -2,11 +2,11 @@
 
  - EMI Issue로 인해 33R Damping 저항 추가
  	- Ethernet TX/RX Signal 
- - Boot SW 추가(Slide SW)
- 	- 기존 GPIO(D8)로 사용되었던 Boot pin을 별도로 Slide SW를 이용하여 구성
- 	- Rev1.1은 GPIO(D8) 추가 사용 가능.
+ - Boot SW 추가(Slide SW) 
  - App_Boot SW 추가(Slide SW)
  	- H/W Trigger pin
+ 	- 기존 GPIO(D8)로 사용되었던 App_Boot pin을 별도로 Slide SW를 이용하여 구성
+ 	- Rev1.1은 GPIO(D8) 추가 사용 가능.
  - SWD pin(JTAG) 추가 - 1.27pitch 10pin
  - EEPROM(24AA64I-T/OT)추가
  	- I2C 전용 Peripheral에 연결
@@ -24,7 +24,7 @@
  	- Cortex-M4로 변경 가능 (더 높은 성능 요구 시) 
  - Test point 추가 (3V3D, GND)
  	- DMM이나 오실로스코프 사용 시 사용 될 Test Point 추가
- - GPIO pin 변경 (Digital & SPI CS pin) 
+ - GPIO pin list 변경 (Digital & SPI CS pin) 
 	 - Rev 1.0
 		 - D0 - PC06
 		 - D1 - PC07
@@ -52,15 +52,20 @@
 		 - I2C_EEPROM_SCL - PB06
 		 - I2C_EEPROM_SDA - PB07
 
-## F/W 수정사항 ##
+## F/W 수정사항(github에 2.0.0으로 새로 업데이트 예정) ##
 
- - GPIO pin 변경
+ - GPIO pin 변경 (H/W Rev 1.1 Pinout list 확인)
+ - App_Boot pin 변경
+ 	- 기존 D8(GPIO)로 사용했던 App boot 핀을 변경.
+ - Flash memory CS pin 변경
+ 	- PB11 -> PB09로 변경 
  - EEPROM 코드 추가 (Peri & GPIO 2개 코드로 나뉘어져 있음)
  	- 기존 Serial flash memory로 동작되었던 Config Tool + userhandler 부분을 전부 EEPROM에서 동작하도록 변경.
+ 	- H/W에서 Peripheral으로 사용할 수 있게 수정하였음. 따라서 Peri용 코드를 사용.
  - BOOT code size 24KB -> 28KB 변경.
- 	- 추가 코드로 인한 코드 사이즈 변경
+ 	- BOOT코드 추가로 인한 코드 사이즈 변경
  - TFTP 코드 변경
- 	- Flash memory를 전부 사용하기 위해 코드 수정
+ 	- 이제 EEPROM으로 대체하니깐 Flash memory size를 전부 사용하기 위해 코드 수정.
 
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
