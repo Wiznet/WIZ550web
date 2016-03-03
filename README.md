@@ -6,7 +6,7 @@
  - App_Boot SW 추가(Slide SW)
  	- H/W Trigger pin
  	- 기존 GPIO(D8)로 사용되었던 App_Boot pin을 별도로 Slide SW를 이용하여 구성
- 	- Rev1.1은 GPIO(D8) 추가 사용 가능.
+ 	- Rev1.1은 GPIO(D8)를 추가 사용 가능.
  - SWD pin(JTAG) 추가 - 1.27pitch 10pin
  - EEPROM(24AA64I-T/OT)추가
  	- I2C 전용 Peripheral에 연결
@@ -65,7 +65,7 @@
  - BOOT code size 24KB -> 28KB 변경.
  	- BOOT코드 추가로 인한 코드 사이즈 변경
  - TFTP 코드 변경
- 	- 이제 EEPROM으로 대체하니깐 Flash memory size를 전부 사용하기 위해 코드 수정.
+ 	- 이제 EEPROM으로 대체하기에 TFTP사용 시 Flash memory size를 모두 사용하기 위한 코드 수정.
 
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
