@@ -59,6 +59,8 @@
  - MCU Memory size 변경
  	- ldscripts -> mem.ld 에서 Memory Size 변경
  	- RAM, FLASH 사이즈 변경
+ 	- BOOT는 24KB -> 28KB
+ 	- APP은 97KB -> 222KB
  - GPIO pin 변경 (H/W Rev 1.1 Pinout list 확인)
  - App_Boot pin 변경
  	- 기존 D8(GPIO)로 사용했던 App boot 핀을 변경.
@@ -67,8 +69,6 @@
  - EEPROM 코드 추가 (Peri & GPIO 2개 코드로 나뉘어져 있음)
  	- 기존 Serial flash memory로 동작되었던 Config Tool + userhandler 부분을 전부 EEPROM에서 동작하도록 변경.
  	- H/W에서 Peripheral으로 사용할 수 있게 수정하였음. 따라서 Peri용 코드를 사용.
- - BOOT code size 24KB -> 28KB 변경.
- 	- BOOT코드 추가로 인한 코드 사이즈 변경
  - TFTP 코드 변경
  	- 이제 EEPROM으로 대체하기에 TFTP사용 시 Flash memory size를 모두 사용하기 위한 코드 수정.
 
