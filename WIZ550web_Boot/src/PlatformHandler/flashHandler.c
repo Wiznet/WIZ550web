@@ -1,4 +1,4 @@
-#include <string.h>
+f;l#include <string.h>
 #include "stm32f10x.h"
 #include "common.h"
 #include "flashHandler.h"

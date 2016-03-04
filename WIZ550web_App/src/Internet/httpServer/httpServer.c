@@ -245,7 +245,13 @@ void httpServer_run(uint8_t seqnum)
 #ifdef _HTTPSERVER_DEBUG_
 		printf("> HTTPSocket[%d] : ClOSE_WAIT\r\n", s);	// if a peer requests to close the current connection
 #endif
-			//disconnect(s);
+
+			// Socket file info structure re-initialize
+			HTTPSock_Status[seqnum].file_len = 0;
+			HTTPSock_Status[seqnum].file_offset = 0;
+			HTTPSock_Status[seqnum].file_start = 0;
+			HTTPSock_Status[seqnum].sock_status = STATE_HTTP_IDLE;
+
 			http_disconnect(s);
 			break;
 
@@ -263,7 +269,6 @@ void httpServer_run(uint8_t seqnum)
 			break;
 
 		case SOCK_CLOSED:
-		default :
 #ifdef _HTTPSERVER_DEBUG_
 			printf("> HTTPSocket[%d] : CLOSED\r\n", s);
 #endif
@@ -273,6 +278,8 @@ void httpServer_run(uint8_t seqnum)
 				printf("> HTTPSocket[%d] : OPEN\r\n", s);
 #endif
 			}
+			break;
+		default :
 			break;
 	} // end of switch
 

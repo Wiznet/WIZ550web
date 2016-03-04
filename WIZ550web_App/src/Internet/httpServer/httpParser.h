@@ -59,43 +59,43 @@ static const char  	ERROR_HTML_PAGE[] = "HTTP/1.1 404 Not Found\r\nContent-Type:
 static const char 	ERROR_REQUEST_PAGE[] = "HTTP/1.1 400 OK\r\nContent-Type: text/html\r\nContent-Length: 50\r\n\r\n<HTML>\r\n<BODY>\r\nInvalid request.\r\n</BODY>\r\n</HTML>\r\n\0";
 
 /* HTML Doc. for CGI result  */
-#define HTML_HEADER "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: "
+#define HTML_HEADER "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\nContent-Length: "
 
 /* Response header for HTML*/
-#define RES_HTMLHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: keep-alive\r\nContent-Length: "
+#define RES_HTMLHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for TEXT */
-#define RES_TEXTHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nContent-Length: "
+#define RES_TEXTHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for GIF */
-#define RES_GIFHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/gif\r\nContent-Length: "
+#define RES_GIFHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/gif\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for JPEG */
-#define RES_JPEGHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\nContent-Length: "
+#define RES_JPEGHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/jpeg\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for PNG */
-#define RES_PNGHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/png\r\nContent-Length: "
+#define RES_PNGHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/png\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for FLASH */
-#define RES_FLASHHEAD_OK "HTTP/1.1 200 OK\r\nContent-Type: application/x-shockwave-flash\r\nContent-Length: "
+#define RES_FLASHHEAD_OK "HTTP/1.1 200 OK\r\nContent-Type: application/x-shockwave-flash\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for XML */
-#define RES_XMLHEAD_OK "HTTP/1.1 200 OK\r\nContent-Type: text/xml\r\nConnection: keep-alive\r\nContent-Length: "
+#define RES_XMLHEAD_OK "HTTP/1.1 200 OK\r\nContent-Type: text/xml\r\nConnection: keep-alive\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for CSS */
-#define RES_CSSHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/css\r\nContent-Length: "		
+#define RES_CSSHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/css\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for JavaScript */
-#define RES_JSHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: application/javascript\r\nContent-Length: "
+#define RES_JSHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: application/javascript\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for JSON */
-#define RES_JSONHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: "
+#define RES_JSONHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for ICO */
-#define RES_ICOHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/x-icon\r\nContent-Length: "
+#define RES_ICOHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: image/x-icon\r\nConnection: close\r\nContent-Length: "
 
 /* Response head for CGI */
-#define RES_CGIHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nContent-Length: "
+#define RES_CGIHEAD_OK	"HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\nContent-Length: "
 
 /**
  @brief 	Structure of HTTP REQUEST 
