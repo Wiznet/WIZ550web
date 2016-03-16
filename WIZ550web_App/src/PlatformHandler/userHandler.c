@@ -34,6 +34,8 @@
 
 IOStorage IOdata;
 
+#define IOdata_size sizeof(IOdata)
+
 // Pre-defined Get CGI functions
 void make_json_devinfo(uint8_t * buf, uint16_t * len);
 void make_json_netinfo(uint8_t * buf, uint16_t * len);
@@ -738,6 +740,42 @@ void get_serial_data_from_web(uint8_t * uri)
 #endif
 	}
 }
+// erase all EEPROM size (erase MAC address)
+void GLOBAL_EEPROM_ERASE(void)
+{
+	uint8_t test[IOdata_size];
+	int i;
+
+	printf("GLOBAL EEPROM DATA ERASE...\r\n");
+
+	for(i=0;i<IOdata_size;i++)
+	{
+		test[i] = 0xFF;
+	}
+
+	write_storage(0,test, IOdata_size);
+	write_storage(1,test, IOdata_size);
+	write_storage(2,test, IOdata_size);
+
+	printf("ERASE DONE\r\n");
+}
+
+// erase userHandler EEPROM size
+void USER_EEPROM_ERASE(void)
+{
+	uint8_t test[IOdata_size];
+	int i;
+
+	printf("USER EEPROM DATA ERASE...\r\n");
+
+	for(i=0;i<IOdata_size;i++)
+	{
+		test[i] = 0xFF;
+	}
+	write_IOstorage(test, IOdata_size);
+
+	printf("ERASE DONE\r\n");
+}
 
 void set_factory_default_io_status(uint8_t * uri)
 {
@@ -761,6 +799,15 @@ void set_factory_default_io_status(uint8_t * uri)
 #endif
 		}
 	}
+}
+
+void set_factory_default_io_status_from_config(void)
+{
+	// IO Status Detection code clear
+	IOdata.io_statuscode[0] = 0xff;
+	IOdata.io_statuscode[1] = 0xff;
+
+	write_IOstorage(&IOdata, sizeof(IOdata));
 }
 
 void make_cgi_basic_config_response_page(uint16_t delay, uint8_t * url, uint8_t * cgi_response_buf, uint16_t * len)

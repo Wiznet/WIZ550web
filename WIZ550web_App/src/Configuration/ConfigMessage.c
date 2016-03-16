@@ -6,6 +6,7 @@
 #include "ConfigData.h"
 #include "ConfigMessage.h"
 #include "storageHandler.h"
+#include "userHandler.h"
 
 typedef struct __Remote_Info {
 	uint8_t ip[4];
@@ -434,6 +435,7 @@ static void process_factory_reset(uint8_t sock, Remote_Info *remote_info, WIZnet
 	// set factory value
 	set_S2E_Packet_to_factory_value();
 	save_S2E_Packet_to_storage();
+	set_factory_default_io_status_from_config();
 
 	// reply
 	wiznet_header->length = sizeof(WIZnet_Reset_Reply);

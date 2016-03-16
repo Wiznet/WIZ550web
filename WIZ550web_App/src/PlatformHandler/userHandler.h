@@ -86,7 +86,10 @@ uint8_t * set_basic_config_setting(uint8_t * uri);
 uint8_t set_digital_io_output(uint8_t * uri);
 uint8_t set_digital_io_alias(uint8_t * uri);
 uint8_t set_digital_io_direction(uint8_t * uri);
+void GLOBAL_EEPROM_ERASE(void);
+void USER_EEPROM_ERASE(void);
 void set_factory_default_io_status(uint8_t * uri);
+void set_factory_default_io_status_from_config(void);
 void get_serial_data_from_web(uint8_t * uri);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
