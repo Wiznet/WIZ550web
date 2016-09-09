@@ -1,14 +1,13 @@
 ##  H/W Revision 1.1 #
 
- - EMI Issue로 인해 33R Damping 저항 추가
+ - Add Resistor 33R Damping for EMI issue
  	- Ethernet TX/RX Signal 
- - MCU 변경
+ - Changed MCU
  	- STM32F103RBT6(128KB Flash, 20KB SRAM) -> STM32F103RCT6(256KB Flash, 48KB SRAM)
- - Boot SW 추가(Slide SW) 
- - App_Boot SW 추가(Slide SW)
- 	- H/W Trigger pin
- 	- 기존 GPIO(D8)로 사용되었던 App_Boot pin을 별도로 Slide SW를 이용하여 구성
- 	- Rev1.1은 GPIO(D8)를 추가 사용 가능.
+ - Add Boot SW(Slide SW) 
+ - Add App_Boot SW (Slide SW)
+ 	- App_boot SW is H/W Trigger pin
+ 	- This pin H/W Rev1.0 is D8, H/W rev1.1 is using App_boot Slide SW.
  - SWD pin(JTAG) 추가 - 1.27pitch 10pin
  - EEPROM(24AA64I-T/OT)추가
  	- I2C 전용 Peripheral에 연결
@@ -71,6 +70,13 @@
  	- H/W에서 Peripheral으로 사용할 수 있게 수정하였음. 따라서 Peri용 코드를 사용.
  - TFTP 코드 변경
  	- 이제 EEPROM으로 대체하기에 TFTP사용 시 Flash memory size를 모두 사용하기 위한 코드 수정.
+
+#Tool & Compiler
+- Compiler: gcc-arm-none-eabi-4_8-2014q1-20140314-win32.exe (https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q1-update)
+- Java: http://www.oracle.com/technetwork/java/javase/downloads/index.html 
+- Eclipse: eclipse-cpp-kepler-SR2-win32-x86_64 (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/keplersr2)
+- Make file: http://gnuwin32.sourceforge.net/packages/make.htm
+	- Make file need three files: make.exe, rm.exe, echo.exe file
 
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
