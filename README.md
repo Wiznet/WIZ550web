@@ -74,6 +74,7 @@
 - Eclipse: eclipse-cpp-kepler-SR2-win32-x86_64 (http://www.eclipse.org/downloads/packages/eclipse-ide-cc-developers/keplersr2)
 - Make file: http://gnuwin32.sourceforge.net/packages/make.htm
 	- Make file need three files: make.exe, rm.exe, echo.exe file
+- Rev1.1(F/W2.0.0) compile procedure: Project -> Build configurations -> Set Active -> Rev1.1 Check.
 
 #WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
