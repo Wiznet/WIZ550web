@@ -26,11 +26,11 @@ src/PlatformHandler/flashHandler.o: ../src/PlatformHandler/flashHandler.c \
  ../system/include/stm32f1-stdperiph/stm32f10x_usart.h \
  ../system/include/stm32f1-stdperiph/stm32f10x_wwdg.h \
  ../system/include/stm32f1-stdperiph/misc.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151210_Final\WIZ550web_Boot\src/common.h \
+ D:\Wiznet\Firmware\WIZ550web_workspace_rev1.1_FW2.0.0\WIZ550web-WIZ550web_Rev1.1\WIZ550web-WIZ550web_Rev1.1\WIZ550web_Firmware\WIZ550web_HW_Rev1.1\WIZ550web_Boot\src/common.h \
  ../src/PlatformHandler/flashHandler.h \
  ../src/PlatformHandler/uartHandler.h \
  ../src/PlatformHandler/ring_buffer.h \
- D:\Wiznet\Firmware\WIZ550web_workspace_20151210_Final\WIZ550web_Boot\src\Internet\TFTP/tftp.h
+ D:\Wiznet\Firmware\WIZ550web_workspace_rev1.1_FW2.0.0\WIZ550web-WIZ550web_Rev1.1\WIZ550web-WIZ550web_Rev1.1\WIZ550web_Firmware\WIZ550web_HW_Rev1.1\WIZ550web_Boot\src\Internet\TFTP/tftp.h
 
 ../system/include/cmsis/stm32f10x.h:
 
@@ -90,7 +90,7 @@ src/PlatformHandler/flashHandler.o: ../src/PlatformHandler/flashHandler.c \
 
 ../system/include/stm32f1-stdperiph/misc.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151210_Final\WIZ550web_Boot\src/common.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_rev1.1_FW2.0.0\WIZ550web-WIZ550web_Rev1.1\WIZ550web-WIZ550web_Rev1.1\WIZ550web_Firmware\WIZ550web_HW_Rev1.1\WIZ550web_Boot\src/common.h:
 
 ../src/PlatformHandler/flashHandler.h:
 
@@ -98,4 +98,4 @@ D:\Wiznet\Firmware\WIZ550web_workspace_20151210_Final\WIZ550web_Boot\src/common.
 
 ../src/PlatformHandler/ring_buffer.h:
 
-D:\Wiznet\Firmware\WIZ550web_workspace_20151210_Final\WIZ550web_Boot\src\Internet\TFTP/tftp.h:
+D:\Wiznet\Firmware\WIZ550web_workspace_rev1.1_FW2.0.0\WIZ550web-WIZ550web_Rev1.1\WIZ550web-WIZ550web_Rev1.1\WIZ550web_Firmware\WIZ550web_HW_Rev1.1\WIZ550web_Boot\src\Internet\TFTP/tftp.h:
