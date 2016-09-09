@@ -8,9 +8,9 @@
  - Add App_Boot SW (Slide SW)
  	- App_boot SW is H/W Trigger pin
  	- This pin H/W Rev1.0 is D8, H/W rev1.1 is using App_boot Slide SW.
- - SWD pin(JTAG) 추가 - 1.27pitch 10pin
- - EEPROM(24AA64I-T/OT)추가
- 	- I2C 전용 Peripheral에 연결
+ - Add SWD pin(JTAG) - 1.27pitch 10pin
+ - Add EEPROM(24AA64I-T/OT)
+ 	- Connect to I2C Peripheral pin
  		- Rev 1.0
 			- PB06 - D13
 			- PB07 - D14
@@ -18,14 +18,11 @@
 			- PB06 - I2C_SCL
 			- PB07 - I2C_SDA
  - Artwork
- 	- Rev1.1은 Artwork 새로 진행.
- 	- 나사 홀 Open으로 변경 (외부 노이즈 방지용)
- 	- Base board에서 noise가 550web으로 영향 줄 가능성이 있어 나사홀 open
- - Cortex-M4 pin to pin 가능하게 설계
- 	- Cortex-M4로 변경 가능 (더 높은 성능 요구 시) 
- - Test point 추가 (3V3D, GND)
- 	- DMM이나 오실로스코프 사용 시 사용 될 Test Point 추가
- - GPIO pin list 변경 (Digital & SPI CS pin) 
+ 	- Renewal Artwork
+ 	- changed screw hole pixed open (protect EMI)
+ - Changed possible Cortex-M4 pin to pin matching
+ - Add Test point (3V3D, GND)
+ - Changed GPIO pin list (Digital & SPI CS pin) 
 	 - Rev 1.0
 		 - D0 - PC06
 		 - D1 - PC07
@@ -53,23 +50,23 @@
 		 - I2C_EEPROM_SCL - PB06
 		 - I2C_EEPROM_SDA - PB07
 
-## F/W 수정사항(github에 2.0.0으로 새로 업데이트 예정) ##
+## F/W Modify list ##
 
- - MCU Memory size 변경
- 	- ldscripts -> mem.ld 에서 Memory Size 변경
- 	- RAM, FLASH 사이즈 변경
- 	- BOOT는 24KB -> 28KB
- 	- APP은 97KB -> 222KB
- - GPIO pin 변경 (H/W Rev 1.1 Pinout list 확인)
- - App_Boot pin 변경
- 	- 기존 D8(GPIO)로 사용했던 App boot 핀을 변경.
- - Flash memory CS pin 변경
- 	- PB11 -> PB09로 변경 
- - EEPROM 코드 추가 (Peri & GPIO 2개 코드로 나뉘어져 있음)
- 	- 기존 Serial flash memory로 동작되었던 Config Tool + userhandler 부분을 전부 EEPROM에서 동작하도록 변경.
- 	- H/W에서 Peripheral으로 사용할 수 있게 수정하였음. 따라서 Peri용 코드를 사용.
- - TFTP 코드 변경
- 	- 이제 EEPROM으로 대체하기에 TFTP사용 시 Flash memory size를 모두 사용하기 위한 코드 수정.
+ - Changed MCU Memory size
+ 	- ldscripts -> mem.ld Memory Size change
+ 	- RAM, FLASH size change
+ 	- BOOT is 24KB -> 28KB
+ 	- APP is 97KB -> 222KB
+ - Changed GPIO pin (H/W Rev 1.1 Pinout list 확인)
+ - Changed App_Boot pin code
+ 	- This pin H/W Rev1.0 is D8, H/W rev1.1 is using App_boot Slide SW.
+ - Changed Flash memory CS pin
+ 	- PB11 -> PB09
+ - Add EEPROM code
+ 	- H/W Rev1.0 is Serial flash memory operation.
+ 	- But, H/W Rev1.1 is EEPROM operation. So, TFTP and operation code is using EEPROM
+ - Changed TFTP code
+ 	- It is changed EEPROM operation.
 
 #Tool & Compiler
 - Compiler: gcc-arm-none-eabi-4_8-2014q1-20140314-win32.exe (https://launchpad.net/gcc-arm-embedded/4.8/4.8-2014-q1-update)
