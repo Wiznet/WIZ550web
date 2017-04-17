@@ -513,6 +513,7 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 
 	uint8_t post_name[32]={0x00,};	// POST method request file name
 
+	uint8_t uri_buf[MAX_URI_SIZE]={0x00, };
 #ifdef _WILL_BE_IM_
 	uint32_t content_len = 0;
 	uint16_t post_len = 0; 			// POST
@@ -539,7 +540,12 @@ static void http_process_handler(uint8_t s, st_http_request * p_http_request)
 
 		case METHOD_HEAD :
 		case METHOD_GET :
-			uri_name = get_http_uri_name(p_http_request->URI);
+			if(!get_http_uri_name(p_http_request->URI, uri_buf))
+			{
+				send_http_response_header(s, p_http_request->TYPE, 0, STATUS_NOT_FOUND);
+				break;
+			}
+			uri_name = uri_buf;
 			if (!strcmp((char *)uri_name, "/")) strcpy((char *)uri_name, INITIAL_WEBPAGE);	// If URI is "/", respond by index.html
 			if (!strcmp((char *)uri_name, "m")) strcpy((char *)uri_name, M_INITIAL_WEBPAGE);
 			if (!strcmp((char *)uri_name, "mobile")) strcpy((char *)uri_name, MOBILE_INITIAL_WEBPAGE);

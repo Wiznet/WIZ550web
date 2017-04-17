@@ -154,6 +154,21 @@ Various materials are could be found at [WIZ550web Wiki page](http://wizwiki.net
 
 
 ## Revision History
+#### H/W Revision 1.1
+v2.0.1 Develop
+- Apr. 2017
+- History
+	- Code fixed : URI handling function update 
+
+v2.0.0 Stable
+- init commit for H/W 1.1
+
+#### H/W Revision 1.0
+v1.1.2 Develop
+- Apr. 2017
+- History
+	- Code fixed : URI handling function update
+
 v1.1.1 Stable
 - Sep. 2015
 - History
