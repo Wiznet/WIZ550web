@@ -247,26 +247,46 @@ uint8_t * get_http_param_value(char* uri, char* param_name)
 }
 #endif
 
+#ifdef _OLD_
 uint8_t * get_http_uri_name(uint8_t * uri)
 {
 	char tempURI[MAX_URI_SIZE];
 	uint8_t * uri_name;
-	
+
 	if(!uri) return 0;
-	
+
 	strcpy(tempURI, (char *)uri);
-	
+
 	uri_name = (uint8_t *)strtok(tempURI, " ?");
-	
+
 	if(strcmp((char *)uri_name,"/")) uri_name++;
 
 #ifdef _HTTPPARSER_DEBUG_
-	printf("uri_name = %s\r\n", uri_name);
+	printf("  uri_name = %s\r\n", uri_name);
 #endif	
 
 	return uri_name;
 }
+#else
+uint8_t get_http_uri_name(uint8_t * uri, uint8_t * uri_buf)
+{
+	uint8_t * uri_ptr;
+	if(!uri) return 0;
 
+	strcpy((char *)uri_buf, (char *)uri);
+
+	uri_ptr = (uint8_t *)strtok((char *)uri_buf, " ?");
+
+	if(strcmp((char *)uri_ptr,"/")) uri_ptr++;
+	strcpy((char *)uri_buf, (char *)uri_ptr);
+
+#ifdef _HTTPPARSER_DEBUG_
+	printf("  uri_name = %s\r\n", uri_buf);
+#endif
+
+	return 1;
+}
+#endif
 
 void inet_addr_(uint8_t * addr, uint8_t *ip)
 {
