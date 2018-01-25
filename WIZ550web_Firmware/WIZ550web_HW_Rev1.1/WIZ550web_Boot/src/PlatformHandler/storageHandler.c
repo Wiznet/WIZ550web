@@ -44,19 +44,14 @@ int read_storage(uint8_t isConfig, void *data, uint16_t size)
 	uint8_t Receive_Data[EEPROM_BLOCK_SIZE];
 	uint16_t addr;
 	uint16_t offset;
-
 	if(size > EEPROM_BLOCK_SIZE)
 		size = EEPROM_BLOCK_SIZE;
-
 	addr = 0;
-
 	memset(&Receive_Data[0], 0x00, EEPROM_BLOCK_SIZE);
-
 	if(isConfig == 0)
 		offset = 0x00;
 	else
 		offset = 0x00+EEPROM_BLOCK_SIZE;
-
 #if defined(EEPROM_ENABLE_BYI2CPERI)
 	EEP_Read(&Receive_Data[0], addr+offset, size);
 #elif defined(EEPROM_ENABLE_BYGPIO)
@@ -64,9 +59,7 @@ int read_storage(uint8_t isConfig, void *data, uint16_t size)
 #endif
 
 	memcpy(data, &Receive_Data[0], size);
-
 	delay_ms(50);
-
 	return 0;
 #endif
 }

@@ -4,6 +4,7 @@
 #include "uartHandler.h"
 #include "wizchip_conf.h"
 #include "timerHandler.h"
+#include "gpioHandler.h"
 
 static uint8_t wizchip_rw(uint8_t byte)
 {
@@ -81,17 +82,17 @@ void W5500_SPI_Init(void)
 
 	/*!< Enable the W5500_SPI  */
 	SPI_Cmd(W5500_SPI, ENABLE);
+
+
 }
+
+
 
 void W5500_Init(void)
 {
 	uint8_t memsize[2][8] = { {2,2,2,2,2,2,2,2},{2,2,2,2,2,2,2,2}};
 
 	wizchip_deselect();
-
-	GPIO_ResetBits(GPIOB, W5500_RESET_PIN);
-	Delay(1000); // Is this enough?
-	GPIO_SetBits(GPIOB, W5500_RESET_PIN);
 
 	// Wiznet
 	reg_wizchip_cs_cbfunc(wizchip_select, wizchip_deselect);

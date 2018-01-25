@@ -37,13 +37,10 @@ void EEP_Read(uint8_t* pBuffer, uint16_t ReadAddr, uint16_t NumByteToRead)
 	if(EE_TYPE>EE24AA16)
 	/* While the bus is busy */
 	while(I2C_GetFlagStatus(EPP_I2C, I2C_FLAG_BUSY));
-
     /* Send START condition */
     I2C_GenerateSTART(EPP_I2C, ENABLE);
-
     /* Test on EV5 and clear it */
     while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_MODE_SELECT));
-
 	if(EE_TYPE>EE24AA16)
 	{
 		/* Send EEPROM address for write */
@@ -54,10 +51,8 @@ void EEP_Read(uint8_t* pBuffer, uint16_t ReadAddr, uint16_t NumByteToRead)
 		/* Send EEPROM address for write */
 		I2C_Send7bitAddress(EPP_I2C, (uint8_t)(EEP_Address+((ReadAddr/EEPROM_BLOCK_SIZE)<<1)), I2C_Direction_Transmitter);
 	}
-
     /* Test on EV6 and clear it */
     while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-
 	if(EE_TYPE>EE24AA16)
 	{
 		/* Send the EEPROM's internal address to read from: MSB of the address first*/
@@ -66,19 +61,14 @@ void EEP_Read(uint8_t* pBuffer, uint16_t ReadAddr, uint16_t NumByteToRead)
 		/* Test on EV8 and clear it */
 		while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 	}
-
     /* Send the EEPROM's internal address to read from: LSB of the address */
     I2C_SendData(EPP_I2C, (uint8_t)(ReadAddr & 0x00FF));
-
     /* Test on EV8 and clear it */
     while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
     /* Send STRAT condition a second time */
     I2C_GenerateSTART(EPP_I2C, ENABLE);
-
     /* Test on EV5 and clear it */
     while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_MODE_SELECT));
-
 	if(EE_TYPE>EE24AA16)
 	{
 		/* Send EEPROM address for read */
@@ -89,13 +79,12 @@ void EEP_Read(uint8_t* pBuffer, uint16_t ReadAddr, uint16_t NumByteToRead)
 		/* Send EEPROM address for read */
 		I2C_Send7bitAddress(EPP_I2C, (uint8_t)(EEP_Address+((ReadAddr/EEPROM_BLOCK_SIZE)<<1)), I2C_Direction_Receiver);
 	}
-
     /* Test on EV6 and clear it */
     while(!I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
-
     /* While there is data to be read */
     while(NumByteToRead)
     {
+    	//myprintf("500000000\r\n");
         if(NumByteToRead == 1)
         {
             /* Disable Acknowledgement */
@@ -104,7 +93,7 @@ void EEP_Read(uint8_t* pBuffer, uint16_t ReadAddr, uint16_t NumByteToRead)
             /* Send STOP Condition */
             I2C_GenerateSTOP(EPP_I2C, ENABLE);
         }
-
+        //myprintf("600000000\r\n");
         /* Test on EV7 and clear it */
         if(I2C_CheckEvent(EPP_I2C, I2C_EVENT_MASTER_BYTE_RECEIVED))
         {
@@ -118,7 +107,7 @@ void EEP_Read(uint8_t* pBuffer, uint16_t ReadAddr, uint16_t NumByteToRead)
             NumByteToRead--;
         }
     }
-
+    //myprintf("700000000\r\n");
     /* Enable Acknowledgement to be ready for another reception */
     I2C_AcknowledgeConfig(EPP_I2C, ENABLE);
 }

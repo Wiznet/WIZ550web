@@ -108,6 +108,8 @@ int main(int argc, char* argv[])
 
 	RCC_Configuration();
 	
+	W5500_RESET();
+
 	LED_Init(LED1);
 	LED_Init(LED2);
 	
@@ -129,22 +131,16 @@ int main(int argc, char* argv[])
 	EE24AAXX_Init();
 #endif
 #endif
-
 	/* Load Configure Infomation */
 	load_S2E_Packet_from_storage();
-
 	/* Check MAC Address */
 	check_mac_address();
-
 	W5500_SPI_Init();
 	W5500_Init();
 	Timer_Configuration();
-
 	Net_Conf();
 	TFTP_init(SOCK_TFTP, socket_buf);
-
 	ret = application_update();
-
 	if((get_bootpin_Status() == 0) && (ret != TFTP_FAIL)) {
 		uint32_t tmp;
 
@@ -158,7 +154,6 @@ int main(int argc, char* argv[])
 			application_jump();
 		}
 	}
-
 	while (1) {
 		do_udp_config(SOCK_CONFIG);
 	}

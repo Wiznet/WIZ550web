@@ -22,7 +22,7 @@
 #define W5500_CS_GPIO_CLK               RCC_APB2Periph_GPIOB
 
 #define W5500_DUMMY_BYTE				0xFF
-#define W5500_RESET_PIN                 GPIO_Pin_9 
+//#define W5500_RESET_PIN                 GPIO_Pin_9
 
 void W5500_SPI_Init(void);
 void W5500_Init(void);

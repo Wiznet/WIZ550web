@@ -77,12 +77,10 @@ void set_S2E_Packet_to_factory_value()
 void load_S2E_Packet_from_storage()
 {
 	read_storage(1, &s2e_packet, sizeof(S2E_Packet));
-
 	if(s2e_packet.packet_size == 0x0000 || s2e_packet.packet_size == 0xFFFF){
 		set_S2E_Packet_to_factory_value();
 		write_storage(1, &s2e_packet, sizeof(S2E_Packet));
 	}
-
 	s2e_packet.fw_ver[0] = MAJOR_VER;
 	s2e_packet.fw_ver[1] = MINOR_VER;
 	s2e_packet.fw_ver[2] = MAINTENANCE_VER;

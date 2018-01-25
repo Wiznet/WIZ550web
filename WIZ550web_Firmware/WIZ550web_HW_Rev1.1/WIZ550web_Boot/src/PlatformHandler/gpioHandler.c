@@ -30,6 +30,31 @@ void LED_Init(Led_TypeDef Led)
 
 }
 
+void W5500_RESET()
+{
+	int i;
+
+	GPIO_InitTypeDef GPIO_InitStructure;
+
+	/*!< Configure W5500_Reset pin  */
+	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+
+	GPIO_InitStructure.GPIO_Pin = W5500_RESET_PIN;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_Init(W5500_RESET_PORT, &GPIO_InitStructure);
+
+	GPIO_ResetBits(GPIOB, W5500_RESET_PIN);
+	for(i=0; i<1000; i++);
+	GPIO_SetBits(GPIOB, W5500_RESET_PIN);
+}
+
+/**
+  * @brief  Configures the GPIO
+  * @param  None
+  * @return None
+  */
+
 /**
   * @brief  Turns selected LED On.
   * @param  Led: Specifies the Led to be set on.
