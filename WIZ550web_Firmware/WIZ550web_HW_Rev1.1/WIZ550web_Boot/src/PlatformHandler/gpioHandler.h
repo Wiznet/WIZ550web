@@ -18,6 +18,10 @@
 #define BOOT_GPIO_PORT					GPIOC
 #define BOOT_GPIO_CLK					RCC_APB2Periph_GPIOC
 
+#define W5500_RESET_PIN 				GPIO_Pin_0	 // PB.0
+#define W5500_RESET_PORT         		GPIOB                       /* GPIOB */
+#define W5500_RESET_CLK					RCC_APB2Periph_GPIOB
+
 typedef enum
 {
   LED1 = 0,
@@ -26,6 +30,7 @@ typedef enum
   LED4 = 3
 } Led_TypeDef;
 
+void W5500_RESET();
 void LED_Init(Led_TypeDef Led);
 void LED_On(Led_TypeDef Led);
 void LED_Off(Led_TypeDef Led);
