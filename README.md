@@ -1,3 +1,6 @@
+# Attention
+- Firmware updates will be performed only in  Hardware Rev 1.1.
+
 # WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
 - Provides the firmware & web page examples for user’s customization
