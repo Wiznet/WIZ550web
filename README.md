@@ -1,5 +1,5 @@
 # Attention
-- Firmware updates will be performed only in  Hardware Rev 1.1.
+- Firmware updates will be performed only in  Hardware Rev 1.1/1.2
 
 # WIZ550web
 - Embedded Web server module for Things based on W5500 hardwired TCP/IP chip (Non-OS)
@@ -50,7 +50,7 @@ These are Firmware projects (source code) based on Eclipse IDE for C/C++ Develop
 <br>
 
 ## F/W Revision
-|-|H/W rev 1.1|H/W rev 1.0|
+|-|H/W rev 1.1/1.2|H/W rev 1.0|
 |:--:|:--:|:--:|
 |The latest|v2.0.1|1.1.2|
 
